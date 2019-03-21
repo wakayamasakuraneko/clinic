@@ -180,7 +180,7 @@ th {background:#eee183;}
 }
 .map p {
   font-size:15px;
-  line-height:1vw;
+  line-height:15px; /* 「木広町の交差点から～」の行間を調整するコード*/
 }
 .device {
   font-size: 12px;
