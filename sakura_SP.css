@@ -1,72 +1,73 @@
 /* スマホ版 */
 .header {
-  background:#eee183;
-  position :fixed;
-  width:100%;
-  top: 0;
+  background:#eee183; /* ヘッダーの背景色 */
+  position :fixed; /* ヘッダーの固定 */
+  width:100%; /* position :fixed;を入れる前は必要無かった。入れたらなぜかwidthが狭くなった */
+  top: 0; /* これが無いとヘッダーがバナー広告みたいに画面中央に移動 */
   border-bottom: 2px solid #eee;
 }
-.header-title {
+.header-title { /* ヘッダーのタイトル「和歌山スペイクリニック さくらねこ」 */
+  color: #070;  
   text-align: left;
   line-height:10px;
   padding-top:30px;
   padding-left:30px;
   padding-bottom:2px;
-  font-weight: bold;
+  font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
 .header-title span {
   color:red;
 }  
 .header-title p {
-  text-align: center;
+  text-align:right;
 }
 
-.header-right {
+.header-right { /* 営業時間：休日 */
   color:green;
-  font-weight: normal;
+  font-weight: normal; /* bold太字　lighter細字　normal戻す */
   padding-top:10px;
   padding-right:30px;
   font-size:15px;
   float:right;
 }
-.header-right span { 
+.header-right span { /* 営業時間：休日 のフォントを調整 */
   color:red;
-  font-weight: bold;
+  font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
 
 .gnav {
   width: 100%;
-  height: 80px;
+  height: 80px; /* 元々40px～80pxにしてもあまり変わらないが、90pxにすると画像と被ってくる */
   margin: 0;
   padding: 0;
   background: #eee183;
 }
-.gnav .nav {
+.gnav .nav { /* リストを表示する帯のスタイル */
   width: 300px;
   height: 40px;
   margin: 0 auto;
   padding: 0;
-  display: flex;
+  display: flex; /* display: flexの使い方はかなり奥深い */
 }
 .gnav .nav li {
   position: relative;
   list-style: none;
-  box-sizing: border-box;
+  box-sizing: border-box; /* 要素の幅と高さの中にpaddingとborderを含めるかどうか */
   border: 1px solid #eee;
 }
-.gnav .nav li a {
+.gnav .nav li a { /* リストのCSS */
   display: block;
   width: 60px;
   height: 40px;
   text-align: center;
-  color: #fff;
+  color: #fff; /* リストの文字色：白 */
   font-size: 12px;
-  line-height: 3.2;
+  line-height: 3.2; /* 行間を調整するコード*/
   background: black;
   box-sizing: border-box;
-  text-decoration: none;
+  text-decoration: none; /* text-decorationはテキストに下線、上線、打ち消し線、点滅などの装飾を施し、noneは無し*/
 }
-.gnav .nav > li:hover > a {
+.gnav .nav > li:hover > a { /*1番目のリストにホバーした時文字がオレンジ色に*/
   color: orange;
   background-color: #444444;
 }
@@ -76,12 +77,12 @@
   margin-top:175px;
 }
   
-.title-img {
+.title-img { /* タイトルイメージの中央揃え…これが無いと、画像が黒い背景よりも大きくなる */
   text-align: center;
 }
-img {
-  width: 90vw;
-  margin-top:2px;
+img { /* タイトルイメージの伸縮 */
+  width: 90vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する */
+  margin-top:2px; /* タイトルイメージの上の黒い隙間の幅 */
   padding:7px;
 }
 
@@ -102,40 +103,40 @@ img {
   color:#99634b;
 } 
 
-.kotoba {color:red;}
-.director {
+.kotoba {color:red;} /*  殺処分ゼロの文字色 */
+.director { /*  院長紹介の配置 */
   line-height: 5px;
   text-align:center;
   font-family: Georgia,游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN",HGS明朝E,メイリオ,Meiryo,serif;}
-.kotoba2 {color:#02cd88;}
-.kotoba3 {color:#026338;}
+.kotoba2 {color:#02cd88;} /* 「人間と共生できる猫たちとして見守ってあげたい」の文字色 */
+.kotoba3 {color:#026338;} /*  院長紹介の文字色 */
 .director-intro {
   color:#026338;
   font-size :15px;
 }
-.img-mine {
+.img-mine { /*  顔写真の大きさ */
   height:150px;
   width:115px;
 }
 
-#clinic-prices {
-  text-align: left;
+#clinic-prices { /* 料金案内 */
+  text-align: left; /* 料金表の見出しを左へ */
   color:#d72521;
 }
-.price-caption {
+.price-caption { /* 手術料金には～含まれております */
   font-size:3vw;
   text-align: right;
   line-height:8px;
   color:red
 }
-.price-caption2 {
+.price-caption2 { /* 表の下の緑の文字 */
   font-size:3vw;
   text-align: left;
   line-height:8px;
   color:green;
   padding-left:20px;
 }
-.prices {
+.prices { /* 料金案内 */
   width: 100%;
   min-height: 200px;
   background: #fefde0;
@@ -146,25 +147,25 @@ img {
   color:#000;
   box-sizing: border-box;
 }
-.price-table {
+.price-table { /* 上の料金表のスタイルを決める */
   text-align:centr; 
 }
-.price-table span {
+.price-table span { /* 税込料金の文字は赤に */
  color:red;
  font-size:80%;
 } 
-table {
+table { /* 料金表 */
   margin-left: auto;
   margin-right:auto;
   table-layout: fixed;
-  width:100%;
+  width:100%; /* 料金表の幅を画面の100%に固定 */
 }
-th {background:#eee183;}
+th {background:#eee183;} /* 表内見出しの色 */
 
-#clinic-access {
+#clinic-access { /* アクセス */
   color:#2d6d4b;
 }
-#clinic-access span {
+#clinic-access span { /* Google Mapの文字色 */
   color:#dd0000;
 }
 .access { /* アクセス */
@@ -194,11 +195,11 @@ th {background:#eee183;}
 .googlemap-text {text-align:center;}
 .map-btn {
   padding: 6px 15px;
-  background-color: #ee0000;
-  color: white;
+  background-color: #ee0000; /* HOME文字の背景色 赤 */
+  color: white; /* Google Mapの文字色 */
   display: inline-block;
   opacity: 0.7;
-  border-radius: 4px;
+  border-radius: 4px; /* ボタンに丸みを */
   margin-bottom: 15px;
 }
 .homestyle-btn{text-align:center;
@@ -206,19 +207,19 @@ th {background:#eee183;}
 .home-btn {
   font-size:20px;
   padding: 3px 15px;
-  background-color: #00bb00;
+  background-color: #00bb00; /* HOME文字の背景色 黄緑 */
   color: white;
   display: inline-block;
   opacity: 0.8;
   border-radius: 4px;
   margin-right: 20px;
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 0px;/* スマホ版だと画面下が白く空いてしまうので仕方なくボトムを長く取った */
 }
 .SP_btn {
   text-align:center;
 }
-.sp_btn {
+.sp_btn { /* スマホ用 Google Map のボタン */
   font-size:18px;
   padding: 3px 6px;
   background-color: #ff0000;
@@ -233,7 +234,7 @@ a {
   text-decoration: none;
 }
 
-.gmap {
+.gmap { /* 下と合わせてGoogleマップを画面幅に合わせて表示できるコード */
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 30px;
@@ -249,7 +250,7 @@ a {
   width: 100%;
   height: 100%;
 }
-.empty {
+.empty {/* スマホ版で下の白い空間を埋めるため */
   width: 100%;
   min-height: 50px;
   background: #fefde0;
@@ -296,9 +297,10 @@ a {
   opacity: 0.8;
   border-radius: 4px;
 }
-.fab {
+/* ※　FontAwesome スタイル */
+.fab { /* Facebookのアイコン */
   margin-right: 5px;
 }
-.far {
+.far { /* 指のアイコン */
   margin-left: 10px;
 }
