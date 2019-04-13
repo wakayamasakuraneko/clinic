@@ -6,7 +6,7 @@
   top: 0; /* これが無いとヘッダーがバナー広告みたいに画面中央に移動 */
   border-bottom: 2px solid #eee;
 }
-.header-title { /* ヘッダーのタイトル「和歌山スペイクリニック さくらねこ」 */
+.header-title { 
   color: #070;  
   text-align: left;
   line-height:10px;
@@ -15,10 +15,10 @@
   padding-bottom:2px;
   font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
-.header-title span {
+.header-title span { /* 左上の休診宣言 */
   color:red;
 }  
-.header-title p {
+.header-title p { /* TEL・FAXを右へ寄せる */
   text-align:right;
 }
 
