@@ -7,7 +7,8 @@
   border-bottom: 2px solid #eee;
 }
 .header-title { 
-  color: #070;  
+  text-align: center; /* 休診宣言する時はPC版でleftにして赤文字にすると良い */
+  color: #070; /* TEL・FAXの文字色 */
   text-align: left;
   line-height:10px;
   padding-top:30px;
@@ -15,9 +16,9 @@
   padding-bottom:2px;
   font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
-.header-title span { /* 左上の休診宣言 */
-  color:red;
-}  
+.header-title span {
+  color:#000; /* タイトルの色 */
+} 
 .header-title p { /* TEL・FAXを右へ寄せる */
   text-align:right;
 }
