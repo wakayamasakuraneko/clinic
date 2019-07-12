@@ -17,7 +17,7 @@
   font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
 .header-title span {
-  color:red; /* タイトルの色(普段は黒：#000) */
+  color:#000; /* タイトルの色(普段は黒：#000、休診宣言する時は「red」) */
 } 
 .header-title p { /* TEL・FAXを右へ寄せる */
   text-align:right;
