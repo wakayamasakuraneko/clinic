@@ -2,7 +2,7 @@
 @media (min-width: 769px){
   
 .header-title { /* ヘッダーのタイトル「和歌山スペイクリニック さくらねこ」*/
-  text-align: left; /* 普段はcenter 休診宣言する時はleftにして赤文字にすると良い */
+  text-align: left; /* 普段はcenter 休診宣言する時はleftにしてSP版のCSSで赤文字にすると良い */
   line-height:10px; /* 行間を調整するコード*/
  }
 .device0 {
