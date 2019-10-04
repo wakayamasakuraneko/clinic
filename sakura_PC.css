@@ -31,6 +31,10 @@
   line-height: 2.8;
 }
 
+img { /* タイトルイメージの伸縮 */
+  width: 85vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
+}
+
 .introduction {/* 病院紹介 */
   background-color:#fdfdcd; /* 薄卵色#eee183 タイトルのオレンジ#ffc90d 明るさf6f4a5＜fdfdcd＜fffbf5 */
   width: 100%; /* 元々755px　他の数値でも効く */
