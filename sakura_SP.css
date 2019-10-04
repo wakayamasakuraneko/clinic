@@ -98,7 +98,7 @@
   text-align: center;
 }
 img { /* タイトルイメージの伸縮 */
-  width: 85vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
+  width: 95vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
   margin-top:1vw; /* タイトルイメージの上の黒い隙間の幅　前は2px */
   padding-left:0vw; /* 以前は padding:7px; */
 }
