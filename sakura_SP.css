@@ -1,5 +1,6 @@
 /* スマホ版 */
 .header {
+  left:0;
   background:#eee183; /* ヘッダーの背景色 */
   position :fixed; /* ヘッダーの固定 */
   width:100%; /* position :fixed;を入れる前は必要無かった。入れたらなぜかwidthが狭くなった */
