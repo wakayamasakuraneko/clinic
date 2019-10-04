@@ -1,16 +1,26 @@
 /* スマホ版 */
-.header {
+.MainBox { /* ヘッダーとフッターの間のコンテンツ */
+  position :absolute;
   left:0;
-  background:#eee183; /* ヘッダーの背景色 */
+  /* 上に2行によって、やっと左の僅かな余白を消せる。 */
+  /* 余白を消すには position を決めて left:0; をしないと消せないらしい */
+  /* position:relative;では余白は消えない */
+  margin-bottom:-15px;
+  padding-bottom:15px;
+  /* 上に2行によって、MainBoxの下に余白を表示できる まあただのお遊び */
+}
+.header {
+  z-index: 99; /* MainBoxのpositionをabsoluteにした際にMainBoxより上になるように */
+  left:0; /* 左の余白の除去 */
   position :fixed; /* ヘッダーの固定 */
+  background:#eee183; /* ヘッダーの背景色 */
   width:100%; /* position :fixed;を入れる前は必要無かった。入れたらなぜかwidthが狭くなった */
   top: 0; /* これが無いとヘッダーがバナー広告みたいに画面中央に移動 */
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid #eee; /* ヘッダーの下のボーダーライン#eeeは薄い灰色 前は2px *//* 5pxでちょうどイラストの背景の黒と接する */
 }
-.header-title { 
+.header-title { /* ※ TEL・FAX 073-407-1288 */
   text-align: center; /* 休診宣言する時はPC版でleftにして赤文字にすると良い */
   color: #070; /* TEL・FAXの文字色 */
-  text-align: left;
   line-height:10px;
   padding-top:30px;
   padding-left:30px;
@@ -19,7 +29,7 @@
 }
 .header-title span {
   color:red; /* タイトルの色(普段は黒：#000、休診宣言する時は「red」) */
-} 
+}
 .header-title p { /* TEL・FAXを右へ寄せる */
   text-align:right;
 }
@@ -37,15 +47,15 @@
   font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
 
-.gnav {
+.gnav { /* リストを表示する帯のスタイル */
   width: 100%;
   height: 80px; /* 元々40px～80pxにしてもあまり変わらないが、90pxにすると画像と被ってくる */
   margin: 0;
   padding: 0;
-  background: #eee183;
+  background: #eee183; /* 青グレー(#9fb7d4)の帯を薄卵色に */
 }
 .gnav .nav { /* リストを表示する帯のスタイル */
-  width: 300px;
+  width: 300px; /* リストの幅 元々300px */
   height: 40px;
   margin: 0 auto;
   padding: 0;
@@ -55,37 +65,42 @@
   position: relative;
   list-style: none;
   box-sizing: border-box; /* 要素の幅と高さの中にpaddingとborderを含めるかどうか */
-  border: 1px solid #eee;
+   /* box-sizing: content-box; ←初期値 paddingとborderを幅と高さに含めないのではみ出る */
+   /* box-sizing: border-box; ← paddingとborderを幅と高さに含めるので要素の中で収まる */
+   /* box-sizing: inherit; ← 親要素のborder-boxの値を引き継ぐ*/
+  border: 1px solid #eee; /* 最初のリスト同士の境目の線のスタイル 元はborder-leftだった*/
+   /* しかしborder-leftにするとリスト同士が微妙にズレる */
 }
 .gnav .nav li a { /* リストのCSS */
-  display: block;
+  display: block; /* inline-blockにしても変わらない　理由はまだ理解してないから分からない */
   width: 60px;
   height: 40px;
   text-align: center;
   color: #fff; /* リストの文字色：白 */
   font-size: 12px;
   line-height: 3.2; /* 行間を調整するコード*/
-  background: black;
+  background: black; /* リストそのものの色：青グレー(#9fb7d4)の帯を黒に */
   box-sizing: border-box;
   text-decoration: none; /* text-decorationはテキストに下線、上線、打ち消し線、点滅などの装飾を施し、noneは無し*/
 }
-.gnav .nav > li:hover > a { /*1番目のリストにホバーした時文字がオレンジ色に*/
-  color: orange;
-  background-color: #444444;
+.gnav .nav > li:hover > a {
+  color: orange; /*1番目のリストにホバーした時文字がオレンジ色に*/
+  background-color: #444444; /* #444444はこげ茶色　元はグレー:#afc6e2 */
 }
 
+/* タイトルイメージ */  
 .main {
-  background-color: black;
-  margin-top:175px;
+  background-color: black; /* タイトルイメージの背景:黒 */
+  margin-top:160px; /* この幅のお陰でヘッダーと被らない */
 }
   
 .title-img { /* タイトルイメージの中央揃え…これが無いと、画像が黒い背景よりも大きくなる */
   text-align: center;
 }
 img { /* タイトルイメージの伸縮 */
-  width: 90vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する */
-  margin-top:2px; /* タイトルイメージの上の黒い隙間の幅 */
-  padding:7px;
+  width: 85vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
+  margin-top:1vw; /* タイトルイメージの上の黒い隙間の幅　前は2px */
+  padding-left:0vw; /* 以前は padding:7px; */
 }
 
 
@@ -93,16 +108,16 @@ img { /* タイトルイメージの伸縮 */
 .introduction {
   width: 100%;
   min-height: 200px;
-  background: #fefde0;
+  background: #fefde0; /* 元々#eee(灰色) 薄卵色(濃さ)#eee183>#fdfdcd>fefde0>#fffbf5 タイトルのオレンジ#ffc90d */
   margin: 0 auto;
   padding: 10px;
   text-align: left;
   font-size: 15px;
-  color:#000;
-  box-sizing: border-box;
+  color:#000; /* 効くが下の.intro-textのプロパティで打ち消される */
+  box-sizing: border-box; /* このコードが無いとボーダーラインがはみ出るらしいがあまり意味が判らない */
 } 
-#clinic-introduction {
-  color:#99634b;
+#clinic-introduction { /*  病院紹介の文字色 */
+  color:#99634b; /*  赤・緑・青の順　数字が大きくなるほど白に近づく */
 } 
 
 .kotoba {color:red;} /*  殺処分ゼロの文字色 */
@@ -141,7 +156,7 @@ img { /* タイトルイメージの伸縮 */
 .prices { /* 料金案内 */
   width: 100%;
   min-height: 200px;
-  background: #fefde0;
+  background: #fefde0; /* 元々#eee(灰色) 薄卵色#eee183 タイトルのオレンジ#ffc90d*/
   margin: 0 auto;
   padding: 10px;
   text-align: center;
@@ -168,18 +183,19 @@ th {background:#eee183;} /* 表内見出しの色 */
   color:#2d6d4b;
 }
 #clinic-access span { /* Google Mapの文字色 */
-  color:#dd0000;
+  color:#dd0000; /* ※ 効かない と思ったら後で効くようになった */
 }
 .access { /* アクセス */
   width: 100%;
   min-height: 150px;
-  background: #fefde0;
+  background: #fefde0; /* 元々#eee(灰色) 薄卵色#eee183 タイトルのオレンジ#ffc90d*/
   margin: 0 auto;
   padding: 10px;
   text-align: left;
   font-size: 15px;
   color:#000;
   box-sizing: border-box;
+  border: 5px solid #fdfdcd; /* ★★　無くて多分誰も気づかない　★★ */
 }
 .map p {
   font-size:15px;
@@ -190,13 +206,14 @@ th {background:#eee183;} /* 表内見出しの色 */
   color:red;
   margin-left: 15px;
 }
-.map-img img {
+.map-img img { /* ※　追加記載 .map-imgだけでは効かない */
   width:80%;
   margin-left:7%;
 }
-.googlemap-text {text-align:center;}
+.googlemap-text {text-align:center;}/* ※　追加記載 こっちのコードは有効だが .map-btnで指定しても効かなかった  */
 .map-btn {
-  padding: 6px 15px;
+  /*text-align:center;  　効かないので仕方なく上記の .googlemap-textクラスを作った。 */
+  padding: 6px 15px; /* 3pxだった */
   background-color: #ee0000; /* HOME文字の背景色 赤 */
   color: white; /* Google Mapの文字色 */
   display: inline-block;
@@ -210,30 +227,30 @@ th {background:#eee183;} /* 表内見出しの色 */
   font-size:20px;
   padding: 3px 15px;
   background-color: #00bb00; /* HOME文字の背景色 黄緑 */
-  color: white;
+  color: white; /* 文字色 */
   display: inline-block;
   opacity: 0.8;
-  border-radius: 4px;
+  border-radius: 4px; /* ボタンに丸みを */
   margin-right: 20px;
   margin-top: 10px;
-  margin-bottom: 0px;/* スマホ版だと画面下が白く空いてしまうので仕方なくボトムを長く取った */
+  margin-bottom: 0px; /* スマホ版だと画面下が白く空いてしまうので仕方なくボトムを長く取った */
 }
 .SP_btn {
   text-align:center;
 }
 .sp_btn { /* スマホ用 Google Map のボタン */
   font-size:18px;
-  padding: 3px 6px;
-  background-color: #ff0000;
-  color: white;
+  padding: 3px 6px; /* 3pxだった */
+  background-color: #ff0000; /* HOME文字の背景色 赤 */
+  color: white; /* Google Mapの文字色 */
   display: inline-block;
   opacity: 0.9;
-  border-radius: 4px;
+  border-radius: 4px; /* ボタンに丸みを */
   margin-top: 15px;
   margin-bottom: 15px;
 }
 a {
-  text-decoration: none;
+  text-decoration: none; /* テキストに装飾を施し、noneは下線を打ち消す */
 }
 
 .gmap { /* 下と合わせてGoogleマップを画面幅に合わせて表示できるコード */
@@ -252,7 +269,7 @@ a {
   width: 100%;
   height: 100%;
 }
-.empty {/* スマホ版で下の白い空間を埋めるため */
+.empty { /* スマホ版で下の白い空間を埋めるため */
   width: 100%;
   min-height: 50px;
   background: #fefde0;
@@ -272,32 +289,34 @@ a {
 }
 
 .footer {
+  bottom:0;
   height: 120px;
   width:100%;
   line-height:15px;
   background:#eee183;
+  text-align:center;
 }  
-.footer-left {
-  color:red;
-  font-weight: bold;
-  padding:12px;
-  font-size:15px;
-} 
+.footer-left { /* 空div　中身無し */
+  padding-top:20px; /* footer-rightにmargin-topを指定するとおかしくなるので止む無く */
+}
 .footer-right a {
   float:right;
   text-decoration: none;
   font-size:18px;
 }
 .facebook {
-  background-color: #3b5998;
+  background-color: #3b5998; /* Facebookの周りの文字色　薄い紺 */
   margin-right: 30px;
 }
-.btn {
+.btn { /* Facebookのボタン */
   padding: 8px 24px;
   color: white;
   display: inline-block;
   opacity: 0.8;
   border-radius: 4px;
+}
+.btn:hover {
+  opacity: 1; /* ボタンにホバーすると透明度0.8が解除 */
 }
 /* ※　FontAwesome スタイル */
 .fab { /* Facebookのアイコン */
@@ -305,4 +324,12 @@ a {
 }
 .far { /* 指のアイコン */
   margin-left: 10px;
+}
+.Out_of_MainBox {
+  position:fixed; z-index:-1;left:0;bottom:0;
+  /* 上のコード指定とMainBoxに マイナスmargin-bottomとpadding-bottom を指定すると表示する事が出来る。 */
+  /* 注意すべきはここはあくまでMainBoxよりz軸が下の領域。リンクを貼ってもクリック出来ない。 */
+  height: 120px;/* ここでいくら数値を上げても、MainBoxで作った余白以上にはならない */
+  width:100%;
+  background: #3b5998; /* 紺色 */
 }
