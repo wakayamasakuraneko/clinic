@@ -155,4 +155,7 @@ th {background:#eee183;}
 .facebook {
   border-bottom: 0px; /* 効かないので消そうか */
   margin-bottom: 0px; /* 500pxとかにすると効果があるのが分かる */
+  margin-left: 0px; /* スマホでは0px */
+  margin-right: 30px; /* スマホでは10px */
+  padding: 8px 24px; /* スマホでは8px 8px */
 }
