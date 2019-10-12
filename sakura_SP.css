@@ -290,7 +290,7 @@ a {
 
 .footer {
   bottom:0;
-  height: 120px;
+  height: 80px; /* PCでは120pxだがスマホで縦長になり過ぎたので */
   width:100%;
   line-height:15px;
   background:#eee183;
@@ -306,10 +306,11 @@ a {
 }
 .facebook {
   background-color: #3b5998; /* Facebookの周りの文字色　薄い紺 */
-  margin-right: 30px;
+  margin-left: 15px; /* スマホで左に寄りすぎなのでマージンを作った */
+  margin-right: 10px; /* 30pxだったがスマホで２行に分かれるのが嫌だったので狭く */
 }
 .btn { /* Facebookのボタン */
-  padding: 8px 24px;
+  padding: 8px 8px; /* PCでは、8px 24px */
   color: white;
   display: inline-block;
   opacity: 0.8;
