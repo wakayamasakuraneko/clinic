@@ -2,7 +2,7 @@
 @media (min-width: 769px) {
 
 .header-title { /* ヘッダーのタイトル「和歌山スペイクリニック さくらねこ」*/
-  text-align: center; /* 普段は「center」 *//* 休診宣言する時はleftにして赤文字にすると良い */
+  text-align: center; /* 休診宣言する時はleftにして赤文字にすると良い */
   line-height:10px; /* 行間を調整するコード*/
  }
 .device0 {
@@ -30,7 +30,9 @@
   font-size: 14px;
   line-height: 2.8;
 }
-
+.main {
+  margin-top:200px; /* 元々PC版の方では設定していなかった *//* ヘッダーにお知らせを2行増やすとスマホとズレるので200pxに設定 */
+}
 img { /* タイトルイメージの伸縮 */
   width: 85vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
 }
@@ -67,7 +69,7 @@ img { /* タイトルイメージの伸縮 */
   background-color:#fdfdcd; /* #ddd087だとちょっと暗い 明るさf6f4a5＜fdfdcd */
   width: 100%; /* 元々755px　他の数値でも効く */
   border-top:5px solid #f6f4a5; /* box-sizing: border-boxコードが無くても大丈夫そう */
-  border-left: 15px solid #f6f4a5;
+  border-left: 15px solid #f6f4a5; /* PCの時のみ出る一番外側の枠線 */
   border-right: 15px solid #f6f4a5;
   }
 .price { /* 料金案内の表を貼り付ける */
@@ -88,6 +90,8 @@ img { /* タイトルイメージの伸縮 */
   line-height:15px;
   padding-left: 50px;
 }
+
+/* 下の tableとthは「.」が付いていなかったため無効だが問題なかった2019/10/07 */
 table {/* 料金表 */
   border: 3px #eee183 solid;
   color:black;
