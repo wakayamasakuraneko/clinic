@@ -22,15 +22,15 @@
   text-align: center; /* 休診宣言する時はPC版でleftにして赤文字にすると良い */
   color: #070; /* TEL・FAXの文字色 */
   line-height:18px; /* 2行にならなければ10px */
-  padding-top:30px;
-  padding-left:30px;
+  padding-top:20px; /* 元々30px */
+  padding-left:15px; /* 元々30px */
   padding-bottom:2px;
   font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
 .header-title span {
   color:red; /* タイトルの色(普段は黒：#000、休診宣言する時は「red」) */
 }
-.header-title p { /* TEL・FAXを右へ寄せる */
+.header-title p { /* TEL・FAXを右へ寄せる時はright */
   text-align:center;
 }
 
@@ -91,7 +91,7 @@
 /* タイトルイメージ */  
 .main {
   background-color: black; /* タイトルイメージの背景:黒 */
-  margin-top:255px; /* この幅のお陰でヘッダーと被らない *//* 元々160px、2行増やすと200px */
+  margin-top:250px; /* この幅のお陰でヘッダーと被らない *//* 元々160px、2行増やすと隠れる */
 }
   
 .title-img { /* タイトルイメージの中央揃え…これが無いと、画像が黒い背景よりも大きくなる */
