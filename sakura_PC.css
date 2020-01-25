@@ -8,8 +8,8 @@
 .device0 {
   color:red;
   font-size:15px;
-}  
-.header-right { /* 営業時間：休日 */
+}
+.hours_Holiday { /* 営業時間：休日 */
   font-size:18px;
 }
 
@@ -30,11 +30,12 @@
   font-size: 14px;
   line-height: 2.8;
 }
-.main {
+.title-img {
   margin-top:175px; /* 元々PC版の方では設定していなかった */
+  /* スマホ版で、.header-title {line-heightを変えた場合のみ調整が必要 */
   /* 何のお知らせも無いときは 150px位で丁度良い */
-  /* ヘッダーにお知らせを2行増やすとスマホとズレるので200pxに設定 */
   /* 計2行だと175pxが良い*/
+  /* ヘッダーにお知らせを2行増やすとスマホとズレるので200pxに設定 */
 }
 img { /* タイトルイメージの伸縮 */
   width: 85vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
