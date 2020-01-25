@@ -18,31 +18,33 @@
   top: 0; /* これが無いとヘッダーがバナー広告みたいに画面中央に移動 */
   border-bottom: 2px solid #eee; /* ヘッダーの下のボーダーライン#eeeは薄い灰色 前は2px *//* 5pxでちょうどイラストの背景の黒と接する */
 }
-.header-title { /* ※ TEL・FAX 073-407-1288 */
+.header-title { /* 和歌山スペイクリニック さくらねこ のフォント調整 */
   text-align: center; /* 休診宣言する時はPC版でleftにして赤文字にすると良い */
-  color: #070; /* TEL・FAXの文字色 */
-  line-height:18px; /* 2行にならなければ10px */
+  color: #000; /* 黒 */
+  line-height:10px; /* 2行にならなければ10px *//* 2行にになったら18pxでないと文字が重なる */
   padding-top:20px; /* 元々30px */
   padding-left:15px; /* 元々30px */
   padding-bottom:2px;
   font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
-.header-title span {
-  color:red; /* タイトルの色(普段は黒：#000、休診宣言する時は「red」) */
+.header-title span { /* 休診宣言する時に使用「red」) */
+  color:red;
 }
-.header-title p { /* TEL・FAXを右へ寄せる時はright */
-  text-align:center;
+.telfax { /* TEL・FAXを右へ寄せる */
+  text-align: right;
+  color: #070; /* TEL・FAXの文字色 */
+  font-weight: bold
 }
 
-.header-right { /* 営業時間：休日 */
+.hours_Holiday { /* 営業時間：休日 */
   color:green;
   font-weight: normal; /* bold太字　lighter細字　normal戻す */
   padding-top:10px;
   padding-right:30px;
   font-size:15px;
-  float:right;
+  text-align: right;
 }
-.header-right span { /* 営業時間：休日 のフォントを調整 */
+.hours_Holiday span { /* 営業時間：休日 のフォントを調整 */
   color:red;
   font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
@@ -88,18 +90,18 @@
   background-color: #444444; /* #444444はこげ茶色　元はグレー:#afc6e2 */
 }
 
-/* タイトルイメージ */  
-.main {
+/* タイトルイメージ */
+.title-img {
   background-color: black; /* タイトルイメージの背景:黒 */
-  margin-top:215px; 
+  text-align: center; /* タイトルイメージの中央揃え…これが無いと、画像が黒い背景よりも大きくなる */
+  margin-top:175px; 
   /* この幅のお陰でヘッダーと被らない */
-  /* 元々160px、もう1行増やすと200px必要 */
+  /* 折り返しの無い短い文ならPCと同じで良い */
+  /* 以下、文が長く折りたたむと重なる場合 */
+  /* .header-title {line-height:10px 又は 18px(文が長く折りたたむと重なる場合)} */
   /* 1行目でも折り返しがある場合、180pxが良い*/
+  /* 計2行(改行無し)だと200pxが良い*/
   /* 計3行にするなら250px(PC版は200px) 計2行で且つ1行目が折り返して2行に表示されると215pxが良い */
-}
-
-.title-img { /* タイトルイメージの中央揃え…これが無いと、画像が黒い背景よりも大きくなる */
-  text-align: center;
 }
 img { /* タイトルイメージの伸縮 */
   width: 95vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
