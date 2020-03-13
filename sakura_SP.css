@@ -104,7 +104,7 @@
   /* 計2行(改行無し)だと200pxが良い*/
   /* 計3行にするなら250px(PC版は200px) 計2行で且つ1行目が折り返して2行に表示されると215pxが良い */
 }
-img { /* タイトルイメージの伸縮 */
+img { /* タイトルイメージの伸縮 2020/3/13「.」が無いのに気づいたが無い方が正常に見れる */
   width: 95vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
   margin-top:1vw; /* タイトルイメージの上の黒い隙間の幅　前は2px */
   padding-left:0vw; /* 以前は padding:7px; */
@@ -138,10 +138,24 @@ img { /* タイトルイメージの伸縮 */
   color:#026338;
   font-size :15px;
 }
+
+.bloglink-btn { /* ブログへ飛ぶボタン */
+  padding: 3px 20px 3px 3px; /*  */
+  background-color: #edae2f; /* 背景色 */
+  color: white; /* 文字色 */
+  display: inline-block;
+  opacity: 0.9;
+  border-radius: 4px; /* ボタンに丸みを */
+}
+.bloglink-btn:hover {
+  opacity: 1; /* ボタンにホバーすると透明度0.9が解除 */
+}
+
 .img-mine { /*  顔写真の大きさ */
   height:150px;
   width:115px;
 }
+
 
 #clinic-prices { /* 料金案内 */
   text-align: left; /* 料金表の見出しを左へ */
@@ -188,6 +202,7 @@ table { /* 料金表 */
 }
 th {background:#eee183;} /* 表内見出しの色 */
 
+
 #clinic-access { /* アクセス */
   color:#2d6d4b;
 }
@@ -230,6 +245,10 @@ th {background:#eee183;} /* 表内見出しの色 */
   border-radius: 4px; /* ボタンに丸みを */
   margin-bottom: 15px;
 }
+.map-btn:hover {
+  opacity: 1; /* ボタンにホバーすると透明度0.7が解除 */
+}
+
 .homestyle-btn{text-align:center;
 }
 .home-btn {
@@ -284,6 +303,7 @@ a {
   background: #fefde0;
 }
 
+
 #clinic-introduction {
   margin-top:-180px;
   padding-top:180px;
@@ -296,6 +316,7 @@ a {
   margin-top:-180px;
   padding-top:180px;
 }
+
 
 .footer {
   bottom:0;
@@ -328,6 +349,7 @@ a {
 .btn:hover {
   opacity: 1; /* ボタンにホバーすると透明度0.8が解除 */
 }
+
 /* ※　FontAwesome スタイル */
 .fab { /* Facebookのアイコン */
   margin-right: 5px;
