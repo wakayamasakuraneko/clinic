@@ -1,173 +1,173 @@
 /* PC版 */
 @media (min-width: 769px) {
 
-.header-title { /* ヘッダーのタイトル「和歌山スペイクリニック さくらねこ」*/
-  text-align: center; /* 休診宣言する時はleftにして赤文字にすると良い */
-  line-height:10px; /* 行間を調整するコード*/
- }
-.device0 {
-  color:red;
-  font-size:15px;
-}
-.hours_Holiday { /* 営業時間：休日 */
-  font-size:18px;
-}
-
-.gnav {
-  overflow: visible; /* overflow:visibleだと基本的にはみ出た部分がそのまま表示 */
-}
-.gnav .nav {
-  padding-left:10vw; /* こんなコードは無かった */
-  width: 1000px; /* もとは755px これを800にするとメニューが左にズレる*/
-}
-.gnav .nav li {
-  box-sizing: border-box;
-}
-.gnav .nav li a {
-  display: block;
-  width: 15vw; /* リストの幅を決める。vwを使うと画面の伸縮に合わせてくれる。元々は150px */
-  height: 40px;
-  font-size: 14px;
-  line-height: 2.8;
-}
-.title-img {
-  margin-top:130px; 
-  /* 通常130px(何もお知らせが無い時) */
-  /* スマホ版で、.header-title {line-heightを変えた場合のみ調整が必要 */
-  /* 計2行だと170pxが良い*/
-  /* ヘッダーにお知らせを2行増やすとスマホとズレるので200pxに設定 */
-  /* 和歌山スペイクリニック さくらねこ
-  緊急事態宣言を踏まえ、来院の自粛をお願い致します。
-  妊娠の可能性のある猫はご相談下さい。
-  以上3行だと190pxが丁度いい */
-}
-img { /* タイトルイメージの伸縮 */
-  width: 85vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
-}
-
-.introduction {/* 病院紹介 */
-  background-color:#fdfdcd; /* 薄卵色#eee183 タイトルのオレンジ#ffc90d 明るさf6f4a5＜fdfdcd＜fffbf5 */
-  width: 100%; /* 元々755px　他の数値でも効く */
-  border-top:10px solid #f6f4a5; /* ボーダーラインがどう引かれるのか試した　タイトルのオレンジ#ffc90d */
-  border-left: 15px solid #f6f4a5;
-  border-right: 15px solid #f6f4a5;/
-  margin-bottom: 0px; /* border-bottomを発動させるため、このコードが必要な様だ */
-  border-bottom: 0px solid gold; /* 単独では効果がないがmargin-bottomの存在により効果が出る。 */
-  box-sizing: border-box; /* このコードが無いとボーダーラインがはみ出るらしいが特に変化は無かった */
-   /* border:のプロパティについての使い分け、解説は末尾に記載 */
-}
-.intro-text { /* 病院紹介の文章を書く */
-  width: auto;
-  background-color:#ffffe9;/* 薄卵色#eee183 タイトルのオレンジ#ffc90d 明るさf6f4a5＜fdfdcd＜fffbf5 */
-  font-size: 22px;
-  color:black;
-  padding:3%;
-  margin:3%;
-  border-radius:15px; /* この数字か大きければより丸みを帯びる */  
-}
-
-.director {  line-height: 5px;}
-.director-intro {  font-size :18px;} /* 院長紹介の文の文字サイズ */
-.img-mine { /*  顔写真の大きさ */
-  height:200px;
-  width:150px;
-}
-
-.prices {/* 料金案内 */
-  background-color:#fdfdcd; /* #ddd087だとちょっと暗い 明るさf6f4a5＜fdfdcd */
-  width: 100%; /* 元々755px　他の数値でも効く */
-  border-top:5px solid #f6f4a5; /* box-sizing: border-boxコードが無くても大丈夫そう */
-  border-left: 15px solid #f6f4a5; /* PCの時のみ出る一番外側の枠線 */
-  border-right: 15px solid #f6f4a5;
+  .header-title { /* ヘッダーのタイトル「和歌山スペイクリニック さくらねこ」*/
+    text-align: center; /* 休診宣言する時はleftにして赤文字にすると良い */
+    line-height:10px; /* 行間を調整するコード*/
+   }
+  .device0 {
+    color:red;
+    font-size:15px;
+  }  
+  .hours_Holiday { /* 営業時間：休日 */
+    font-size:18px;
   }
-.price { /* 料金案内の表を貼り付ける */
-  width: auto;
-  background-color:#ffffe9;
-  font-size: 22px;
-  color:black;
-  padding:3%;
-  margin:3%;
-  border-radius:15px;/
-}
-.price-caption { /* 手術料金には～含まれております */
-  font-size:20px;
-}
-.price-caption2 {
-  font-size:22px;
-  text-align: left;
-  line-height:15px;
-  padding-left: 50px;
-}
-
-/* 下の tableとthは「.」が付いていなかったため無効だが問題なかった2019/10/07 */
-table {/* 料金表 */
-  border: 3px #eee183 solid;
-  color:black;
-  background: #fdfdcd;/* ここで指定した背景色は表全体に反映されるが、以下で個別に指定した物は反映されない */
-  margin-left: auto;
-  margin-right:auto;
-  table-layout: fixed;
-  width: 90%; /* 料金表の幅を画面の90%に固定 */
-  border-collapse: collapse; /* border-collapseは線の間に隙間を作るかどうかを決めるCSSのプロパティ */    /* border-collapseは線の間に隙間を消すコード */
-}
-th {background:#eee183;}
-.column2 {background: #ffffe9;}
-
-
-.access {/* アクセス */
-  background-color:#fdfdcd;
-  width: 100%; /* 元々755px　他の数値でも効く */
-  border-top:5px solid #f6f4a5; /* box-sizing: border-boxコードが無くても大丈夫そう */
-  border-left: 15px solid #f6f4a5;
-  border-right: 15px solid #f6f4a5;
-  margin-bottom:0px; /* border-bottomを発動するにはこのコードが必要 */
-  border-bottom: 5px solid #f6f4a5;
-}
-.map { /* 地図を貼る */
-  width: auto;
-  background-color:#ffffe9;
-  font-size: 22px;
-  color:black;
-  padding:3%;
-  margin:3%;
-  border-radius:15px;
-}
-.map p {
-  font-size:22px;
-  line-height:20px; /* 「木広町の交差点から～」の行間を調整するコード*/
-}
-.device {
-  font-size: 18px;
-  color:red;
-  margin-left: 30px;
-}
-.map-img {margin-left:10%;} /* ★こっちで指定しないと効かない★ */
-.map-img img {/* ※　追加記載 .map-imgだけでは効かない*/
-  height:430px;
-  width:430px;
-  margin-left:10vw;
-}
-.home-btn { /* ★★★★★ */
-  margin-top: 0px;
-  margin-bottom: 20px;
-}
-.empty { /* ★スマホ版で下の白い空間を埋めるため　PCでは高さゼロにした★ */
-  min-height: 0px;
-}
-.footer {
-  height: 120px;
-}  
-.footer-left {
-  padding:20px;
-}  
-.footer-right a {
-  font-size:22px;
-}
-
-.facebook {
-  border-bottom: 0px; /* 効かないので消そうか */
-  margin-bottom: 0px; /* 500pxとかにすると効果があるのが分かる */
-  margin-left: 0px; /* スマホでは0px */
-  margin-right: 30px; /* スマホでは10px */
-  padding: 8px 24px; /* スマホでは8px 8px */
-}
+  
+  .gnav {
+    overflow: visible; /* overflow:visibleだと基本的にはみ出た部分がそのまま表示 */
+  }
+  .gnav .nav {
+    padding-left:10vw; /* こんなコードは無かった */
+    width: 1000px; /* もとは755px これを800にするとメニューが左にズレる*/
+  }
+  .gnav .nav li {
+    box-sizing: border-box;
+  }
+  .gnav .nav li a {
+    display: block;
+    width: 15vw; /* リストの幅を決める。vwを使うと画面の伸縮に合わせてくれる。元々は150px */
+    height: 40px;
+    font-size: 14px;
+    line-height: 2.8;
+  }
+  .title-img {
+    margin-top:170px; 
+    /* 通常130px(何もお知らせが無い時) */
+    /* 計2行だと170pxが良い*/
+    /* スマホ版で、.header-title {line-heightを変えた場合のみ調整が必要 */
+    /* ヘッダーにお知らせを2行増やすとスマホとズレるので200pxに設定 */
+    /* 和歌山スペイクリニック さくらねこ
+    緊急事態宣言を踏まえ、来院の自粛をお願い致します。
+    妊娠の可能性のある猫はご相談下さい。
+    以上3行だと190pxが丁度いい */
+  }
+  img { /* タイトルイメージの伸縮 */
+    width: 85vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
+  }
+  
+  .introduction {/* 病院紹介 */
+    background-color:#fdfdcd; /* 薄卵色#eee183 タイトルのオレンジ#ffc90d 明るさf6f4a5＜fdfdcd＜fffbf5 */
+    width: 100%; /* 元々755px　他の数値でも効く */
+    border-top:10px solid #f6f4a5; /* ボーダーラインがどう引かれるのか試した　タイトルのオレンジ#ffc90d */
+    border-left: 15px solid #f6f4a5;
+    border-right: 15px solid #f6f4a5;/
+    margin-bottom: 0px; /* border-bottomを発動させるため、このコードが必要な様だ */
+    border-bottom: 0px solid gold; /* 単独では効果がないがmargin-bottomの存在により効果が出る。 */
+    box-sizing: border-box; /* このコードが無いとボーダーラインがはみ出るらしいが特に変化は無かった */
+     /* border:のプロパティについての使い分け、解説は末尾に記載 */
+  }
+  .intro-text { /* 病院紹介の文章を書く */
+    width: auto;
+    background-color:#ffffe9;/* 薄卵色#eee183 タイトルのオレンジ#ffc90d 明るさf6f4a5＜fdfdcd＜fffbf5 */
+    font-size: 22px;
+    color:black;
+    padding:3%;
+    margin:3%;
+    border-radius:15px; /* この数字か大きければより丸みを帯びる */  
+  }
+  
+  .director {  line-height: 5px;}
+  .director-intro {  font-size :18px;} /* 院長紹介の文の文字サイズ */
+  .img-mine { /*  顔写真の大きさ */
+    height:200px;
+    width:150px;
+  }
+  
+  .prices {/* 料金案内 */
+    background-color:#fdfdcd; /* #ddd087だとちょっと暗い 明るさf6f4a5＜fdfdcd */
+    width: 100%; /* 元々755px　他の数値でも効く */
+    border-top:5px solid #f6f4a5; /* box-sizing: border-boxコードが無くても大丈夫そう */
+    border-left: 15px solid #f6f4a5; /* PCの時のみ出る一番外側の枠線 */
+    border-right: 15px solid #f6f4a5;
+    }
+  .price { /* 料金案内の表を貼り付ける */
+    width: auto;
+    background-color:#ffffe9;
+    font-size: 22px;
+    color:black;
+    padding:3%;
+    margin:3%;
+    border-radius:15px;/
+  }
+  .price-caption { /* 手術料金には～含まれております */
+    font-size:20px;
+  }
+  .price-caption2 {
+    font-size:22px;
+    text-align: left;
+    line-height:15px;
+    padding-left: 50px;
+  }
+  
+  /* 下の tableとthは「.」が付いていなかったため無効だが問題なかった2019/10/07 */
+  table {/* 料金表 */
+    border: 3px #eee183 solid;
+    color:black;
+    background: #fdfdcd;/* ここで指定した背景色は表全体に反映されるが、以下で個別に指定した物は反映されない */
+    margin-left: auto;
+    margin-right:auto;
+    table-layout: fixed;
+    width: 90%; /* 料金表の幅を画面の90%に固定 */
+    border-collapse: collapse; /* border-collapseは線の間に隙間を作るかどうかを決めるCSSのプロパティ */    /* border-collapseは線の間に隙間を消すコード */
+  }
+  th {background:#eee183;}
+  .column2 {background: #ffffe9;}
+  
+  
+  .access {/* アクセス */
+    background-color:#fdfdcd;
+    width: 100%; /* 元々755px　他の数値でも効く */
+    border-top:5px solid #f6f4a5; /* box-sizing: border-boxコードが無くても大丈夫そう */
+    border-left: 15px solid #f6f4a5;
+    border-right: 15px solid #f6f4a5;
+    margin-bottom:0px; /* border-bottomを発動するにはこのコードが必要 */
+    border-bottom: 5px solid #f6f4a5;
+  }
+  .map { /* 地図を貼る */
+    width: auto;
+    background-color:#ffffe9;
+    font-size: 22px;
+    color:black;
+    padding:3%;
+    margin:3%;
+    border-radius:15px;
+  }
+  .map p {
+    font-size:22px;
+    line-height:20px; /* 「木広町の交差点から～」の行間を調整するコード*/
+  }
+  .device {
+    font-size: 18px;
+    color:red;
+    margin-left: 30px;
+  }
+  .map-img {margin-left:10%;} /* ★こっちで指定しないと効かない★ */
+  .map-img img {/* ※　追加記載 .map-imgだけでは効かない*/
+    height:430px;
+    width:430px;
+    margin-left:10vw;
+  }
+  .home-btn { /* ★★★★★ */
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  .empty { /* ★スマホ版で下の白い空間を埋めるため　PCでは高さゼロにした★ */
+    min-height: 0px;
+  }
+  .footer {
+    height: 120px;
+  }  
+  .footer-left {
+    padding:20px;
+  }  
+  .footer-right a {
+    font-size:22px;
+  }
+  
+  .facebook {
+    border-bottom: 0px; /* 効かないので消そうか */
+    margin-bottom: 0px; /* 500pxとかにすると効果があるのが分かる */
+    margin-left: 0px; /* スマホでは0px */
+    margin-right: 30px; /* スマホでは10px */
+    padding: 8px 24px; /* スマホでは8px 8px */
+  }
