@@ -13,14 +13,12 @@
   <body>
     <div class="header"> 
         <div class="header-title">
-          和歌山スペイクリニック さくらねこ<!-- <span>2020年より入院費800円+税→1000円+税になります。ご了承ください。 --><!-- お知らせがあった場合ここに記入 -->
+          和歌山スペイクリニック さくらねこ<!--  --><!-- お知らせがあった場合ここに記入 -->
           <!-- いつもは、和歌山スペイクリニック さくらねこ 且つPCのCSSでcenterで、SPのCSSで黒：#000 -->
-          <!-- いつもは、.title-img{ margin-top:150px(PC,スマホ共に) -->
           <!-- <p>　　　　　TEL・FAX 073-407-1288</p>) -->
-          <!-- <p><span>2月16日(日)は休診いたします。</span></p> -->
-          <!-- もう1行加える場合.title-img{ margin-top:170px(PC,スマホ共に) -->
-          <!-- <p><span>緊急事態宣言を踏まえ、来院の自粛をお願い致します。</span></p> -->
-          <!-- <p><span>妊娠の可能性のある猫はご相談下さい。</span></p> -->
+          <p><span>7月26日(日)は休診いたします。</span></p>
+          <!-- <p><span></span></p> -->
+          <!-- <p><span></span></p> -->
           <!-- <p><span>5/1(金)～5/3(日)は休診いたします。</span></p> -->
           <!-- <p><span>年末年始の休診日は、12/27(金)～1/4(土)です。</span></p> -->
           <!-- <p>TEL・FAX 073-407-1288　　　　</p> -->
@@ -53,11 +51,13 @@
 
  <div class="MainBox"><!-- 左右の僅かな余白を消したくて作った。CSSで positionを指定すると消える -->
 
-  <div class="title-img"><!-- タイトル画像 -->
-    <img src="https://wakayamasakuraneko.github.io/clinic/img_title_01.jpg">
+  <!-- タイトル画像 -->
+  <div class="title-img">
+    <img src="img_title_01.jpg">
   </div>    
 
-  <div class="introduction"><!-- 病院紹介 -->
+  <!-- 病院紹介 -->
+  <div class="introduction">
     <div class="intro-text">
       <h2 id="clinic-introduction">病院紹介</h2>
       <p>※ 当院は猫の不妊手術専門病院です。一般の診療は行っておりません。</p>
@@ -100,7 +100,8 @@
     </div><!-- class="intro-text" -->
   </div><!-- class="introduction" -->
 
-  <div class="prices"><!-- 料金案内 -->
+  <!-- 料金案内 -->
+  <div class="prices">
     <div class="price">
       <h2 id="clinic-prices">料金表</h2>
       <div class="price-caption">
@@ -109,76 +110,107 @@
       </div>
 
       <table class="price-table" border="1">
-        <tr><!-- 手術料金 -->
+        <!-- 手術料金 -->
+        <tr>
           <th colspan="2">手術</th>
         </tr>
         <tr class="sample1">
           <td class="column1">オス</td>
-          <td class="column2">5,000円<span>(税込5,500円)</span></td> <!-- 税込5,500円 -->
+          <td class="column2">5,000円<span>(税込5,500円)</span></td>
         </tr>
         <tr class="sample2">
           <td class="column1">メス</td>
-          <td class="column2">8,000円<span>(税込8,800円)</span></td> <!-- 税込8,800円 -->
+          <td class="column2">8,000円<span>(税込8,800円)</span></td>
         </tr>
         <tr class="sample3">
           <td class="column1">堕胎費</td>
-          <td class="column2">1,000円<span>(税込1,100円)</span></td> <!-- 税込1,100円 -->
+          <td class="column2">1,000円<span>(税込1,100円)</span></td>
         </tr>
         
         <tr><!-- 検査・ワクチン -->
           <th colspan="2">検査・ワクチン</th>
         </tr>
+
+        <!-- ３種混合ワクチン -->
         <tr class="sample2">  
           <td class="column1">３種混合ワクチン</td>
-          <td class="column2">3,000円<span>(税込3,300円)</span></td> <!-- 税込3,300円 -->       
+          <td class="column2">3,000円<span>(税込3,300円)</span></td>
         </tr>
+
+        <!-- 耳カット有 3Vac -->
+        <tr class="sample2">  
+            <td class="column1">
+              <p>※ ３種混合ワクチン</p>
+              <p>手術時に耳カットを入れた場合、初回のみ</p></td>
+            <td class="column2">2,000円<span>(税込2,200円)</span></td>
+          </tr>
+        
+        <!-- ５種混合ワクチン -->
         <tr class="sample3">
           <td class="column1">５種混合ワクチン</td>
-          <td class="column2">4,000円<span>(税込4,400円)</span></td> <!-- 税込4,400円 -->
-        </tr>        
+          <td class="column2">4,000円<span>(税込4,400円)</span></td>
+        </tr>
+
+        <!-- Fiv/Felv 検査 -->
         <tr class="sample4">
           <td class="column1">猫エイズ白血病検査</td>
-          <td class="column2">3,000円<span>(税込3,300円)</span></td> <!-- 税込3,300円 -->
+          <td class="column2">3,000円<span>(税込3,300円)</span></td>
         </tr>          
         <tr class="sample3">
           <td class="column1">検便</td>
-          <td class="column2">500円<span>(税込550円)</span></td> <!-- 税込550円 -->
+          <td class="column2">500円<span>(税込550円)</span></td>
         </tr>
 
-        <tr><!-- 抗生剤・駆虫薬 -->
+        <!-- 抗生剤・駆虫薬 -->
+        <tr>
           <th colspan="2">抗生剤・駆虫薬</th>
         </tr>
+
+        <!-- レボリューション -->
         <tr class="sample2">
           <td class="column1">レボリューション</td>
-          <td class="column2">1,000円<span>(税込1,100円)</span></td> <!-- 税込1,100円 -->
+          <td class="column2">1,000円<span>(税込1,100円)</span></td>
         </tr>
+
+        <!-- アドボケート -->
         <tr class="sample3">
           <td class="column1">アドボケート</td>
           <td class="column2">1,000円<span>(税込1,100円)</span></td> <!-- 税込1,100円 -->
         </tr>
+
+        <!-- コンベニア・メス -->
         <tr class="sample4">
           <td class="column1">コンベニア・メス</td>
           <td class="column2">手術料金に含まれています</td>
         </tr>
+
+        <!-- コンベニア・オス --> 
         <tr class="sample3">
           <td class="column1">コンベニア・オス(希望者のみ)</td>
           <td class="column2">2,500円<span>(税込2,750円)</span></td> <!-- 税込2,750円 -->
         </tr>
+
+        <!-- コンベニア・オス 6kg以上 -->
         <tr class="sample1">
           <td class="column1">コンベニア・オス 6kg以上(希望者のみ)</td>
           <td class="column2">3,500円<span>(税込3,850円)</span></td>
         </tr>         
 
-        <tr><!-- その他料金 -->
+        <!-- その他料金 -->
+        <tr>
         <th colspan="2">その他</th>
         </tr>
+
+        <!-- 入院費 -->
         <tr class="sample2">
           <td class="column3">入院費(前日からの預かりも含みます)</td>
           <td class="column2">1000円<span>(税込1100円)</span></td>
         </tr>
+
+        <!-- 爪切り -->
         <tr class="sample3">
           <td class="column1">爪切り</td>
-          <td class="column2">500円<span>(税込550円)</span></td> <!-- 税込550円 -->
+          <td class="column2">500円<span>(税込550円)</span></td>
         </tr>
       </table>
       <div class="price-caption2">
@@ -189,7 +221,8 @@
   </div><!-- class="prices" -->
   
 
-  <div class="access"><!-- アクセス -->
+  <!-- アクセス -->
+  <div class="access">
     <div class="map">
       <h2 id="clinic-access">アクセス</h2>
       <p>〒640-8324</p>
