@@ -1,5 +1,7 @@
 /* スマホ版 */
-.MainBox { /* ヘッダーとフッターの間のコンテンツ */
+
+/* ヘッダーとフッターの間のコンテンツ */
+.MainBox { 
   position :absolute;
   left:0;
   /* 上に2行によって、やっと左の僅かな余白を消せる。 */
@@ -18,9 +20,11 @@
   top: 0; /* これが無いとヘッダーがバナー広告みたいに画面中央に移動 */
   border-bottom: 2px solid #eee; /* ヘッダーの下のボーダーライン#eeeは薄い灰色 前は2px *//* 5pxでちょうどイラストの背景の黒と接する */
 }
-.header-title { /* 和歌山スペイクリニック さくらねこ のフォント調整 */
+
+/* 和歌山スペイクリニック さくらねこ のタイトルのスタイル */
+.header-title { /* ※ TEL・FAX 073-407-1288 */
   text-align: center; /* 休診宣言する時はPC版でleftにして赤文字にすると良い */
-  color: #000; /* 黒 */
+  color: #000;
   line-height:10px; /* 2行にならなければ10px *//* 2行にになったら18pxでないと文字が重なる */
   padding-top:20px; /* 元々30px */
   padding-left:15px; /* 元々30px */
@@ -30,13 +34,16 @@
 .header-title span { /* 休診宣言する時に使用「red」) */
   color:red;
 }
-.telfax { /* TEL・FAXを右へ寄せる */
+
+/* TEL・FAXを右へ寄せる */
+.telfax { 
   text-align: right;
   color: #070; /* TEL・FAXの文字色 */
   font-weight: bold
 }
 
-.hours_Holiday { /* 営業時間：休日 */
+/* 営業時間：休日 のスタイル */
+.hours_Holiday { 
   color:green;
   font-weight: normal; /* bold太字　lighter細字　normal戻す */
   padding-top:10px;
@@ -44,19 +51,22 @@
   font-size:15px;
   text-align: right;
 }
-.hours_Holiday span { /* 営業時間：休日 のフォントを調整 */
+/* 営業時間：休日 のフォントを調整 */
+.hours_Holiday span { 
   color:red;
   font-weight: bold; /* bold太字　lighter細字　normal戻す */
 }
 
-.gnav { /* リストを表示する帯のスタイル */
+/* リストを表示する帯のスタイル */
+.gnav { 
   width: 100%;
   height: 80px; /* 元々40px～80pxにしてもあまり変わらないが、90pxにすると画像と被ってくる */
   margin: 0;
   padding: 0;
   background: #eee183; /* 青グレー(#9fb7d4)の帯を薄卵色に */
 }
-.gnav .nav { /* リストを表示する帯のスタイル */
+/* リストを表示する帯のスタイル */
+.gnav .nav { 
   width: 300px; /* リストの幅 元々300px */
   height: 40px;
   margin: 0 auto;
@@ -73,7 +83,9 @@
   border: 1px solid #eee; /* 最初のリスト同士の境目の線のスタイル 元はborder-leftだった*/
    /* しかしborder-leftにするとリスト同士が微妙にズレる */
 }
-.gnav .nav li a { /* リストのCSS */
+
+/* リスト(li a)のCSS */
+.gnav .nav li a { 
   display: block; /* inline-blockにしても変わらない　理由はまだ理解してないから分からない */
   width: 60px;
   height: 40px;
@@ -85,6 +97,7 @@
   box-sizing: border-box;
   text-decoration: none; /* text-decorationはテキストに下線、上線、打ち消し線、点滅などの装飾を施し、noneは無し*/
 }
+/* ホバーで色が変わる様にした */
 .gnav .nav > li:hover > a {
   color: orange; /*1番目のリストにホバーした時文字がオレンジ色に*/
   background-color: #444444; /* #444444はこげ茶色　元はグレー:#afc6e2 */
@@ -94,25 +107,30 @@
 .title-img {
   background-color: black; /* タイトルイメージの背景:黒 */
   text-align: center; /* タイトルイメージの中央揃え…これが無いと、画像が黒い背景よりも大きくなる */
-  margin-top:140px; 
+  margin-top:170px; 
   /* 通常140px */
+  /* 計2行(改行無し)だと170pxが良い*/
   /* この幅のお陰でヘッダーと被らない */
   /* 折り返しの無い短い文ならPCと同じで良い */
   /* 以下、文が長く折りたたむと重なる場合 */
   /* .header-title {line-height:10px 又は 18px(文が長く折りたたむと重なる場合)} */
   /* 1行目でも折り返しがある場合、180pxが良い*/
-  /* 計2行(改行無し)だと170pxが良い*/
   /* 計3行にするなら250px(PC版は200px) 計2行で且つ1行目が折り返して2行に表示されると215pxが良い */
   /* 和歌山スペイクリニック さくらねこ
   緊急事態宣言を踏まえ、来院の自粛をお願い致します。(2行)
   妊娠の可能性のある猫はご相談下さい。
   以上3行だと240pxが丁度いい */
 }
-.header-title { /* 上にも.header-titleがあるが2行の時はあえて */
+
+/* 下のコマンド必要無かった？上にも.header-titleあるし… */
+/* .header-title {
   line-height:18px;
   text-align: left;
-}
-img { /* タイトルイメージの伸縮 2020/3/13「.」が無いのに気づいたが無い方が正常に見れる */
+} */
+
+/* タイトルイメージの伸縮 2020/3/13「.」が無いのに気づいたが無い方が正常に見れる */
+/* クラスじゃないのでそりゃそうだ */
+img {
   width: 95vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
   margin-top:1vw; /* タイトルイメージの上の黒い隙間の幅　前は2px */
   padding-left:0vw; /* 以前は padding:7px; */
@@ -130,22 +148,34 @@ img { /* タイトルイメージの伸縮 2020/3/13「.」が無いのに気づ
   font-size: 15px;
   color:#000; /* 効くが下の.intro-textのプロパティで打ち消される */
   box-sizing: border-box; /* このコードが無いとボーダーラインがはみ出るらしいがあまり意味が判らない */
-} 
-#clinic-introduction { /*  病院紹介の文字色 */
+}
+
+/*  病院紹介の文字色 */
+#clinic-introduction { 
   color:#99634b; /*  赤・緑・青の順　数字が大きくなるほど白に近づく */
 } 
 
-.kotoba {color:red;} /*  殺処分ゼロの文字色 */
-.director { /*  院長紹介の配置 */
+/*  まずはご予約をお願いいたします。の文字色 */
+.kotoba {color:red;}
+/* その他表題の文字色 */
+.kotoba2 {color:#02cd88;} 
+
+/*  以下過去の物 */
+.director { 
   line-height: 5px;
   text-align:center;
   font-family: Georgia,游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN",HGS明朝E,メイリオ,Meiryo,serif;}
-.kotoba2 {color:#02cd88;} /* 「人間と共生できる猫たちとして見守ってあげたい」の文字色 */
 .kotoba3 {color:#026338;} /*  院長紹介の文字色 */
 .director-intro {
   color:#026338;
   font-size :15px;
 }
+/*  顔写真の大きさ */
+.img-mine { 
+  height:150px;
+  width:115px;
+}
+/*  ↑ 前のHPのなごり。今は使ってない */
 
 .bloglink-btn { /* ブログへ飛ぶボタン */
   padding: 3px 20px 3px 3px; /*  */
@@ -156,33 +186,32 @@ img { /* タイトルイメージの伸縮 2020/3/13「.」が無いのに気づ
   border-radius: 4px; /* ボタンに丸みを */
 }
 .bloglink-btn:hover {
-  opacity: 1; /* ボタンにホバーすると透明度0.9が解除 */
+  opacity: 1; /* ボタンにホバーすると透明度0.8が解除 */
 }
 
-.img-mine { /*  顔写真の大きさ */
-  height:150px;
-  width:115px;
-}
-
-
-#clinic-prices { /* 料金案内 */
+/* 「料金案内」の文字のスタイル */
+#clinic-prices {
   text-align: left; /* 料金表の見出しを左へ */
   color:#d72521;
 }
-.price-caption { /* 手術料金には～含まれております */
+/* 手術料金には～含まれております */
+.price-caption { 
   font-size:3vw;
   text-align: right;
   line-height:8px;
   color:red
 }
-.price-caption2 { /* 表の下の緑の文字 */
+/* 表の下の緑の文字 */
+.price-caption2 { 
   font-size:3vw;
   text-align: left;
   line-height:8px;
   color:green;
   padding-left:20px;
 }
-.prices { /* 料金案内 */
+
+/* 料金案内 */
+.prices { 
   width: 100%;
   min-height: 200px;
   background: #fefde0; /* 元々#eee(灰色) 薄卵色#eee183 タイトルのオレンジ#ffc90d*/
@@ -193,31 +222,49 @@ img { /* タイトルイメージの伸縮 2020/3/13「.」が無いのに気づ
   color:#000;
   box-sizing: border-box;
 }
-.price-table { /* 上の料金表のスタイルを決める */
-  text-align:centr; 
-}
-.price-table span { /* 税込料金の文字は赤に */
- color:red;
- font-size:80%;
-}
+
+
+/* 以下 tableに付けてたclassだったが、別に必要無かったっぽい */
+/* .price-table { text-align:centr;} */
+
+
 
 /* 下の tableとthは「.」が付いていなかったため無効だが問題なかった2019/10/07 */
-table { /* 料金表 */
+/* と思ったがclassじゃないので有効だった2020/05/30 */
+/* 料金表 */
+table {
   margin-left: auto;
   margin-right:auto;
   table-layout: fixed; /* ２列の表の幅を固定、文字数が多ければ、折り返して表示 */
   width:100%; /* 料金表の幅を画面の100%に固定 */
 }
-th {background:#eee183;} /* 表内見出しの色 */
+/* 税込料金の文字は赤に */
+table span { 
+ color:red;
+ font-size:80%;
+}
+/* 表内見出しth(=table header)=の色 */
+th {background:#eee183;} 
+
+/* F12を押して初めて分かる最初から設定されている謎の余白を消す */
+table p { 
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  color:rgb(0, 0, 0);
+  background-color: #eee183;
+}
 
 
-#clinic-access { /* アクセス */
+
+/* アクセス */
+#clinic-access {
   color:#2d6d4b;
 }
 #clinic-access span { /* Google Mapの文字色 */
   color:#dd0000; /* ※ 効かない と思ったら後で効くようになった */
 }
-.access { /* アクセス */
+/* アクセス */
+.access {
   width: 100%;
   min-height: 150px;
   background: #fefde0; /* 元々#eee(灰色) 薄卵色#eee183 タイトルのオレンジ#ffc90d*/
@@ -229,10 +276,12 @@ th {background:#eee183;} /* 表内見出しの色 */
   box-sizing: border-box;
   border: 5px solid #fdfdcd; /* ★★　無くて多分誰も気づかない　★★ */
 }
+/* 「木広町の交差点から～」の行間を調整するコード*/
 .map p {
   font-size:15px;
-  line-height:15px; /* 「木広町の交差点から～」の行間を調整するコード*/
+  line-height:15px; 
 }
+/* 「端末によって～」のスタイル */
 .device {
   font-size: 12px;
   color:red;
@@ -311,7 +360,6 @@ a {
   background: #fefde0;
 }
 
-
 #clinic-introduction {
   margin-top:-180px;
   padding-top:180px;
@@ -324,7 +372,10 @@ a {
   margin-top:-180px;
   padding-top:180px;
 }
-
+#vac2000 { 
+  margin-top:-180px;
+  padding-top:180px;
+}
 
 .footer {
   bottom:0;
@@ -357,7 +408,6 @@ a {
 .btn:hover {
   opacity: 1; /* ボタンにホバーすると透明度0.8が解除 */
 }
-
 /* ※　FontAwesome スタイル */
 .fab { /* Facebookのアイコン */
   margin-right: 5px;
