@@ -1,0 +1,63 @@
+  /* ==============================
+  Header
+  ============================== */
+  /* #Header {} */
+
+  .header-top {
+    font-size:20px;
+    height: 32px;
+    line-height: 2;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    text-align: center;
+    background: #eee183;
+  }
+
+  .header-middle {
+    /* display: flex; */
+    margin-top: 32px;
+    background: #eee183;
+    color:green;
+    font-size:20px;
+    text-align: center;
+  }
+
+  .header-bottom {
+    display: flex;
+    background: #eee183;
+    /* min-height: 25px; */
+    /* margin-top: 32px; */
+  }
+
+  .header-bottom-left {
+    width: 50%;    
+    /* #eee183 */
+    text-align: right;
+  }
+
+  .header-bottom-right {
+    width: 50%;
+    text-align: left;
+  }
+
+  @media screen and (max-width: 769px) {
+
+    .header-bottom {
+      display: block;
+      font-size:17px;
+    }
+
+    .header-bottom-left {
+      width: 100%;
+      /* #eee183 */
+      text-align: center;
+    }
+  
+    .header-bottom-right {
+      width: 100%;
+      text-align: center;
+    }
+
+  }  
