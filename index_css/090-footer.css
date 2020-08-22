@@ -3,7 +3,7 @@
   ============================== */
 
   /* PC */
-  .footer {
+  footer {
     display: flex;
     width: 100%;
     line-height: 15px;
@@ -68,7 +68,7 @@
   @media screen and (max-width: 769px) {
 
     /* スマホ */
-    .footer {
+    footer {
       display: inline-block;
     }
 
