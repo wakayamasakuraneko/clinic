@@ -29,6 +29,7 @@
     margin: 0 auto;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    /* ↑ 意味無かったかも */
     /* border: #ca333b solid; */
     border-width: 5px;
   }
