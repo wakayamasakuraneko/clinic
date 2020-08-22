@@ -1,0 +1,17 @@
+  /* ==============================
+  病院紹介
+  ============================== */
+
+  #introduction {
+    color: #99634b;
+  }
+
+  .h4-intro-red {
+    color: #ff0000;
+  }
+
+  .h4-intro {
+    color: #02cd88;
+    margin-block-start: 0em;
+    margin-block-end: 0.8em;
+  }

@@ -1,0 +1,99 @@
+  /* ==============================
+  料金案内
+  ============================== */
+
+/* 共通 */
+#price {
+  color: #d72521;
+}
+
+/* PC */
+.price-caption-top {
+  /* 手術料金には～含まれております */
+  font-size: 22px;
+  text-align: right;
+  line-height: 1em;
+  color: red
+}
+
+/* PC */
+.price-caption-bottom {
+  color: green;
+  font-size: 22px;
+  text-align: left;
+  line-height: 1em;
+  padding-left: 50px;
+}
+
+/* 料金表PC */
+table {
+  text-align: center;
+  border: 3px #eee183 solid;
+  background: #fdfdcd;
+  /* ここで指定した背景色は表全体に反映されるが、以下で個別に指定した物は反映されない */
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+  /* ２列の表の幅を固定、文字数が多ければ、折り返して表示 */
+  width: 90%;
+  /* 料金表の幅を画面の90%に固定 */
+  border-collapse: collapse;
+  /* border-collapseは線の間に隙間を作るかどうかを決めるCSSのプロパティ */
+  /* border-collapseは線の間に隙間を消すコード */
+}
+
+/* 税込料金の文字は赤に */
+table span {
+  color: red;
+  font-size: 80%;
+}
+
+/* 共通 */
+th {
+  background: #eee183;
+}
+
+/* F12を押して初めて分かる最初から設定されている謎の余白を消す */
+table p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  background-color: #eee183;
+}
+
+/* PC */
+.column2 {
+  background: #ffffe9;
+}
+
+
+/* ==============================
+スマホ用
+============================== */
+@media screen and (max-width: 769px) {
+
+  /* スマホ */
+  .price-caption-top {
+    text-align: left;
+    font-size: 13px;
+  }
+
+  /* スマホ */
+  .price-caption-bottom {
+    font-size: 12px;
+    padding-left: 0px;
+  }
+
+  /* 料金表スマホ */
+  table {
+    background: #fefde0;
+    width: 100%;
+    /* 料金表の幅を画面の90%に固定 */
+    border-collapse: unset;
+    border: solid 1px black;
+  }
+
+  /* スマホ */
+  .column2 {
+    background: #fefde0;
+  }
+}

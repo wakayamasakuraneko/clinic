@@ -1,0 +1,100 @@
+  /* ==============================
+  フッター
+  ============================== */
+
+  /* PC */
+  .footer {
+    display: flex;
+    width: 100%;
+    line-height: 15px;
+    background: #eee183;
+  }
+
+  /* PC */
+  .footer-left {
+    padding-left: 3%;
+    width: 35%;
+  }
+
+  /* PC */
+  .footer-ul {
+    list-style: none;
+    line-height: 1.5em;
+    font-size: 20px;
+  }
+
+  /* PC */
+  .footer-right {
+    width: 65%;
+    text-align: right;
+  }
+
+  /* PC */
+  .facebook-btn {
+    color: white;
+    background-color: #3b5998;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+    margin-right: 30px;
+    padding: 8px 24px;
+    opacity: 0.8;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 22px;
+    text-decoration: none;
+  }
+
+  /* 共通 */
+  .facebook-btn:hover {
+    opacity: 1;
+    /* ボタンにホバーすると透明度0.8が解除 */
+  }
+
+  /* 共通 */
+  /* ※　FontAwesome の facebook マークのスタイル */
+  .fab {
+    margin-right: 5px;
+  }
+
+  /* フッターに限らず全共通 */
+  /* 指のアイコン */
+  .far {
+    margin-left: 10px;
+  }
+
+  /* ==============================
+  スマホ用
+  ============================== */
+  @media screen and (max-width: 769px) {
+
+    /* スマホ */
+    .footer {
+      display: inline-block;
+    }
+
+    /* スマホ */
+    .footer-left {
+      width: 100%;
+    }
+
+    /* スマホ */
+    .footer-ul {
+      font-size: 15px;
+    }
+
+    /* スマホ */
+    .footer-right {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* スマホ */
+    .facebook-btn {
+      margin-top: 0em;
+      margin-bottom: 1em;
+      margin-right: 0px;
+      padding: 8px 8px;
+      font-size: 18px;
+    }
+
+  }

@@ -1,0 +1,23 @@
+  /* ==============================
+  ページ内ジャンプ
+  ============================== */
+  /* 参考 https://www.aizulab.com/blog/sticky-header-overlap/ */
+
+  html, body {
+    scroll-padding-top: 120px;
+  }
+
+  /* #introduction,#procedures-notes,#price,#TelFax,#access {
+    margin-top: -120px;
+    padding-top: 120px;
+  }
+
+  以下スマホだと padding が上のコンテンツと重なるのでＮＧ
+  @media screen and (max-width: 769px) {
+
+    #introduction,#procedures-notes,#price,#TelFax,#access {
+      margin-top: -120px;
+      padding-top: 120px;
+    }
+
+  }   */

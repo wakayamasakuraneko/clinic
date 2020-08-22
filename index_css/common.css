@@ -1,0 +1,53 @@
+  /* ==============================
+  共通用
+  ============================== */
+
+
+  /* ==============================
+  PC用
+  ============================== */
+  body {
+    display: block;
+    margin: 0px;
+    font-family: "Meiryo","YuGothic","Yu Gothic","ヒラギノ角ゴ","sans-serif";
+  }
+
+  #soto {
+    background-color: #fdfdcd;
+    /* width: 100%; */
+    /* 太さの指定は1本ずつで border:2 15 2 15px; は不可 */
+    border-top: 2px solid #f6f4a5;
+    border-bottom: 2px solid #f6f4a5;
+    border-left: 15px solid #f6f4a5;
+    border-right: 15px solid #f6f4a5;
+    box-sizing: border-box;
+    /* これが無いと横スクロール必要 */
+  }
+
+  .uti {
+    background-color: #ffffe9;
+    font-size: 22px;
+    padding: 3%;
+    margin: 3%;
+    border-radius: 15px;
+  }
+
+
+    /* ==============================
+  スマホ用
+  ============================== */
+  @media screen and (max-width: 769px) {
+
+    #soto {
+      background-color: #fefde0;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    .uti {
+      font-size: 15px;
+      background-color: #fefde0;
+      padding: 0;
+    }
+
+  }

@@ -1,0 +1,72 @@
+  /* ==============================
+  アクセス
+  ============================== */
+
+  /* h2 アクセスの文字色 共通 */
+  #access {
+    color: #2d6d4b;
+  }
+  
+  /* ◆PC 「端末によって～」のスタイル */
+  .device {
+    font-size: 18px;
+    color: red;
+    margin-left: 30px;
+  }
+
+  /* 共通 justify-content: center; は効かない*/
+  /* .map-img {
+    margin-left: 10%;
+  } */
+
+  /* ◆PC */
+  .map-img img {
+    height: 430px;
+    width: 430px;
+    margin-left: 10vw;
+  }
+
+  /* 共通 */
+  .googlemap-text {
+    text-align: center;
+  }
+
+  /* 共通 */
+  /* ここは上記の .map-btnで指定しても効かなかった  */
+  /* text-align:center; が効かないので仕方なく上記の .googlemap-textクラスを作った。 */
+  .map-btn {
+    padding: 6px 15px;
+    background-color: #ee0000;
+    color: white;
+    opacity: 0.7;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  /* 共通 */
+  /* ボタンにホバーすると透明度0.7が解除 */
+  .map-btn:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+
+  /* ==============================
+  スマホ用
+  ============================== */
+  @media screen and (max-width: 769px) {
+
+    /* ◆スマホ */
+    .map-img img {
+      width: 80%;
+      height: 0%;
+    }
+
+    /* ◆スマホ 「端末によって～」のスタイル */
+    .device {
+      font-size: 12px;
+      margin-left: 15px;
+    }
+  }

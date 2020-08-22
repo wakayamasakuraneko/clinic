@@ -1,0 +1,34 @@
+  /* ==============================
+  手術の流れと注意点
+  ============================== */
+
+  #procedures-notes {
+    color: brown;
+  }
+
+  .h3-PN {
+    color: #02cd88;
+  }
+
+  .h3-PN-red {
+    color: #ff0000;
+  }
+
+  /* ブログへ飛ぶボタン */
+  .bloglink-btn {
+    padding: 3px 15px 3px 10px;
+    /* 1em 15px 1em 10px; */
+    /* 原本は最後3pxだったがフォントオーサムの左にpadding10を付けているから */
+    background-color: #edae2f;
+    color: white;
+    display: inline-block;
+    opacity: 0.9;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  /* ボタンにホバーすると透明度0.8とが解除し、アンダーライン出現 */
+  .bloglink-btn:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
