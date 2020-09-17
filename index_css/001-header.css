@@ -19,8 +19,18 @@
     text-align: center;
   }
 
+  .header_empty {
+    margin-top: 32px;
+  }
+
+  .header_closed-day {
+    display: none;
+    font-weight: bolder;
+    color: red;
+    text-align: center;
+  }
+
   .header-middle {
-    /* display: flex; */
     margin-top: 32px;
     color:green;
     text-align: center;
