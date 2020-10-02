@@ -24,7 +24,8 @@
   }
 
   .header_closed-day {
-    display: none;
+    /* display: none; */
+    /* ↑ 休みの時はこれをON/OFFするだけ */
     font-weight: bolder;
     color: red;
     text-align: center;
