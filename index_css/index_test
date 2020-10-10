@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>和歌山スペイクリニック さくらねこ</title><!--  -->
+  <!-- <link rel="shortcut icon" href="https://raw.githubusercontent.com/wakayamasakuraneko/hp/master/img_mine.jpg"> -->
+  <!-- ↑ 練習用 ↓ 掲載時はこちら -->
+  <link rel="shortcut icon" href="img_icon.ico">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="common-jump.css">
+  <link rel="stylesheet" href="common-FontAwesome.css">
+  <link rel="stylesheet" href="001-header.css">
+  <link rel="stylesheet" href="002-sticky-nav.css">
+  <link rel="stylesheet" href="003-title-img.css">
+  <link rel="stylesheet" href="010-intro.css">
+  <link rel="stylesheet" href="020-procedures-notes.css">
+  <link rel="stylesheet" href="030-prices.css">
+  <link rel="stylesheet" href="040-telfax.css">
+  <link rel="stylesheet" href="050-access.css">
+  <link rel="stylesheet" href="090-footer.css">
+</head>
+
+
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="header-top">
+      <b>和歌山スペイクリニック さくらねこ</b>
+    </div>
+    <div class="header_empty">
+      <!-- margin-top: 32px;の為だけのdiv -->
+      <!-- これのお陰で休診宣言の表示がメッチャ楽 -->
+    </div>
+    <div class="header_closed-day">
+      10/25(日曜日)は休診いたします。
+    </div>
+    <div class="header-middle">
+      TEL・FAX 073-407-1288
+    </div>
+    <div class="header-bottom">
+      <div class="header-bottom-left">
+        手術中は電話が繋がりにくくなっております。
+      </div>
+      <div class="header-bottom-right">
+        メニュー>TELをご参照下さい。
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ナビメニュー -->
+  <div class="sticky">
+    <!-- ナビメニュー上の隙間　スマホでON -->
+    <div class="navtop">
+      <li class="navtop-li">⇔</li>
+      <li class="navtop-li">メニュー 横スクロール</li>
+      <li class="navtop-li">⇔</li>
+    </div>
+    <div class="navtop-bottom">
+    </div>
+    <nav class="menu-nav">◀
+      <div>
+        <ul class="menu-ul">
+          <li class="menu-li"><a href="#">ホーム</a></li>
+          <li class="menu-li"><a href="#introduction">病院紹介</a></li>
+          <li class="menu-li"><a href="#procedures-notes">手術の流れと注意点</a></li>
+          <li class="menu-li"><a href="#price">料金案内</a></li>
+          <li class="menu-li"><a href="#TelFax">TEL/FAX/営業時間/休診日</a></li>
+          <li class="menu-li"><a href="#access">アクセス</a></li>
+          <li class="menu-li"><a href="https://wakayamasakuraneko.github.io/blog/">ブログ</a></li>
+          <!-- <li class="menu-li">Facebook</li> -->
+        </ul>
+      </div>▶
+    </nav>
+
+    <!-- メニューと画像の間の隙間 -->
+    <div class="navbottom-top">
+    </div>
+    <div class="navbottom-bottom">
+    </div>
+  </div>
+
+  <!-- タイトル画像 -->
+  <div class="img-background">
+    <!-- <img class="title-img" src="https://wakayamasakuraneko.github.io/clinic/img_title_test.jpg" alt="title-img"> -->
+    <!-- ↑ 練習用 ↓ 掲載時はこちら -->
+    <img class="title-img" src="../img_title_01.jpg" alt="title-img">
+  </div>
+
+
+  <!-- 病院紹介 -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="introduction">病院紹介</h2>
+      <p>※ 当院は猫の不妊手術専門病院です。一般の診療は行っておりません。</p>
+
+      <h4 class="h4-intro-red">　まずはご予約をお願いいたします。</h4>
+      <p>当日ご予約無しでの手術は応対出来ない事が多々ありますので、何卒ご了承下さい。</p>
+
+
+      <h4 class="h4-intro">　いつ現れるか分からない外猫を捕獲したい場合</h4>
+      <!-- <p>は不要 -->まずは定時の餌付けから始めてみて下さい。</p>
+      <p>決まった時間帯のみ餌付けし、他の時間は皿ごと片付ける。</p>
+      <p>これを1週間程やると猫は時間を学習して、遭遇率が高まります。</p>
+      <!-- <p>この日に捕まえると決めた日にご予約をお願い致します。</p>　<a href="https://wakayamasakuraneko.github.io/blog/blog008.htm"
+        class="bloglink-btn"><i class="far fa-hand-point-right"></i> 捕獲の際の多少の参考</a> -->
+      <p>捕まらなくてキャンセルして頂く分には全く問題ありません。</p>
+      <p>逆に捕まったから予約無しでなんとかして欲しい、というご要望には対処しかねる場合が多々ありますのでご了承下さい。</p>
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- 手術の流れと注意点 -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="procedures-notes">手術の流れと注意点</h2>
+
+      <h3 class="h3-PN">◎ ご予約と手術の流れ</h3>
+      <p>朝９時頃にご来院して頂き、夕方３～５時にお迎えの流れになります。</p>
+      <p>この様なお時間を取れる日でご予約下さい。</p>
+
+      <h3 class="h3-PN-red">◎ 連れて来られる際の入れ物について<b></b>（※重要）</h3>
+      <p>連れて来られる際の入れ物はプラスチック製のハードキャリーまたは捕獲器でお越し下さい。</p>
+
+      <p>
+        <font color="red"></font>脱走または熱中症の可能性が高いとこちらが判断した場合、受け入れをお断りする事もあります。
+      </p>　<a href="https://wakayamasakuraneko.github.io/blog/blog0031.htm" class="bloglink-btn">参照 <i
+          class="far fa-hand-point-right"></i> キャリーケースについて</a></p>
+
+      <!-- <h4 class="h4-green">● 捕獲器の場合</h4> -->
+      <p>釣り針構造の捕獲器は、捕獲器内で暴れた際に、釣り針が目や内臓に刺さる可能性があるため、なるべく使用は控えて下さい。</p>
+      　<a href="https://wakayamasakuraneko.github.io/blog/blog006.htm" class="bloglink-btn">
+        <!-- 参照を入れるとなぜか行間に謎の余白が出現 --><i class="far fa-hand-point-right"></i> 捕獲器で来院される際の注意補足</a>
+
+      <!-- 　<a><i class=" far fa-hand-point-right"></i> TEL・FAXリンク</a> -->
+      　<br><br>
+      <h3 class="h3-PN">◎ 食事の制限について</h3>
+      <p>術前８時間は絶食で、お願いいたします。捕獲のための少量のエサ程度であれば、問題ありません。</p>
+      <p>ただし、生後３か月未満の子猫の長時間の絶食は危険ですのでご相談下さい。</p>
+      <p>水は早朝までならば与えても大丈夫です。</p>
+      <!-- 画像を入れない場合、ここも敢えて<p>を入れない方が無駄な空白の段落が出来ずに済む -->
+      <!-- </p>は不要? -->
+
+      <!-- 　 <h4 class="h4-color">相当慣れていて抱っこも出来る猫ちゃんの場合</h4>
+    <p>十分に触らせ、抱っこできる程度慣れている猫さんは、目の粗い大きめの洗濯ネットに入れ、その状態でキャリーに入れて来て頂けると助かります。　※ 慣れていない猫さんは無理にネットに入れなくて大丈夫です。</p> -->
+      　<br>
+      　<a href="https://wakayamasakuraneko.github.io/blog/blog004.htm" class="bloglink-btn"><i
+          class="far fa-hand-point-right"></i> 相当慣れていて抱っこも出来る猫ちゃんの場合はこちら </a>　
+
+
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- 料金表 -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="price">料金表</h2>
+      <div class="price-caption-top">
+        <p>※ 手術料金には、ノミ駆虫薬 及び 化膿止めの抗生剤</p>
+        <p>　術後の 皮下補液 も含まれております</p>
+      </div>
+
+      <table class="price-table" border="1">
+        <!-- 手術料金 -->
+        <tr>
+          <th colspan="2">手術</th>
+        </tr>
+        <tr class="sample1">
+          <td class="column1">オス</td>
+          <td class="column2">5,000円<span>(税込5,500円)</span></td>
+        </tr>
+        <tr class="sample2">
+          <td class="column1">メス</td>
+          <td class="column2">8,000円<span>(税込8,800円)</span></td>
+        </tr>
+        <tr class="sample3">
+          <td class="column1">堕胎費</td>
+          <td class="column2">1,000円<span>(税込1,100円)</span></td>
+        </tr>
+        <tr class="sample1">
+          <td class="column1">飼猫なるべく他院でして欲しい料</td>
+          <td class="column2">1,000円<span>(税込1,100円)</span></td>
+        </tr>
+        <tr class="sample1">
+          <td class="column1">他の人が野良猫と間違って連れて来たら2度手間料</td>
+          <td class="column2">1,000円<span>(税込1,100円)</span></td>
+        </tr>
+
+
+        <!-- 検査・ワクチン -->
+        <tr>
+          <th colspan="2">検査・ワクチン</th>
+        </tr>
+
+        <!-- ３種混合ワクチン -->
+        <tr class="sample2">
+          <td class="column1">３種混合ワクチン</td>
+          <td class="column2">
+            </font> 3,000円<span>(税込3,300円)</span></td>
+        </tr>
+
+        <!-- 耳カット有 3Vac -->
+        <tr class="sample2">
+          <td class="column1">
+            <p>※ ３種混合ワクチン</p>
+            <p>手術時に耳カットを入れた場合、初回のみ</p>
+          </td>
+          <td class="column2">2,000円<span>(税込2,200円)</span></td>
+        </tr>
+
+        <!-- ５種混合ワクチン -->
+        <tr class="sample3">
+          <td class="column1">５種混合ワクチン</td>
+          <td class="column2">4,000円<span>(税込4,400円)</span></td>
+        </tr>
+
+        <!-- Fiv/Felv 検査 -->
+        <tr class="sample4">
+          <td class="column1">猫エイズ白血病検査</td>
+          <td class="column2">3,000円<span>(税込3,300円)</span></td>
+        </tr>
+        <tr class="sample3">
+          <td class="column1">検便</td>
+          <td class="column2">500円<span>(税込550円)</span></td>
+        </tr>
+
+        <!-- 抗生剤・駆虫薬 -->
+        <tr>
+          <th colspan="2">抗生剤・駆虫薬</th>
+        </tr>
+
+        <!-- レボリューション -->
+        <tr class="sample2">
+          <td class="column1">レボリューション</td>
+          <td class="column2">1,000円<span>(税込1,100円)</span></td>
+        </tr>
+
+        <!-- アドボケート -->
+        <tr class="sample3">
+          <td class="column1">アドボケート</td>
+          <td class="column2">1,000円<span>(税込1,100円)</span></td>
+        </tr>
+
+        <!-- コンベニア・メス -->
+        <tr class="sample4">
+          <td class="column1">コンベニア・メス</td>
+          <td class="column2">手術料金に含まれています</td>
+        </tr>
+
+        <!-- コンベニア・オス -->
+        <tr class="sample3">
+          <td class="column1">コンベニア・オス(希望者のみ)</td>
+          <td class="column2">2,500円<span>(税込2,750円)</span></td>
+        </tr>
+
+        <!-- コンベニア・オス 6kg以上 -->
+        <tr class="sample1">
+          <td class="column1">コンベニア・オス 6kg以上(希望者のみ)</td>
+          <td class="column2">3,000円<span>(税込3,300円)</span></td>
+        </tr>
+
+
+        <!-- その他料金 -->
+        <tr>
+          <th colspan="2">その他</th>
+        </tr>
+
+        <!-- 入院費 -->
+        <tr class="sample2">
+          <td class="column3">入院費(前日からの預かりも含みます)</td>
+          <td class="column2">1000円<span>(税込1100円)</span></td>
+        </tr>
+
+        <!-- 爪切り -->
+        <tr class="sample3">
+          <td class="column1">爪切り</td>
+          <td class="column2">500円<span>(税込550円)</span></td>
+        </tr>
+      </table>
+
+      <div class="price-caption-bottom">
+        <p>★ 耳カット(耳先のＶ字カット)は不妊去勢手術を受けた証</p>
+        <p>もう子猫を増やすことはありません。</p>
+      </div>
+
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- TEL・FAX -->
+  <div id="soto">
+    <div class="uti">
+
+      <h2 id="TelFax">TEL・FAX</h2>
+      <h3 class="h3-Tel"><i class="fas fa-phone"></i> 073-407-1288<span>（兼 FAX）</span></h3>
+      <p>手術中（主に午前中～昼くらい）の為電話に出られない事があります。</p>
+      <p>ご予約ご用件のメッセージを留守番電話にお伝え下さい。</p>
+      <!-- <p>※ 内容によっては折り返しお電話出来ない場合もございます。</p> -->
+      <!-- <p>折り返しお電話致しますが、非通知の番号にはご連絡できません。</p> -->
+      <p>なるべく折り返す様に致しますが、連絡が無い場合、再度ご連絡お願い申し上げます。</p>
+      <h2 id="opening-hours">営業時間と休診日</h2>
+      <h3 class="h3-opening-hours"><b>営業時間</b> 午前９時～午後５時</h3>
+      <p> ※ お電話は上記の通り、午前中は主に留守番電話に切り替わる事が多いです。</p>
+      <h3 class="h3-opening-hours"><b>休診日</b> 金曜・土曜</h3>
+      <!-- <h2 id="closed-day">その他 休診日</h2>
+      <p>休診予定は今のところ特にありません。</p> -->
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- アクセス -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="access">アクセス</h2>
+      <p>〒640-8324</p>
+      <p>和歌山県和歌山市吹屋町４丁目９−１</p>
+      <p>※ 木広町の交差点からは道幅が狭く、入りにくいのでご注意下さい</p>
+      <div class="map-img">
+        <!-- <img src="https://wakayamasakuraneko.github.io/clinic/map.png" alt="map-img"> -->
+        <!-- ↑ 練習用 ↓ 掲載時はこちら -->
+        <img src="map.png" alt="map-img">
+      </div>
+      <!-- 以下 Googleマップへリンク -->
+      <div class="googlemap-text">
+        <br>
+        <a href="index_map.htm" class="map-btn">Google Mapで確認<i class="far fa-hand-point-left"></i></a>
+      </div>
+      <p class="device">※ 端末によってはメニューボタンが効かない、Google Map が表示されない場合があります。ご了承下さい。</p>
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-left">
+      <ul class="footer-ul">
+        <!-- <li class="footer-li">病院紹介</li>
+        <li class="footer-li">院長紹介</li>
+        <li class="footer-li">ブログ</li> -->
+      </ul>
+    </div>
+    <div class="footer-right">
+      <a href="https://www.facebook.com/wakayamasakuraneko/" target="_blank" class="facebook-btn">
+        <i class="fab fa-facebook"></i> 和歌山スペイクリニック さくらねこ</a>
+    </div><!-- footer-right -->
+  </footer>
+
+</body>
+
+</html>
