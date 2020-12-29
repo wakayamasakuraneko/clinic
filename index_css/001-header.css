@@ -31,6 +31,26 @@
     text-align: center;
   }
 
+  .header_declaration {
+    /* display: none; */
+    /* ↑ 宣言ある時はこれをON/OFFする */
+    display: flex;
+    color: rgb(119, 37, 37);
+    text-align: left;
+  }
+
+  .h_d_left {
+    width: 10%;
+  }
+
+  .h_d_center {
+    width: 80%;
+  }
+
+  .h_d_right {
+    width: 10%;
+  }
+
   .header-middle {
     color:green;
     text-align: center;
