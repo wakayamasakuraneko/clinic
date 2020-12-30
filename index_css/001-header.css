@@ -1,9 +1,9 @@
   /* ==============================
   header
   ============================== */
-  
+
   header {
-    font-size:20px;
+    font-size: 20px;
     background: #eee183;
   }
 
@@ -23,36 +23,8 @@
     margin-top: 32px;
   }
 
-  .header_closed-day {
-    /* display: none; */
-    /* ↑ 休みの時はこれをON/OFFするだけ */
-    font-weight: bolder;
-    color: red;
-    text-align: center;
-  }
-
-  .header_declaration {
-    /* display: none; */
-    /* ↑ 宣言ある時はこれをON/OFFする */
-    display: flex;
-    color: rgb(119, 37, 37);
-    text-align: left;
-  }
-
-  .h_d_left {
-    width: 10%;
-  }
-
-  .h_d_center {
-    width: 80%;
-  }
-
-  .h_d_right {
-    width: 10%;
-  }
-
   .header-middle {
-    color:green;
+    color: green;
     text-align: center;
   }
 
@@ -63,7 +35,7 @@
   }
 
   .header-bottom-left {
-    width: 50%;    
+    width: 50%;
     /* #eee183 */
     text-align: right;
   }
@@ -73,22 +45,46 @@
     text-align: left;
   }
 
-  @media screen and (max-width: 769px) {
+  .header_notice {
+    /* ↓ お知らせがある時はこれをON/OFFするだけ */
+    /* display: none; */
+  }
 
+  .header_declaration {
+    display: flex;
+    font-size: 17px;
+    justify-content: center;
+    line-height: 2;
+    text-align: center;
+  }
+
+  .header_empty2 {
+    /* <hr>がディフォルトで持っているmargin-block-end: 0.5em;が白くなってしまうためやむを得ず授けた空divのためのプロパティ */
+    height: 1px;
+  }
+
+  @media screen and (max-width: 769px) {
     .header-bottom {
       display: block;
-      font-size:17px;
+      font-size: 17px;
     }
-
     .header-bottom-left {
       width: 100%;
       /* #eee183 */
       text-align: center;
     }
-  
     .header-bottom-right {
       width: 100%;
       text-align: center;
     }
-
-  }  
+    .header_declaration {
+      display: block;
+    }
+    /* hr {
+      display: block;
+      height: 2px;
+      border: none;
+      border-top: 2px rgb(119, 37, 37) dotted;
+      width: 90%;
+    } */
+  }
