@@ -5,10 +5,8 @@
   /* 参考 https://www.aizulab.com/blog/sticky-header-overlap/ */
 
   html, body {
-    scroll-padding-top: 200px;
+    scroll-padding-top: 120px;
   }
-
-  /* ↑　iPhoneだと120では足りないので200にした。2021/04/26 */
 
   /* ヘッダー内のボタン */
 
