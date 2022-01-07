@@ -100,4 +100,7 @@ p.center {
   .column2 {
     background: #fefde0;
   }
+  p.center {
+  text-align: left;
+}
 }
