@@ -1,4 +1,4 @@
-  /* ==============================
+/* ==============================
   料金案内
   ============================== */
 
@@ -26,6 +26,7 @@
 }
 
 /* 料金表PC */
+/* htmlの方で<table class="price-table" border="1">を設定しているので、table内の枠の太さは"1"になっている */
 table {
   text-align: center;
   border: 3px #eee183 solid;
@@ -37,7 +38,9 @@ table {
   /* ２列の表の幅を固定、文字数が多ければ、折り返して表示 */
   width: 90%;
   /* 料金表の幅を画面の90%に固定 */
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
+  /* ▲2020/04/22まで */
+  border-collapse: separate;
   /* border-collapseは線の間に隙間を作るかどうかを決めるCSSのプロパティ */
   /* border-collapseは線の間に隙間を消すコード */
 }
@@ -51,13 +54,19 @@ table span {
 /* 共通 */
 th {
   background: #eee183;
+  /* ▲2020/04/22まで */
+  /* background: #fff6b4; */
 }
 
 /* F12を押して初めて分かる最初から設定されている謎の余白を消す */
 table p {
   margin-block-start: 0em;
   margin-block-end: 0em;
-  background-color: #eee183;
+  /* background-color: #eee183; */
+}
+
+p.center {
+  text-align: center;
 }
 
 /* PC */
@@ -65,29 +74,31 @@ table p {
   background: #ffffe9;
 }
 
-p.center {
-  text-align: center;
-}
+/* .PriceCutColor1 {
+  background-color: #ffff9c;
+  border: 3px #2f7fed80 solid;
+  ボーダーラインは border-collapse: separate;にして始めて box-sizing: border-box;が有効になる様だ。
+} */
 
+.PriceCutColor2 {
+  background: #eee183;
+}
 
 /* ==============================
 スマホ用
 ============================== */
 @media screen and (max-width: 769px) {
 
-  /* スマホ */
   .price-caption-top {
     text-align: left;
     font-size: 13px;
   }
 
-  /* スマホ */
   .price-caption-bottom {
     font-size: 12px;
     padding-left: 0px;
   }
 
-  /* 料金表スマホ */
   table {
     background: #fefde0;
     width: 100%;
@@ -96,11 +107,11 @@ p.center {
     border: solid 1px black;
   }
 
-  /* スマホ */
   .column2 {
     background: #fefde0;
   }
+
   p.center {
-  text-align: left;
-}
+    text-align: left;
+  }
 }
