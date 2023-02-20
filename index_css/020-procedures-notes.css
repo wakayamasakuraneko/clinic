@@ -24,3 +24,15 @@
     font-weight: bold;
     /* font-size: 26px; */
   }
+
+  /* ==============================
+スマホ用
+============================== */
+  @media screen and (max-width: 769px) {
+    .under1 {
+      background-image: linear-gradient(135deg, #ffc34b 10%, #fff536 100%);
+      /* background-size: 100% 0px; */
+      /* border-bottom: dashed 1px #87CEFA; */
+      /* text-decoration: underline double rgb(229, 40, 40) */
+    }
+  }
