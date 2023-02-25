@@ -15,24 +15,27 @@
   }
 
   .under1 {
-    background-image: linear-gradient(135deg, #F0FF00 10%, #58CFFB 100%);
+    /* background-image: linear-gradient(135deg, #F0FF00 10%, #58CFFB 100%); */
+    text-decoration: underline dashed rgba(229, 40, 40, 0.457);
     background-repeat: no-repeat;
     background-size: 100% 13px;
     background-position: bottom;
     color: #353535;
     text-align: center;
-    font-weight: bold;
+    /* font-weight: bold; */
     /* font-size: 26px; */
   }
+
 
   /* ==============================
 スマホ用
 ============================== */
   @media screen and (max-width: 769px) {
     .under1 {
-      background-image: linear-gradient(135deg, #ffc34b 10%, #fff536 100%);
+      /* background-image: linear-gradient(135deg, #faec74 10%, #fdf88e 100%); */
+      /* background-image: linear-gradient(135deg, #ffc34b 10%, #fff536 100%); */
       /* background-size: 100% 0px; */
       /* border-bottom: dashed 1px #87CEFA; */
-      /* text-decoration: underline double rgb(229, 40, 40) */
+      text-decoration: underline wavy rgba(229, 40, 40, 0.457);
     }
   }
