@@ -21,6 +21,10 @@
   <link rel="stylesheet" href="index_css/040-telfax.css">
   <link rel="stylesheet" href="index_css/050-access.css">
   <link rel="stylesheet" href="index_css/090-footer.css">
+  <link rel="stylesheet" href="index_css/PC_Modal.css">
+  <link rel="stylesheet" href="index_css/SP_Modal.css">
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 
 
@@ -123,9 +127,9 @@
       <h4 class="h4-intro-red">　まずはご予約をお願いいたします。</h4>
       <p>
         当日ご予約無しでの手術は割増料金がかかる事があります。
-        <a href="#Ex_charge" class="bloglink-btn">
+<!--         <a href="#Ex_charge" class="bloglink-btn">
           割増料 ⇒表
-        </a>
+        </a> -->
       </p>
 
       <!-- <p>外猫に関しては予約のキャンセルを申し訳ないと思わなくても大丈夫です。<a href="https://wakayamasakuraneko.github.io/blog/02/02.htm"
@@ -144,10 +148,10 @@
       </p>
       <!-- <span class="under1"></span> -->
       <p><span>日曜ご希望の場合は割増料金が発生します。</span>　(例外あり)
-        <a href="#Ex_charge" class="bloglink-btn">
+<!--         <a href="#Ex_charge" class="bloglink-btn"> -->
           <!-- ※ 日曜保護猫の割増料金 ⇒ 料金表 参照 -->
-          割増料 ⇒表
-        </a>
+<!--           割増料 ⇒表
+        </a> -->
       </p>
 
       <!-- ↓見え隠れするコンテンツ -->
@@ -180,17 +184,80 @@
       <h3 class="h3-PN-red">◎ 連れて来られる際の入れ物について<b></b>（※重要）</h3>
       <p>連れて来られる際の入れ物はプラスチック製のハードキャリーまたは捕獲器でお越し下さい。</p>
 
-      <!-- <p>
-        <font color="red"></font>脱走または熱中症の可能性が高いとこちらが判断した場合、受け入れをお断りする事もあります。
-      </p> -->
+
       　<a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"><i
           class="far fa-hand-point-right"></i> キャリーケースに関しての注意事項</a></p>
 
-      <!-- <h4 class="h4-green">● 捕獲器の場合</h4> -->
-      <!-- <p>釣り餌構造の捕獲器は、捕獲器内で暴れた際に猫を痛める可能性があるため、先端を丸め捕獲後は内壁側に括り付けてご使用下さい。</p> -->
-      　<a href="https://wakayamasakuraneko.github.io/blog/06/06.htm" class="bloglink-btn">
-        <i class="far fa-hand-point-right"></i> 捕獲器で来院される際の注意補足</a>
+<!--       　<a href="https://wakayamasakuraneko.github.io/blog/06/06.htm" class="bloglink-btn">
+        <i class="far fa-hand-point-right"></i> 捕獲器で来院される際の注意補足</a> -->
+    
+    
+    
       <p>捕獲器を剥き出しのままので来られると、猫は大変怯えます。生地などで覆ってお越し下さい。</p>
+    
+    <!-- PCの場合の見本用ボタン -->
+      <div class="PcModal">
+        　<span id="modal-trigger" class="positionA bloglink-btn">
+          <i class="far fa-hand-point-right"></i> 捕獲器で来院される際の包み方 → 見本
+        </span>
+        <!-- PC版モーダル内容 -->
+        <div class="modal-bg" id="modal-bg">
+          <div class="modalPC" id="modalPC">
+            <div><b class="close-btn" id="modal-close-btn"><span class="lineClosePC"></b></div>
+            <div class="imgBgColor"><img src="pics/path359c.png" alt="image B"></div>
+            <div>　<a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn">
+                <i class="far fa-hand-point-right"></i> 作り方のページはこちら</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- スマホの場合の見本用ボタン -->
+      <div class="SpModal">
+        <div>
+          　<span class="bloglink-btn modalOpen media501" data-modal="1"><i class="far fa-hand-point-right"></i>
+            捕獲器で来院される際の包み方 → 見本</span>
+        </div>
+
+        <!-- スマホ版モーダル内容 -->
+        <div class="modal" id="modal">
+          <div class="modal__overlay modalClose"></div>
+          <!-- 「modal__overlay」は背景の灰色部分でCSSで指定している -->
+          <div class="modal__content">
+            <div class="modal_inner">
+              <div class="modal__close-btn modalClose" aria-label="閉じる"><span class="lineClose"></span></div>
+              <!-- スワイパー -->
+              <div class="swiper slideWrpper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <!-- <p class="swiperText"> -->
+                    <img src="pics/path7963.png" alt="写真風呂敷">
+                    <!-- </p> -->
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path7903.png" alt="ｲﾗｽﾄ風呂敷">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path7907.png" alt="ｲﾗｽﾄ紐">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path5716.png" alt="写真紐">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            　<a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn">
+              <i class="far fa-hand-point-right"></i> 作り方のページはこちら</a>
+            <!-- 前後の矢印 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+          </div>
+        </div>
+      </div>
+    
+    
 
       <br><br>
 
@@ -457,6 +524,9 @@
         <i class="fab fa-facebook"></i> 和歌山スペイクリニック さくらねこ</a>
     </div><!-- footer-right -->
   </footer>
+
+  <script src="index_js/PCmodal.js"></script>
+  <script src="index_js/SPmodal.js"></script>
 
 </body>
 
