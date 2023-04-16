@@ -37,29 +37,28 @@
 
   .bloglink-btn {
     padding: 3px 15px 3px 10px;
-    /* 1em 15px 1em 10px; */
     /* 原本は最後3pxだったがフォントオーサムの左にpadding10を付けているから */
     /* background-color: #edae2f; */
-    background-color: #edae2f;
+    background-color: #faa700;
     color: white;
     opacity: 1;
     display: inline-block;
     border-radius: 4px;
     text-decoration: none;
+    cursor: pointer;
   }
 
-  /* ボタンにホバーすると透明度0.8とが解除し、アンダーライン出現 */
   .bloglink-btn:hover {
-    /* background-color: #edae2f; */
-    /* color: #b94f1d; */
-    opacity: 0.6;
-    /* text-decoration: underline; */
+    transition: 0.7s;
+    background-color: #00c811;
+    /* color: rgb(27, 35, 255); */
+    /* opacity: 0.6; */
   }
 
   /* 「Google Mapで確認」のボタン */
   .map-btn {
     padding: 6px 15px;
-    background-color: #ee0000;
+    background-color: #ff0000;
     color: white;
     opacity: 0.7;
     border-radius: 4px;
@@ -71,7 +70,8 @@
   /* ボタンにホバーすると透明度0.7が解除 */
   .map-btn:hover {
     opacity: 1;
-    /* text-decoration: underline; */
+    transition: 0.7s;
+    background-color: #884330;
   }
 
 
