@@ -83,8 +83,12 @@
   }
 
   .menu-li:hover>a {
-    color: orange;
-    background-color: #444444;
+    font-weight: bold;
+    /* color: orange; */
+    color: rgb(4, 4, 4);
+    /* background-color: #444444; */
+    background: #bebebe;
+    transition: 0.3s;
   }
 
   /* ::-webkit-scrollbar {
