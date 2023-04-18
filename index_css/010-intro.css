@@ -10,34 +10,48 @@
     color: #ff0000;
   }
 
-  .h4-intro {
+  /* .h4-intro {
     color: #02cd88;
     margin-block-start: 0em;
     margin-block-end: 0.8em;
-  }
-
-  summary:hover {
-    cursor: pointer;
-  }
+  } */
 
   summary {
     padding-left: 1em;
     background: #f1df50;
-    border-radius: 8px;
+    border-radius: 3px;
+  }
+
+  summary:hover {
+    cursor: pointer;
+    /* background: #50f160; */
+    color: #ffffff;
+    background: #00c811;
+    transition: 0.8s;
   }
 
   details {
     width: 8em;
     background: #f7eb8a;
     border: solid;
-    border-color: #b3a013;
+    border-color: #8e8010;
     border-radius: 8px;
+  }
+
+  details:hover {
+    border: solid;
+    border-color: #00c811;
+    transition: 0.1s;
   }
 
   details[open] {
     /* width: 900px; */
     /* width: 65%; */
     width: 36em;
+  }
+
+  details p {
+    padding: 0 1em;
   }
 
   @media screen and (max-width: 900px) {
