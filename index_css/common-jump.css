@@ -4,23 +4,22 @@
 
   /* 参考 https://www.aizulab.com/blog/sticky-header-overlap/ */
 
-  html, body {
+  html,
+  body {
     scroll-padding-top: 120px;
   }
 
-/* ヘッダー内のボタン */
+  /* ヘッダー内のボタン */
   .header-btn {
     margin: 2px 10px 2px 10px;
     padding: 1px 0.5em 1px 0.5em;
-    /* 1em 15px 1em 10px; */
     background-color: #886c34;
     border: solid 2px;
-    border-color: #bf8d28;
-    /* #edae2f; */
+    border-color: #382806;
     color: white;
     display: inline-block;
     /* opacity: 0.9; */
-    border-radius: 4px;
+    border-radius: 19px;
     text-decoration: none;
   }
 
@@ -28,7 +27,7 @@
     opacity: 1;
     transition: 0.7s;
     border: solid 2px;
-    border-color: #0b0b0b;
+    border-color: #31a613;
     box-sizing: border-box;
     background-color: #008e0c;
   }
@@ -47,7 +46,10 @@
     color: white;
     opacity: 1;
     display: inline-block;
-    border-radius: 4px;
+    border: solid 2px;
+    border-color: #a68d13;
+    box-sizing: border-box;
+    border-radius: 18px;
     text-decoration: none;
     cursor: pointer;
   }
@@ -55,6 +57,7 @@
   .bloglink-btn:hover {
     transition: 0.7s;
     background-color: #00c811;
+    border-color: #077919;
     /* color: rgb(27, 35, 255); */
     /* opacity: 0.6; */
   }
@@ -78,6 +81,12 @@
     background-color: #884330;
   }
 
+  @media screen and (max-width: 500px) {
+    .bloglink-btn {
+      padding: 0.2em 0px;
+      width: 12em;
+    }
+  }
 
 
   /* #introduction,#procedures-notes,#price,#TelFax,#access {
