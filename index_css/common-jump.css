@@ -49,7 +49,7 @@
     border: solid 2px;
     border-color: #a68d13;
     box-sizing: border-box;
-    border-radius: 18px;
+    border-radius: 50px;
     text-decoration: none;
     cursor: pointer;
   }
@@ -83,7 +83,7 @@
 
   @media screen and (max-width: 500px) {
     .bloglink-btn {
-      padding: 0.2em 0px;
+      padding: 0.5em 0px;
       width: 12em;
     }
   }
