@@ -1,0 +1,57 @@
+/* openとcloseの状態の設定 */
+
+/* これは常にONにしておくこと */
+td {
+  padding-top: 0;
+  padding-bottom: 0;
+  transition:
+    line-height .2s ease-out,
+    opacity .1s linear,
+    visibility .1s linear;
+}
+
+/* 閉じている状態　本番ONデモOFF */
+td {
+  line-height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 閉じている状態　本番OFFデモON */
+/* td {
+  border: solid 1px;
+  opacity: 1;
+  visibility: visible;
+  line-height: 2.2;
+} */
+
+/* 開いている状態 */
+tbody.show>tr>td {
+  border: solid 1px;
+  /* width: 50%; */
+  opacity: 1;
+  visibility: visible;
+  line-height: 2.2;
+  transition:
+    line-height .2s ease-out,
+    opacity .1s linear .1s,
+    visibility .1s linear .1s;
+}
+
+.partition {
+  height: 0;
+}
+
+tbody.show>tr>td>.partition {
+  height: 1px;
+  background-color: rgb(197, 197, 197);
+}
+
+
+@media screen and (max-width: 600px) {
+
+  tbody.show>tr>td {
+    line-height: 1.9;
+  }
+
+}
