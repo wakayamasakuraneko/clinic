@@ -6,7 +6,8 @@
     color: #99634b;
   }
 
-  .h4-intro-red {
+  .color_red {
+    font-weight: bold;
     color: #ff0000;
   }
 
@@ -17,9 +18,9 @@
   } */
 
   summary {
-    padding-left: 1em;
+    padding: 0.2em 1em;
     background: #f1df50;
-    border-radius: 3px;
+    border-radius: 20px;
   }
 
   summary:hover {
@@ -31,11 +32,12 @@
   }
 
   details {
-    width: 8em;
+    width: 9em;
+    /* width: fit-content;にしてしまうとクリック時のアニメ消失 */
     background: #f7eb8a;
     border: solid;
     border-color: #8e8010;
-    border-radius: 8px;
+    border-radius: 24px;
   }
 
   details:hover {
@@ -60,5 +62,11 @@
       /* width: 900px; */
       width: 100%;
       /* width: 36em; */
+    }
+  }
+
+  @media screen and (max-width: 769px) {
+    details {
+      margin: auto;
     }
   }
