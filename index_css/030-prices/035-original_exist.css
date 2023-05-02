@@ -1,0 +1,59 @@
+/* 本番では必要だが、デモでは起動させなくてOK  */
+/* または未使用 */
+
+/* 共通 */
+#price {
+  color: #d72521;
+}
+
+/* PC版の場合のみ900以上の幅で */
+@media screen and (min-width: 900px) {
+
+  /* theadにhoverした時にポインタを変更しない */
+  /* table thead:hover {
+    cursor: default;
+  } */
+
+  /* theadをクリックしてもなにも起こらない様にする */
+  /* table thead {
+    pointer-events: none;
+  } */
+}
+
+/* PC */
+/* 手術料金には～含まれております */
+.price-caption-top,
+.price-caption-bottom {
+  font-size: 22px;
+  line-height: 1em;
+}
+
+.price-caption-top {
+  color: red;
+  text-align: right;
+}
+
+/* PC */
+.price-caption-bottom {
+  color: green;
+  text-align: left;
+  padding-left: 50px;
+}
+
+@media screen and (max-width: 769px) {
+
+  .price-caption-top p {
+    text-indent: -1em;
+    padding-left: 1em;
+    text-align: left;
+    font-size: 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+
+  .price-caption-bottom {
+    font-size: 20px;
+    padding-left: 0px;
+  }
+
+}

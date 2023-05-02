@@ -1,0 +1,60 @@
+/* ボタンの見た目の設定 */
+
+/* thは033-pricesでposition: relative;にしている */
+/* フォントオーサムを使う場合 */
+/* 参考：<button>要素の枠線と背景色を消す */
+/* https://yamatooo.blog/entry/2021/07/10/083000 */
+/* 冷静に考えたらthが押せるならここはbuttonじゃなくて良いのでは？ */
+th button {
+    position: absolute;
+    right: 5%;
+    cursor: pointer;
+    /* フォントオーサムを使わなければ以下の4つの行は不要 */
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.5em;
+    /* display: none; */
+}
+
+i.far,
+i.fas {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-color: #eee183;
+    -webkit-text-stroke-width: 1px
+}
+
+.button-wrapper {
+    display: flex;
+    position: sticky;
+    top: 19%;
+    /* top: 80%; */
+    justify-content: space-around;
+    padding-bottom: 0.5em;
+    z-index: 1;
+    pointer-events: none;
+    /* ↑pointer-events: none;にしておかないとbutton-wrapperの帯にポインタがホバーするとその下にthがあっても押せない */
+}
+
+#toggle-button,
+#show-all-button {
+    pointer-events: auto;
+    /* ↑pointer-events: auto;にしておかないとbutton-wrapper上にあるこのボタンはのpointer-events: none;のまま押せない */
+    position: sticky;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 -4px 5px -2px #b19017 inset;
+    background: rgb(238 225 131);
+    box-shadow: 4px 6px 10px gray;
+    border-radius: 17px;
+    /* padding: .3em; */
+    padding: .3em .5em .2em .5em;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    /* font-size: 1em; */
+}
+
+@media screen and (max-width: 500px) {
+    .button-wrapper {
+        justify-content: space-between
+    }
+}

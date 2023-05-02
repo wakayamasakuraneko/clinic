@@ -1,0 +1,59 @@
+/* 以降没 */
+/* htmlで非表示しているクラス */
+
+/* 税切替ボタン */
+#toggle-button {
+  /* left: 20%; */
+  /* top: 20%; */
+}
+
+/* 折り畳む、広げるボタン */
+#show-all-button {
+  /* left: 80%; */
+  /* top: 80%; */
+  /* border-radius: 20px; */
+  /* padding: .3em .5em; */
+  /* border: none; */
+  /* box-shadow: 5px 10px 20px #b19017 inset; */
+  /* box-shadow: 0 0px 20px #b19017 inset; */
+  /* box-shadow: 2px 2px 4px gray; */
+  /* box-shadow: -2px -2px 7px gray; */
+  /* box-shadow: 2px 2px 4px inset; */
+  /* color: white; */
+}
+
+/* .button3Bros {} */
+
+.button3Bros button {
+  padding: 0.5em;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.button3Bros button+button {
+  /* .button3Bros button { */
+  border-left: 2px solid #000000;
+  /* border-style: none outset outset outset; */
+  /* border-style: outset; */
+  /* border-radius: 15px; */
+  /* box-shadow: 1px 0 5px 1px rgb(142, 126, 11); */
+  box-sizing: border-box;
+  padding-left: 0.9em;
+}
+
+#both-button {
+  display: none;
+}
+
+
+@media screen and (max-width: 769px) {
+
+  @keyframes blinkBorder {
+    0% {
+      font-size: 30px;
+      color: #ffffff;
+      background-color: #ff8400;
+    }
+  }
+}
