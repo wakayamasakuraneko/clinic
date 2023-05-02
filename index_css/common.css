@@ -1,6 +1,12 @@
   /* ==============================
   共通用
   ============================== */
+  span {
+    display: inline-block;
+    /* text-indent: -1em; */
+    /* padding-left: 1em; */
+  }
+
 
 
   /* ==============================
@@ -9,7 +15,7 @@
   body {
     display: block;
     margin: 0px;
-    font-family: "Meiryo","YuGothic","Yu Gothic","ヒラギノ角ゴ","sans-serif";
+    font-family: "Meiryo", "YuGothic", "Yu Gothic", "ヒラギノ角ゴ", "sans-serif";
   }
 
   #soto {
@@ -33,7 +39,7 @@
   }
 
 
-    /* ==============================
+  /* ==============================
   スマホ用
   ============================== */
   @media screen and (max-width: 769px) {
@@ -45,9 +51,15 @@
     }
 
     .uti {
-      font-size: 15px;
+      font-size: 1rem;
+      /* font-size: 15px; */
+      /* font-size: 20px; */
       background-color: #fefde0;
       padding: 0;
+    }
+
+    .bold-title {
+      font-size: 1.35rem;
     }
 
   }
