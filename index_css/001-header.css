@@ -8,19 +8,22 @@
   }
 
   .header-top {
-    height: 32px;
-    line-height: 2;
+    height: 50px;
+    line-height: 1;
     width: 100%;
     position: fixed;
     top: 0;
     z-index: 10;
     background: #eee183;
     /* ↑ z-index: 10;であるが故にこの要素は親要素の背景色を受け継がないのでは？ font-sizeは受け継ぐ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
   }
 
   .header_empty {
-    margin-top: 32px;
+    margin-top: 50px;
   }
 
   .header-middle {
@@ -29,26 +32,13 @@
   }
 
   .header-bottom {
-    display: flex;
-    /* min-height: 25px; */
-    /* margin-top: 32px; */
+    text-align: center;
   }
 
-  .header-bottom-left {
-    width: 50%;
-    /* #eee183 */
-    text-align: right;
-  }
-
-  .header-bottom-right {
-    width: 50%;
-    text-align: left;
-  }
-
-  .header_notice {
-    /* ↓ お知らせがある時はこれをON/OFFするだけ */
-    /* display: none; */
-  }
+  /* ↓ お知らせがある時はこれをON/OFFするだけ */
+  /* .header_notice {
+    display: none;
+  } */
 
   .header_declaration {
     display: flex;
@@ -63,28 +53,36 @@
     height: 1px;
   }
 
+  /* .vertical {
+    background: #c7e6f0;
+    height: 300vh;
+  } */
+
+
   @media screen and (max-width: 769px) {
+    .header-top {
+      min-height: 32px;
+      height: fit-content;
+    }
+
+    .header_empty {
+      margin-top: 32px;
+    }
+
     .header-bottom {
       display: block;
       font-size: 17px;
     }
-    .header-bottom-left {
-      width: 100%;
-      /* #eee183 */
-      text-align: center;
-    }
-    .header-bottom-right {
-      width: 100%;
-      text-align: center;
-    }
+
     .header_declaration {
       display: block;
     }
-    /* hr {
-      display: block;
-      height: 2px;
-      border: none;
-      border-top: 2px rgb(119, 37, 37) dotted;
-      width: 90%;
-    } */
+
+  }
+
+  @media screen and (max-width: 500px) {
+
+    header {
+      font-size: 17px;
+    }
   }
