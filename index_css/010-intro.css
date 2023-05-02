@@ -18,9 +18,9 @@
   } */
 
   summary {
-    padding: 0.3em 1em;
+    padding: 0.2em 1em;
     background: #f1df50;
-    border-radius: 20px;
+    border-radius: 25px;
   }
 
   summary:hover {
@@ -37,7 +37,7 @@
     background: #f7eb8a;
     border: solid;
     border-color: #8e8010;
-    border-radius: 24px;
+    border-radius: 28px;
   }
 
   details:hover {
@@ -59,9 +59,9 @@
   @media screen and (max-width: 900px) {
 
     details[open] {
-      /* width: 900px; */
       width: 100%;
       /* width: 36em; */
+      /* width: 900px; */
     }
   }
 
@@ -69,4 +69,10 @@
     details {
       margin: auto;
     }
+
+    summary {
+      padding: 0.5em 1em;
+      font-size: 1.1em;
+    }
+
   }
