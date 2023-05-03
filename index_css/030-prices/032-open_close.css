@@ -31,7 +31,8 @@ tbody.show>tr>td {
   /* width: 50%; */
   opacity: 1;
   visibility: visible;
-  line-height: 2.2;
+  /* line-height: 2.2; */
+  line-height: 1.7;
   transition:
     line-height .2s ease-out,
     opacity .1s linear .1s,
@@ -51,7 +52,8 @@ tbody.show>tr>td>.partition {
 @media screen and (max-width: 600px) {
 
   tbody.show>tr>td {
-    line-height: 1.9;
+    /* line-height: 1.9; */
+    line-height: 1.5;
   }
 
 }
