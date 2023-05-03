@@ -28,7 +28,7 @@ th i.fas {
     display: flex;
     position: sticky;
     /* top: 19%; */
-    top: 85%;
+    top: 80%;
     justify-content: space-around;
     padding-bottom: 0.5em;
     z-index: 1;
@@ -57,7 +57,7 @@ th i.fas {
 
     #toggle-button,
     #show-all-button {
-        padding: .7em .5em .7em .5em;
+        padding: 1em .7em;
         border-radius: 30px;
     }
 }
