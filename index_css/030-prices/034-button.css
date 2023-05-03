@@ -17,8 +17,8 @@ th button {
     /* display: none; */
 }
 
-i.far,
-i.fas {
+th i.far,
+th i.fas {
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-color: #eee183;
     -webkit-text-stroke-width: 1px
@@ -27,8 +27,8 @@ i.fas {
 .button-wrapper {
     display: flex;
     position: sticky;
-    top: 19%;
-    /* top: 80%; */
+    /* top: 19%; */
+    top: 85%;
     justify-content: space-around;
     padding-bottom: 0.5em;
     z-index: 1;
@@ -54,12 +54,14 @@ i.fas {
 }
 
 @media screen and (max-width: 769px) {
+
     #toggle-button,
     #show-all-button {
         padding: .7em .5em .7em .5em;
         border-radius: 30px;
     }
 }
+
 
 @media screen and (max-width: 500px) {
     .button-wrapper {
