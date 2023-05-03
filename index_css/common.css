@@ -51,9 +51,9 @@
     }
 
     .uti {
-      font-size: 1rem;
+/*       font-size: 1rem; */
       /* font-size: 15px; */
-      /* font-size: 20px; */
+      font-size: 20px;
       background-color: #fefde0;
       padding: 0;
     }
