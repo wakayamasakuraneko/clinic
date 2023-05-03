@@ -41,7 +41,8 @@ function hideTbodyOnSmallScreen() {
     const tbodies = document.getElementsByTagName('tbody');
     for (let i = 0; i < tbodies.length; i++) {
         const tbody = tbodies[i];
-        if (i === 4) { // 5つ目のtbodyの場合
+        // if (i === 4) { // 5つ目のtbodyのみ閉めておく場合
+        if (i >= 1) { // 1つ目のtbodyの場合のみ開けておく場合
             tbody.classList.remove('show'); // 初期状態は非表示
         } else if (width <= 600) {
             tbody.classList.remove('show');
