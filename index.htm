@@ -282,12 +282,13 @@
 
   <!-- 料金表 -->
   <div id="soto">
+    <!-- <div class="uti"> -->
     <div class="uti-bottom0">
-
       <h2 id="price" class="bold-title">料金表</h2>
       <div class="price-caption-top">
-        <p>※ 手術料金には、ノミ駆虫薬 及び 化膿止めの抗生剤</p>
-        <p>　術後の 皮下補液 も含まれております</p>
+        <!-- <p>※ 手術料金には、ノミ駆虫薬 及び 化膿止めの抗生剤<span>術後の 皮下補液 も含まれております</span></p> -->
+        <p>※ 手術料金には、ノミ駆虫薬、化膿止めの抗生剤 及び、術後の 皮下補液 も含まれております。</p>
+        <!-- <p>※ 手術料金には、<span>ノミ駆虫薬、化膿止めの抗生剤</span><span>及び、術後の 皮下補液 も含まれております</p> -->
       </div>
 
       <ul class="button-wrapper">
@@ -295,11 +296,7 @@
         <li><button id="show-all-button">広げる</button></li>
       </ul>
 
-      <!-- <button id="toggle-button">税切替</button>
-      <button id="show-all-button">折り畳む</button> -->
-
-
-      <table>
+      <table class="priceList1">
         <!-- ★　手術料金 -->
         <thead>
           <tr>
@@ -325,7 +322,7 @@
           </tr>
 
           <tr>
-            <td class="PriceCutColor2">オス <span>耳カットあり</span></td>
+            <td class="PriceCutColor">オス <span>耳カットあり</span></td>
             <td>
               <ol>
                 <li class="price-excl-tax">4000円 </li>
@@ -349,7 +346,7 @@
             <!-- <td>8,000円<span>(税込8,800円)</span></td> -->
           </tr>
           <tr>
-            <td class="PriceCutColor2">メス <span>耳カットあり</span></td>
+            <td class="PriceCutColor">メス <span>耳カットあり</span></td>
             <td>
               <ol>
                 <li class="price-excl-tax">7000円 </li>
@@ -416,7 +413,7 @@
 
           <!-- 耳カット有 3Vac -->
           <tr>
-            <td class="PriceCutColor2">
+            <td class="PriceCutColor">
               <ul>
                 <li>※ ３種混合<span>ワクチン</span></li>
                 <li>手術時に<span>耳カットを</span><span>入れた場合</span><span>(初回のみ)</span></li>
@@ -655,8 +652,7 @@
 
       </table>
 
-
-      <table class="discountTable">
+      <table class="priceList2">
         <colgroup>
           <col>
           <col>
@@ -915,16 +911,19 @@
         </tbody>
       </table>
 
+      <div class="gap2"></div>
+    </div><!-- uti-bottom0 -->
 
-    </div><!-- uti -->
+
+    <!-- </div> -->
+    <!-- uti -->
 
     <div class="uti-top0">
       <div class="price-caption-bottom">
         <p>★ 耳カット<span>(耳先のＶ字カット)は</span><span>不妊去勢手術を受けた証</span></p>
         <p>もう子猫を増やすことは<span>ありません。</span></p>
       </div>
-    </div><!-- uti -->
-
+    </div><!-- uti-top0 -->
 
   </div><!-- soto -->
 
@@ -975,13 +974,18 @@
         <!-- https://arts-factory.net/googlemap/ -->
       </div>
 
-      <br>
       <!-- 以下 Googleマップへリンク -->
-      <!-- <div class="googlemap-text">
+      <!-- <p class="device">※ 端末によってはメニューボタンが効かない、Google Map が表示されない場合があります。ご了承下さい。</p> -->
+      <!-- <p class="device">Google Map が表示されない場合</p> -->
+      <div class="googlemap-text">
         <br>
-        <a href="index_map.htm" class="map-btn">Google Mapで確認<i class="far fa-hand-point-left"></i></a>
+        <!-- <a href="index_map.htm" class="map-btn">
+          Google Mapで確認<i class="far fa-hand-point-left"></i>
+        </a> -->
+        <a href="index_map.htm" class="map-btn">
+          Google Map が<span>表示されない場合 <i class="far fa-hand-point-left"></i></span>
+        </a>
       </div>
-      <p class="device">※ 端末によってはメニューボタンが効かない、Google Map が表示されない場合があります。ご了承下さい。</p> -->
     </div><!-- uti -->
   </div><!-- soto -->
 
@@ -1003,7 +1007,7 @@
   <script src="index_js/PCmodal.js"></script>
   <script src="index_js/SPmodal.js"></script>
   <script src="index_js/Price.js"></script>
-  <!-- <script src="index_js/Price2.js"></script> -->
+  <script src="index_js/Price2.js"></script>
   <!-- ↑　Price2.jsを起動すると、PC版は上４つのtbodyが開いている状態でスタート -->
 </body>
 
