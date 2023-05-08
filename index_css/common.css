@@ -15,6 +15,7 @@
   body {
     display: block;
     margin: 0px;
+    box-sizing : border-box;
     font-family: "Meiryo", "YuGothic", "Yu Gothic", "ヒラギノ角ゴ", "sans-serif";
   }
 
