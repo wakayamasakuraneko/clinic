@@ -64,3 +64,8 @@
     }
 
   }
+@media screen and (max-width: 500px) {
+  /* WebKit系ブラウザ（Safari, Google Chromeなど）*/
+  ::-webkit-scrollbar {
+    display: none;
+  }
