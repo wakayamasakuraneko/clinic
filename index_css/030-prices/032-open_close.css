@@ -27,16 +27,15 @@ td {
 
 /* 開いている状態 */
 tbody.show>tr>td {
-  border: solid 1px;
-  /* width: 50%; */
+  border: solid 1px #000;
   opacity: 1;
   visibility: visible;
   /* line-height: 2.2; */
   line-height: 1.7;
-  transition:
+  /* transition:
     line-height .2s ease-out,
     opacity .1s linear .1s,
-    visibility .1s linear .1s;
+    visibility .1s linear .1s; */
 }
 
 .partition {
