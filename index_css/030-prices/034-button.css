@@ -1,4 +1,4 @@
-/* ボタンの見た目の設定 */
+/* ボタンの場所と見た目の設定 */
 
 /* thは033-pricesでposition: relative;にしている */
 /* フォントオーサムを使う場合 */
@@ -7,7 +7,7 @@
 /* 冷静に考えたらthが押せるならここはbuttonじゃなくて良いのでは？ */
 th button {
     position: absolute;
-    right: 5%;
+    left: 20%;
     cursor: pointer;
     /* フォントオーサムを使わなければ以下の4つの行は不要 */
     border: none;
@@ -16,6 +16,21 @@ th button {
     font-size: 1.5em;
     /* display: none; */
 }
+
+th .tax-status {
+    position: absolute;
+    right: 21%;
+    font-weight: normal;
+    border: 2px solid #b2a75b;
+    padding: 2px 4px;
+    border-radius: 20px;
+    top: 20%;
+    background: #eee183;
+    font-size: 80%;
+    /* -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl; */
+}
+
 
 th i.far,
 th i.fas {
@@ -66,5 +81,20 @@ th i.fas {
 @media screen and (max-width: 500px) {
     .button-wrapper {
         justify-content: space-between
+    }
+}
+
+@media screen and (max-width: 400px) {
+    th button {
+        left: 7%;
+    }
+
+    th .tax-status {
+        right: 5%;
+        /* -ms-writing-mode: tb-rl; */
+        /* writing-mode: vertical-rl; */
+        font-size: 90%;
+        top: 24%;
+        /* padding: 3px 0; */
     }
 }
