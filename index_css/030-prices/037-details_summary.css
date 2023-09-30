@@ -1,0 +1,39 @@
+/* detailsとsummary */
+
+
+summary.priceSummary1 {
+  color: #cdba2e;
+  background: #fefde0;
+}
+
+summary.priceSummary1:hover {
+  color: #ffffff;
+  background: #cdba2e;
+}
+
+summary:hover {
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+details.priceDetail1 {
+  background: #f7eb8a;
+  /* border: solid #5B6DCD 10px; */
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+
+  details.priceDetail1[open] {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  details.priceDetail1 {
+    margin: auto;
+  }
+
+}
