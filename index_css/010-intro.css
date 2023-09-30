@@ -17,21 +17,24 @@
     margin-block-end: 0.8em;
   } */
 
-  summary {
+  summary.introSummary1 {
     padding: 0.2em 1em;
     background: #f1df50;
     border-radius: 25px;
   }
 
-  summary:hover {
-    cursor: pointer;
+  summary.introSummary1:hover {
     /* background: #50f160; */
     color: #ffffff;
     background: #00c811;
+  }
+
+  summary:hover {
+    cursor: pointer;
     transition: 0.8s;
   }
 
-  details {
+  details.introDetail1 {
     width: 9em;
     /* width: fit-content;にしてしまうとクリック時のアニメ消失 */
     background: #f7eb8a;
@@ -40,25 +43,28 @@
     border-radius: 28px;
   }
 
-  details:hover {
+  details.introDetail1:hover {
     border: solid;
     border-color: #00c811;
+  }
+
+  details:hover {
     transition: 0.1s;
   }
 
-  details[open] {
+  details.introDetail1[open] {
     /* width: 900px; */
     /* width: 65%; */
     width: 36em;
   }
 
-  details p {
+  details.introDetail1 p {
     padding: 0 1em;
   }
 
   @media screen and (max-width: 900px) {
 
-    details[open] {
+    details.introDetail1[open] {
       width: 100%;
       /* width: 36em; */
       /* width: 900px; */
@@ -66,11 +72,11 @@
   }
 
   @media screen and (max-width: 769px) {
-    details {
+    details.introDetail1 {
       margin: auto;
     }
 
-    summary {
+    summary.introSummary1 {
       padding: 0.5em 1em;
       font-size: 1.1em;
     }
