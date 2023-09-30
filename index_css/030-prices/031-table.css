@@ -76,14 +76,14 @@ table span {
   color: red;
 }
 
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 
 /* CSSこそ同じだが、「.hidden」の方はJavascriptで制御している */
-.hidden2 {
+/* .hidden2 {
   display: none;
-}
+} */
 
 
 /* 「堕胎費」と「検便」の値段を枠内に収めるため */
