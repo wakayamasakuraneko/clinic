@@ -9,7 +9,7 @@
   <!-- ↑ 練習用 ↓ 掲載時はこちら -->
   <link rel="shortcut icon" href="img_icon.ico">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="index_css/common.css">
+ <link rel="stylesheet" href="index_css/common.css">
   <link rel="stylesheet" href="index_css/common-jump.css">
   <!-- <link rel="stylesheet" href="index_css/common-FontAwesome.css"> -->
   <link rel="stylesheet" href="index_css/001-header.css">
@@ -24,13 +24,14 @@
   <link rel="stylesheet" href="index_css/030-prices/034-button.css">
   <link rel="stylesheet" href="index_css/030-prices/035-original_exist.css">
   <link rel="stylesheet" href="index_css/030-prices/036-unused.css">
+  <link rel="stylesheet" href="index_css/030-prices/037-details_summary.css">
+  <link rel="stylesheet" href="index_css/030-prices/038-accordInAccord.css">
+  <link rel="stylesheet" href="index_css/030-prices/zzz.css">
   <link rel="stylesheet" href="index_css/040-telfax.css">
   <link rel="stylesheet" href="index_css/050-access.css">
   <link rel="stylesheet" href="index_css/PC_Modal.css">
   <link rel="stylesheet" href="index_css/SP_Modal.css">
   <link rel="stylesheet" href="index_css/090-footer.css">
-  <!-- <link rel="stylesheet" href="index_css/btn.css"> -->
-  <!-- <link rel="stylesheet" href="index_css/ToolTip.css"> -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- ↑　Price3.jsの$(document).ready(function () を動かすため -->
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
@@ -65,7 +66,7 @@
       <hr>
       <div class="header_declaration">
         <a href="#specialize" class="header-btn">保護猫の手術をご希望の方へ</a>
-        <a href="#closed-day" class="header-btn">9月休診日のご案内 </a>
+<!--         <a href="#closed-day" class="header-btn">9月休診日のご案内 </a> -->
       </div>
       <hr>
     </div>
@@ -300,119 +301,171 @@
         <!-- ★　手術料金 -->
         <thead>
           <tr>
-            <!-- <th colspan="2">手術</th> -->
-            <!-- <th colspan="2">手術<button>◀表示</button></th> -->
-            <th colspan="2">手術<button><i class="far fa-check-circle"></i></button></th>
-            <!-- <th colspan="2">手術<span id="tax-status">(税抜)</span><button><i class="far fa-check-circle"></i></button></th> -->
+            <th colspan="2">手術<span class="tax-status">税抜</span><button></th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>オス</td>
-            <td>
-              <ol>
-                <li class="price-excl-tax">5000円</li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <!-- <div id="tax-status">(税抜)</div> -->
-                <div class="tax-status">(税抜)</div>
-              </ol>
-            </td>
-          </tr>
 
-          <tr>
-            <td class="PriceCutColor">オス <span>耳カットあり</span></td>
-            <td>
-              <ol>
-                <li class="price-excl-tax">4000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
-              </ol>
-            </td>
-            <!-- <td>4,000円<span>(税込4,400円)</span></td> -->
-          </tr>
           <tr>
             <td>メス</td>
             <td>
               <ol>
                 <li class="price-excl-tax">8000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>8,000円<span>(税込8,800円)</span></td> -->
           </tr>
+
           <tr>
-            <td class="PriceCutColor">メス <span>耳カットあり</span></td>
+            <td>オス</td>
             <td>
               <ol>
-                <li class="price-excl-tax">7000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="price-excl-tax">5000円</li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>7,000円<span>(税込7,700円)</span></td> -->
           </tr>
+
+          <!-- 耳カット -->
+          <td colspan="2" class="test2">
+            <div class="menu js-menu flexA">
+              <dt>メス <span>耳カットあり</span></dt>
+              <!-- <dt>▶ メス <span>耳カットあり</span></dt> -->
+              <dd>
+                <ol>
+                  <li class="price-excl-tax">7500円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </dd>
+            </div>
+            <!-- <div class="contents flexA">
+              <dt class="dt2">メス <span>耳カットあり</span><span>{+3種混合</span><span>ワクチン</span><span>(別途料金:下表)}</span></dt>
+              <dd>
+                <ol>
+                  <li class="price-excl-tax">7000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </dd>
+            </div> -->
+          </td>
+          <tr>
+            <td colspan="2">
+              <div class="menu js-menu flexA">
+                <dt>オス <span>耳カットあり</span></dt>
+                <!-- <dt>▶ オス <span>耳カットあり</span></dt> -->
+                <dd>
+                  <ol>
+                    <li class="price-excl-tax">4500円</li>
+                    <li class="slash">&nbsp;/&nbsp;</li>
+                    <li class="price-incl-tax"></li>
+                  </ol>
+                </dd>
+              </div>
+              <!-- <div class="contents flexA">
+                <dt class="dt2">オス <span>耳カットあり</span><span>+3種混合</span><span>ワクチン</span><span>(別途料金:下表)</span></dt>
+                <dd>
+                  <ol>
+                    <li class="price-excl-tax">4000円</li>
+                    <li class="slash">&nbsp;/&nbsp;</li>
+                    <li class="price-incl-tax"></li>
+                  </ol>
+                </dd>
+              </div> -->
+            </td>
+          </tr>
+
           <tr>
             <td>堕胎費</td>
             <td>
               <div class="tdcolum">
                 <ol>
                   <li class="price-excl-tax">1000円</li>
-                  <li class="slash hidden2">&nbsp;/&nbsp;</li>
-                  <li class="price-incl-tax hidden"></li>
-                  <div class="tax-status hidden2">(税抜)</div>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
                 </ol>
                 <ol>
-                  <li class="WaveLine hidden">～</li>
                   <li>～</li>
                 </ol>
                 <ol>
-                  <li class=" price-excl-tax">2000円</li>
-                  <li class="slash hidden2">&nbsp;/&nbsp;</li>
-                  <li class="price-incl-tax hidden"></li>
-                  <!-- <li>(+税)</li> -->
+                  <li class=" price-excl-tax">3000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
                 </ol>
               </div>
-              <div class="tax-status">(税抜)</div>
             </td>
-            <!-- <td>1,000～2,000円<span>(税込1,100～2,000円)</span></td> -->
           </tr>
 
-        </tbody>
+          <!-- <tr>
+            <td class="PriceCutColor">オス <span>耳カットあり</span></td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">4500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td class="PriceCutColor">メス <span>耳カットあり</span></td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">7500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr> -->
 
+        </tbody>
 
         <!-- ★　検査・ワクチン -->
         <thead>
           <tr>
-            <!-- <th colspan="2">検査・ワクチン</th> -->
-            <!-- <th colspan="2">検査・ワクチン<button>◀表示</button></th> -->
-            <th colspan="2">検査・ワクチン<button><i class="far fa-check-circle"></i></th>
+            <th colspan="2">検査・ワクチン<span class="tax-status">税抜</span><button></th>
           </tr>
         </thead>
 
-        <!-- ３種混合ワクチン -->
-        <tbody>
+       <tbody>
 
+        <!-- ３種混合ワクチン -->
           <tr>
             <td>３種混合<span>ワクチン</span></td>
             <td>
               <ol>
                 <li class="price-excl-tax">3000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>3,000円<span>(税込3,300円)</span></td> -->
           </tr>
 
-          <!-- 耳カット有 3Vac -->
+          <!-- ３種混合ワクチン(耳カット有) -->
           <tr>
+            <td colspan="2">
+              <div class="menu js-menu flexB">
+                <dt>▶ ３種混合<span>ワクチン</span></dt>
+                <dd>
+                  <ol>
+                    <li class="price-excl-tax">1500円</li>
+                    <li class="slash">&nbsp;/&nbsp;</li>
+                    <li class="price-incl-tax"></li>
+                  </ol>
+                </dd>
+              </div>
+              <div class="contents">
+                <div class="fontSizeB"> 手術時に耳カットを</span><span>入れた場合</span><span>(初回のみ)</span></div>
+                <div class="fontSizeB">
+                  <span>クラウドファンディングの</span><span>チケットを</span><span>ご利用の場合は</span><span>2000円(税抜)です。</span><span>ご了承下さい。</span>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <!-- <tr>
             <td class="PriceCutColor">
               <ul>
                 <li>※ ３種混合<span>ワクチン</span></li>
@@ -421,13 +474,32 @@
             </td>
             <td>
               <ol>
-                <li class="price-excl-tax">2000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="price-excl-tax">1500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>2,000円</td> -->
+          </tr> -->
+
+
+
+          <!-- ３種混合不活化ワクチン -->
+          <tr class=" sample3">
+            <td>
+              <details class="priceDetail1">
+                <summary class="priceSummary1">３種混合<span>ワクチン</span><span>(不活化)</span></summary>
+                <ul>
+                  <li>状況により生と不活化を使い分ける場合があります。</li>
+                </ul>
+              </details>
+            </td>
+            <td>
+              <ol>
+                生3種+<li class="price-excl-tax">500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
           </tr>
 
           <!-- ５種混合ワクチン -->
@@ -436,13 +508,31 @@
             <td>
               <ol>
                 <li class="price-excl-tax">4000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>4,000円<span>(税込4,400円)</span></td> -->
           </tr>
+
+          <!-- ４種混合ワクチン -->
+          <!-- <tr class=" sample3">
+            <td>
+              <details class="priceDetail1">
+                <summary class="priceSummary1">４種混合<span>ワクチン</span></summary>
+                <ul>
+                  <li>５種混合<span>ワクチンの</span></li>
+                  <li>在庫が<span>なくなり</span>次第</li>
+                </ul>
+              </details>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">4000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr> -->
 
           <!-- Fiv/Felv 検査 -->
           <tr class="sample4">
@@ -450,12 +540,10 @@
             <td>
               <ol>
                 <li class="price-excl-tax">3000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>3,000円<span>(税込3,300円)</span></td> -->
           </tr>
           <tr>
             <td>検便</td>
@@ -463,24 +551,19 @@
               <div class="tdcolum">
                 <ol>
                   <li class="price-excl-tax">1000円</li>
-                  <li class="slash hidden2">&nbsp;/&nbsp;</li>
-                  <li class="price-incl-tax hidden"></li>
-                  <div class="tax-status hidden2">(税抜)</div>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
                 </ol>
                 <ol>
-                  <li class="WaveLine hidden">～</li>
                   <li>～</li>
                 </ol>
                 <ol>
                   <li class=" price-excl-tax">1500円</li>
-                  <li class="slash hidden2">&nbsp;/&nbsp;</li>
-                  <li class="price-incl-tax hidden"></li>
-                  <!-- <li>(+税)</li> -->
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
                 </ol>
               </div>
-              <div class="tax-status">(税抜)</div>
             </td>
-            <!-- <td>1,000～1,500円<span>(税込1,100～1,650円)</span></td> -->
           </tr>
 
         </tbody>
@@ -488,13 +571,14 @@
         <!-- ★　抗生剤・駆虫薬 -->
         <thead>
           <tr>
-            <!-- <th colspan="2">抗生剤・駆虫薬 等</th> -->
-            <!-- <th colspan="2">抗生剤・駆虫薬 等<button>◀表示</button></th> -->
-            <th colspan="2">抗生剤・駆虫薬 等<button><i class="far fa-check-circle"></i></button></th>
+            <th colspan="2">抗生剤・駆虫薬 等<span class="tax-status">税抜</span><button></th>
           </tr>
         </thead>
 
-        <tbody>
+         <tbody>
+
+          <!-- テスト -->
+          <!-- https://webukatu.com/wordpress/blog/6087/ -->
 
           <!-- レボリューション -->
           <tr>
@@ -502,12 +586,10 @@
             <td>
               <ol>
                 <li class="price-excl-tax">1200円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>1,200円<span>(税込1,320円)</span></td> -->
           </tr>
 
           <!-- アドボケート -->
@@ -516,54 +598,120 @@
             <td>
               <ol>
                 <li class="price-excl-tax">1000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>1,000円<span>(税込1,100円)</span></td> -->
           </tr>
+
+          <!-- ネクスガードキャット(術中) -->
+          <!-- <tr>
+            <td>ネクスガードキャット<span>(術中)</span></td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr> -->
+
+          <!-- ネクスガードキャット(販売) -->
+          <!-- <tr>
+            <td>ネクスガードキャット<span>(販売)</span></td>
+            <td>
+              <ol class="ulFontSize">
+                <li>0.8～2.5 kg未満</li>
+                <li class="price-excl-tax">1500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+              <ol class="partition"> </ol>
+              <ol class="ulFontSize">
+                <li>2.5～7.5 kg未満</li>
+                <li class="price-excl-tax">2000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            </td>
+          </tr> -->
+
+          <!-- <tr>
+            <td colspan="2">
+              <section>
+                <div class="accordion">
+
+                  <div class="menu js-menu hoverColorB">▶ 駆虫薬と表</div>
+                  <div class="contents antiWorm">
+                    <br>
+                    <img class="spAnthelTable" src="pics/133310b.png" alt="Anthelmintics and table">
+                    <img class="pcAnthelTable" src="pics/174600b.png" alt="Anthelmintics and table">
+
+                    <br>
+                    <div class="padingA">
+                      <p>ブラベクトプラス、またはネクスガードCATをご希望の際は追加料金になります。ご相談下さい。</p>
+                      <p>※　マンソン裂頭条虫・コクシジウム・ジアルジア・トリコモナスは上記のどれも効きません。個別の駆虫が必要です。</p>
+                      <p>※　「？」…効き目があるという報告もあります</p>
+                      <p>※　他にも色々ありますが、本院で扱っている駆虫剤は以上です。</p>
+                    </div>
+                    <br>
+                  </div>
+                  <p class="menu js-menu">メニュー3</p>
+                  <div class="contents">コンテンツ3</div>
+                </div>
+              </section>
+            </td>
+          </tr> -->
+
+          <script>
+
+            const menu = document.querySelectorAll(".js-menu");
+
+            function toggle() {
+              const content = this.nextElementSibling;
+              this.classList.toggle("is-active");
+              content.classList.toggle("is-open");
+            }
+
+            for (let i = 0; i < menu.length; i++) { menu[i].addEventListener("click", toggle); } 
+          </script>
+
+
+          <!-- <ul class="ulLeft">
+                      <li>※　他にも色々ありますが、本院で扱っている駆虫剤は以上です。</li>
+                      <li>※　マンソン裂頭条虫・コクシジウム・ジアルジア・トリコモナスは上記のどれも効きません。個別の駆虫が必要です。</li>
+                      <li>※　「？」…効き目があるという報告もあります</li>
+                    </ul> -->
+          <!-- <p>◉ お勧めは外猫→ブラベクトプラス(長期作用)、保護予定→ネクスガードCAT(広範囲駆虫)、費用はご相談下さい</p> -->
 
           <!-- コンベニア -->
           <tr class="sample4">
             <td>コンベニア<span>(希望者のみ)</span></td>
             <td>
-
-              <!-- <ol>
-                  <div class="disf"> -->
-
               <ol class="ulFontSize">
                 <li>2㎏まで</li>
-                <li class="price-excl-tax">1000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <li class="tax-status hidden2">(税抜)</li>
+                <!-- <li class="price-excl-tax">1000円 </li> -->
+                <li class="price-excl-tax">1500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
               <ol class="partition"> </ol>
               <ol class="ulFontSize">
                 <li>2～4㎏</li>
-                <li class="price-excl-tax">2000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <li class="tax-status hidden2">(税抜)</li>
+                <!-- <li class="price-excl-tax">2000円 </li> -->
+                <li class="price-excl-tax">2500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
               <ol class="partition"> </ol>
               <ol class="ulFontSize">
                 <li>以降1㎏ごと</li>
                 <li class="price-excl-tax">500円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
-              <li class="tax-status hidden3">(税抜)</li>
-              <!-- </div>
-                </ol> -->
-
             </td>
-            <!-- <td>
-                <p>2㎏まで1,000円<span>(税込1,100円)</span></p>
-                <p>2～4㎏ 2,000円<span>(税込2,200円)</span></p>
-                <p>以降1㎏ごと500円<span>(税込550円)</span></p>
-              </td> -->
           </tr>
         </tbody>
 
@@ -571,24 +719,41 @@
         <!-- ★　その他料金 -->
         <thead>
           <tr>
-            <!-- <th colspan="2">その他</th> -->
-            <th colspan="2">その他<button><i class="far fa-check-circle"></i></button></th>
+            <th colspan="2">その他<span class="tax-status">税抜</span><button></th>
           </tr>
         </thead>
 
-        <tbody>
+             <tbody>
           <!-- 入院費 -->
-          <tr>
+          <!-- <tr>
             <td>入院費<span>(前日からの</span><span>預かりも</span><span>含みます)</span></td>
             <td>
               <ol>
                 <li class="price-excl-tax">1000円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
-            <!-- <td>1000円<span>(税込1100円)</span></td> -->
+          </tr> -->
+          <tr>
+            <td>入院費(入院手数料)</td>
+            <td>
+              <div class="tdcolum">
+                <ol>
+                  <li class="price-excl-tax">1000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+                <ol>
+                  <li>～</li>
+                </ol>
+                <ol>
+                  <li class=" price-excl-tax">2000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
           </tr>
 
           <!-- 爪切り -->
@@ -597,9 +762,8 @@
             <td>
               <ol>
                 <li class="price-excl-tax">500円 </li>
-                <li class="slash hidden">&nbsp;/&nbsp;</li>
-                <li class="price-incl-tax hidden"></li>
-                <div class="tax-status">(税抜)</div>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
               </ol>
             </td>
             <!-- <td>500円<span>(税込550円)</span></td> -->
@@ -612,7 +776,7 @@
         <thead>
           <tr>
             <!-- <th id="Ex_charge" colspan="2">割増料金</th> -->
-            <th colspan="2">割増料金<button><i class="fas fa-search-plus"></i></button></th>
+            <th colspan="2">割増料金<span class="tax-status">税抜</span><button></th>
           </tr>
         </thead>
 
@@ -663,7 +827,7 @@
         <thead>
           <tr>
             <!-- <th colspan="3">割増料金</th> -->
-            <th colspan="3">割引料金<button><i class="fas fa-search-plus"></i></button></th>
+            <th colspan="3">割引料金<span class="tax-status">税抜</span><button></th>
           </tr>
         </thead>
 
@@ -943,8 +1107,8 @@
       <p> ※ お電話は上記の通り、午前中は主に留守番電話に切り替わる事が多いです。</p>
       <h3 class="h3-opening-hours"><b>休診日</b> 金曜・土曜</h3>
       <!--       <h2 id="closed-day">年末年始の休診日のご案内</h2> -->
-                  <h2 id="closed-day">9月休診日のご案内</h2>
-                  <p>9/10(日)は臨時休診致します。</p>
+<!--                   <h2 id="closed-day">9月休診日のご案内</h2> -->
+<!--                   <p>9/10(日)は臨時休診致します。</p> -->
 <!--             <p>7/19(水)～7/20(木)は出張のため、休診いたします。</p> -->
 <!--             <p>8/4(金)～8/13(日)まで休診いたします。ご了承下さい。</p> -->
       <!--       <p>12/29(木)～1/7(土)まで休診いたします。ご不便をお掛けしますがどうぞ宜しくお願い致します。</p> -->
@@ -1006,9 +1170,10 @@
 
   <script src="index_js/PCmodal.js"></script>
   <script src="index_js/SPmodal.js"></script>
-  <script src="index_js/Price.js"></script>
-<!--   <script src="index_js/Price2.js"></script> -->
-  <!-- ↑　Price2.jsを起動すると、PC版は上４つのtbodyが開いている状態でスタート -->
+<!--   <script src="index_js/Price.js"></script> -->
+  <script src="index_js/PriceEX4.js"></script>
+  <script src="index_js/PriceEX5.js"></script>
+  <!-- ↑　初期画面は手術料金のみ表示 -->
 </body>
 
 </html>
