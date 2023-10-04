@@ -19,10 +19,10 @@ ol {
   padding-inline-start: 0px;
 }
 
-ol {
+/* ol {
   display: flex;
   justify-content: center;
-}
+} */
 
 li {
   list-style: none;
@@ -72,10 +72,10 @@ th {
     font-size: 15px;
   }
 
-  /* ↓  javascriptのせいで消えない
+  /* ↓  javascriptのせいで消えない */
   .slash {
     display: none;
-  } */
+  }
 }
 
 
