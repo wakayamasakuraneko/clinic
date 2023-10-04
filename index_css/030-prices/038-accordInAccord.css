@@ -97,12 +97,6 @@
     /* height: 0; */
 }
 
-/* .contents.is-open {
-    line-height: 1.7;
-    height: auto;
-    opacity: 1;
-} */
-
 tbody.show .is-open {
     /* tbody.show>tr>td>section>div>.contents.is-open { */
     line-height: 1.7;
@@ -155,15 +149,24 @@ tbody.show .is-open .pcAnthelTable {
 
 
 
-
-
 /* dt,ddは表内アコーディオンの枠、左マスがdt,右マスがdd */
-/* relativeは正中の縦隔線を引く為の布石 */
 dt,
 dd {
+    margin: auto;
     width: 50%;
-    position: relative;
+    /* position: relative; */
     font-size: 22px;
+}
+
+tbody.show dt {
+    border-right: 1px solid;
+    line-height: 2.5;
+}
+
+@media screen and (max-width: 306px) {
+    tbody.show dt {
+        line-height: 1.5;
+    }
 }
 
 .dt2 {
@@ -182,19 +185,6 @@ dd {
     font-size: 22px;
 }
 
-/* dtとddの間の縦隔線 */
-.flexA dd::before,
-.flexB dd::before {
-    position: absolute;
-    /*--positionを追加--*/
-    left: 0%;
-    /* margin: 0 1rem; */
-    content: "";
-    width: 1px;
-    height: 100%;
-    background-color: #333;
-}
-
 @media screen and (max-width: 769px) {
 
     .fontSizeB,
@@ -205,5 +195,12 @@ dd {
 
     .dt2 {
         font-size: 15px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    tbody.show dt {
+        padding: 0.5em 0;
     }
 }
