@@ -11,6 +11,14 @@ summary.priceSummary1:hover {
   background: #cdba2e;
 }
 
+@media screen and (max-width: 500px) {
+  tbody.show summary.priceSummary1 {
+    line-height: 1.2;
+    padding: 1.2em 0;
+  }
+}
+
+
 summary:hover {
   cursor: pointer;
   transition: 0.4s;
@@ -21,11 +29,18 @@ details.priceDetail1 {
   /* border: solid #5B6DCD 10px; */
 }
 
+tbody.show td>details>ul {
+  line-height: 1.7;
+}
 
+
+tbody.show .price-excl-tax,
+tbody.show .price-incl-tax {
+  line-height: 1.5;
+}
 
 
 @media screen and (max-width: 900px) {
-
   details.priceDetail1[open] {
     width: 100%;
   }
@@ -35,5 +50,4 @@ details.priceDetail1 {
   details.priceDetail1 {
     margin: auto;
   }
-
 }
