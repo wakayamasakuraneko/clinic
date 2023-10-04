@@ -30,8 +30,8 @@ tbody.show>tr>td {
   border: solid 1px #000;
   opacity: 1;
   visibility: visible;
-  /* line-height: 2.2; */
-  line-height: 1.7;
+  line-height: 2.5;
+  /* line-height: 1.7; */
   /* transition:
     line-height .2s ease-out,
     opacity .1s linear .1s,
@@ -49,10 +49,20 @@ tbody.show>tr>td>.partition {
 
 
 @media screen and (max-width: 600px) {
-
   tbody.show>tr>td {
-    /* line-height: 1.9; */
-    line-height: 1.5;
+    line-height: 3;
+    /* line-height: 1.5; */
   }
+}
 
+@media screen and (max-width: 330px) {
+  tbody.show .td_lineheight2 {
+    line-height: 1.7;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  tbody.show .td_lineheight1 {
+    line-height: 1.7;
+  }
 }
