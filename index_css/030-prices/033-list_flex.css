@@ -61,6 +61,10 @@ th {
     flex-direction: column;
   }
 
+ tbody.show ol {
+    line-height: 1.7;
+  }
+
   #tax-status {
     left: 60%;
   }
