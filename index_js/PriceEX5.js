@@ -22,7 +22,7 @@ function partialDisplay() {
 partialDisplay();
 
 // リサイズ時にも実行
-window.addEventListener('resize', partialDisplay);
+// window.addEventListener('resize', partialDisplay);
 
 
 
