@@ -1,0 +1,228 @@
+.i_box {
+    display: none;
+}
+
+
+/* tbody.show .i_box {
+    font-size: 0.8em;
+    top: 30%;
+    right: 11vw;
+    width: 20px;
+    height: 20px;
+    color: #194602;
+    border: 1px solid #194602;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+} */
+
+tbody.show .i_box {
+    font-size: 0.8em;
+    /* position: absolute; */
+    top: 20%;
+    width: 22px;
+    height: 22px;
+    color: #194602;
+    border: 1px solid #194602;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+    /* border-radius: 50%; */
+}
+
+tbody.show .nomi_box {
+    position: absolute;
+    top: 14%;
+    width: 40px;
+    height: 40px;
+    /* border: 1px solid #194602; */
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+
+
+
+/* ↓　なぜnth-child(2)が上で、child(1)が下なのかわからない */
+tbody.show .i_box:nth-child(2) {
+    right: 75%;
+}
+
+tbody.show .nomi_box:nth-child(1) {
+    left: 20vw;
+}
+
+@media screen and (max-width: 1120px) {
+    tbody.show .i_box:nth-child(2) {
+        right: 85%;
+    }
+}
+
+
+.menuTd {
+    /* padding-right: 5%; */
+    position: relative;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-around; */
+}
+
+.menu.is-active .i_box {
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+    transition: .3s;
+    display: block;
+}
+
+.menu.is-active .nomi_box {
+    -webkit-transform: rotate(-540deg);
+    transform: rotate(-540deg);
+    transition: .3s;
+    display: flex;
+}
+
+.one_i:before,
+.one_i:after {
+    /* display: flex; */
+    content: '';
+    background-color: #000000;
+    border-radius: 10px;
+    width: 15px;
+    height: 1.5px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    transform-origin: center center;
+}
+
+.one_i:before {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.one_i:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.menu.is-active .one_i:before {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(90deg);
+}
+
+.menu.is-active .one_i:after {
+    display: none;
+}
+
+.one_i {
+    /* display: flex; */
+    /* ↓　矢印にする時は以下はON */
+    /* -webkit-transform: rotate(-45deg); */
+    /* transform: rotate(-45deg); */
+    /* ↓　以下はOFFのままでOK */
+    /* content: ''; */
+    /* position: absolute; */
+    /* inset: 0; */
+    /* margin: auto; */
+    /* transform-origin: center center; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+
+
+.menu.is-active .nomiimg {
+    -webkit-transform: rotate(-540deg);
+    transform: rotate(-540deg);
+    transition: .3s;
+    left: 18%;
+}
+
+.nomiring {
+    position: absolute;
+    left: 18%;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    transition: .2s;
+}
+
+.menu.is-active .nomiring {
+    top: 9%;
+    width: 30px;
+    height: 16px;
+    display: block;
+    opacity: 1;
+    transition: 1s;
+}
+
+.nomiimg {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 35px;
+    transition: .2s;
+    /* -webkit-transform: rotate(-45deg); */
+    /* transform: rotate(-45deg); */
+}
+
+@media screen and (max-width: 400px) {
+
+    .nomiring,
+    .nomiimg {
+        left: 15%;
+    }
+
+    .menu.is-active .nomiimg,
+    .menu.is-active .nomiring {
+        left: 5%;
+    }
+}
+
+
+.menu.is-active .one_i {
+    -webkit-transform: rotate(-0deg);
+    transform: rotate(0deg);
+}
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    tbody.show .i_box {
+        top: 25%;
+        width: 18px;
+        height: 18px;
+        transition: .4s;
+    }
+
+    .menu.is-active .i_box {
+        transition: .4s;
+    }
+
+    .one_i:before,
+    .one_i:after {
+        width: 14px;
+    }
+
+    tbody.show .i_box:nth-child(2) {
+        right: 75%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    tbody.show .i_box:nth-child(2) {
+        left: 3vw
+    }
+}

@@ -10,6 +10,7 @@
 .disf {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 ul,
@@ -61,7 +62,7 @@ th {
     flex-direction: column;
   }
 
- tbody.show ol {
+  tbody.show ol {
     line-height: 1.7;
   }
 
@@ -83,6 +84,11 @@ th {
   }
 }
 
+.flexB {
+  display: flex;
+  justify-content: center;
+}
+
 
 /* 600以上の時 */
 @media screen and (min-width: 600px) {
@@ -91,9 +97,3 @@ th {
     justify-content: center;
   }
 }
-
-
-
-/* body {
-      height: 200vh;
-    } */
