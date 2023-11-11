@@ -1,0 +1,176 @@
+.footer-top {
+  display: flex;
+  width: 100%;
+  /* line-height: 15px; */
+  /* background: #eee183; */
+  background: #f6f4a5;
+  padding-top: 1em;
+  padding-bottom: .5em;
+}
+
+.footer-left {
+  width: 60%;
+}
+
+.footer-right {
+  width: 40%;
+}
+
+
+li {
+  list-style: none;
+}
+
+/* ボタン全体 */
+.flowbtn {
+  font-family: 'Arial', sans-serif;
+  /* 好きなフォントを指定してね */
+  border-radius: 4px;
+  position: relative;
+  display: inline-block;
+  width: 66px;
+  height: 58px;
+  font-size: 30px;
+  color: #fff !important;
+  transition: .5s;
+  text-decoration: none;
+  box-shadow: 0 1px 2px #999;
+}
+
+.flowbtn i {
+  position: relative;
+  top: 5px;
+}
+
+.flowbtn .twit_X {
+  top: 0px;
+  font-size: 1.25em;
+  font-style: normal;
+}
+
+.flowbtn div {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0;
+  position: relative;
+  /* bottom: 22px; */
+  bottom: -5px;
+}
+
+.flowbtn .X_bottom {
+  bottom: 5px;
+}
+
+/* Twitter */
+.fl_tw1 {
+  background: #55acee;
+}
+
+/* X(Twitter) */
+.fl_X {
+  background: #202124;
+}
+
+/* Facebook */
+.fl_fb1 {
+  background: #3b5998;
+}
+
+
+/* 問い合わせ */
+.fl_ma1 {
+  background: #f3981d;
+}
+
+/* Instagram紫グラデ背景 */
+.insta_btn1 {
+  background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  overflow: hidden;
+}
+
+/* Instagramオレンジグラデ背景 */
+.insta_btn1:before {
+  content: '';
+  position: absolute;
+  top: 33px;
+  left: -20px;
+  width: 80px;
+  height: 50px;
+  background: -webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+  background: radial-gradient(#ffdb2c 5%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+}
+
+/* ボタン内テキスト調整 */
+
+.fa-twitter:before {
+  content: "\f099";
+}
+
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+
+/* ボタンマウスホバー時 */
+.flowbtn:hover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+  text-decoration: none;
+}
+
+/* ulタグの内側余白を０にする */
+ul.snsbtniti {
+  padding: 0 !important;
+}
+
+/* ボタン全体の位置調整 */
+.snsbtniti {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+/* ボタン同士の余白調整 */
+.snsbtniti li {
+  flex: 0 0 25%;
+  text-align: center !important;
+}
+
+
+
+.footer-bottom {
+  background: #483b0c;
+  color: #fff;
+  font-size: 1.4rem;
+  text-align: center;
+  position: relative;
+  padding: 16px 0;
+  /* font-weight: bold; */
+}
+
+
+@media screen and (max-width: 769px) {
+
+  .footer-left {
+    width: 0%;
+  }
+
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    font-size: 100%;
+  }
+
+  .flowbtn {
+    border-radius: 50%;
+    width: 52px;
+    height: 45px;
+  }
+
+  .flowbtn div {
+    display: none;
+  }
+}
