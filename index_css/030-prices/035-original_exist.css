@@ -34,10 +34,11 @@
   line-height: 2em;
 }
 
+/* 参考：https://www.youtube.com/shorts/xP_vna87d44 */
 .price-caption-top {
   color: red;
   text-align: right;
-  padding-left: 30%;
+  padding-left: 25%;
   padding-right: 10%;
 }
 
