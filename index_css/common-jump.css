@@ -41,23 +41,31 @@
   .bloglink-btn {
     padding: 3px 15px 3px 10px;
     /* 原本は最後3pxだったがフォントオーサムの左にpadding10を付けているから */
-    /* background-color: #edae2f; */
-    background-color: #faa700;
-    color: white;
+    /* background: #edae2f; */
+    background: #f1df50;
+    /* background: #eee183; */
+    /* color: white; */
+    color: black;
     opacity: 1;
     display: inline-block;
-    border: solid 2px;
-    border-color: #a68d13;
+    border: solid 3px #a68d13;
     box-sizing: border-box;
     border-radius: 50px;
     text-decoration: none;
     cursor: pointer;
+    box-shadow: 4px 6px 10px gray;
+    transition: all .3s ease-out;
   }
 
+  .map-btn:hover,
   .bloglink-btn:hover {
     transition: 0.7s;
-    background-color: #00c811;
-    border-color: #077919;
+    /* background: #00c811; */
+    background: #ffe100;
+    /* color: white; */
+    transform: scale(1.05, 1.05);
+    border-color: #000000;
+    /* border-color: #077919; */
     /* color: rgb(27, 35, 255); */
     /* opacity: 0.6; */
   }
@@ -75,11 +83,11 @@
   } */
 
   /* ボタンにホバーすると透明度0.7が解除 */
-  .map-btn:hover {
+  /* .map-btn:hover {
     opacity: 1;
     transition: 0.7s;
     background-color: #884330;
-  }
+  } */
 
   @media screen and (max-width: 769px) {
     .map-btn {
@@ -89,6 +97,7 @@
 
   @media screen and (max-width: 500px) {
     .bloglink-btn {
+      margin-left: -7%;
       padding: 0.5em 0px;
       width: 12em;
     }
