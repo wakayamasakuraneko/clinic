@@ -25,8 +25,10 @@
 
   summary.introSummary1:hover {
     /* background: #50f160; */
-    color: #ffffff;
-    background: #00c811;
+    /* color: #ffffff; */
+    color: #000000;
+    /* background: #00c811; */
+    background: #ffe100;
   }
 
   summary:hover {
@@ -41,11 +43,14 @@
     border: solid;
     border-color: #8e8010;
     border-radius: 28px;
+    box-shadow: 4px 6px 10px gray;
   }
 
   details.introDetail1:hover {
     border: solid;
-    border-color: #00c811;
+    /* border-color: #00c811; */
+    border-color: #000000;
+    transform: scale(1.05, 1.05);
   }
 
   details:hover {
@@ -66,6 +71,7 @@
 
     details.introDetail1[open] {
       width: 100%;
+      transform: scale(1.0, 1.0);
       /* width: 36em; */
       /* width: 900px; */
     }
