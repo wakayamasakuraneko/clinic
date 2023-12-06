@@ -41,7 +41,15 @@ th .tax-status {
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;
+    transition: all .3s ease-out;
     /* font-size: 1em; */
+}
+
+#toggle-button:hover,
+#show-all-button:hover {
+    transform: scale(1.15, 1.15);
+    background: #eeda41;
+    /* background: #ffe100; */
 }
 
 @media screen and (max-width: 400px) {
