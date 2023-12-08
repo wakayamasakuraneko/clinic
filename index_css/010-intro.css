@@ -21,6 +21,8 @@
     padding: 0.2em 1em;
     background: #f1df50;
     border-radius: 25px;
+    box-shadow: 1px 0px 3px gray,
+      inset 0px -2px 4px #615712;
   }
 
   summary.introSummary1:hover {
@@ -43,14 +45,17 @@
     border: solid;
     border-color: #8e8010;
     border-radius: 28px;
-    box-shadow: 4px 6px 10px gray;
+    box-shadow: 1px 0px 3px gray;
+    /* box-shadow: 4px 6px 10px gray; */
+    transition: all .3s ease-out;
   }
 
   details.introDetail1:hover {
     border: solid;
     /* border-color: #00c811; */
-    border-color: #000000;
+    /* border-color: #000000; */
     transform: scale(1.05, 1.05);
+    transition: all .15s ease-out;
   }
 
   details:hover {
