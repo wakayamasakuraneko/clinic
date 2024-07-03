@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <title>和歌山スペイクリニック さくらねこ</title> -->
+  <title>最新HPカラム落</title>
+  <!-- <link rel="shortcut icon" href="https://raw.githubusercontent.com/wakayamasakuraneko/hp/master/???.jpg"> -->
+  <link rel="shortcut icon" href="pics/rect153.png">
+  <!-- ↑ 練習用 ↓ 掲載時はこちら -->
+  <!-- <link rel="shortcut icon" href="img_icon.ico"> -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index_css/common.css">
+  <link rel="stylesheet" href="index_css/common-jump.css">
+  <link rel="stylesheet" href="index_css/001-header.css">
+  <link rel="stylesheet" href="index_css/001-heade-btn-anime.css">
+  <link rel="stylesheet" href="index_css/002-sticky-nav.css">
+  <link rel="stylesheet" href="index_css/003-title-img.css">
+  <link rel="stylesheet" href="index_css/010-intro.css">
+  <link rel="stylesheet" href="index_css/020-procedures-notes.css">
+  <link rel="stylesheet" href="index_css/Prices/01-table.css">
+  <link rel="stylesheet" href="index_css/Prices/02-button.css">
+  <link rel="stylesheet" href="index_css/Prices/03-rotateSym.css">
+  <link rel="stylesheet" href="index_css/Prices/Accordion/accordion-main.css">
+  <link rel="stylesheet" href="index_css/Prices/Accordion/accordInAccord.css">
+  <link rel="stylesheet" href="index_css/Prices/Accordion/tableInTable.css">
+  <link rel="stylesheet" href="index_css/Prices/Accordion/microchip.css">
+  <link rel="stylesheet" href="index_css/Prices/00-original_exist.css">
+  <link rel="stylesheet" href="index_css/040-telfax.css">
+  <link rel="stylesheet" href="index_css/050-access.css">
+  <link rel="stylesheet" href="index_css/PC_Modal.css">
+  <link rel="stylesheet" href="index_css/SP_Modal.css">
+  <link rel="stylesheet" href="index_css/090-footer3.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- ↑　Price3.jsの$(document).ready(function () を動かすため -->
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+</head>
+
+
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+
+    <div class="header-top">
+
+      <b>和歌山スペイ<span>クリニック</span> <span>さくらねこ</span></b>
+    </div>
+
+    <div class="header_empty">
+      <!-- margin-top: 32px;の為だけのdiv -->
+      <!-- これのお陰で休診宣言の表示がメッチャ楽 -->
+    </div>
+
+    <div class="header-middle">
+
+      <!-- ブログへのアイコン -->
+      <!-- <a class="blogbtn fl_blog" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
+        <img src="pics/path150.png" alt="title-img">
+        <div>ブログ</div>
+      </a> -->
+
+      TEL・FAX <span>073-407-1288</span>
+    </div>
+
+    <div class="header-bottom">
+      手術中は電話が繋がりにくく<span>なっております。</span><span>メニュー>TELをご参照下さい。</span>
+    </div>
+
+    <!-- 休診宣言のなどのお知らせ　CSSのON/OFFで表示非表示切替可 -->
+    <div class="header_notice">
+      <hr>
+      <div class="header_declaration">
+
+        <div class="header-btn glow-dot-button" id="toggle-microchip-button">new! マイクロチップ装着</div>
+
+        <a href="#specialize" class="header-btn">保護猫の手術をご希望の方へ</a>
+        <!-- <a href="#closed-day" class="header-btn">4-5月休診日のご案内</a> -->
+
+      </div>
+      <hr>
+    </div>
+
+    <div class="header_empty2"></div>
+    <!-- 上記の<hr>のmargin-block-end: 0.5em;が白くなってしまうためやむを得ず授けた空div。cssでheight: 1px;を設定 -->
+
+  </header>
+
+  <!-- ナビメニュー -->
+  <div class="sticky">
+
+    <!-- ナビメニュー上の隙間　スマホでON 　2020/12/30非表示にしてみた-->
+    <!-- <div class="navtop">
+      <li class="navtop-li">⇔</li>
+      <li class="navtop-li">メニュー 横スクロール</li>
+      <li class="navtop-li">⇔</li>
+    </div> -->
+
+    <div class="navtop-bottom">
+    </div>
+    <nav class="menu-nav">◀
+      <div>
+        <ul class="menu-ul">
+          <li class="menu-li"><a href="#">ホーム</a></li>
+          <li class="menu-li"><a href="#introduction">病院紹介</a></li>
+          <li class="menu-li"><a href="#procedures-notes">手術の流れと注意点</a></li>
+          <li class="menu-li"><a href="#price">料金案内</a></li>
+          <li class="menu-li"><a href="#TelFax">TEL/FAX/営業時間/休診日</a></li>
+          <li class="menu-li"><a href="#access">アクセス</a></li>
+          <li class="menu-li"><a href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">ブログ</a></li>
+          <!-- <li class="menu-li">Facebook</li> -->
+        </ul>
+      </div>▶
+    </nav>
+
+    <!-- メニューと画像の間の隙間 -->
+    <div class="navbottom-top">
+    </div>
+    <div class="navbottom-bottom">
+    </div>
+  </div>
+
+  <!-- タイトル画像 -->
+  <div class="img-background">
+    <!-- <img class="title-img" src="https://wakayamasakuraneko.github.io/clinic/img_title_test.jpg" alt="title-img"> -->
+    <!-- ↑ 練習用 ↓ 掲載時はこちら -->
+    <img class="title-img" src="pics/img_title_01.jpg" alt="title-img">
+  </div>
+
+
+  <!-- 病院紹介 -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="introduction" class="bold-title">病院紹介</h2>
+      <p>※ 当院は猫の不妊手術専門病院です。一般の診療は行っておりません。</p>
+
+      <p class="color_red">　まずはご予約をお願いいたします。</p>
+      <p>
+        当日ご予約無しでの手術は割増料金がかかる事があります。
+        <!-- <a href="#Ex_charge" class="bloglink-btn">
+          割増料 ⇒表
+        </a> -->
+      </p>
+
+      <!-- <p>外猫に関しては予約のキャンセルを申し訳ないと思わなくても大丈夫です。<a href="https://wakayamasakuraneko.github.io/blog/02/02.htm"
+          class="header-btn"> ⇒ キャンセルに関して</a>
+      </p> -->
+
+      <br><br>
+
+      <b id="specialize">【保護猫の手術を<span>ご希望の</span><span>方へ</span>】</b>
+
+      <p>
+        マイクロチップ装着をご希望の方はお申し出下さい。
+      </p>
+
+      <p>混雑時には外猫の手術を優先する事があります。ご了承ください。</p>
+
+      <p>
+        <!-- <span>ご予約はできるだけ(月)～(木)の平日でお願い致します。</span> -->
+        ご予約はできるだけ(月)～(木)の平日でお願い致します。
+        <!-- ↑↓<span>タグをつけると画面全体に微妙な横スクロールが発生する。これが見つけられずに何ヶ月も苦労した… -->
+      </p>
+      <p>
+        <!-- <span>日曜ご希望の場合は割増料金がかかる事があります。</span>　(例外あり) -->
+        日曜ご希望の場合は割増料金がかかる事があります。　(例外あり)
+      </p>
+
+      <!-- ↓見え隠れするコンテンツ -->
+      <details class="introDetail1">
+        <summary class="introSummary1">その他補足</summary>
+        <p>ご来院の際には洗濯ネットに入れて来るようにお願い致します。
+          <center><a href="https://wakayamasakuraneko.github.io/blog/04/04.htm" class="bloglink-btn"> <i
+                class="far fa-hand-point-right"></i> 洗濯ネットについて
+            </a></center>
+        </p>
+        <p>ペットショップで購入された猫、又は血統証付きの猫に関しては基本お引き受けしておりませんが、多頭飼育問題の際にはご相談下さい。
+        </p>
+      </details>
+
+      <!-- <p>多頭飼育崩壊など一斉手術の場合は日曜でも割増料金は掛かりません。ご相談下さい。</p> -->
+
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- 手術の流れと注意点 -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="procedures-notes" class="bold-title">手術の流れと注意点</h2>
+
+      <h3 class="h3-PN">◎ ご予約と手術の流れ</h3>
+      <p>朝９時頃にご来院して頂き、夕方３～５時にお迎えの流れになります。</p>
+      <p>お外の猫に限り、前泊もお引き受けいたします。ご相談下さい。</p>
+
+      <h3 class="h3-PN-red">◎ 連れて来られる際の<span>入れ物について</span><span>（※重要）</span></h3>
+      <p>連れて来られる際の入れ物はプラスチック製のハードキャリーまたは捕獲器でお越し下さい。</p>
+
+      <div class="align_center">　<a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"><i
+            class="far fa-hand-point-right"></i> キャリーケースに<span>関しての注意事項</span></a></div>
+
+
+
+      <p>捕獲器を剥き出しのままので来られると、猫は大変怯えます。生地などで覆ってお越し下さい。</p>
+
+      <!-- PCの場合の見本用ボタン -->
+      <div class="PcModal">
+        　<span id="modal-trigger" class="positionA bloglink-btn">
+          <i class="far fa-hand-point-right"></i> 捕獲器で来院される際の包み方 → 見本
+        </span>
+        <!-- PC版モーダル内容 -->
+        <div class="modal-bg" id="modal-bg">
+          <div class="modalPC" id="modalPC">
+            <div><b class="close-btn" id="modal-close-btn"><span class="lineClosePC"></b></div>
+            <div class="imgBgColor"><img src="pics/path359c.png" alt="image B"></div>
+            <div>　<a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn">
+                <i class="far fa-hand-point-right"></i> 作り方のページはこちら</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- スマホの場合の見本用ボタン -->
+      <div class="SpModal align_center">
+        <div>
+          　<span class="bloglink-btn modalOpen media501" data-modal="1"><i class="far fa-hand-point-right"></i>
+            捕獲器で来院される<span>際の包み方 → 見本</span></span>
+        </div>
+
+        <!-- スマホ版モーダル内容 -->
+        <div class="modal" id="modal">
+          <div class="modal__overlay modalClose"></div>
+          <!-- 「modal__overlay」は背景の灰色部分でCSSで指定している -->
+          <div class="modal__content">
+            <div class="modal_inner">
+              <div class="modal__close-btn modalClose" aria-label="閉じる"><span class="lineClose"></span></div>
+              <!-- スワイパー -->
+              <div class="swiper slideWrpper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <!-- <p class="swiperText"> -->
+                    <img src="pics/path7963.png" alt="写真風呂敷">
+                    <!-- </p> -->
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path7903.png" alt="ｲﾗｽﾄ風呂敷">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path7907.png" alt="ｲﾗｽﾄ紐">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path5716.png" alt="写真紐">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn">
+              <i class="far fa-hand-point-right"></i> 作り方の<span>ページはこちら</span></a>
+            <!-- 前後の矢印 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ツールチップ試み -->
+      <!-- <p>捕獲器を剥き出しのままので来られると、猫は大変怯えます。生地などで覆ってお越し下さい。<button class="tooltip">
+          ▶見本
+          <span class="tooltiptext"><img src="pics/path359.png" alt=""></span>
+        </button></p> -->
+
+      <!-- ツールチップ試み（別の方法） -->
+      <!-- <span>見本</span>
+      <span class="btn">
+        <center>写真</center>
+        <div class="img-wrapper">
+          <img
+            src="https://images.pexels.com/photos/14980939/pexels-photo-14980939.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+            alt="ボタン画像１" />
+        </div>
+      </span> -->
+
+      <br><br>
+
+      <h3 class="h3-PN">◎ 飲食の制限について</h3>
+      <p>・飲水の制限はありません。</p>
+      <p>・食事の制限はシビアではありませんが、朝は沢山食べない様にご注意下さい。</p>
+
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- 料金表 -->
+  <div id="soto">
+    <!-- <div class="uti"> -->
+    <div class="uti-bottom0">
+      <h2 id="price" class="bold-title">料金表</h2>
+
+      <div class="price-caption-top">
+        <p>※ 手術料金には、ノミ駆虫薬、化膿止めの抗生剤 及び、術後の 皮下補液 も含まれております。(一部例外)</p>
+      </div>
+
+      <ul class="button-wrapper">
+        <li><button id="toggle-button">税切替</button></li>
+        <li><button id="show-all-button">広げる</button></li>
+      </ul>
+
+      <table class="priceList1">
+        <!-- ★　手術料金 -->
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                手術<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+
+          <tr>
+            <td>メス</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">8000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>オス</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">5000円</li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- 耳カット-->
+          <tr>
+            <td>
+              <!-- <ol>で囲むとカラム落ちで行間が広くなるのを防げる -->
+              <ol>手術<span>+耳カット</span></ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">-500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- 耳カット メス -->
+          <!-- <tr>
+            <td>
+              <ol>メス <span>耳カットあり</span></ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">7500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr> -->
+
+          <!-- 耳カット オス -->
+          <!-- <tr>
+            <td>
+              <ol> オス <span>耳カットあり</span> </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">4500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr> -->
+
+          <tr>
+            <td>堕胎費</td>
+            <td>
+              <div class="tdcolum">
+                <ol>
+                  <li class="price-excl-tax">1000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+                <ol>
+                  <li>～</li>
+                </ol>
+                <ol>
+                  <li class=" price-excl-tax">3000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+
+
+        <!-- ★　検査・ワクチン -->
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                検査・ワクチン<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+
+          <!-- ３種混合ワクチン -->
+          <tr>
+            <td>
+              ３種混合<span>ワクチン</span>
+              <!-- <ol>で囲むとカラム落ちで行間が広くなるのを防げるが、一方ですぐカラム落ちする -->
+              <!-- <ol>３種混合<span>ワクチン</span></ol> -->
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">3000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- 耳カット３種混合 -->
+          <tr class="menu js-menu">
+            <td>
+              <div class="flexB">
+                <ol>
+                  <li class="menuTd">
+                    <i class="i_box">
+                      <i class="one_i">
+                      </i>
+                    </i>
+                  </li>
+                </ol>
+                <ol>
+                  <li>&nbsp;</li>
+                </ol>
+                <ol>
+                  <li>３種混合<span>ワクチン</span></li>
+                </ol>
+              </div>
+            </td>
+            <td>
+              <div>
+                <ol>
+                  <li>※</li>
+                  <li class="price-excl-tax"> 1500円 </li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+          <tr class="contents">
+            <td colspan="2">
+              <div class="fontSizeB"> 手術時に耳カットを</span><span>入れた場合</span><span>(初回のみ)</span></div>
+              <div class="fontSizeB">
+                <span>クラウドファンディングの</span><span>チケットを</span><span>ご利用の場合は</span><span>2000円(税抜)です。</span><span>ご了承下さい。</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- ３種混合(不活化) -->
+          <tr class="menu js-menu">
+            <td>
+              <div class="flexB">
+                <ol>
+                  <li class="menuTd">
+                    <i class="i_box">
+                      <i class="one_i">
+                      </i>
+                    </i>
+                  </li>
+                </ol>
+                <ol>
+                  <li>&nbsp;</li>
+                </ol>
+                <ol>
+                  <li><span>３種混合</span><span>(不活化)</span></li>
+                </ol>
+              </div>
+            </td>
+            <td>
+              <div>
+                <ol>
+                  生3種+<li class="price-excl-tax">500円 </li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+          <tr class="contents">
+            <td colspan="2">
+              <div>
+                状況により生と不活化を<span>使い分ける場合があります。</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- ５種(４種)混合ワクチン -->
+          <tr class=" sample3">
+            <td>
+              <!-- <ol>で囲むとカラム落ちで行間が広くなるのを防げる -->
+              <ol>
+                <span>５種(４種)混合</span><span>ワクチン</span>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">4000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- Fiv/Felv 検査 -->
+          <tr class="sample4">
+            <td>
+              <!-- <ol>で囲むとカラム落ちで行間が広くなるのを防げる -->
+              <ol>猫エイズ<span>白血病検査</span></ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">3000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>検便</td>
+            <td>
+              <div class="tdcolum">
+                <ol>
+                  <li class="price-excl-tax">1000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+                <ol>
+                  <li>～</li>
+                </ol>
+                <ol>
+                  <li class=" price-excl-tax">1500円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+
+        <!-- ★　抗生剤・駆虫薬 -->
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                抗生剤・駆虫薬 等<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+
+          <!-- テスト -->
+          <!-- https://webukatu.com/wordpress/blog/6087/ -->
+
+          <!-- レボリューション -->
+          <tr>
+            <td>レボリュー<span>ション</span></td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1200円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- アドボケート -->
+          <tr>
+            <td>アドボケート</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- ネクスガードキャット(術中) -->
+          <!-- <tr>
+            <td>ネクスガードキャット<span>(術中)</span></td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr> -->
+
+          <!-- ネクスガードキャット(販売) -->
+          <!-- <tr>
+            <td>ネクスガードキャット<span>(販売)</span></td>
+            <td>
+              <ol class="ulFontSize">
+                <li>0.8～2.5 kg未満</li>
+                <li class="price-excl-tax">1500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+              <ol class="partition"> </ol>
+              <ol class="ulFontSize">
+                <li>2.5～7.5 kg未満</li>
+                <li class="price-excl-tax">2000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            </td>
+          </tr> -->
+
+          <tr class="menu js-menu hoverColorB">
+            <td colspan="2">
+              <div class="menuTd">
+                <!-- <i id="i_box" class="i_box"> -->
+                <!-- <i class="nomi_box"> -->
+                <!-- https://pikaichi.net/font-awesome.html -->
+                <img class="nomiring" src="pics/ring.png" alt="title-img"></img>
+                <img class="nomiimg" src="pics/nomilr.png" alt="title-img">
+                <!-- <i class="fa fa-chevron-right"></i> -->
+                駆虫薬と表
+              </div>
+            </td>
+          </tr>
+          <tr class="contents">
+            <td class="antiWorm" colspan="2">
+
+              <!-- 駆虫薬テーブル -->
+              <table class="tableInTa" border="0">
+                <tr>
+                  <td class="nowrap">＼</td>
+                  <td class="tategaki">マダニ</td>
+                  <td class="tategaki">ノミ</td>
+                  <td class="tategaki">シラミ</td>
+                  <td class="tategaki">耳ダニ</td>
+                  <td class="tategaki">疥癬</td>
+                  <td class="tategaki">フィラリア</td>
+                  <td class="tategaki">回虫、鈎虫</td>
+                  <td class="tategaki">条虫(※)</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">マイフリーガード</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>ー</td>
+                  <td>ー</td>
+                  <td>ー</td>
+                  <td>ー</td>
+                  <td>ー</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">アドボケート</td>
+                  <td>ー</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>ー</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">レボリューション</td>
+                  <td>ー</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>？</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>ー</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">ブラベクトプラス</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>？</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>ー</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">ネクスガードCat</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>？</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                  <td>◯</td>
+                </tr>
+              </table>
+
+              <!-- スマホ用の表画像 -->
+              <!-- <img class="spAnthelTable" src="pics/211051.png" alt="Anthelmintics and table"> -->
+
+              <!-- pc用の表画像 -->
+              <!-- <img class="pcAnthelTable" src="pics/205829.png" alt="Anthelmintics and table"> -->
+              <div class="padingA">
+                <p>・ブラベクトプラス、またはネクスガードCATをご希望の際は追加料金になります。ご相談下さい。</p>
+                <p>・ブラベクトプラスの効き目は3ヶ月、外猫になるべくの事をしてあげたいという希望のある方はご検討下さい。</p>
+                <p>・ネクスガードCATは駆虫範囲が広く保護の際の初回投与としてお勧めです。</p>
+                <p>・マンソン裂頭条虫(※)・コクシジウム・ジアルジア・トリコモナスは上記のどれも効きません。個別の駆虫が必要です。</p>
+                <p>・「？」…効き目があるという報告もあります</p>
+                <p>・他にも色々ありますが、本院で扱っている駆虫剤は以上です。</p>
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- コンベニア -->
+          <tr class="sample4">
+            <td>
+              <!-- <ol>で囲むとカラム落ちで行間が広くなるのを防げる -->
+              <ol>コンベニア<span>(希望者のみ)</span> </ol>
+            </td>
+            <td>
+              <ol class="ulFontSize">
+                <li>2㎏まで</li>
+                <!-- <li class="price-excl-tax">1000円 </li> -->
+                <li class="price-excl-tax">1500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+              <ol class="partition"> </ol>
+              <ol class="ulFontSize">
+                <li>2～4㎏</li>
+                <!-- <li class="price-excl-tax">2000円 </li> -->
+                <li class="price-excl-tax">2500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+              <ol class="partition"> </ol>
+              <ol class="ulFontSize">
+                <li>以降1㎏ごと</li>
+                <li class="price-excl-tax">500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+
+        <!-- ★　その他 -->
+
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                その他<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+
+          <!-- 入院費 -->
+          <tr class="menu js-menu">
+            <td>
+              <div class="flexB">
+                <ol>
+                  <li class="menuTd">
+                    <i class="i_box">
+                      <i class="one_i">
+                      </i>
+                    </i>
+                  </li>
+                </ol>
+                <ol>
+                  <li>&nbsp;</li>
+                </ol>
+                <ol>
+                  <li>入院費<span>(入院手数料)</span></li>
+                </ol>
+              </div>
+            </td>
+            <td>
+              <div class="tdcolum">
+                <ol>
+                  <li class="price-excl-tax">1000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+                <ol>
+                  <li>～</li>
+                </ol>
+                <ol>
+                  <li class=" price-excl-tax">2000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+          <tr class="contents">
+            <td colspan="2">
+              <div>
+                外猫に限り手術前後の入院が可能です。<span>(休診日を除く)</span>
+              </div>
+              <div>家猫に関しては日帰り出来るスケジュールで<span>ご予約お願い致します。 </span></div>
+            </td>
+          </tr>
+
+          <!-- <tr>
+            <td>入院費<span>(入院手数料)</span></td>
+            <td>
+              <div class="tdcolum">
+                <ol>
+                  <li class="price-excl-tax">1000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+                <ol>
+                  <li>～</li>
+                </ol>
+                <ol>
+                  <li class=" price-excl-tax">2000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr> -->
+
+          <!-- 爪切り -->
+          <tr>
+            <td>爪切り</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- マイクロチップ -->
+          <tr class="menu js-menu">
+            <td>
+              <div class="flexB">
+                <ol>
+                  <li class="menuTd">
+                    <i class="i_box">
+                      <i class="one_i">
+                      </i>
+                    </i>
+                  </li>
+                </ol>
+                <ol>
+                  <li>&nbsp;</li>
+                </ol>
+                <ol>
+                  <li>
+                    マイクロチップ<span>装着</span>
+                  </li>
+                </ol>
+                <!-- ↑<ol>で囲むと600幅以下でなぜか行間が狭くなるが<li>で囲まないとdisplay:flexの表示で横に割れる -->
+              </div>
+            </td>
+            <td>
+              <div>
+                <ol>
+                  <li class="price-excl-tax">3000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="contents">
+            <td colspan="2">
+              <div class="align_left">事故・災害ではぐれた。<span>もしもの為に。</span></div>
+              <hr>
+              <div class="kankyocho">装着後は⬇️こちらのサイトから
+                <div>
+                  <a class="frame02" href="https://reg.mc.env.go.jp/" target="_blank"><img class="microchipImg"
+                      src="pics/53kb.png" alt="52kb">
+                    <!-- <div class="image-text">
+                      ご登録
+                    </div> -->
+                  </a>
+                </div>ご登録お願いいたします。
+              </div>
+              <hr>
+              <div class="align_left">※ 無麻酔での装着は、<span>技術料が加算されます。</span></div>
+            </td>
+          </tr>
+
+          <!-- 療法食 -->
+          <tr>
+            <td>療法食</td>
+            <td>
+              <ol>
+                <li>別ページを<span>御覧ください⏩️</span></li>
+              </ol>
+            </td>
+          </tr>
+
+
+
+        </tbody>
+
+        <!-- ★　割増料金 -->
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                割増料金<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+          <!-- 予約外手術 -->
+          <tr>
+            <td class="column3">予約外手術</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>変動あり
+              </ol>
+            </td>
+          </tr>
+
+          <!-- 日曜予約（※家猫、保護猫に限る） -->
+          <tr>
+            <td>
+              <ol>
+                <li>日曜希望<span>（家猫、保護猫</span><span>の場合のみ）</span><span>例外：多頭飼育崩壊</span></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>変動あり
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+
+      <table class="priceList2">
+        <colgroup>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+
+        <!-- ★　割引料金 -->
+        <thead>
+          <tr>
+            <th colspan="3">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                割引料金<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+          <tr>
+            <td colspan="3">
+              <ol>
+                <li>
+                  耳カットとワクチンの<span>両方をした場合、</span><span><span>数に応じて</span><span>割引料金が</span><span>適応されます。</span></span>
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr class="column1">
+            <td>猫の数</td>
+            <td>1匹当たり<span>の割引額</span></td>
+            <td>割引額計</td>
+          </tr>
+          <tr>
+            <td>1匹</td>
+            <td>ー</td>
+            <td>ー</td>
+          </tr>
+          <tr>
+            <td>2匹</td>
+            <td>ー</td>
+            <td>ー</td>
+          </tr>
+          <tr>
+            <td>3匹</td>
+            <td>ー</td>
+            <td>ー</td>
+          </tr>
+          <tr>
+            <td>4匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">200円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">800円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>5匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">200円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>6匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">300円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1800円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>7匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">400円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">2800円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>8匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">4000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>9匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">600円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">5400円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>10匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">700円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">7000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>11匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">800円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">8800円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <!-- <tr>
+            <td>12匹</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">12000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr> -->
+
+          <tr class="boderBottom">
+            <td>
+              <ol>
+                12匹<span>以降</span></ol>
+            </td>
+            <td colspan="2">
+              <div class="disf2">
+                <ol>以降</ol>
+                <ol class="disf">
+                  <li class="disf">
+                    <ol class="price-excl-tax">800円&nbsp;</ol>
+                    <ol class="slash">&nbsp;/&nbsp;</ol>
+                    <ol class="price-incl-tax"></ol>
+                    <ol>／1匹</ol>
+                  </li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ↓税込税別切り替えボタンを収めるスペース -->
+      <div class="gap2"></div>
+    </div><!-- uti-bottom0 -->
+
+
+    <div class="uti-top0">
+      <div class="price-caption-bottom">
+        <p>★ 耳カット<span>(耳先のＶ字カット)は</span><span>不妊去勢手術を受けた証</span></p>
+        <p>もう子猫を増やすことは<span>ありません。</span></p>
+      </div>
+    </div><!-- uti-top0 -->
+
+  </div><!-- soto -->
+
+
+  <!-- TEL・FAX -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="TelFax" class="bold-title">TEL・FAX</h2>
+      <h3 class="h3-Tel"><i class="fas fa-phone"></i> 073-407-1288<span>（兼 FAX）</span></h3>
+      <p>手術中（主に午前中～昼くらい）の為電話に出られない事があります。</p>
+      <p>ご予約ご用件のメッセージを留守番電話にお伝え下さい。</p>
+      <!-- <p>※ 内容によっては折り返しお電話出来ない場合もございます。</p> -->
+      <!-- <p>折り返しお電話致しますが、非通知の番号にはご連絡できません。</p> -->
+      <p>なるべく折り返す様に致しますが、連絡が無い場合、再度ご連絡お願い申し上げます。</p>
+      <h2 id="opening-hours">営業時間と休診日</h2>
+      <h3 class="h3-opening-hours"><b>営業時間</b> <span>午前９時～午後５時</span></h3>
+      <p> ※ お電話は上記の通り、午前中は主に留守番電話に切り替わる事が多いです。</p>
+      <h3 class="h3-opening-hours"><b>休診日</b> 金曜・土曜</h3>
+      <!--       <h2 id="closed-day">年末年始の休診日のご案内</h2> -->
+      <!--             <h2 id="closed-day">3月休診日のご案内</h2> -->
+      <!--             <p>3/19(日)は臨時休診致します。</p> -->
+      <!--       <p>8/12(金)～8/20(土)まで休診いたします。</p> -->
+      <!--       <p>12/29(木)～1/7(土)まで休診いたします。ご了承下さい。</p> -->
+      <!--       <p>12/29(木)～1/7(土)まで休診いたします。ご不便をお掛けしますがどうぞ宜しくお願い致します。</p> -->
+      <!-- <h2 id="closed-day">6月休診日のご案内</h2> -->
+      <!-- <p>xx/xx(x)～xx/xx(x)まで休診いたします。ご不便をお掛けしますがどうぞ宜しくお願い致します。</p> -->
+      <!-- <br><br> -->
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- アクセス -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="access" class="bold-title">アクセス</h2>
+      <p>〒640-8324</p>
+      <p>和歌山県和歌山市<span>吹屋町４丁目９−１</span></p>
+      <p>※ 木広町の交差点からは<span>道幅が狭く、</span><span>入りにくいので</span><span>ご注意下さい</span></p>
+      <div class="wrapMaps">
+        <!-- <img src="https://wakayamasakuraneko.github.io/clinic/map.png" alt="map-img"> -->
+        <!-- ↑ 練習用 ↓ 掲載時はこちら -->
+        <img src="pics/map.png" alt="map-img">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3298.8720491193626!2d135.1865673!3d34.2262853!3m2!1i1024!2i768!4f10!3m3!1m2!1s0x6000b32d2406f717%3A0xb1b26acc7dfa9379!2z5ZKM5q2M5bGx44K544Oa44Kk44Kv44Oq44OL44OD44KvIOOBleOBj-OCieOBreOBkw!5e0!3m2!1sja!2sjp!4v1681827027923!5m2!1sja!2sjp"
+          width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- 参考：google map埋め込みの際拡大率、縮小率などの縮尺を調整する方法 -->
+        <!-- https://arts-factory.net/googlemap/ -->
+      </div>
+
+      <!-- 以下 Googleマップへリンク -->
+      <!-- <p class="device">※ 端末によってはメニューボタンが効かない、Google Map が表示されない場合があります。ご了承下さい。</p> -->
+      <!-- <p class="device">Google Map が表示されない場合</p> -->
+      <div class="googlemap-text">
+        <!-- <a href="index_map.htm" class="map-btn">
+          Google Mapで確認<i class="far fa-hand-point-left"></i>
+        </a> -->
+        <a href="index_map.htm" class="map-btn">
+          Google Map が<span>表示されない場合 <i class="far fa-hand-point-left"></i></span>
+        </a>
+      </div>
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- フッター -->
+  <footer class="footer-top">
+    <div class="footer-left"> </div>
+
+    <div class="footer-right">
+      <ul class="snsbtniti">
+        <!-- ブログ -->
+        <li>
+          <a class="blogbtn fl_blog" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
+            <img src="pics/path150.png" alt="title-img">
+            <div>ブログ</div>
+          </a>
+        </li>
+        <!-- フェイスブック -->
+        <li>
+          <a class="flowbtn fl_fb1" href="https://www.facebook.com/wakayamasakuraneko/" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+            <div>Facebook</div>
+          </a>
+        </li>
+        <!-- インスタ -->
+        <li>
+          <a class="flowbtn insta_btn1" href="https://www.instagram.com/wakayama_spayclinic_sakuraneko/"
+            target="_blank">
+            <i class="fab fa-instagram"></i>
+            <div>Instagram</div>
+          </a>
+        </li>
+        <!-- ツイッター -->
+        <li>
+          <a class="flowbtn fl_X" href="https://twitter.com/wakayama_spay" target="_blank">
+            <i class="twit_X">𝕏</i>
+            <div class="X_bottom">Twitter</div>
+          </a>
+        </li>
+        <!-- お問い合わせ -->
+        <!-- <li>
+          <a href="お問い合わせ先のURL" class="flowbtn fl_ma1"><i class="far fa-envelope"></i>
+            <div>Contact</div>
+          </a>
+        </li> -->
+      </ul>
+    </div><!-- footer-right -->
+  </footer>
+
+  <footer class="footer-bottom">
+    和歌山スペイクリニック さくらねこ
+  </footer>
+
+  <scrip src="index_js/PCmodal.js"></scrip>
+  <script src="index_js/SPmodal.js"></script>
+  <script src="index_js/PriceEX4_1.js"></script>
+  <script src="index_js/PriceEX5-2.js"></script>
+  <!-- <script src="index_js/PriceEX5'.js"></script> -->
+  <!-- ↑　初期画面は手術料金のみ表示 -->
+  <script src="index_js/acco_in_acco.js"></script>
+  <!-- <script src="index_js/toggleAccordion.js"></script> -->
+  <script src="index_js/microtip_Jump.js"></script>
+  <!-- ↑　「マイクロチップ」をクリックするとそこへジャンプ -->
+  <script src="index_js/line-height-adjustable.js"></script>
+  <!-- ↑　行間検知調整 -->
+</body>
+
+</html>
