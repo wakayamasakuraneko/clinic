@@ -1,0 +1,59 @@
+/* 「new! マイクロチップ装着」のボタンの装飾 */
+
+.glow-dot-button {
+  position: relative;
+  background-color: #54a951;
+  /* color: white; */
+  /* border: 5px double yellowgreen; */
+  /* padding: 10px 20px; */
+  /* text-align: center; */
+  /* text-decoration: none; */
+  /* display: inline-block; */
+  /* font-size: 16px; */
+  /* margin: 4px 2px; */
+  cursor: pointer;
+  /* border-radius: 12px; */
+}
+
+.glow-dot-button::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff;
+  animation: glow-dot 10s linear infinite;
+}
+
+@keyframes glow-dot {
+  0% {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  40% {
+    top: 0;
+    left: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    top: 100%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  90% {
+    top: 100%;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+}
