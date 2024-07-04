@@ -1,0 +1,91 @@
+/* 参考：【画像で解説】Googleマップをコピペだけで簡単にサイトに埋め込む方法 */
+/* https://digitor.jp/textbook/googlemap-embedding/ */
+
+/* ==============================
+  アクセス
+  ============================== */
+
+/* h2 アクセスの文字色 共通 */
+#access {
+  color: #2d6d4b;
+}
+
+/* ◆PC 「端末によって～」のスタイル */
+.device {
+  font-size: 18px;
+  color: red;
+  margin-left: 30px;
+}
+
+/* 共通 justify-content: center; は効かない*/
+/* .wrapMaps {
+    margin-left: 10%;
+  } */
+
+.wrapMaps {
+  display: flex;
+  justify-content: space-evenly
+}
+
+/* ◆PC */
+.wrapMaps img {
+  height: 42%;
+  width: 42%;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+.wrapMaps iframe {
+  width: 42%;
+  height: inherit;
+}
+
+/* 共通 */
+.googlemap-text {
+  margin: 1em 0 1.5em 0;
+  text-align: center;
+  /* これが無いとボタンがセンターにならない */
+}
+
+
+
+/* width: 1100px以下 */
+@media screen and (max-width: 1100px) {
+  .wrapMaps img {
+    width: 48%;
+    height: 48%;
+  }
+
+  .wrapMaps iframe {
+    width: 48%;
+  }
+}
+
+/* スマホ用 */
+@media screen and (max-width: 650px) {
+
+  .wrapMaps {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .wrapMaps img {
+    width: 100%;
+  }
+
+  .wrapMaps iframe {
+    width: 100%;
+    /* height: 300px; */
+    /* height: inherit; */
+  }
+}
+
+/* スマホ用 */
+@media screen and (max-width: 769px) {
+
+  /* 「端末によって～」のスタイル */
+  .device {
+    font-size: 12px;
+    margin-left: 15px;
+  }
+}

@@ -1,0 +1,121 @@
+/* table全体の状態 */
+/* 色とhidden */
+
+.uti-bottom0,
+.uti-top0 {
+  background-color: #ffffe9;
+  font-size: 22px;
+}
+
+.uti-bottom0 {
+  padding: 3% 3% 0 3%;
+  margin: 3% 3% 0 3%;
+}
+
+.uti-top0 {
+  padding: 1px 3% 3%;
+  margin: 0 3% 3% 3%;
+}
+
+table {
+  text-align: center;
+  /* border: 3px #eee183 solid; */
+  /* border: 2px #000000 solid; */
+  background: #fefde0;
+  /* background: #fdfdcd; */
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+  width: 80%;
+  max-width: 1000px;
+  border-collapse: collapse;
+}
+
+.priceList1 {
+  margin-top: -2.5em;
+}
+
+/* 税込税別切り替えボタンを収めるスペース */
+.gap2 {
+  height: 2.7em;
+}
+
+/* 割引表のテーブル1～3列の幅指定 */
+col:nth-child(1) {
+  width: 16%;
+}
+
+col:nth-child(2) {
+  width: 42%;
+}
+
+col:nth-child(3) {
+  width: 42%;
+}
+
+/* spanタグ内の文字はカラム落ちの際途切れない様に */
+table span {
+  display: inline-block;
+}
+
+
+/* 色とhidden */
+
+.PriceCutColor {
+  /* background: #eee183; */
+  background: #ebffb1;
+}
+
+.price-excl-tax {
+  color: blue;
+}
+
+.price-incl-tax {
+  color: red;
+}
+
+/* .hidden {
+  display: none;
+} */
+
+/* CSSこそ同じだが、「.hidden」の方はJavascriptで制御している */
+/* .hidden2 {
+  display: none;
+} */
+
+
+/* 「堕胎費」と「検便」の値段を枠内に収めるため */
+@media screen and (max-width: 880px) {
+  .tdcolum {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+
+  table {
+    width: 100%;
+    font-size: 17px;
+  }
+
+  .priceList1 {
+    margin-top: -3em;
+  }
+
+  .gap2 {
+    height: 2.5em;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .tdcolum {
+    font-size: 15px;
+  }
+
+  .uti-bottom0,
+  .uti-top0 {
+    padding: 0;
+    background-color: #fefde0;
+  }
+}
