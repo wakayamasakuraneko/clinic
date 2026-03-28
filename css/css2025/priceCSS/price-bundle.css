@@ -1,0 +1,787 @@
+/* rebuilt bundle for price (scoped #price) */
+/* ===== ★テーブル全体・共通（土台） (table.css) ===== */
+
+#price .uti-bottom0,
+#price .uti-top0 {
+  background-color: #ffffe9;
+  font-size: 22px;
+}
+
+#price .uti-bottom0 {
+  padding: 3% 3% 0 3%;
+  margin: 3% 3% 0 3%;
+}
+
+#price .uti-top0 {
+  padding: 1px 3% 3%;
+  margin: 0 3% 3% 3%;
+}
+
+#price table {
+  text-align: center;
+
+  background: #fefde0;
+
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+  width: 80%;
+  max-width: 1000px;
+  border-collapse: collapse;
+}
+
+#price .priceList1 {
+  margin-top: -2.5em;
+}
+
+#price .gap2 {
+  height: 2.7em;
+}
+
+#price col:nth-child(1) {
+  width: 16%;
+}
+
+#price col:nth-child(2) {
+  width: 42%;
+}
+
+#price col:nth-child(3) {
+  width: 42%;
+}
+
+#price table span {
+  display: inline-block;
+}
+
+#price .PriceCutColor {
+  background: #ebffb1;
+}
+
+#price .price-excl-tax {
+  color: blue;
+}
+
+#price .price-incl-tax {
+  color: red;
+}
+
+@media screen and (max-width: 880px) {
+  #price .tdcolum {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  #price table {
+    width: 100%;
+    font-size: 17px;
+  }
+
+  #price .priceList1 {
+    margin-top: -3em;
+  }
+
+  #price .gap2 {
+    height: 2.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #price .tdcolum {
+    font-size: 15px;
+  }
+
+  #price .uti-bottom0,
+  #price .uti-top0 {
+    padding: 0;
+    background-color: #fefde0;
+  }
+} /* ===== ★税抜/税込トグル＆広げるボタン (tax-button.css) ===== */
+
+#price th .tax-status {
+  position: absolute;
+  right: 21%;
+  font-weight: normal;
+  border: 2px solid #b2a75b;
+  padding: 2px 4px;
+  border-radius: 20px;
+  top: 20%;
+  background: #eee183;
+  font-size: 80%;
+}
+
+#price .button-wrapper {
+  display: flex;
+  position: sticky;
+
+  top: 80%;
+  justify-content: space-around;
+  padding-bottom: 0.5em;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#price #toggle-button,
+#price #show-all-button {
+  pointer-events: auto;
+
+  position: sticky;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 -4px 5px -2px #b19017 inset;
+  background: rgb(238 225 131);
+  box-shadow: 4px 6px 10px gray;
+  border-radius: 17px;
+
+  padding: 0.3em 0.5em 0.2em 0.5em;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease-out;
+}
+
+#price #toggle-button:hover,
+#price #show-all-button:hover {
+  transform: scale(1.15, 1.15);
+  background: #eeda41;
+}
+
+@media screen and (max-width: 400px) {
+  #price th .tax-status {
+    right: 5%;
+    font-size: 90%;
+    top: 24%;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  #price #toggle-button,
+  #price #show-all-button {
+    padding: 1em 0.7em;
+    border-radius: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #price .button-wrapper {
+    justify-content: space-between;
+  }
+} /* ===== ★回転する＋マーク（thead/td） (rotateMark.css) ===== */
+
+#price .th_box {
+  font-size: 0.8em;
+  position: absolute;
+  top: 20%;
+  width: 25px;
+  height: 25px;
+  color: #194602;
+  border: 1px solid #194602;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+#price .one_th:before,
+#price .one_th:after {
+  content: "";
+  background-color: #000000;
+  border-radius: 10px;
+  width: 18px;
+  height: 2px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform-origin: center center;
+}
+
+#price .one_th:before {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#price .one_th:after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#price thead.thead-active .one_th:before {
+  -webkit-transform: rotate(-0deg);
+  transform: rotate(0deg);
+}
+
+#price thead.thead-active .one_th:after {
+  display: none;
+}
+
+#price .th_box {
+  left: 21%;
+}
+
+@media screen and (max-width: 400px) {
+  #price .th_box {
+    left: 9%;
+  }
+}
+
+#price thead.thead-active .th_box {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 500px) {
+  #price .th_box {
+    top: 30%;
+    width: 22px;
+    height: 22px;
+  }
+
+  #price .one_th:before,
+  #price .one_th:after {
+    width: 16px;
+  }
+}
+
+#price .i_box {
+  display: none;
+}
+
+#price tbody.show .i_box {
+  font-size: 0.8em;
+
+  top: 20%;
+  width: 0.8em;
+  height: 0.8em;
+  color: #194602;
+  border: 1px solid #194602;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+#price tbody.show .nomi_box {
+  position: absolute;
+  top: 14%;
+  width: 40px;
+  height: 40px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+#price tbody.show .i_box:nth-child(2) {
+  right: 75%;
+}
+
+#price tbody.show .nomi_box:nth-child(1) {
+  left: 20vw;
+}
+
+@media screen and (max-width: 1120px) {
+  #price tbody.show .i_box:nth-child(2) {
+    right: 85%;
+  }
+}
+
+#price .menuTd {
+  position: relative;
+}
+
+#price .menu.is-active .i_box {
+  -webkit-transform: rotate(450deg);
+  transform: rotate(450deg);
+  transition: 0.3s;
+  display: block;
+}
+
+#price .menu.is-active .nomi_box {
+  -webkit-transform: rotate(-540deg);
+  transform: rotate(-540deg);
+  transition: 0.3s;
+  display: flex;
+}
+
+#price .one_i:before,
+#price .one_i:after {
+  content: "";
+  background-color: #000000;
+  border-radius: 10px;
+
+  height: 1.5px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform-origin: center center;
+}
+
+#price .one_i:before {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#price .one_i:after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#price .menu.is-active .one_i:before {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(90deg);
+}
+
+#price .menu.is-active .one_i:after {
+  display: none;
+}
+
+#price .menu.is-active .nomiimg {
+  -webkit-transform: rotate(-540deg);
+  transform: rotate(-540deg);
+  transition: 0.3s;
+  left: 18%;
+}
+
+#price .nomiring {
+  position: absolute;
+  left: 18%;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  transition: 0.2s;
+}
+
+#price .menu.is-active .nomiring {
+  top: 9%;
+  width: 30px;
+  height: 16px;
+  display: block;
+  opacity: 1;
+  transition: 1s;
+}
+
+#price .nomiimg {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 35px;
+  transition: 0.2s;
+}
+
+@media screen and (max-width: 400px) {
+  #price .nomiring,
+  #price .nomiimg {
+    left: 15%;
+  }
+
+  #price .menu.is-active .nomiimg,
+  #price .menu.is-active .nomiring {
+    left: 5%;
+  }
+}
+
+#price .menu.is-active .one_i {
+  -webkit-transform: rotate(-0deg);
+  transform: rotate(0deg);
+}
+
+@media screen and (max-width: 600px) {
+  #price tbody.show .i_box {
+    top: 25%;
+  }
+
+  #price .menu.is-active .i_box {
+    transition: 0.4s;
+  }
+
+  #price .one_i:before,
+  #price .one_i:after {
+    width: 11px;
+  }
+
+  #price tbody.show .i_box:nth-child(2) {
+    right: 75%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #price tbody.show .i_box:nth-child(2) {
+    left: 3vw;
+  }
+}
+/* ===== ★親アコーディオン（thead/tbody開閉・行間） (accordion-main.css) ===== */
+
+#price td {
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: line-height 0.2s ease-out, opacity 0.1s linear,
+    visibility 0.1s linear;
+}
+
+#price td {
+  line-height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#price tbody.show td {
+  border: solid 1px #000;
+  border-bottom: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+#price tbody.show td,
+#price tbody.show td .flexB ol {
+  line-height: 2.5;
+}
+
+#price tbody.show td .flexB ol.wrapped {
+  line-height: 1.7;
+}
+
+#price .partition {
+  height: 0;
+}
+
+#price tbody.show > tr > td > .partition {
+  height: 1px;
+  background-color: rgb(197, 197, 197);
+}
+
+@media screen and (max-width: 600px) {
+  #price tbody.show td,
+  #price tbody.show td .flexB ol {
+    line-height: 3;
+  }
+}
+
+#price .tdcolum {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#price .disf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#price ul,
+#price ol {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  padding-inline-start: 0px;
+}
+
+#price ol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#price li {
+  list-style: none;
+}
+
+#price th {
+  background: #eee183;
+  border: solid 1px;
+  cursor: pointer;
+  height: 50px;
+  position: relative;
+}
+
+#price #tax-status {
+  right: 15%;
+}
+
+@media screen and (max-width: 600px) {
+  #price table {
+    width: 100%;
+  }
+
+  #price ol {
+    flex-direction: column;
+  }
+
+  #price tbody.show ol {
+    line-height: 1.7;
+  }
+
+  #price #tax-status {
+    left: 60%;
+  }
+
+  #price .ulFontSize {
+    flex-direction: column;
+  }
+
+  #price .ulFontSize li {
+    font-size: 15px;
+  }
+}
+
+#price .flexB {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 600px) {
+  #price .disf2 {
+    display: flex;
+    justify-content: center;
+  }
+} /* ===== ★補足アコーディオン（.menu/.contents） (accordInAccord.css) ===== */
+
+#price .menu {
+  cursor: pointer;
+}
+
+#price .menu:hover,
+#price .menu.is-active,
+#price .menu:active {
+  background: #ebffb1;
+  transition: 0.4s;
+}
+
+#price tbody.show .contents td {
+  line-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  border: 0;
+}
+
+#price tbody.show .contents.is-open {
+  line-height: 1.7;
+  opacity: 1;
+  visibility: visible;
+}
+
+#price tbody.show .contents.is-open td {
+  line-height: 1.7;
+  opacity: 1;
+  visibility: visible;
+  border: solid 1px #000;
+}
+
+#price .boderBottom {
+  border-bottom: solid 1px;
+}
+
+#price .contents {
+  line-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: line-height 0.2s ease-out, opacity 0.05s linear 0.05s,
+    visibility 0.1s linear 0.1s;
+}
+
+#price .contents img {
+  display: none;
+}
+
+#price .padingA {
+  text-align: left;
+  text-indent: -1em;
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 0 3vw 0 3vw;
+}
+
+#price .padingA p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+@media screen and (max-width: 600px) {
+  #price .padingA {
+    font-size: 15px;
+  }
+}
+
+#price .fontSizeB {
+  font-size: 22px;
+}
+
+@media screen and (max-width: 769px) {
+  #price .fontSizeB {
+    font-size: 17px;
+  }
+} /* ===== ★サブテーブル（駆虫薬など） (tableInTable.css) ===== */
+
+#price .tableInTa {
+  display: none;
+}
+
+#price tbody.show .contents.is-open .tableInTa {
+  display: table;
+  width: 99%;
+  margin: 0 auto;
+  margin-top: 2px;
+  margin-bottom: 0.5em;
+  max-width: 700px;
+}
+
+#price .tategaki {
+  padding: 0.3em 0;
+  writing-mode: vertical-rl;
+  align-items: center;
+}
+
+#price .nowrap {
+  white-space: nowrap;
+  width: 8em;
+  padding: 0 0.3em;
+}
+
+#price .hoverColorB {
+  background: #fff4a8;
+}
+
+#price .hoverColorB.is-active {
+  background: #b0e58c;
+} /* ===== ★マイクロチップ画像・環境省リンク (microchip.css) ===== */
+#price .frame02 {
+  position: relative;
+  display: block;
+}
+
+#price .image-text {
+  position: absolute;
+  width: 3.5em;
+  bottom: 1%;
+  left: 80%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: -2px -2px 0 brown, 2px -2px 0 brown, -2px 2px 0 brown,
+    2px 2px 0 brown;
+
+  letter-spacing: 2px;
+}
+
+#price .kankyocho a {
+  margin: auto;
+  width: 30%;
+}
+
+#price tbody.show .contents .kankyocho {
+  padding: 0;
+}
+
+#price tbody.show .contents.is-open .kankyocho {
+  padding: 0.5em 0 0;
+}
+
+#price .kankyocho {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+#price .microchipImg {
+  display: none;
+}
+
+#price tbody.show .contents.is-open .microchipImg {
+  display: block;
+  width: 100%;
+
+  border: #8bae91 7px double;
+
+  border-radius: 10px;
+}
+
+#price .contents.is-open .frame02 {
+  transition: 0.3s;
+}
+
+#price .contents.is-open .frame02:hover {
+  transform: scale(1.05, 1.05);
+}
+
+#price .align_left {
+  padding: 0 1em;
+}
+
+#price hr,
+#price tbody.contents.is-open hr {
+  display: none;
+}
+
+#price tbody.show .contents.is-open hr {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  display: block;
+}
+
+@media screen and (max-width: 769px) {
+  #price .kankyocho a {
+    width: 60%;
+  }
+
+  #price .image-text {
+    font-size: 1.5em;
+  }
+}
+
+/* 手術料金には～含まれております */
+.price-caption-top,
+.price-caption-bottom {
+  font-size: 22px;
+}
+
+.price-caption-top p,
+.price-caption-bottom p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  line-height: 2em;
+}
+
+.price-caption-top {
+  color: red;
+  text-align: right;
+  padding-left: 25%;
+  padding-right: 10%;
+}
+
+.price-caption-bottom {
+  color: green;
+  text-align: left;
+  padding-left: 10%;
+}
+
+@media screen and (max-width: 769px) {
+  .price-caption-top {
+    text-align: left;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .price-caption-top p,
+  .price-caption-bottom p {
+    padding-left: 1em;
+    font-size: 20px;
+    line-height: 1.5em;
+  }
+
+  .price-caption-top p {
+    text-indent: -1em;
+    text-align: left;
+  }
+
+  .price-caption-bottom {
+    padding-left: 0px;
+  }
+}
