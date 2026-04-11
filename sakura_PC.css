@@ -44,19 +44,20 @@
   img { /* タイトルイメージの伸縮 */
     width: 85vw; /* このコードのおかげで、画面のサイズに合わせて画像が伸縮する 前は90vw*/
   }
-  
-  .introduction {/* 病院紹介 */
+
+  /* 病院紹介 */
+  .introduction {
     background-color:#fdfdcd; /* 薄卵色#eee183 タイトルのオレンジ#ffc90d 明るさf6f4a5＜fdfdcd＜fffbf5 */
     width: 100%; /* 元々755px　他の数値でも効く */
     border-top:10px solid #f6f4a5; /* ボーダーラインがどう引かれるのか試した　タイトルのオレンジ#ffc90d */
     border-left: 15px solid #f6f4a5;
-    border-right: 15px solid #f6f4a5;/
-    margin-bottom: 0px; /* border-bottomを発動させるため、このコードが必要な様だ */
+    border-right: 15px solid #f6f4a5;
+    margin-bottom: 0px; 
     border-bottom: 0px solid gold; /* 単独では効果がないがmargin-bottomの存在により効果が出る。 */
     box-sizing: border-box; /* このコードが無いとボーダーラインがはみ出るらしいが特に変化は無かった */
-     /* border:のプロパティについての使い分け、解説は末尾に記載 */
   }
-  .intro-text { /* 病院紹介の文章を書く */
+  /* 病院紹介の文章を書く */
+  .intro-text { 
     width: auto;
     background-color:#ffffe9;/* 薄卵色#eee183 タイトルのオレンジ#ffc90d 明るさf6f4a5＜fdfdcd＜fffbf5 */
     font-size: 22px;
@@ -171,3 +172,4 @@
     margin-right: 30px; /* スマホでは10px */
     padding: 8px 24px; /* スマホでは8px 8px */
   }
+}
