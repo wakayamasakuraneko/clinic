@@ -1999,7 +1999,10 @@
       showPage(current);
 
       window.addEventListener("pageshow", (e) => {
-        if (e.persisted) showPage(0);
+        if (e.persisted) {
+          showPage(0);
+          document.querySelectorAll(".fixed-link").forEach(el => el.classList.remove("hidden"));
+        }
       });
 
       // スクロールで固定リンクを隠す
