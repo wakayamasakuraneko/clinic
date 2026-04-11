@@ -1996,6 +1996,10 @@
 
       showPage(current);
 
+      window.addEventListener("pageshow", (e) => {
+        if (e.persisted) showPage(0);
+      });
+
       // スクロールで固定リンクを隠す
       const fixedLinks = document.querySelectorAll(".fixed-link");
       for (let i = 0; i < TOTAL; i++) {
