@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TNRのこと、少しだけ知ってほしい（小学生版）</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐦‍⬛</text></svg>" />
     <link rel="icon" href="/img_icon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
@@ -96,7 +97,14 @@
         text-align: center;
       }
 
+      .page-0 .page-label {
+        position: static;
+        opacity: 0.8;
+        margin-bottom: 8px;
+      }
+
       .page-0 .page-title {
+        margin-top: 0;
         font-size: 2.2rem;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         margin-bottom: 8px;
@@ -138,11 +146,13 @@
 
       /* ========== ラベル・タイトル ========== */
       .page-label {
+        position: absolute;
+        top: 14px;
+        right: max(14px, calc(50% - 330px + 14px));
         font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.18em;
         opacity: 0.45;
-        margin-bottom: 10px;
         text-transform: uppercase;
       }
 
@@ -150,6 +160,7 @@
         font-size: 1.7rem;
         font-weight: 800;
         line-height: 1.45;
+        margin-top: 28px;
         margin-bottom: 28px;
       }
 
@@ -458,6 +469,11 @@
       }
 
       /* ========== 負担リスト ========== */
+      @keyframes poetry-fade {
+        0%, 100% { opacity: 0.3; }
+        50%       { opacity: 0.5; }
+      }
+
       .poetry-list {
         list-style: none;
         padding: 0;
@@ -465,6 +481,7 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
+        animation: poetry-fade 3s ease-in-out infinite;
       }
 
       .poetry-list li {
@@ -623,7 +640,9 @@
         z-index: 200;
         background: rgba(255,255,255,0.75);
         backdrop-filter: blur(4px);
-        padding: 6px 8px;
+        width: 52px;
+        height: 52px;
+        justify-content: center;
         border-radius: 10px;
       }
       .fixed-link:hover {
@@ -642,6 +661,95 @@
       }
       .fixed-link-left  { left: max(14px, calc(50% - 330px + 14px)); }
       .fixed-link-right { right: max(14px, calc(50% - 330px + 14px)); }
+
+      /* ========== トップへ戻るボタン（中間ページ用） ========== */
+      #btn-to-top {
+        position: fixed;
+        top: 14px;
+        left: max(14px, calc(50% - 330px + 14px));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        color: #888;
+        font-size: 0.58rem;
+        user-select: none;
+        z-index: 200;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(4px);
+        padding: 6px 8px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        border: 1px solid #ddd;
+        transition: color 0.2s, opacity 0.4s;
+      }
+      #btn-to-top:hover { color: #e07b00; }
+      #btn-to-top.hidden { opacity: 0; pointer-events: none; }
+      #btn-to-top i { font-size: 1.1rem; }
+
+      /* ========== 表紙リンクボタン ========== */
+      .cover-link:first-child {
+        position: absolute;
+        top: 14px;
+        left: max(14px, calc(50% - 330px + 14px));
+      }
+      .cover-link:last-child {
+        position: absolute;
+        top: 14px;
+        right: max(14px, calc(50% - 330px + 14px));
+      }
+      .cover-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        text-decoration: none;
+        color: #888;
+        font-size: 0.58rem;
+        user-select: none;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(4px);
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        transition: color 0.2s;
+      }
+      .cover-link:hover { color: #e07b00; }
+      .cover-link i { font-size: 1.1rem; }
+
+      /* ========== ページ6 謎ボタン ========== */
+      .sub-links {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: max(14px, calc(50% - 330px + 14px));
+      }
+      .sub-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(4px);
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: border-color 0.2s;
+      }
+      .sub-link:hover { border-color: #e07b00; }
+      .sub-link::before {
+        content: '';
+        display: block;
+        width: 26px;
+        height: 26px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+      }
 
       /* ========== ドット ========== */
       .dots {
@@ -709,6 +817,16 @@
           <div class="page-label" style="color: #fff; opacity: 0.8">野良猫のはなし</div>
           <div class="page-title"><ruby>少<rt>すこ</rt></ruby>しだけ<ruby>知<rt>し</rt></ruby>ってほしい、<br />TNRのこと。</div>
           <!-- <div class="catch-copy">この耳の形、知ってる？</div> -->
+          <div class="cover-links">
+            <a class="cover-link" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
+              <i class="fa-solid fa-reply"></i>
+              <span>一覧へ</span>
+            </a>
+            <a class="cover-link" href="https://wakayamasakuraneko.com/index.htm">
+              <i class="fa-solid fa-house"></i>
+              <span>ホームへ</span>
+            </a>
+          </div>
         </div>
 
         <p class="page-sub">
@@ -1710,182 +1828,106 @@
       <div class="page-inner">
         <div class="page-label">05</div>
         <div class="page-title">
-          <ruby>自分<rt>じぶん</rt></ruby
-          >には<ruby>何<rt>なに</rt></ruby
-          >ができるか？
+          <ruby>自分<rt>じぶん</rt></ruby>には<ruby>何<rt>なに</rt></ruby>ができるだろう？
         </div>
-        <!-- <p>
-          ここまで<ruby>読<rt>よ</rt></ruby
-          >んでくれて、ありがとう。
-        </p> -->
-        <p>猫は、</p>
-        <div class="info-box">
-          <ruby>愛<rt>いと</rt></ruby
-          >しくて、<ruby>迷惑<rt>めいわく</rt></ruby
-          >で、かわいくて、<ruby>不都合<rt>ふつごう</rt></ruby
-          >な<ruby>存在<rt>そんざい</rt></ruby
-          >です。
-        </div>
-        <p>
-          そのどちらも、<ruby>本当<rt>ほんとう</rt></ruby
-          >のことです。
-        </p>
-        <p>
-          TNRは、その<ruby>両方<rt>りょうほう</rt></ruby
-          >の<ruby>気持<rt>きも</rt></ruby
-          >ちを<ruby>大切<rt>たいせつ</rt></ruby
-          >にしながら、「では、どうするか」を<ruby>考<rt>かんが</rt></ruby
-          >えた<ruby>方法<rt>ほうほう</rt></ruby
-          >です。
-        </p>
 
-        <p>
-          むずかしいことを、いきなりやる<ruby>必要<rt>ひつよう</rt></ruby
-          >はありません。まずは、できることからです。
-        </p>
+        <div class="sub-section" style="border-top:none; padding-top:0;">
+          <div class="sub-title"><ruby>今<rt>いま</rt></ruby>できなくてもいい</div>
+          <p>
+            <ruby>今<rt>いま</rt></ruby>すぐ<ruby>何<rt>なに</rt></ruby>かをしなくても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>です。<br>
+            むずかしいことを、いきなりやる<ruby>必要<rt>ひつよう</rt></ruby>はありません。
+          </p>
+        </div>
 
         <div class="sub-section">
-          <div class="sub-title">
-            まず<ruby>知<rt>し</rt></ruby
-            >ること
-          </div>
+          <div class="sub-title">まず<ruby>知<rt>し</rt></ruby>ること</div>
           <ul class="simple-list">
             <li>
-              さくら<ruby>耳<rt>みみ</rt></ruby
-              >を<ruby>見<rt>み</rt></ruby
-              >かけたら、「<ruby>誰<rt>だれ</rt></ruby
-              >かが<ruby>手術<rt>しゅじゅつ</rt></ruby
-              >した<ruby>猫<rt>ねこ</rt></ruby
-              >なんだ」と<ruby>知<rt>し</rt></ruby
-              >る
+              さくら<ruby>耳<rt>みみ</rt></ruby>を<ruby>見<rt>み</rt></ruby>かけたら、「<ruby>誰<rt>だれ</rt></ruby>かが<ruby>手術<rt>しゅじゅつ</rt></ruby>した<ruby>猫<rt>ねこ</rt></ruby>なんだ」と<ruby>知<rt>し</rt></ruby>る
             </li>
             <li>
-              <ruby>外<rt>そと</rt></ruby
-              >で<ruby>生<rt>い</rt></ruby
-              >きている<ruby>猫<rt>ねこ</rt></ruby
-              >がいることを、<ruby>少<rt>すこ</rt></ruby
-              >しだけ<ruby>思<rt>おも</rt></ruby
-              >い<ruby>出<rt>だ</rt></ruby
-              >す
+              <ruby>外<rt>そと</rt></ruby>で<ruby>生<rt>い</rt></ruby>きている<ruby>猫<rt>ねこ</rt></ruby>がいることを、<ruby>少<rt>すこ</rt></ruby>しだけ<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>す
             </li>
           </ul>
+          <div class="info-box">
+            それだけでも、もう<ruby>一歩<rt>いっぽ</rt></ruby>です。
+          </div>
         </div>
 
         <div class="sub-section">
-          <div class="sub-title">
-            やさしさと<ruby>責任<rt>せきにん</rt></ruby>
-          </div>
+          <div class="sub-title">やさしさと<ruby>責任<rt>せきにん</rt></ruby></div>
           <p>
-            かわいそうな<ruby>猫<rt>ねこ</rt></ruby
-            >を<ruby>助<rt>たす</rt></ruby
-            >けたい<ruby>気持<rt>きも</rt></ruby
-            >ちは<ruby>大切<rt>たいせつ</rt></ruby
-            >です。でも、「<ruby>責任<rt>せきにん</rt></ruby
-            >があること」も<ruby>忘<rt>わす</rt></ruby
-            >れないでください。
+            かわいそうな<ruby>猫<rt>ねこ</rt></ruby>を<ruby>助<rt>たす</rt></ruby>けたい<ruby>気持<rt>きも</rt></ruby>ちは<ruby>大切<rt>たいせつ</rt></ruby>です。でも、「<ruby>責任<rt>せきにん</rt></ruby>があること」も<ruby>忘<rt>わす</rt></ruby>れないでください。
           </p>
           <div class="info-box">
-            エサだけあげて<ruby>手術<rt>しゅじゅつ</rt></ruby
-            >をしないと、<ruby>猫<rt>ねこ</rt></ruby
-            >はどんどん<ruby>増<rt>ふ</rt></ruby
-            >えてしまいます。
+            エサだけあげて<ruby>手術<rt>しゅじゅつ</rt></ruby>をしないと、<ruby>猫<rt>ねこ</rt></ruby>はどんどん<ruby>増<rt>ふ</rt></ruby>えてしまいます。
           </div>
         </div>
 
         <div class="sub-section">
-          <div class="sub-title">
-            <ruby>今<rt>いま</rt></ruby
-            >できなくてもいい
-          </div>
+          <div class="sub-title"><ruby>将来<rt>しょうらい</rt></ruby>に<ruby>向<rt>む</rt></ruby>けて</div>
           <p>
-            <ruby>今<rt>いま</rt></ruby
-            >は、<ruby>何<rt>なに</rt></ruby
-            >もできなくても<ruby>大丈夫<rt>だいじょうぶ</rt></ruby
-            >。
+            <ruby>今<rt>いま</rt></ruby>はまだできなくても、まちの<ruby>猫<rt>ねこ</rt></ruby>のことが<ruby>気<rt>き</rt></ruby>になったとき、TNRという<ruby>方法<rt>ほうほう</rt></ruby>があることを<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>してみてください。
           </p>
           <div class="info-box">
-            <ruby>知<rt>し</rt></ruby
-            >っただけでも、<ruby>一歩<rt>いっぽ</rt></ruby
-            ><ruby>進<rt>すす</rt></ruby
-            >んでいます。
+            <ruby>直接<rt>ちょくせつ</rt></ruby><ruby>手伝<rt>てつだ</rt></ruby>うことだけでなく、<ruby>支<rt>ささ</rt></ruby>える<ruby>方法<rt>ほうほう</rt></ruby>はいろいろあります。
           </div>
         </div>
 
-        <div class="sub-section">
-          <div class="sub-title">
-            <ruby>将来<rt>しょうらい</rt></ruby
-            >に<ruby>向<rt>む</rt></ruby
-            >けて
-          </div>
-          <p>
-            <ruby>大人<rt>おとな</rt></ruby
-            >になって、<ruby>余裕<rt>よゆう</rt></ruby
-            >ができたとき、<ruby>行動<rt>こうどう</rt></ruby
-            >できるかもしれません。
-          </p>
-          <p>
-            うまくいかないこともあります。でも、それも<ruby>大事<rt>だいじ</rt></ruby
-            >な<ruby>経験<rt>けいけん</rt></ruby
-            >です。<ruby>失敗<rt>しっぱい</rt></ruby
-            >は——「うまくいかない<ruby>方法<rt>ほうほう</rt></ruby
-            >を<ruby>知<rt>し</rt></ruby
-            >った<ruby>成功<rt>せいこう</rt></ruby
-            >」。
-          </p>
-        </div>
-
-        <div class="sub-section">
-          <div class="sub-title">
-            <ruby>最後<rt>さいご</rt></ruby
-            >に
-          </div>
-          <p>
-            <ruby>猫<rt>ねこ</rt></ruby
-            >の<ruby>問題<rt>もんだい</rt></ruby
-            >は、<ruby>簡単<rt>かんたん</rt></ruby
-            >には<ruby>解決<rt>かいけつ</rt></ruby
-            >しません。いろいろな<ruby>考<rt>かんが</rt></ruby
-            >えの<ruby>人<rt>ひと</rt></ruby
-            >がいます。
-          </p>
+        <div class="sub-section" style="margin-top:64px;">
+          <div class="sub-title"><ruby>共<rt>とも</rt></ruby>に<ruby>生<rt>い</rt></ruby>きるために</div>
+          <p><ruby>猫<rt>ねこ</rt></ruby>は、</p>
           <div class="info-box">
-            だからこそ、<ruby>少<rt>すこ</rt></ruby
-            >しずつ<ruby>考<rt>かんが</rt></ruby
-            >えて<ruby>行動<rt>こうどう</rt></ruby
-            >していくことが<ruby>大切<rt>たいせつ</rt></ruby
-            >です。
+            <ruby>愛<rt>いと</rt></ruby>しくて、<ruby>迷惑<rt>めいわく</rt></ruby>で、かわいくて、<ruby>不都合<rt>ふつごう</rt></ruby>な<ruby>存在<rt>そんざい</rt></ruby>です。
           </div>
+          <p>そのどちらも、<ruby>本当<rt>ほんとう</rt></ruby>のことです。</p>
+          <p>
+            TNRは、その<ruby>両方<rt>りょうほう</rt></ruby>の<ruby>気持<rt>きも</rt></ruby>ちを<ruby>大切<rt>たいせつ</rt></ruby>にしながら、「では、どうするか」を<ruby>考<rt>かんが</rt></ruby>えた<ruby>方法<rt>ほうほう</rt></ruby>です。
+          </p>
+          <p><ruby>排除<rt>はいじょ</rt></ruby>でもなく、<ruby>放置<rt>ほうち</rt></ruby>でもなく、</p>
+          <p><ruby>向<rt>む</rt></ruby>き<ruby>合<rt>あ</rt></ruby>うための<ruby>方法<rt>ほうほう</rt></ruby>です。</p>
         </div>
       </div>
     </div>
 
-    <!-- ページ 6: エンドカード -->
+    <!-- ページ 6: おわり -->
     <div class="page page-6" id="page-6">
+      <div class="cover-links">
+        <a class="cover-link" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
+          <i class="fa-solid fa-reply"></i>
+          <span>一覧へ</span>
+        </a>
+        <a class="cover-link" href="https://wakayamasakuraneko.com/index.htm">
+          <i class="fa-solid fa-house"></i>
+          <span>ホームへ</span>
+        </a>
+      </div>
+      <div class="sub-links">
+        <button class="sub-link" id="mystery-btn"></button>
+      </div>
       <div class="page-inner" style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:70vh; text-align:center;">
         <div style="font-size:3.5rem; margin-bottom:24px; letter-spacing:0.1em;">🐾</div>
         <div style="font-size:1.6rem; font-weight:700; color:#3a3a3a; letter-spacing:0.08em; margin-bottom:16px;">
           おわり
         </div>
-        <p style="color:#888; font-size:0.95rem; line-height:2; margin-bottom:40px;">
+        <p style="color:#888; font-size:0.95rem; line-height:2; margin-bottom:20px;">
           さいごまで<ruby>読<rt>よ</rt></ruby>んでくれて、<br>ありがとう。
         </p>
-        <div style="width:48px; height:2px; background:#e07b00; border-radius:2px; margin-bottom:40px;"></div>
-        <p style="color:#aaa; font-size:0.78rem; line-height:2;">
+        <div style="display:block; flex-shrink:0; width:48px; height:2px; background:#e07b00; border-radius:2px; margin-top:16px; margin-bottom:32px;"></div>
+        <p style="color:#aaa; font-size:0.78rem; line-height:2; margin-bottom:16px;">
           まちの<ruby>野良猫<rt>のらねこ</rt></ruby>のことを、<br>
           少しだけ<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>で</rt></ruby>してね🍀
         </p>
       </div>
+      <p style="position:absolute; bottom:100px; left:0; right:0; text-align:center; color:#bbb; font-size:0.72rem; line-height:1.9; pointer-events:none;">
+        🖋️ ページ<ruby>内容<rt>ないよう</rt></ruby>はご<ruby>自由<rt>じゆう</rt></ruby>にシェアいただけます。
+      </p>
     </div>
 
-    <!-- 固定リンク -->
-    <a class="fixed-link fixed-link-left" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
-      <i class="fa-solid fa-reply"></i>
-      <span>ブログへ</span>
-    </a>
-    <a class="fixed-link fixed-link-right" href="https://wakayamasakuraneko.com/index.htm">
-      <i class="fa-solid fa-house"></i>
-      <span>ホーム</span>
-    </a>
+    <button id="btn-to-top" onclick="goTo(0)">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>さいしょへ</span>
+    </button>
 
     <!-- ナビゲーション -->
     <nav>
@@ -1967,6 +2009,8 @@
             dotsEl.children[current].classList.add("active");
             document.getElementById("page-" + current).scrollTop = 0;
             sessionStorage.setItem("page", current);
+            topBtnScrollHidden = false;
+            updateNav();
           });
         });
       }
@@ -1996,21 +2040,30 @@
         }
       }, { passive: true });
 
+      const btnToTop = document.getElementById("btn-to-top");
+      let topBtnScrollHidden = false;
+
+      function updateNav() {
+        btnToTop.classList.toggle("hidden", current === 0 || current === 6 || topBtnScrollHidden);
+      }
+
+
       showPage(current);
+      updateNav();
 
       window.addEventListener("pageshow", (e) => {
         if (e.persisted) {
           showPage(0);
-          document.querySelectorAll(".fixed-link").forEach(el => el.classList.remove("hidden"));
+          topBtnScrollHidden = false;
+          updateNav();
         }
       });
 
-      // スクロールで固定リンクを隠す
-      const fixedLinks = document.querySelectorAll(".fixed-link");
-      for (let i = 0; i < TOTAL; i++) {
+      // スクロールで「さいしょへ」ボタンを隠す
+      for (let i = 1; i < TOTAL; i++) {
         document.getElementById("page-" + i).addEventListener("scroll", function() {
-          const hide = this.scrollTop > 200;
-          fixedLinks.forEach(el => el.classList.toggle("hidden", hide));
+          topBtnScrollHidden = this.scrollTop > 200;
+          updateNav();
         });
       }
     </script>
