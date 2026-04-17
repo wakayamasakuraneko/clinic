@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>では、どうすればよいか — 和歌山県地域猫制度</title>
+    <link rel="icon" type="image/png" href="pic/fabicon.png" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
+        background: #f5f0eb;
+        color: #333;
+        padding: 40px 16px 60px;
+        font-size: 18px;
+      }
+
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .back-link {
+        margin-bottom: 32px;
+      }
+
+      .back-link a {
+        display: inline-block;
+        color: #5a2d0c;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 8px 0;
+        border-bottom: 2px solid #5a2d0c;
+      }
+
+      .back-link a:hover {
+        opacity: 0.7;
+      }
+
+      .section-label {
+        margin: 0 0 20px;
+        padding-left: 12px;
+        border-left: 4px solid #2e7d32;
+      }
+
+      .section-label .section-main {
+        display: block;
+        font-size: 22px;
+        font-weight: bold;
+        color: #1b3a1c;
+        line-height: 1.4;
+      }
+
+      .solutions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .solution {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        border-left: 5px solid #2e7d32;
+      }
+
+      .solution:nth-child(2) {
+        border-left-color: #388e3c;
+      }
+      .solution:nth-child(3) {
+        border-left-color: #1b5e20;
+      }
+
+      .solution-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        cursor: pointer;
+        user-select: none;
+        gap: 12px;
+      }
+
+      .solution-header:hover {
+        background: #f1f8f1;
+      }
+
+      .solution-number {
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background: #2e7d32;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .solution:nth-child(2) .solution-number {
+        background: #388e3c;
+      }
+      .solution:nth-child(3) .solution-number {
+        background: #1b5e20;
+      }
+
+      .solution-title {
+        flex: 1;
+        font-size: clamp(16px, 3vw, 19px);
+        font-weight: bold;
+        color: #1b3a1c;
+        line-height: 1.5;
+      }
+
+      .solution-arrow {
+        font-size: 18px;
+        color: #aaa;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      .solution.open .solution-arrow {
+        transform: rotate(180deg);
+      }
+
+      .solution-body {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s ease,
+          padding 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .solution.open .solution-body {
+        max-height: 600px;
+        padding: 0 20px 20px;
+      }
+
+      .solution-body p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .solution-body ul {
+        list-style: none;
+        padding-left: 4px;
+        margin-bottom: 10px;
+      }
+
+      .solution-body ul li {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #555;
+        padding-left: 18px;
+        position: relative;
+        margin-bottom: 4px;
+      }
+
+      .solution-body ul li::before {
+        content: "・";
+        position: absolute;
+        left: 0;
+        color: #2e7d32;
+      }
+
+      .solution-body .note {
+        background: #f1f8f1;
+        border: 1px solid #a5d6a7;
+        border-radius: 6px;
+        padding: 10px 14px;
+        margin-top: 10px;
+      }
+
+      .solution-body .note p {
+        font-size: 16px;
+        color: #2e5c30;
+        margin: 0;
+        font-weight: bold;
+      }
+
+      .solution-summary {
+        margin-top: 24px;
+        background: #1b5e20;
+        color: #fff;
+        border-radius: 10px;
+        padding: 24px 28px;
+        text-align: center;
+      }
+
+      .solution-summary h2 {
+        font-size: 17px;
+        margin-bottom: 10px;
+        letter-spacing: 0.05em;
+      }
+
+      .solution-summary p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #c8e6c9;
+      }
+
+      .solution-summary strong {
+        color: #a5d6a7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="back-link">
+        <a href="index.html">← 問題点と現状に戻る</a>
+      </div>
+
+      <div class="section-label">
+        <span class="section-main">では、どうすればよいか</span>
+      </div>
+
+      <div class="solutions">
+        <!-- ① -->
+        <div class="solution">
+          <div class="solution-header" onclick="toggleSolution(this)">
+            <div class="solution-number">①</div>
+            <div class="solution-title">まずは自治会として話し合いの場を持つ</div>
+            <div class="solution-arrow">▼</div>
+          </div>
+          <div class="solution-body">
+            <p>最初に自治会が主体となり、ボランティアと共に実態調査を行うことが不可欠。</p>
+            <ul>
+              <li>地域の猫のおおよその頭数</li>
+              <li>発生源（餌やり場所・未手術の飼い猫）</li>
+              <li>苦情の内容</li>
+              <li>住民の意見</li>
+            </ul>
+            <div class="note">
+              <p>実態を共有することで、「誰が何をするのか」が初めて明確になります。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ② -->
+        <div class="solution">
+          <div class="solution-header" onclick="toggleSolution(this)">
+            <div class="solution-number">②</div>
+            <div class="solution-title">手術費用を"地域でどう負担するか"を話し合う</div>
+            <div class="solution-arrow">▼</div>
+          </div>
+          <div class="solution-body">
+            <p>TNRは継続してこそ意味がある。そのためには<strong>費用の仕組みを地域で決めること</strong>が重要。</p>
+            <ul>
+              <li>餌やりさんが一部負担</li>
+              <li>自治会費から補助</li>
+              <li>住民からの協力金</li>
+              <li>企業・商店街からの協賛</li>
+              <li>ボランティアは捕獲・搬送を担当　等</li>
+            </ul>
+            <div class="note">
+              <p>役割分担の合意を形成することが大切。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ -->
+        <div class="solution">
+          <div class="solution-header" onclick="toggleSolution(this)">
+            <div class="solution-number">③</div>
+            <div class="solution-title">県や市の助成金があるなら積極的に利用する</div>
+            <div class="solution-arrow">▼</div>
+          </div>
+          <div class="solution-body">
+            <p>ただし、助成金には制約がある。</p>
+            <ul>
+              <li>予算に限りがある</li>
+              <li>申請手続きが必要</li>
+              <li>期間が限定される</li>
+            </ul>
+            <div class="note">
+              <p>地域の自助努力と併用する形が理想。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 解決策まとめ -->
+      <div class="solution-summary">
+        <h2>めざすべき姿</h2>
+        <p>
+          地域が自ら動き、実態を把握し、費用と役割を分担する。<br />助成金はあくまで"道具"。主役は地域住民であるべき。
+        </p>
+        <p style="margin-top: 10px">
+          無料手術に依存するのではなく、<br /><strong>地域が責任を持つ仕組みこそが成功の鍵。</strong>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function toggleSolution(header) {
+        const item = header.parentElement;
+        item.classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>
