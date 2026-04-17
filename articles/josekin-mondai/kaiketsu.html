@@ -25,22 +25,30 @@
         margin: 0 auto;
       }
 
-      .back-link {
-        margin-bottom: 32px;
+      .page-nav {
+        margin-top: 32px;
+        margin-bottom: 48px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
       }
 
-      .back-link a {
+      .page-nav a {
         display: inline-block;
+        background: #f0e6d8;
         color: #5a2d0c;
+        border: 2px solid #c8a882;
         font-size: 16px;
         font-weight: bold;
+        padding: 8px 22px;
+        border-radius: 30px;
         text-decoration: none;
-        padding: 8px 0;
-        border-bottom: 2px solid #5a2d0c;
+        letter-spacing: 0.05em;
       }
 
-      .back-link a:hover {
-        opacity: 0.7;
+      .page-nav a:hover {
+        background: #e8d5be;
       }
 
       .section-label {
@@ -218,9 +226,6 @@
   </head>
   <body>
     <div class="container">
-      <div class="back-link">
-        <a href="index.html">← 問題点と現状に戻る</a>
-      </div>
 
       <div class="section-label">
         <span class="section-main">では、どうすればよいか</span>
@@ -300,6 +305,11 @@
         <p style="margin-top: 10px">
           無料手術に依存するのではなく、<br /><strong>地域が責任を持つ仕組みこそが成功の鍵。</strong>
         </p>
+      </div>
+
+      <div class="page-nav">
+        <a href="index.html">← 問題点と現状</a>
+        <a href="egawa.html">現場の声を読む →</a>
       </div>
     </div>
 

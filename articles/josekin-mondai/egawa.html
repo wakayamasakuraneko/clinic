@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>和歌山県地域猫助成金制度の問題点と課題</title>
+    <title>手術が終わってからが本番――現場作業員が語る地域猫活動の実際</title>
     <link rel="icon" type="image/png" href="pic/fabicon.png" />
     <style>
       * {
@@ -46,7 +46,7 @@
 
       header .label {
         display: inline-block;
-        background: #8b4513;
+        background: #2e7d32;
         color: #fff;
         font-size: 15px;
         letter-spacing: 0.1em;
@@ -94,18 +94,13 @@
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-        border-left: 5px solid #c0392b;
+        border-left: 5px solid #2e7d32;
       }
 
-      .item:nth-child(2) {
-        border-left-color: #e67e22;
-      }
-      .item:nth-child(3) {
-        border-left-color: #d35400;
-      }
-      .item:nth-child(4) {
-        border-left-color: #c0392b;
-      }
+      .item:nth-child(2) { border-left-color: #388e3c; }
+      .item:nth-child(3) { border-left-color: #558b2f; }
+      .item:nth-child(4) { border-left-color: #827717; }
+      .item:nth-child(5) { border-left-color: #c0392b; }
 
       .item-header {
         display: flex;
@@ -118,14 +113,14 @@
       }
 
       .item-header:hover {
-        background: #fdf6f0;
+        background: #f0f7f0;
       }
 
       .item-number {
         font-size: 14px;
         font-weight: bold;
         color: #fff;
-        background: #c0392b;
+        background: #2e7d32;
         border-radius: 50%;
         width: 24px;
         height: 24px;
@@ -135,15 +130,10 @@
         flex-shrink: 0;
       }
 
-      .item:nth-child(2) .item-number {
-        background: #e67e22;
-      }
-      .item:nth-child(3) .item-number {
-        background: #d35400;
-      }
-      .item:nth-child(4) .item-number {
-        background: #c0392b;
-      }
+      .item:nth-child(2) .item-number { background: #388e3c; }
+      .item:nth-child(3) .item-number { background: #558b2f; }
+      .item:nth-child(4) .item-number { background: #827717; }
+      .item:nth-child(5) .item-number { background: #c0392b; }
 
       .item-title {
         flex: 1;
@@ -174,7 +164,7 @@
       }
 
       .item.open .item-body {
-        max-height: 600px;
+        max-height: 800px;
         padding: 0 20px 20px;
       }
 
@@ -204,19 +194,19 @@
         content: "・";
         position: absolute;
         left: 0;
-        color: #c0392b;
+        color: #2e7d32;
       }
 
       .item-body .quote {
-        background: #fdf3ee;
-        border-left: 3px solid #e67e22;
+        background: #f1f8f1;
+        border-left: 3px solid #2e7d32;
         padding: 10px 14px;
         border-radius: 0 6px 6px 0;
         margin: 10px 0;
       }
 
       .item-body .quote p {
-        color: #7a4010;
+        color: #1b5e20;
         font-size: 16px;
         margin: 0;
       }
@@ -240,18 +230,6 @@
         margin: 36px 0 12px;
         padding-left: 12px;
         border-left: 4px solid #2e7d32;
-      }
-
-      .section-label.red {
-        border-left-color: #c0392b;
-      }
-
-      .section-label.red .section-tag {
-        color: #c0392b;
-      }
-
-      .section-label.red .section-main {
-        color: #3a2010;
       }
 
       .section-label .section-tag {
@@ -299,7 +277,7 @@
 
       .summary {
         margin-top: 32px;
-        background: #5a2d0c;
+        background: #1b5e20;
         color: #fff;
         border-radius: 10px;
         padding: 24px 28px;
@@ -315,12 +293,19 @@
       .summary p {
         font-size: 17px;
         line-height: 1.8;
-        color: #f0d9b0;
+        color: #c8e6c9;
       }
 
       .summary strong {
-        color: #ffcc80;
+        color: #fff59d;
         font-size: 17px;
+      }
+
+      .byline {
+        font-size: 15px;
+        color: #888;
+        margin-bottom: 32px;
+        padding-left: 2px;
       }
     </style>
   </head>
@@ -329,13 +314,15 @@
       <header>
         <img src="pic/chiiki-neko-wakayama.jpg" alt="地域猫イラスト" />
         <div class="header-text">
-          <div class="label">問題提起</div>
-          <h1>和歌山県 地域猫助成金制度の<br />問題点と課題</h1>
+          <div class="label">現場の声</div>
+          <h1>手術が終わってからが本番<br />――現場作業員が語る地域猫活動の実際</h1>
+          <p class="subtitle">湯浅保健所管内で活動する江川美奈江さんの話</p>
         </div>
       </header>
 
-      <div class="section-label red">
-        <span class="section-main">現状と問題点とリスク</span>
+      <div class="section-label">
+        <span class="section-tag">PRACTICE</span>
+        <span class="section-main">現場で実践していること</span>
       </div>
 
       <div class="accordion">
@@ -343,18 +330,20 @@
         <div class="item">
           <div class="item-header" onclick="toggle(this)">
             <div class="item-number">①</div>
-            <div class="item-title">個人で一部の猫だけを手術しても、繁殖を抑えられない</div>
+            <div class="item-title">活動は「苦情」から始まる――まず地域の現状を把握する</div>
             <div class="item-arrow">▼</div>
           </div>
           <div class="item-body">
-            <p>地域猫活動は、気になる猫だけを選んで手術すれば解決するものではない。</p>
+            <p>大抵は苦情の連絡が入るところからスタートする。まず現地に出向き、丁寧に聞き取りを行う。</p>
             <ul>
-              <li>捕獲器を持つ住民は稀で、複数持つ住民は更に稀</li>
-              <li>現場には20匹以上、手術が必要な猫がいることも</li>
-              <li>仮に10台以上の捕獲器を用意できたとしても、一度に受け入れられる動物病院もまた限られている</li>
+              <li>何に困っているのか</li>
+              <li>餌をあげている人は誰か・いつ・どこで</li>
+              <li>猫の匹数・色柄</li>
+              <li>猫嫌いな人、協力してくれそうな人のリサーチ</li>
             </ul>
+            <p>次に「地域猫対策を始める」旨のチラシを作成し、保健所が定めた範囲の家を訪問・ポスティング。区長・班長にも説明し、回覧板にも入れてもらう。</p>
             <div class="result">
-              <p>「一匹ずつ順番に」では繁殖に追いつかない。計画的・組織的な対応が不可欠。</p>
+              <p>地域全体を巻き込む下地づくりが、活動の成否を左右する。</p>
             </div>
           </div>
         </div>
@@ -363,24 +352,22 @@
         <div class="item">
           <div class="item-header" onclick="toggle(this)">
             <div class="item-number">②</div>
-            <!-- <div class="item-title">本当に必要な人の責任感を奪う可能性がある</div> -->
-            <div class="item-title">繁殖予防に最も大切な『地域住民としての責任感』が育たない</div>
+            <div class="item-title">捕獲前に欠かせない「報・連・相」――餌やりさんとの連携が命綱</div>
             <div class="item-arrow">▼</div>
           </div>
           <div class="item-body">
-            <p>本来、地域猫活動は</p>
-            <ul>
-              <li>餌やりさん</li>
-              <li>地域の住民</li>
-              <li>ボランティア</li>
-            </ul>
-            <p>が <strong>それぞれ役割を分担する仕組み</strong>。</p>
-            <p>無料になると…</p>
+            <p>捕獲を成功させるために、現地の人との連携は絶対に欠かせない。</p>
             <div class="quote">
-              <p>「全部タダならやってもらって当然」</p>
+              <p>「捕獲するのに腹いっぱい餌をやられたら困る」</p>
             </div>
+            <p>捕獲器を設置したら、基本的に離れない。薄暗くなってから設置して朝まで放置してよいと思っている人も多いが、それは危険だ。</p>
+            <ul>
+              <li>猫が怪我をする可能性がある</li>
+              <li>虐待のリスクがある</li>
+              <li>鳴き声による苦情が出る</li>
+            </ul>
             <div class="result">
-              <p>という空気が生まれ、<strong>地域の自立が進まない。</strong></p>
+              <p>捕獲器を設置したら離れないのが大原則。長時間の放置は絶対にしない。</p>
             </div>
           </div>
         </div>
@@ -389,18 +376,21 @@
         <div class="item">
           <div class="item-header" onclick="toggle(this)">
             <div class="item-number">③</div>
-            <!-- <div class="item-title">"餌やりだけして手術しない人"を増やしてしまう</div> -->
-            <div class="item-title">"無料でなければ手術をしない"という感覚が定着してしまう</div>
+            <div class="item-title">捕獲器の扱い方――細かいことが成否を分ける</div>
             <div class="item-arrow">▼</div>
           </div>
           <div class="item-body">
-            <p>無料になると、こう考える人が出てくる。</p>
-            <div class="quote">
-              <p>「お金がかからないなら、手術はボランティアや自治会がやってくれる」<br />「捕獲も全部やってくれる」</p>
-            </div>
+            <p>捕獲器を使う際は、次のような準備が必要になる。</p>
+            <ul>
+              <li>捕獲器の下にペットシートを貼り付けて搬送する</li>
+              <li>シーツやバスタオルをかぶせて猫を落ち着かせる</li>
+              <li>カラビナ等で扉が開かないよう固定する</li>
+              <li>捕まえた場所以外に放すのは「遺棄」になる</li>
+              <li>手術券は飼い主のいない猫専用。保護猫には使えない</li>
+            </ul>
+            <p>手術翌日は必ず排尿と採食を確認してからリリースするようにしている。</p>
             <div class="result">
-              <!-- <p>結果として「地域の責任者不在・丸投げ・依存」が加速する</p> -->
-              <p>結果として「丸投げ・依存・責任者不在」のまま猫の繁殖が加速する。</p>
+              <p>一つひとつの工程を丁寧に踏むことが、猫と地域を守ることにつながる。</p>
             </div>
           </div>
         </div>
@@ -409,18 +399,18 @@
         <div class="item">
           <div class="item-header" onclick="toggle(this)">
             <div class="item-number">④</div>
-            <div class="item-title">持続不可能で、終わった瞬間に元の状態に戻る</div>
+            <div class="item-title">警戒心の強い猫を捕まえるには――現場で培ったコツ</div>
             <div class="item-arrow">▼</div>
           </div>
           <div class="item-body">
-            <p>無料手術は、<strong>補助金や寄付が尽きたら終了。</strong></p>
-            <p>しかし、無料に依存した地域は自分たちでTNRを続ける力が育っていないため…</p>
+            <p>なかなか入らない猫には、工夫が必要だ。</p>
             <ul>
-              <li>元の繁殖状態に逆戻り</li>
-              <li>さらに悪化していることも多い</li>
+              <li>扉を閉じないようにして、中で餌を食べる練習期間を設ける</li>
+              <li>鉄の触感を嫌がる猫が多いので、底に段ボールや新聞紙を敷く</li>
+              <li>警戒心が強い猫には、飲み込めないよう紐でめざしなどを吊るす</li>
             </ul>
-            <div class="result">
-              <p>という「後戻り現象」が起きる。</p>
+            <div class="quote">
+              <p>「予約していたけれど捕まらなかったときは、早めに病院に連絡を。複数現場を抱えていると、早めのキャンセル連絡で別現場に走ることができる」</p>
             </div>
           </div>
         </div>
@@ -429,44 +419,39 @@
         <div class="item">
           <div class="item-header" onclick="toggle(this)">
             <div class="item-number">⑤</div>
-            <div class="item-title">地域の理解が進まず、トラブルが増える</div>
+            <div class="item-title">「手術が目的」になっていないか――本当の活動はリリース後から始まる</div>
             <div class="item-arrow">▼</div>
           </div>
           <div class="item-body">
-            <p>無料手術は「一部の人や外部の人が勝手にやっている活動」になりがちで…</p>
-            <ul>
-              <li>地域住民の理解が深まらない</li>
-              <li>苦情が減らない</li>
-              <li>地域猫の管理が進まない</li>
-            </ul>
+            <p>現場でよく耳にするのが「不妊手術をすれば終わり」という感覚だ。しかし江川さんはこう話す。</p>
+            <div class="quote">
+              <p>「ウチは手術が終わってから始まるんだと認識しています」</p>
+            </div>
+            <p>リリース後も定期的に餌やりさん宅を訪問し、人と猫の生存確認、新参猫がいないかの調査を続ける。キャットフードバンクで集まったフードを持参して。</p>
+            <p>活動の目的は、<strong>猫たちがそれまでより安全に命を全うできること</strong>。地域美化や近隣関係の維持も、その一部だ。</p>
             <div class="result">
-              <p>結果として「無関心と責任の押し付け合い」を助長する。</p>
+              <p>ただ一方で、最近は餌やりさんの死去や地域猫の看取りも増えており、「TNRだけで終わっていればよかったのか」と自問することもあるという。</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- まとめ（問題編） -->
       <div class="summary">
-        <h2>問題点まとめ</h2>
+        <h2>江川さんの言葉から</h2>
         <p>
-          <strong>無料手術は"短期的には助かるが、<br />長期的には地域を壊す"</strong>
+          <strong>不妊手術は終点ではなく、通過点。</strong>
         </p>
-        <p style="margin-top: 10px">助成金・無料化だけに頼らず、<br />地域が自立できる仕組みづくりが必要です。</p>
+        <p style="margin-top: 10px">地域の人と信頼関係を築き、<br />猫が安全に生きられる環境を育て続けること。<br />それが現場の答えだ。</p>
       </div>
 
       <div class="page-nav">
+        <a href="index.html">← 問題点と現状</a>
         <a href="kaiketsu.html">解決策を見る →</a>
-        <a href="egawa.html">現場の声を読む →</a>
       </div>
     </div>
 
     <script>
       function toggle(header) {
-        const item = header.parentElement;
-        item.classList.toggle("open");
-      }
-      function toggleSolution(header) {
         const item = header.parentElement;
         item.classList.toggle("open");
       }
