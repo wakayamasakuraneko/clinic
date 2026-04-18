@@ -1,0 +1,248 @@
+.footer-top {
+  display: flex;
+  width: 100%;
+  /* line-height: 15px; */
+  /* background: #eee183; */
+  background: #f6f4a5;
+  padding-top: 1em;
+  padding-bottom: .5em;
+}
+
+.footer-left {
+  width: 40%;
+}
+
+.footer-right {
+  width: 60%;
+}
+
+
+
+/* ulタグの内側余白を０にする */
+ul.snsbtniti {
+  padding: 0 !important;
+}
+
+/* ボタン全体の位置調整 */
+.snsbtniti {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+/* ボタン同士の余白調整 */
+.snsbtniti li {
+  flex: 0 0 0 25%;
+  /* text-align: center !important; */
+}
+
+
+li {
+  list-style: none;
+}
+
+/* ボタン全体 */
+.flowbtn,
+.blogbtn {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  /* 好きなフォントを指定してね */
+  width: 66px;
+  height: 58px;
+  position: relative;
+  display: inline-block;
+  font-size: 30px;
+  transition: .5s;
+  text-decoration: none;
+  box-shadow: 0 1px 2px #999;
+}
+
+.flowbtn {
+  /* color: #fff !important; */
+  color: #fff;
+  border-radius: 4px;
+}
+
+.blogbtn {
+  border-radius: 50%;
+}
+
+/* フォントオーサムFacebook等のマーク */
+.flowbtn i {
+  position: relative;
+  top: 5px;
+}
+
+/* Facebook Instagram等の文字 */
+.flowbtn div,
+.blogbtn div {
+  font-size: 11px;
+  font-weight: bold;
+  position: relative;
+  /* bottom: 22px; */
+}
+
+.flowbtn div {
+  letter-spacing: 0;
+  bottom: -5px;
+}
+
+.blogbtn div {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  -webkit-text-stroke: 1.3px #1e479e;
+  position: absolute;
+  letter-spacing: 1px;
+  left: 10%;
+  top: 61%;
+}
+
+/* Twitterの文字 */
+.flowbtn .twit_X {
+  top: 0px;
+  font-size: 1.25em;
+  font-style: normal;
+}
+
+/* .blog_bottom {
+  position: absolute;
+  bottom: 5px;
+} */
+
+.flowbtn .X_bottom {
+  bottom: 5px;
+}
+
+/* Twitter */
+.fl_tw1 {
+  background: #55acee;
+}
+
+/* X(Twitter) */
+.fl_X {
+  background: #202124;
+}
+
+/* Facebook */
+.fl_fb1 {
+  background: #3b5998;
+}
+
+/* ブログ */
+.fl_blog {
+  background: #e1d28900;
+}
+
+.fl_blog img {
+  position: relative;
+  top: -3px;
+  width: 100%;
+}
+
+
+/* 問い合わせ */
+.fl_ma1 {
+  background: #f3981d;
+}
+
+/* Instagram紫グラデ背景 */
+.insta_btn1 {
+  background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  overflow: hidden;
+}
+
+/* Instagramオレンジグラデ背景 */
+.insta_btn1:before {
+  content: '';
+  position: absolute;
+  top: 33px;
+  left: -20px;
+  width: 80px;
+  height: 50px;
+  background: -webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+  background: radial-gradient(#ffdb2c 5%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+}
+
+/* ボタン内テキスト調整 */
+
+.fa-twitter:before {
+  content: "\f099";
+}
+
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+
+/* ボタンマウスホバー時 */
+.flowbtn:hover,
+.blogbtn:hover {
+  transform: scale(1.2, 1.2);
+  /* -webkit-transform: translateY(-5px); */
+  /* -ms-transform: translateY(-5px); */
+  /* transform: translateY(-5px); */
+  /* text-decoration: none; */
+}
+
+
+
+.footer-bottom {
+  background: #483b0c;
+  color: #fff;
+  font-size: 1.4rem;
+  text-align: center;
+  position: relative;
+  padding: 16px 0;
+  /* font-weight: bold; */
+}
+
+
+@media screen and (max-width: 600px) {
+
+  .footer-left {
+    width: 0%;
+  }
+
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    font-size: 100%;
+  }
+
+  .flowbtn {
+    border-radius: 50%;
+    transform: scale(0.8, 0.8);
+    /* width: 52px; */
+    /* height: 45px; */
+  }
+
+  .flowbtn i {
+    top: 20%;
+  }
+
+  .flowbtn .twit_X {
+    top: 12%;
+  }
+
+  .blogbtn {
+    transform: scale(0.8, 0.8);
+  }
+
+  /* .fl_blog img {
+    top: -4px;
+    width: 95%;
+  } */
+
+  .flowbtn div {
+    display: none;
+  }
+
+  /* ボタンマウスホバー時 */
+  .flowbtn:hover,
+  .blogbtn:hover {
+    transform: scale(1.0, 1.0);
+  }
+}

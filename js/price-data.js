@@ -2,7 +2,7 @@
 (function () {
   const DATA_URL =
     (document.currentScript && document.currentScript.dataset.url) ||
-    "price-data/price-data.json";
+    "price/data/price-data.json";
 
   const yenFmt = new Intl.NumberFormat("ja-JP");
   let DATA = null;

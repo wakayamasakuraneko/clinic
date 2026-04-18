@@ -1,0 +1,98 @@
+  /* ==============================
+  header
+  ============================== */
+
+  header {
+    font-size: 20px;
+    background: #eee183;
+  }
+
+  .header-top {
+    height: 50px;
+    line-height: 1;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background: #eee183;
+    /* ↑ z-index: 10;であるが故にこの要素は親要素の背景色を受け継がないのでは？ font-sizeは受け継ぐ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header_empty {
+    margin-top: 50px;
+  }
+
+  .header-middle {
+    position: relative;
+    color: green;
+    text-align: center;
+  }
+
+  /* ブログへのアイコンをヘッダーに置いたら構想 */
+  /* .header-middle .blogbtn {
+    position: absolute;
+    left: 5%;
+    top: -100%;
+    z-index: 10;
+  } */
+
+
+  .header-bottom {
+    text-align: center;
+  }
+
+  /* ↓ お知らせがある時はこれをON/OFFするだけ */
+  /* .header_notice {
+    display: none;
+  } */
+
+  .header_declaration {
+    display: flex;
+    font-size: 17px;
+    justify-content: center;
+    line-height: 2;
+    text-align: center;
+  }
+
+  .header_empty2 {
+    /* <hr>がディフォルトで持っているmargin-block-end: 0.5em;が白くなってしまうためやむを得ず授けた空divのためのプロパティ */
+    height: 1px;
+  }
+
+  /* .vertical {
+    background: #c7e6f0;
+    height: 300vh;
+  } */
+
+
+  @media screen and (max-width: 769px) {
+    .header-top {
+      min-height: 32px;
+      height: fit-content;
+    }
+
+    .header_empty {
+      margin-top: 32px;
+    }
+
+    .header-bottom {
+      display: block;
+      font-size: 17px;
+    }
+
+    .header_declaration {
+      display: block;
+    }
+
+  }
+
+  @media screen and (max-width: 500px) {
+
+    header {
+      font-size: 17px;
+    }
+  }

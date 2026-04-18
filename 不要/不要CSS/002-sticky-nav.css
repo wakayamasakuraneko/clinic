@@ -1,0 +1,138 @@
+  /* ==============================
+  nav
+  ============================== */
+
+  .menu-nav {
+    display: flex;
+    align-items: center;
+    background: #eee183;
+    /* left: 0; */
+    /* width: 100%;     */
+    /* min-height: 80px; */
+    /* overflow: hidden; */
+    /* align-items: center; */
+  }
+
+  .sticky {
+    position: -webkit-sticky;
+    /* Safari用 */
+    position: sticky;
+    /* 要素をスクロールに応じて固定 */
+    top: 32px;
+    /* ↑ .header-top {height: 32px;}の分 */
+    /* 縦スクロールに追従 */
+    z-index: 10;
+  }
+
+  nav div {
+    width: 95%;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* ↑ 意味無かったかも */
+    /* border: #ca333b solid; */
+    border-width: 5px;
+  }
+
+  .menu-ul {
+    text-align: center;
+    list-style: none;
+    /* min-height: 60px; */
+    /* align-items: center; */
+    /* background: #C4C9FF; */
+    background: #eee183;
+    margin: 0 auto;
+    width: 90%;
+    /* max-width: 100%; */
+    /* display: inline-table; */
+    /* ↓F12で分かるulの謎のmarginとpadding */
+    /* 0にしないと余計な余白ができる */
+    padding-inline-start: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+
+  /* display:flexを使った横並びメニューの書き方
+  https://qiita.com/idaida_idaida/items/1db11efd598f14c537f4 */
+
+  .menu-li {
+    font-size: 17px;
+    /* ↑ フォントサイズを決めないとPC間でナビメニューの大きさが変わる */
+    display: table-cell;
+    min-width: 11vw;
+    /* ↑ 色々試してこの値だがPCによって全然違う表示になる */
+    background: #000;
+    /* background: #474c83; */
+    box-sizing: border-box;
+    /* border分足されるので、box-sizingでborderを含むwidthに変更 */
+    /* border: #E1EAFF solid; */
+    border: 1px solid #eee;
+    /* border-width: 0 2px 0 2px; */
+    /* text-overflow: ellipsis; */
+    white-space: nowrap;
+  }
+
+  .menu-li a {
+    line-height: 3;
+    height: 50px;
+    display: block;
+    /* ↑ これが無いと文字だけしかaタグにならない */
+    padding: 0 .5em 0 .5em;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .menu-li:hover>a {
+    font-weight: bold;
+    /* color: orange; */
+    color: rgb(4, 4, 4);
+    /* background-color: #444444; */
+    background: #bebebe;
+    transition: 0.3s;
+  }
+
+  /* ::-webkit-scrollbar {
+    height: 15px;
+  }
+
+  ::-webkit-scrollbar-track {
+    margin: 0 2px;
+    background: #ccc;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cf47a2;
+  } */
+
+  /* 参考 https://qiita.com/tksnino/items/4cf63bd1fc86a69daba0 */
+
+  .navtop {
+    display: none;
+  }
+
+  .navtop-bottom {
+    height: 1vw;
+    background: #eee183;
+  }
+
+  .navbottom-top {
+    height: 1vw;
+    background: #eee183;
+  }
+
+  .navbottom-bottom {
+    height: 1px;
+    background: #ffffff;
+  }
+
+  @media screen and (max-width: 769px) {
+
+    /* 「メニュー 横スクロール」の文字　縦スクロールで消える */
+    .navtop {
+      background: #fafab2;
+      display: flex;
+      height: 1.3em;
+      justify-content: space-around;
+      list-style: none;
+    }
+  }

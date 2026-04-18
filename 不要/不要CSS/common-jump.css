@@ -1,0 +1,100 @@
+  /* ==============================
+  ページ内ジャンプ
+  ============================== */
+
+  /* 参考 https://www.aizulab.com/blog/sticky-header-overlap/ */
+
+  html,
+  body {
+    scroll-padding-top: 120px;
+  }
+
+  /* ヘッダー内のボタン */
+  .header-btn {
+    margin: 2px 10px 2px 10px;
+    padding: 1px 0.5em 1px 0.5em;
+    background-color: #886c34;
+    border: solid 2px;
+    border-color: #382806;
+    color: white;
+    display: inline-block;
+    border-radius: 19px;
+    text-decoration: none;
+    transition: 0.7s;
+  }
+
+  .header-btn:hover {
+    opacity: 1;
+    border: solid 2px;
+    border-color: #31a613;
+    box-sizing: border-box;
+    background-color: #008e0c;
+  }
+
+
+
+  /* ==============================
+  他ページへ飛ぶボタン
+  ============================== */
+  /* .header-btn, */
+  .map-btn,
+  .bloglink-btn {
+    padding: 3px 15px 3px 10px;
+    /* 原本は最後3pxだったがフォントオーサムの左にpadding10を付けているから */
+    /* background: #edae2f; */
+    background: #f1df50;
+    /* background: #eee183; */
+    /* background: #eee183; */
+    /* background: #f4e044; */
+    /* color: white; */
+    color: black;
+    opacity: 1;
+    display: inline-block;
+    border: solid 3px #a68d13;
+    box-sizing: border-box;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 1px 0px 3px gray,
+      inset 0px -2px 4px #615712;
+    transition: all .3s ease-out;
+  }
+
+  /* .header-btn:hover, */
+  .map-btn:hover,
+  .bloglink-btn:hover {
+    transition: 0.7s;
+    background: #ffe100;
+    /* transform: scale(1.02, 1.02); */
+    border-color: #000000;
+  }
+
+  @media screen and (max-width: 769px) {
+    .map-btn {
+      width: 11em;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .bloglink-btn {
+      margin-left: -7%;
+      padding: 0.5em 0px;
+      width: 12em;
+    }
+  }
+
+
+  /* #introduction,#procedures-notes,#price,#TelFax,#access {
+    margin-top: -120px;
+    padding-top: 120px;
+  }
+
+  以下スマホだと padding が上のコンテンツと重なるのでＮＧ
+  @media screen and (max-width: 769px) {
+
+    #introduction,#procedures-notes,#price,#TelFax,#access {
+      margin-top: -120px;
+      padding-top: 120px;
+    }
+
+  }   */

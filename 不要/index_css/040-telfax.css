@@ -1,0 +1,32 @@
+  /* ==============================
+  TEL・FAX
+  ============================== */
+
+  #TelFax {
+    color: #944929;
+  }
+
+  .h3-Tel {
+    color: green;
+  }
+
+  .h3-Tel span {
+    font-weight: lighter; 
+  }
+
+  #opening-hours {
+    color: #944929;
+  }
+
+  .h3-opening-hours b {
+    color: red;
+  }
+
+  .h3-opening-hours {
+    color: green;
+    font-weight: normal;
+  }
+
+  #closed-day {
+    color: #944929;
+  }

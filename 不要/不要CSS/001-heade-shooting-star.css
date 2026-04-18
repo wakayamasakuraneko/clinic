@@ -1,0 +1,90 @@
+.glow-dot-button {
+  transition: background 1s ease;
+  /* 背景色の切り替えを滑らかにする */
+  margin: 2px 10px 2px 10px;
+  padding: 1px 0.5em 1px 0.5em;
+  border: solid 2px;
+  border-color: #382806;
+  color: white;
+  display: inline-block;
+  border-radius: 19px;
+  text-decoration: none;
+  /* transition: 0.7s; */
+  position: relative;
+  /* background-color: #54a951; */
+  background-color: #886c34;
+  cursor: pointer;
+}
+
+.glow-dot-button::before {
+  content: '+';
+  position: absolute;
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff;
+  animation: glow-dot 5s linear infinite, rotate-cross .5s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes glow-dot {
+  0% {
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  66% {
+    left: 100%;
+    top: 0;
+    opacity: 0;
+  }
+
+  67%,
+  100% {
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes rotate-cross {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  66% {
+    transform: translate(-50%, -50%) rotate(240deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes flowing-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.glow-dot-button.change-color {
+  /* background: linear-gradient(45deg, #ff0000, #198919, #ffdd00); */
+  /* background: linear-gradient(45deg, #ff00ff, #ffdd00, #6200ea, #6ed989, #ff8989, #886c34); */
+  background: linear-gradient(45deg, #ffdd00, #6200ea, #20ab43, #886c34);
+  background-size: 400% 400%;
+  animation: flowing-bg 1s linear forwards;
+  /* background-color: #6200ea; */
+  /* 最初の背景色に戻す */
+}

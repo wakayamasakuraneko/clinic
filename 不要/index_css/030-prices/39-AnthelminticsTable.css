@@ -1,0 +1,146 @@
+/* 未使用、駆虫薬の価格表内に駆虫薬の種類と効き目をスライドさせて表示させようという試み */
+
+/* スライドインコンテンツを非表示に設定 */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(104, 112, 104, 0.7);
+  z-index: 11;
+  transition: transform 0.2s ease-in-out;
+  /* アニメーション速度を設定 */
+  transform: translateX(100%);
+  /* 右からスライドイン */
+}
+
+/* スライドインコンテンツのスタイル */
+.slide-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90%;
+  height: 100%;
+  background-color: #fff9c8;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* セルのスタイル */
+.cell {
+  color: #cdba2e;
+  background: #fefde0;
+}
+
+.cell:hover {
+  color: #fefde0;
+  background: #cdba2e;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+
+
+/* グリッド表 */
+
+.grid-container {
+  font-size: 17px;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(9, 1fr);
+  /* 10列 */
+  /* grid-template-rows: repeat(8, 1fr); */
+  /* 8行 */
+  /* gap: 0px; */
+  /* グリッドセル間の間隔 */
+  /* width: 80%; */
+  /* 表の幅を調整 */
+  /* margin: 0 auto; */
+  /* 中央揃え */
+  background: #fff9c8;
+  /* background: #e3ffce; */
+  padding: 20px;
+  transition:
+    line-height .2s ease-out,
+    opacity .1s linear,
+    visibility .1s linear;
+  border: 1px solid #a3a3a3;
+}
+
+.grid-item {
+  border: 1px solid #000;
+  /* グリッドセルの境界線 */
+  padding: 2px;
+  /* グリッドセルの内部余白 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.7em;
+  font-weight: bold;
+}
+
+.v_writ {
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  min-height: 5.5em;
+}
+
+.widthA {
+  min-width: 9em;
+}
+
+.ulflex {
+  display: flex;
+  justify-content: space-between
+}
+
+.ulLeft {
+  text-align: left;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+
+
+
+
+
+/* @media screen and (max-width: 700px) {
+  .grid-container {
+    width: 90%;
+    font-size: 13px;
+  }
+} */
+
+
+@media screen and (max-width: 530px) {
+
+  .positionFlex {
+    /* display: flex; */
+    /* transform: rotate(90deg); */
+    top: 50%;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+  }
+
+  .grid-container {
+    /* position: relative; */
+    /* width: 152%; */
+    /* left: 9%; */
+    /* top: 10%; */
+    /* font-size: 1.5vw; */
+  }
+
+  .ulLeft,
+  .ulflex {
+    display: none;
+  }
+
+  .grid-item {
+    padding: 0px;
+    font-weight: bold;
+  }
+
+}

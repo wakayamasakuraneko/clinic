@@ -1,0 +1,82 @@
+  /* ==============================
+  共通用
+  ============================== */
+  span {
+    display: inline-block;
+    /* text-indent: -1em; */
+    /* padding-left: 1em; */
+  }
+
+
+
+  /* ==============================
+  PC用
+  ============================== */
+
+
+  body {
+    /* overflow-x: hidden; */
+    display: block;
+    box-sizing: border-box;
+    margin: 0px;
+    /* width: 100%; */
+    font-family: "Meiryo", "YuGothic", "Yu Gothic", "ヒラギノ角ゴ", "sans-serif";
+    /* text-wrap: balance; */
+    /* word-break: auto-phrase; */
+    /* ↑参考：https://www.youtube.com/shorts/xP_vna87d44
+    2023/12/3～ */
+  }
+
+
+  #soto {
+    background-color: #fdfdcd;
+    /* width: 100%; */
+    /* 太さの指定は1本ずつで border:2 15 2 15px; は不可 */
+    border-top: 2px solid #f6f4a5;
+    border-bottom: 2px solid #f6f4a5;
+    border-left: 15px solid #f6f4a5;
+    border-right: 15px solid #f6f4a5;
+    box-sizing: border-box;
+    /* これが無いと横スクロール必要 */
+  }
+
+  .uti {
+    background-color: #ffffe9;
+    font-size: 22px;
+    padding: 3%;
+    margin: 3%;
+    border-radius: 15px;
+  }
+
+
+  /* ==============================
+  スマホ用
+  ============================== */
+  @media screen and (max-width: 769px) {
+
+    #soto {
+      background-color: #fefde0;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    .uti {
+      /* font-size: 1rem; */
+      /* font-size: 15px; */
+      font-size: 20px;
+      background-color: #fefde0;
+      padding: 0;
+    }
+
+    .bold-title {
+      font-size: 1.35rem;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+
+    /* WebKit系ブラウザ（Safari, Google Chromeなど）*/
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }

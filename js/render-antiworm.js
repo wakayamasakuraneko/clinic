@@ -34,7 +34,7 @@
   async function main() {
     const tbody = document.getElementById("aw-body");
     if (!tbody) return;
-    const data = await loadJSON("price-data/antiworm-data.json");
+    const data = await loadJSON("price/data/antiworm-data.json");
     tbody.innerHTML = "";
     for (const prod of data) {
       const tr = document.createElement("tr");

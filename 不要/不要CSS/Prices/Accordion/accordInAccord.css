@@ -1,0 +1,140 @@
+/* 価格表内の補足アコーディオン */
+
+.menu {
+    /* background: #ebffb1; */
+    cursor: pointer;
+}
+
+.menu:hover,
+.menu.is-active,
+.menu:active {
+    /* background: #b0e58c; */
+    background: #ebffb1;
+    transition: 0.4s;
+}
+
+/* 以下の３つ
+tbody.show .contents td 
+tbody.show .contents.is-open
+tbody.show .contents.is-open td
+の文はどれが欠けてもダメ */
+tbody.show .contents td {
+    line-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    border: 0;
+}
+
+tbody.show .contents.is-open {
+    /* tbody.show .is-open { */
+    line-height: 1.7;
+    opacity: 1;
+    visibility: visible;
+}
+
+tbody.show .contents.is-open td {
+    line-height: 1.7;
+    opacity: 1;
+    visibility: visible;
+    border: solid 1px #000;
+}
+
+/* tbody.show .is-open td {
+    line-height: 3;
+} */
+
+
+
+.boderBottom {
+    border-bottom: solid 1px;
+}
+
+
+
+
+/* 補足アコーディオンが必要になるまで封印 */
+/* .flexA:nth-child(1):hover {
+    background: #a7e67d;
+    transition: 0.4s;
+} */
+
+.contents {
+    /* background: #f2ffcc; */
+    line-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        line-height .2s ease-out,
+        opacity .05s linear .05s,
+        visibility .1s linear .1s;
+}
+
+.contents img {
+    display: none;
+    /* height: 0; */
+}
+
+/* 駆虫表の補足文のスタイル */
+.padingA {
+    text-align: left;
+    text-indent: -1em;
+    font-size: 18px;
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 0 3vw 0 3vw;
+}
+
+.padingA p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+/* tbody.show>tr>td>section>div>.contents.is-open>.pcAnthelTable { */
+/* PC版駆虫表 */
+/* tbody.show .is-open .pcAnthelTable {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.7;
+    opacity: 1;
+    visibility: visible;
+    display: block;
+} */
+
+
+/* スマホ版駆虫表 */
+@media screen and (max-width: 600px) {
+    /* tbody.show .is-open .spAnthelTable {
+        width: 100%;
+        margin: auto;
+        line-height: 1.7;
+        opacity: 1;
+        visibility: visible;
+        display: block;
+    } */
+
+    /* tbody.show .is-open .pcAnthelTable {
+        display: none;
+    } */
+
+    .padingA {
+        /* tbody.show>tr>td>section>div>.contents.is-open { */
+        font-size: 15px;
+    }
+}
+
+
+
+
+
+/* 「手術時に耳カットを入れた場合」のスタイル */
+.fontSizeB {
+    font-size: 22px;
+}
+
+@media screen and (max-width: 769px) {
+
+    .fontSizeB {
+        font-size: 17px;
+    }
+}

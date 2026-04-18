@@ -1,0 +1,771 @@
+/* ============================================================
+  style.css — index.htm 用スタイルシート
+  以下の旧ファイルを統合したもの:
+    common2025.css, common-jump.css,
+    001-header.css, 002-sticky-nav.css, 003-title-img.css,
+    intro2025.css, 020-procedures-notes2025.css,
+    040-telfax2025.css, 050-access2025.css, 090-footer.css,
+    001-heade-shooting-star.css, 001-heade-btn-anime.css(コメントアウト中)
+============================================================ */
+
+
+/* ============================================================
+  共通・ボディ
+============================================================ */
+
+span {
+  display: inline-block;
+}
+
+body {
+  display: block;
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: "Meiryo", "YuGothic", "Yu Gothic", "ヒラギノ角ゴ", "sans-serif";
+}
+
+section {
+  background-color: #fdfdcd;
+  border-top: 2px solid #f6f4a5;
+  border-bottom: 2px solid #f6f4a5;
+  border-left: 15px solid #f6f4a5;
+  border-right: 15px solid #f6f4a5;
+  box-sizing: border-box;
+}
+
+.uti {
+  background-color: #ffffe9;
+  font-size: 22px;
+  padding: 3%;
+  margin: 3%;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 769px) {
+  section {
+    background-color: #fefde0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .uti {
+    font-size: 20px;
+    background-color: #fefde0;
+    padding: 0;
+  }
+
+  .bold-title {
+    font-size: 1.35rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* おまけセクション */
+@media screen and (max-width: 769px) {
+  .omake-link-wrap {
+    text-align: center;
+  }
+  .omake-link-wrap p {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+  }
+  .omake-link-wrap .bloglink-btn {
+    margin-left: 0;
+    width: auto;
+    padding: 0.5em 1.5em;
+  }
+}
+
+
+/* ============================================================
+  ページ内ジャンプ・ボタン共通
+============================================================ */
+
+html,
+body {
+  scroll-padding-top: 120px;
+}
+
+/* ヘッダー内ボタン */
+.header-btn {
+  margin: 2px 10px 2px 10px;
+  padding: 1px 0.5em 1px 0.5em;
+  background-color: #886c34;
+  border: solid 2px;
+  border-color: #382806;
+  color: white;
+  display: inline-block;
+  border-radius: 19px;
+  text-decoration: none;
+  transition: 0.7s;
+}
+
+.header-btn:hover {
+  opacity: 1;
+  border: solid 2px;
+  border-color: #31a613;
+  box-sizing: border-box;
+  background-color: #008e0c;
+}
+
+/* 他ページへ飛ぶボタン */
+.map-btn,
+.bloglink-btn {
+  padding: 3px 15px 3px 10px;
+  background: #f1df50;
+  color: black;
+  opacity: 1;
+  display: inline-block;
+  border: solid 3px #a68d13;
+  box-sizing: border-box;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 1px 0px 3px gray, inset 0px -2px 4px #615712;
+  transition: all .3s ease-out;
+}
+
+.map-btn:hover,
+.bloglink-btn:hover {
+  transition: 0.7s;
+  background: #ffe100;
+  border-color: #000000;
+}
+
+@media screen and (max-width: 769px) {
+  .map-btn {
+    width: 11em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .bloglink-btn {
+    margin-left: -7%;
+    padding: 0.5em 0px;
+    width: 12em;
+  }
+}
+
+
+/* ============================================================
+  ヘッダー
+============================================================ */
+
+header {
+  font-size: 20px;
+  background: #eee183;
+}
+
+.header-top {
+  height: 50px;
+  line-height: 1;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background: #eee183;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.header_empty {
+  margin-top: 50px;
+}
+
+.header-middle {
+  position: relative;
+  color: green;
+  text-align: center;
+}
+
+.header-bottom {
+  text-align: center;
+}
+
+.header_declaration {
+  display: flex;
+  font-size: 17px;
+  justify-content: center;
+  line-height: 2;
+  text-align: center;
+}
+
+.header_empty2 {
+  height: 1px;
+}
+
+@media screen and (max-width: 769px) {
+  .header-top {
+    min-height: 32px;
+    height: fit-content;
+  }
+
+  .header_empty {
+    margin-top: 32px;
+  }
+
+  .header-bottom {
+    display: block;
+    font-size: 17px;
+  }
+
+  .header_declaration {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    font-size: 17px;
+  }
+}
+
+
+/* ============================================================
+  ナビゲーション（sticky）
+============================================================ */
+
+.menu-nav {
+  display: flex;
+  align-items: center;
+  background: #eee183;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 32px;
+  z-index: 10;
+}
+
+nav div {
+  width: 95%;
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-width: 5px;
+}
+
+.menu-ul {
+  text-align: center;
+  list-style: none;
+  background: #eee183;
+  margin: 0 auto;
+  width: 90%;
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.menu-li {
+  font-size: 17px;
+  display: table-cell;
+  min-width: 11vw;
+  background: #000;
+  box-sizing: border-box;
+  border: 1px solid #eee;
+  white-space: nowrap;
+}
+
+.menu-li a {
+  line-height: 3;
+  height: 50px;
+  display: block;
+  padding: 0 .5em 0 .5em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu-li:hover>a {
+  font-weight: bold;
+  color: rgb(4, 4, 4);
+  background: #bebebe;
+  transition: 0.3s;
+}
+
+.navtop {
+  display: none;
+}
+
+.navtop-bottom {
+  height: 1vw;
+  background: #eee183;
+}
+
+.navbottom-top {
+  height: 1vw;
+  background: #eee183;
+}
+
+.navbottom-bottom {
+  height: 1px;
+  background: #ffffff;
+}
+
+@media screen and (max-width: 769px) {
+  .navtop {
+    background: #fafab2;
+    display: flex;
+    height: 1.3em;
+    justify-content: space-around;
+    list-style: none;
+  }
+}
+
+
+/* ============================================================
+  タイトル画像
+============================================================ */
+
+.img-background {
+  background-color: black;
+  text-align: center;
+}
+
+.title-img {
+  width: 85vw;
+  margin-top: 0.8vw;
+}
+
+@media screen and (max-width: 769px) {
+  .title-img {
+    width: 95vw;
+  }
+}
+
+
+/* ============================================================
+  病院紹介（#introduction）
+============================================================ */
+
+#introduction h2 {
+  color: #99634b;
+}
+
+.color_red {
+  font-weight: bold;
+  color: #ff0000;
+}
+
+summary.introSummary1 {
+  padding: 0.2em 1em;
+  background: #f1df50;
+  border-radius: 25px;
+  box-shadow: 1px 0px 3px gray, inset 0px -2px 4px #615712;
+}
+
+summary.introSummary1:hover {
+  color: #000000;
+  background: #ffe100;
+}
+
+summary:hover {
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+details.introDetail1 {
+  width: 9em;
+  background: #f7eb8a;
+  border: solid;
+  border-color: #8e8010;
+  border-radius: 28px;
+  box-shadow: 1px 0px 3px gray;
+  transition: all 0.3s ease-out;
+}
+
+details.introDetail1:hover {
+  border: solid;
+  transform: scale(1.05, 1.05);
+  transition: all 0.15s ease-out;
+}
+
+details:hover {
+  transition: 0.1s;
+}
+
+details.introDetail1[open] {
+  width: 36em;
+}
+
+details.introDetail1 p {
+  padding: 0 1em;
+}
+
+@media screen and (max-width: 900px) {
+  details.introDetail1[open] {
+    width: 100%;
+    transform: scale(1, 1);
+  }
+}
+
+@media screen and (max-width: 769px) {
+  details.introDetail1 {
+    margin: auto;
+  }
+
+  summary.introSummary1 {
+    padding: 0.5em 1em;
+    font-size: 1.1em;
+  }
+}
+
+
+/* ============================================================
+  手術の流れと注意点（#procedures-notes）
+============================================================ */
+
+#procedures-notes h2 {
+  color: brown;
+}
+
+.h3-PN {
+  color: #02cd88;
+}
+
+.h3-PN-red {
+  color: #ff0000;
+}
+
+@media screen and (max-width: 769px) {
+  .align_center {
+    text-align: center;
+  }
+}
+
+
+/* ============================================================
+  TEL・FAX（#TelFax）
+============================================================ */
+
+#TelFax h2 {
+  color: #944929;
+}
+
+.h3-Tel {
+  color: green;
+}
+
+.h3-Tel span {
+  font-weight: lighter;
+}
+
+#opening-hours {
+  color: #944929;
+}
+
+.h3-opening-hours b {
+  color: red;
+}
+
+.h3-opening-hours {
+  color: green;
+  font-weight: normal;
+}
+
+#closed-day {
+  color: #944929;
+}
+
+
+/* ============================================================
+  アクセス（#access）
+============================================================ */
+
+#access h2 {
+  color: #2d6d4b;
+}
+
+.device {
+  font-size: 18px;
+  color: red;
+  margin-left: 30px;
+}
+
+.wrapMaps {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.wrapMaps img {
+  height: 42%;
+  width: 42%;
+  border: 2px solid black;
+  box-sizing: border-box;
+}
+
+.wrapMaps iframe {
+  width: 42%;
+  height: inherit;
+}
+
+.googlemap-text {
+  margin: 1em 0 1.5em 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .wrapMaps img {
+    width: 48%;
+    height: 48%;
+  }
+
+  .wrapMaps iframe {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .wrapMaps {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .wrapMaps img {
+    width: 100%;
+  }
+
+  .wrapMaps iframe {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .device {
+    font-size: 12px;
+    margin-left: 15px;
+  }
+}
+
+
+/* ============================================================
+  フッター
+============================================================ */
+
+.footer-top {
+  display: flex;
+  width: 100%;
+  background: #f6f4a5;
+  padding-top: 1em;
+  padding-bottom: .5em;
+}
+
+.footer-left {
+  width: 40%;
+}
+
+.footer-right {
+  width: 60%;
+}
+
+ul.snsbtniti {
+  padding: 0 !important;
+}
+
+.snsbtniti {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.snsbtniti li {
+  flex: 0 0 0 25%;
+}
+
+li {
+  list-style: none;
+}
+
+.flowbtn,
+.blogbtn {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  width: 66px;
+  height: 58px;
+  position: relative;
+  display: inline-block;
+  font-size: 30px;
+  transition: .5s;
+  text-decoration: none;
+  box-shadow: 3px 3px 6px -2px #555;
+}
+
+.flowbtn {
+  color: #fff;
+  border-radius: 4px;
+}
+
+.blogbtn {
+  border-radius: 50%;
+}
+
+.flowbtn i {
+  position: relative;
+  top: 5px;
+}
+
+.flowbtn div,
+.blogbtn div {
+  font-size: 11px;
+  font-weight: bold;
+  position: relative;
+}
+
+.flowbtn div {
+  letter-spacing: 0;
+  bottom: -5px;
+}
+
+.blogbtn div {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  -webkit-text-stroke: 1.3px #1e479e;
+  position: absolute;
+  letter-spacing: 1px;
+  left: 10%;
+  top: 61%;
+}
+
+.flowbtn .twit_X {
+  top: 0px;
+  font-size: 1.25em;
+  font-style: normal;
+}
+
+.flowbtn .X_bottom {
+  bottom: 5px;
+}
+
+.fl_tw1 { background: #55acee; }
+.fl_X { background: #202124; }
+.fl_fb1 { background: #3b5998; }
+.fl_blog { background: #e1d28900; }
+
+.fl_blog img {
+  position: relative;
+  top: -3px;
+  width: 100%;
+}
+
+.fl_ma1 { background: #f3981d; }
+
+.insta_btn1 {
+  background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  overflow: hidden;
+}
+
+.insta_btn1:before {
+  content: '';
+  position: absolute;
+  top: 33px;
+  left: -20px;
+  width: 80px;
+  height: 50px;
+  background: -webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+  background: radial-gradient(#ffdb2c 5%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+}
+
+.fa-twitter:before { content: "\f099"; }
+.fab { font-family: "Font Awesome 5 Brands"; }
+
+.flowbtn:hover,
+.blogbtn:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.footer-bottom {
+  background: #483b0c;
+  color: #fff;
+  font-size: 1.4rem;
+  text-align: center;
+  position: relative;
+  padding: 16px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .footer-left { width: 0%; }
+  .footer-right { width: 100%; }
+
+  .footer-bottom {
+    font-size: 100%;
+  }
+
+  .flowbtn {
+    border-radius: 50%;
+    transform: scale(0.8, 0.8);
+  }
+
+  .flowbtn i { top: 20%; }
+  .flowbtn .twit_X { top: 12%; }
+  .blogbtn { transform: scale(0.8, 0.8); }
+  .flowbtn div { display: none; }
+
+  .flowbtn:hover,
+  .blogbtn:hover {
+    transform: scale(1.0, 1.0);
+  }
+}
+
+
+/* ============================================================
+  ヘッダーボタン 流れ星エフェクト（001-heade-shooting-star.css）
+============================================================ */
+
+.glow-dot-button {
+  transition: background 1s ease;
+  margin: 2px 10px 2px 10px;
+  padding: 1px 0.5em 1px 0.5em;
+  border: solid 2px;
+  border-color: #382806;
+  color: white;
+  display: inline-block;
+  border-radius: 19px;
+  text-decoration: none;
+  position: relative;
+  background-color: #886c34;
+  cursor: pointer;
+}
+
+.glow-dot-button::before {
+  content: '+';
+  position: absolute;
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff;
+  animation: glow-dot 5s linear infinite, rotate-cross .5s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes glow-dot {
+  0% { left: 0; top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  60% { opacity: 1; }
+  66% { left: 100%; top: 0; opacity: 0; }
+  67%, 100% { left: 0; top: 0; opacity: 0; }
+}
+
+@keyframes rotate-cross {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  66% { transform: translate(-50%, -50%) rotate(240deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes flowing-bg {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.glow-dot-button.change-color {
+  background: linear-gradient(45deg, #ffdd00, #6200ea, #20ab43, #886c34);
+  background-size: 400% 400%;
+  animation: flowing-bg 1s linear forwards;
+}

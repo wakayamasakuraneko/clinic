@@ -1,0 +1,29 @@
+  /* ==============================
+  手術の流れと注意点
+  ============================== */
+
+  #procedures-notes {
+    color: brown;
+  }
+
+  .h3-PN {
+    color: #02cd88;
+  }
+
+  .h3-PN-red {
+    color: #ff0000;
+  }
+
+  /* .uti a {
+    text-align: center;
+  } */
+
+
+  /* ==============================
+スマホ用
+============================== */
+  @media screen and (max-width: 769px) {
+    .align_center {
+      text-align: center;
+    }
+  }

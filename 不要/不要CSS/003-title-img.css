@@ -1,0 +1,24 @@
+  /* タイトルイメージ */
+
+  /* タイトルイメージの背景:黒 */
+  .img-background {
+    background-color: black;
+    text-align: center;
+    /* これが無いと、画像が黒い背景よりも大きくなる */
+  }
+
+  .title-img {
+    width: 85vw;
+    margin-top: 0.8vw;
+  }
+
+
+  /* ==============================
+  スマホ用
+  ============================== */
+  @media screen and (max-width: 769px) {
+    .title-img {
+      width: 95vw;
+    }
+
+  }  

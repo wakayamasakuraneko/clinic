@@ -1,0 +1,2786 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <title>和歌山スペイクリニック さくらねこ</title> -->
+  <title>最新テスト</title>
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+  <style>
+  /* ===== common-jump.css ===== */
+  html,
+  body {
+    scroll-padding-top: 120px;
+  }
+
+  .header-btn {
+    margin: 2px 10px 2px 10px;
+    padding: 1px 0.5em 1px 0.5em;
+    background-color: #886c34;
+    border: solid 2px;
+    border-color: #382806;
+    color: white;
+    display: inline-block;
+    border-radius: 19px;
+    text-decoration: none;
+    transition: 0.7s;
+  }
+
+  .header-btn:hover {
+    opacity: 1;
+    border: solid 2px;
+    border-color: #31a613;
+    box-sizing: border-box;
+    background-color: #008e0c;
+  }
+
+  .map-btn,
+  .bloglink-btn {
+    padding: 3px 15px 3px 10px;
+    background: #f1df50;
+    color: black;
+    opacity: 1;
+    display: inline-block;
+    border: solid 3px #a68d13;
+    box-sizing: border-box;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 1px 0px 3px gray,
+      inset 0px -2px 4px #615712;
+    transition: all .3s ease-out;
+  }
+
+  .map-btn:hover,
+  .bloglink-btn:hover {
+    transition: 0.7s;
+    background: #ffe100;
+    border-color: #000000;
+  }
+
+  @media screen and (max-width: 769px) {
+    .map-btn {
+      width: 11em;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .bloglink-btn {
+      margin-left: -7%;
+      padding: 0.5em 0px;
+      width: 12em;
+    }
+  }
+
+
+  /* ===== common.css ===== */
+  span {
+    display: inline-block;
+  }
+
+  body {
+    display: block;
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: "Meiryo", "YuGothic", "Yu Gothic", "ヒラギノ角ゴ", "sans-serif";
+  }
+
+  #soto {
+    background-color: #fdfdcd;
+    border-top: 2px solid #f6f4a5;
+    border-bottom: 2px solid #f6f4a5;
+    border-left: 15px solid #f6f4a5;
+    border-right: 15px solid #f6f4a5;
+    box-sizing: border-box;
+  }
+
+  .uti {
+    background-color: #ffffe9;
+    font-size: 22px;
+    padding: 3%;
+    margin: 3%;
+    border-radius: 15px;
+  }
+
+  @media screen and (max-width: 769px) {
+    #soto {
+      background-color: #fefde0;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    .uti {
+      font-size: 20px;
+      background-color: #fefde0;
+      padding: 0;
+    }
+
+    .bold-title {
+      font-size: 1.35rem;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+
+  /* ===== 001-header.css ===== */
+  header {
+    font-size: 20px;
+    background: #eee183;
+  }
+
+  .header-top {
+    height: 50px;
+    line-height: 1;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background: #eee183;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header_empty {
+    margin-top: 50px;
+  }
+
+  .header-middle {
+    position: relative;
+    color: green;
+    text-align: center;
+  }
+
+  .header-bottom {
+    text-align: center;
+  }
+
+  .header_declaration {
+    display: flex;
+    font-size: 17px;
+    justify-content: center;
+    line-height: 2;
+    text-align: center;
+  }
+
+  .header_empty2 {
+    height: 1px;
+  }
+
+  @media screen and (max-width: 769px) {
+    .header-top {
+      min-height: 32px;
+      height: fit-content;
+    }
+
+    .header_empty {
+      margin-top: 32px;
+    }
+
+    .header-bottom {
+      display: block;
+      font-size: 17px;
+    }
+
+    .header_declaration {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    header {
+      font-size: 17px;
+    }
+  }
+
+
+  /* ===== 001-heade-shooting-star.css ===== */
+  .glow-dot-button {
+    transition: background 1s ease;
+    margin: 2px 10px 2px 10px;
+    padding: 1px 0.5em 1px 0.5em;
+    border: solid 2px;
+    border-color: #382806;
+    color: white;
+    display: inline-block;
+    border-radius: 19px;
+    text-decoration: none;
+    position: relative;
+    background-color: #886c34;
+    cursor: pointer;
+  }
+
+  .glow-dot-button::before {
+    content: '+';
+    position: absolute;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff;
+    animation: glow-dot 5s linear infinite, rotate-cross .5s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes glow-dot {
+    0% { left: 0; top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    60% { opacity: 1; }
+    66% { left: 100%; top: 0; opacity: 0; }
+    67%, 100% { left: 0; top: 0; opacity: 0; }
+  }
+
+  @keyframes rotate-cross {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    66% { transform: translate(-50%, -50%) rotate(240deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes flowing-bg {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  .glow-dot-button.change-color {
+    background: linear-gradient(45deg, #ffdd00, #6200ea, #20ab43, #886c34);
+    background-size: 400% 400%;
+    animation: flowing-bg 1s linear forwards;
+  }
+
+
+  /* ===== 002-sticky-nav.css ===== */
+  .menu-nav {
+    display: flex;
+    align-items: center;
+    background: #eee183;
+  }
+
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 32px;
+    z-index: 10;
+  }
+
+  nav div {
+    width: 95%;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-width: 5px;
+  }
+
+  .menu-ul {
+    text-align: center;
+    list-style: none;
+    background: #eee183;
+    margin: 0 auto;
+    width: 90%;
+    padding-inline-start: 0px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+
+  .menu-li {
+    font-size: 17px;
+    display: table-cell;
+    min-width: 11vw;
+    background: #000;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    white-space: nowrap;
+  }
+
+  .menu-li a {
+    line-height: 3;
+    height: 50px;
+    display: block;
+    padding: 0 .5em 0 .5em;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .menu-li:hover>a {
+    font-weight: bold;
+    color: rgb(4, 4, 4);
+    background: #bebebe;
+    transition: 0.3s;
+  }
+
+  .navtop {
+    display: none;
+  }
+
+  .navtop-bottom {
+    height: 1vw;
+    background: #eee183;
+  }
+
+  .navbottom-top {
+    height: 1vw;
+    background: #eee183;
+  }
+
+  .navbottom-bottom {
+    height: 1px;
+    background: #ffffff;
+  }
+
+  @media screen and (max-width: 769px) {
+    .navtop {
+      background: #fafab2;
+      display: flex;
+      height: 1.3em;
+      justify-content: space-around;
+      list-style: none;
+    }
+  }
+
+
+  /* ===== 003-title-img.css ===== */
+  .img-background {
+    background-color: black;
+    text-align: center;
+  }
+
+  .title-img {
+    width: 85vw;
+    margin-top: 0.8vw;
+  }
+
+  @media screen and (max-width: 769px) {
+    .title-img {
+      width: 95vw;
+    }
+  }
+
+
+  /* ===== 010-intro.css ===== */
+  #introduction {
+    color: #99634b;
+  }
+
+  .color_red {
+    font-weight: bold;
+    color: #ff0000;
+  }
+
+  summary.introSummary1 {
+    padding: 0.2em 1em;
+    background: #f1df50;
+    border-radius: 25px;
+    box-shadow: 1px 0px 3px gray,
+      inset 0px -2px 4px #615712;
+  }
+
+  summary.introSummary1:hover {
+    color: #000000;
+    background: #ffe100;
+  }
+
+  summary:hover {
+    cursor: pointer;
+    transition: 0.8s;
+  }
+
+  details.introDetail1 {
+    width: 9em;
+    background: #f7eb8a;
+    border: solid;
+    border-color: #8e8010;
+    border-radius: 28px;
+    box-shadow: 1px 0px 3px gray;
+    transition: all .3s ease-out;
+  }
+
+  details.introDetail1:hover {
+    border: solid;
+    transform: scale(1.05, 1.05);
+    transition: all .15s ease-out;
+  }
+
+  details:hover {
+    transition: 0.1s;
+  }
+
+  details.introDetail1[open] {
+    width: 36em;
+  }
+
+  details.introDetail1 p {
+    padding: 0 1em;
+  }
+
+  @media screen and (max-width: 900px) {
+    details.introDetail1[open] {
+      width: 100%;
+      transform: scale(1.0, 1.0);
+    }
+  }
+
+  @media screen and (max-width: 769px) {
+    details.introDetail1 {
+      margin: auto;
+    }
+
+    summary.introSummary1 {
+      padding: 0.5em 1em;
+      font-size: 1.1em;
+    }
+  }
+
+
+  /* ===== 020-procedures-notes.css ===== */
+  #procedures-notes {
+    color: brown;
+  }
+
+  .h3-PN {
+    color: #02cd88;
+  }
+
+  .h3-PN-red {
+    color: #ff0000;
+  }
+
+  @media screen and (max-width: 769px) {
+    .align_center {
+      text-align: center;
+    }
+  }
+
+
+  /* ===== 040-telfax.css ===== */
+  #TelFax {
+    color: #944929;
+  }
+
+  .h3-Tel {
+    color: green;
+  }
+
+  .h3-Tel span {
+    font-weight: lighter;
+  }
+
+  #opening-hours {
+    color: #944929;
+  }
+
+  .h3-opening-hours b {
+    color: red;
+  }
+
+  .h3-opening-hours {
+    color: green;
+    font-weight: normal;
+  }
+
+  #closed-day {
+    color: #944929;
+  }
+
+
+  /* ===== 050-access.css ===== */
+  #access {
+    color: #2d6d4b;
+  }
+
+  .device {
+    font-size: 18px;
+    color: red;
+    margin-left: 30px;
+  }
+
+  .wrapMaps {
+    display: flex;
+    justify-content: space-evenly
+  }
+
+  .wrapMaps img {
+    height: 42%;
+    width: 42%;
+    border: 2px solid black;
+    box-sizing: border-box;
+  }
+
+  .wrapMaps iframe {
+    width: 42%;
+    height: inherit;
+  }
+
+  .googlemap-text {
+    margin: 1em 0 1.5em 0;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 1100px) {
+    .wrapMaps img {
+      width: 48%;
+      height: 48%;
+    }
+
+    .wrapMaps iframe {
+      width: 48%;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .wrapMaps {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    .wrapMaps img {
+      width: 100%;
+    }
+
+    .wrapMaps iframe {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 769px) {
+    .device {
+      font-size: 12px;
+      margin-left: 15px;
+    }
+  }
+
+
+  /* ===== 090-footer.css ===== */
+  .footer-top {
+    display: flex;
+    width: 100%;
+    background: #f6f4a5;
+    padding-top: 1em;
+    padding-bottom: .5em;
+  }
+
+  .footer-left {
+    width: 40%;
+  }
+
+  .footer-right {
+    width: 60%;
+  }
+
+  ul.snsbtniti {
+    padding: 0 !important;
+  }
+
+  .snsbtniti {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+
+  .snsbtniti li {
+    flex: 0 0 0 25%;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .flowbtn,
+  .blogbtn {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    width: 66px;
+    height: 58px;
+    position: relative;
+    display: inline-block;
+    font-size: 30px;
+    transition: .5s;
+    text-decoration: none;
+    box-shadow: 3px 3px 6px -2px #555;
+  }
+
+  .flowbtn {
+    color: #fff;
+    border-radius: 4px;
+  }
+
+  .blogbtn {
+    border-radius: 50%;
+  }
+
+  .flowbtn i {
+    position: relative;
+    top: 5px;
+  }
+
+  .flowbtn div,
+  .blogbtn div {
+    font-size: 11px;
+    font-weight: bold;
+    position: relative;
+  }
+
+  .flowbtn div {
+    letter-spacing: 0;
+    bottom: -5px;
+  }
+
+  .blogbtn div {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    -webkit-text-stroke: 1.3px #1e479e;
+    position: absolute;
+    letter-spacing: 1px;
+    left: 10%;
+    top: 61%;
+  }
+
+  .flowbtn .twit_X {
+    top: 0px;
+    font-size: 1.25em;
+    font-style: normal;
+  }
+
+  .flowbtn .X_bottom {
+    bottom: 5px;
+  }
+
+  .fl_tw1 { background: #55acee; }
+  .fl_X { background: #202124; }
+  .fl_fb1 { background: #3b5998; }
+  .fl_blog { background: #e1d28900; }
+
+  .fl_blog img {
+    position: relative;
+    top: -3px;
+    width: 100%;
+  }
+
+  .fl_ma1 { background: #f3981d; }
+
+  .insta_btn1 {
+    background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+    background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+    overflow: hidden;
+  }
+
+  .insta_btn1:before {
+    content: '';
+    position: absolute;
+    top: 33px;
+    left: -20px;
+    width: 80px;
+    height: 50px;
+    background: -webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+    background: radial-gradient(#ffdb2c 5%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+  }
+
+  .fa-twitter:before { content: "\f099"; }
+  .fab { font-family: "Font Awesome 5 Brands"; }
+
+  .flowbtn:hover,
+  .blogbtn:hover {
+    transform: scale(1.2, 1.2);
+  }
+
+  .footer-bottom {
+    background: #483b0c;
+    color: #fff;
+    font-size: 1.4rem;
+    text-align: center;
+    position: relative;
+    padding: 16px 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    .footer-left { width: 0%; }
+    .footer-right { width: 100%; }
+    .footer-bottom { font-size: 100%; }
+    .flowbtn { border-radius: 50%; transform: scale(0.8, 0.8); }
+    .flowbtn i { top: 20%; }
+    .flowbtn .twit_X { top: 12%; }
+    .blogbtn { transform: scale(0.8, 0.8); }
+    .flowbtn div { display: none; }
+    .flowbtn:hover, .blogbtn:hover { transform: scale(1.0, 1.0); }
+  }
+
+
+  /* ===== 00-original_exist.css ===== */
+  #price { color: #d72521; }
+
+  .price-caption-top,
+  .price-caption-bottom {
+    font-size: 22px;
+  }
+
+  .price-caption-top p,
+  .price-caption-bottom p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    line-height: 2em;
+  }
+
+  .price-caption-top {
+    color: red;
+    text-align: right;
+    padding-left: 25%;
+    padding-right: 10%;
+  }
+
+  .price-caption-bottom {
+    color: green;
+    text-align: left;
+    padding-left: 10%;
+  }
+
+  @media screen and (max-width: 769px) {
+    .price-caption-top {
+      text-align: left;
+      padding-left: 0%;
+      padding-right: 0%;
+    }
+
+    .price-caption-top p,
+    .price-caption-bottom p {
+      padding-left: 1em;
+      font-size: 20px;
+      line-height: 1.5em;
+    }
+
+    .price-caption-top p {
+      text-indent: -1em;
+      text-align: left;
+    }
+
+    .price-caption-bottom {
+      padding-left: 0px;
+    }
+  }
+
+
+  /* ===== 01-table.css ===== */
+  .uti-bottom0,
+  .uti-top0 {
+    background-color: #ffffe9;
+    font-size: 22px;
+  }
+
+  .uti-bottom0 {
+    padding: 3% 3% 0 3%;
+    margin: 3% 3% 0 3%;
+  }
+
+  .uti-top0 {
+    padding: 1px 3% 3%;
+    margin: 0 3% 3% 3%;
+  }
+
+  table {
+    text-align: center;
+    background: #fefde0;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    width: 80%;
+    max-width: 1000px;
+    border-collapse: collapse;
+  }
+
+  .priceList1 { margin-top: -2.5em; }
+  .gap2 { height: 2.7em; }
+
+  col:nth-child(1) { width: 16%; }
+  col:nth-child(2) { width: 42%; }
+  col:nth-child(3) { width: 42%; }
+
+  table span { display: inline-block; }
+
+  .PriceCutColor { background: #ebffb1; }
+  .price-excl-tax { color: blue; }
+  .price-incl-tax { color: red; }
+
+  @media screen and (max-width: 880px) {
+    .tdcolum { font-size: 17px; }
+  }
+
+  @media screen and (max-width: 769px) {
+    table { width: 100%; font-size: 17px; }
+    .priceList1 { margin-top: -3em; }
+    .gap2 { height: 2.5em; }
+  }
+
+  @media screen and (max-width: 600px) {
+    .tdcolum { font-size: 15px; }
+    .uti-bottom0, .uti-top0 { padding: 0; background-color: #fefde0; }
+  }
+
+
+  /* ===== 02-button.css ===== */
+  th .tax-status {
+    position: absolute;
+    right: 21%;
+    font-weight: normal;
+    border: 2px solid #b2a75b;
+    padding: 2px 4px;
+    border-radius: 20px;
+    top: 20%;
+    background: #eee183;
+    font-size: 80%;
+  }
+
+  .button-wrapper {
+    display: flex;
+    position: sticky;
+    top: 80%;
+    justify-content: space-around;
+    padding-bottom: 0.5em;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #toggle-button,
+  #show-all-button {
+    pointer-events: auto;
+    position: sticky;
+    box-shadow: 4px 6px 10px gray;
+    background: rgb(238 225 131);
+    border-radius: 17px;
+    padding: .3em .5em .2em .5em;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all .3s ease-out;
+  }
+
+  #toggle-button:hover,
+  #show-all-button:hover {
+    transform: scale(1.15, 1.15);
+    background: #eeda41;
+  }
+
+  @media screen and (max-width: 400px) {
+    th .tax-status { right: 5%; font-size: 90%; top: 24%; }
+  }
+
+  @media screen and (max-width: 769px) {
+    #toggle-button, #show-all-button { padding: 1em .7em; border-radius: 30px; }
+  }
+
+  @media screen and (max-width: 500px) {
+    .button-wrapper { justify-content: space-between }
+  }
+
+
+  /* ===== 03-rotateSym.css ===== */
+  .th_box {
+    font-size: 0.8em;
+    position: absolute;
+    top: 20%;
+    width: 25px;
+    height: 25px;
+    color: #194602;
+    border: 1px solid #194602;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+  }
+
+  .one_th:before,
+  .one_th:after {
+    content: '';
+    background-color: #000000;
+    border-radius: 10px;
+    width: 18px;
+    height: 2px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    transform-origin: center center;
+  }
+
+  .one_th:before { -webkit-transform: rotate(-45deg); transform: rotate(-45deg); }
+  .one_th:after { -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+
+  thead.thead-active .one_th:before { -webkit-transform: rotate(-0deg); transform: rotate(0deg); }
+  thead.thead-active .one_th:after { display: none; }
+
+  .th_box { left: 21%; }
+
+  @media screen and (max-width: 400px) {
+    .th_box { left: 9%; }
+  }
+
+  thead.thead-active .th_box {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    transition: .3s;
+  }
+
+  @media screen and (max-width: 500px) {
+    .th_box { top: 30%; width: 22px; height: 22px; }
+    .one_th:before, .one_th:after { width: 16px; }
+  }
+
+  .i_box { display: none; }
+
+  tbody.show .i_box {
+    font-size: 0.8em;
+    top: 20%;
+    width: .8em;
+    height: .8em;
+    color: #194602;
+    border: 1px solid #194602;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+  }
+
+  tbody.show .nomi_box {
+    position: absolute;
+    top: 14%;
+    width: 40px;
+    height: 40px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+  }
+
+  tbody.show .i_box:nth-child(2) { right: 75%; }
+  tbody.show .nomi_box:nth-child(1) { left: 20vw; }
+
+  @media screen and (max-width: 1120px) {
+    tbody.show .i_box:nth-child(2) { right: 85%; }
+  }
+
+  .menuTd { position: relative; }
+
+  .menu.is-active .i_box {
+    -webkit-transform: rotate(450deg);
+    transform: rotate(450deg);
+    transition: .3s;
+    display: block;
+  }
+
+  .menu.is-active .nomi_box {
+    -webkit-transform: rotate(-540deg);
+    transform: rotate(-540deg);
+    transition: .3s;
+    display: flex;
+  }
+
+  .one_i:before,
+  .one_i:after {
+    content: '';
+    background-color: #000000;
+    border-radius: 10px;
+    height: 1.5px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    transform-origin: center center;
+  }
+
+  .one_i:before { -webkit-transform: rotate(-45deg); transform: rotate(-45deg); }
+  .one_i:after { -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+
+  .menu.is-active .one_i:before { -webkit-transform: rotate(-90deg); transform: rotate(90deg); }
+  .menu.is-active .one_i:after { display: none; }
+
+  .menu.is-active .nomiimg {
+    -webkit-transform: rotate(-540deg);
+    transform: rotate(-540deg);
+    transition: .3s;
+    left: 18%;
+  }
+
+  .nomiring {
+    position: absolute;
+    left: 18%;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    transition: .2s;
+  }
+
+  .menu.is-active .nomiring {
+    top: 9%;
+    width: 30px;
+    height: 16px;
+    display: block;
+    opacity: 1;
+    transition: 1s;
+  }
+
+  .nomiimg {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 35px;
+    transition: .2s;
+  }
+
+  @media screen and (max-width: 400px) {
+    .nomiring, .nomiimg { left: 15%; }
+    .menu.is-active .nomiimg, .menu.is-active .nomiring { left: 5%; }
+  }
+
+  .menu.is-active .one_i { -webkit-transform: rotate(-0deg); transform: rotate(0deg); }
+
+  @media screen and (max-width: 600px) {
+    tbody.show .i_box { top: 25%; }
+    .menu.is-active .i_box { transition: .4s; }
+    .one_i:before, .one_i:after { width: 11px; }
+    tbody.show .i_box:nth-child(2) { right: 75%; }
+  }
+
+  @media screen and (max-width: 650px) {
+    tbody.show .i_box:nth-child(2) { left: 3vw }
+  }
+
+
+  /* ===== accordion-main.css ===== */
+  td {
+    padding-top: 0;
+    padding-bottom: 0;
+    transition:
+      line-height .2s ease-out,
+      opacity .1s linear,
+      visibility .1s linear;
+  }
+
+  td {
+    line-height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  tbody.show td {
+    border: solid 1px #000;
+    border-bottom: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  tbody.show td,
+  tbody.show td .flexB ol {
+    line-height: 2.5;
+  }
+
+  tbody.show td .flexB ol.wrapped { line-height: 1.7; }
+
+  .partition { height: 0; }
+
+  tbody.show>tr>td>.partition {
+    height: 1px;
+    background-color: rgb(197, 197, 197);
+  }
+
+  @media screen and (max-width: 600px) {
+    tbody.show td, tbody.show td .flexB ol { line-height: 3; }
+  }
+
+  .tdcolum {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .disf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul, ol {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+  }
+
+  ol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  li { list-style: none; }
+
+  th {
+    background: #eee183;
+    border: solid 1px;
+    cursor: pointer;
+    height: 50px;
+    position: relative;
+  }
+
+  #tax-status { right: 15%; }
+
+  @media screen and (max-width: 600px) {
+    table { width: 100%; }
+    ol { flex-direction: column; }
+    tbody.show ol { line-height: 1.7; }
+    #tax-status { left: 60%; }
+    .ulFontSize { flex-direction: column }
+    .ulFontSize li { font-size: 15px; }
+  }
+
+  .flexB {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 600px) {
+    .disf2 {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+
+  /* ===== accordInAccord.css ===== */
+  .menu { cursor: pointer; }
+
+  .menu:hover, .menu.is-active, .menu:active {
+    background: #ebffb1;
+    transition: 0.4s;
+  }
+
+  tbody.show .contents td {
+    line-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    border: 0;
+  }
+
+  tbody.show .contents.is-open { line-height: 1.7; opacity: 1; visibility: visible; }
+
+  tbody.show .contents.is-open td {
+    line-height: 1.7;
+    opacity: 1;
+    visibility: visible;
+    border: solid 1px #000;
+  }
+
+  .boderBottom { border-bottom: solid 1px; }
+
+  .contents {
+    line-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      line-height .2s ease-out,
+      opacity .05s linear .05s,
+      visibility .1s linear .1s;
+  }
+
+  .contents img { display: none; }
+
+  .padingA {
+    text-align: left;
+    text-indent: -1em;
+    font-size: 18px;
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 0 3vw 0 3vw;
+  }
+
+  .padingA p { margin-block-start: 0em; margin-block-end: 0em; }
+
+  .fontSizeB { font-size: 22px; }
+
+  @media screen and (max-width: 769px) {
+    .fontSizeB { font-size: 17px; }
+  }
+
+  @media screen and (max-width: 600px) {
+    .padingA { font-size: 15px; }
+  }
+
+
+  /* ===== tableInTable.css ===== */
+  .tableInTa { display: none; }
+
+  tbody.show .contents.is-open .tableInTa {
+    display: table;
+    width: 99%;
+    margin: 0 auto;
+    margin-top: 2px;
+    margin-bottom: .5em;
+    max-width: 700px;
+  }
+
+  .tategaki { padding: .3em 0; writing-mode: vertical-rl; align-items: center; }
+  .nowrap { white-space: nowrap; width: 8em; padding: 0 .3em; }
+  .hoverColorB { background: #fff4a8; }
+  .hoverColorB.is-active { background: #b0e58c; }
+
+
+  /* ===== microchip.css ===== */
+  .frame02 { position: relative; display: block; }
+
+  .image-text {
+    position: absolute;
+    width: 3.5em;
+    bottom: 1%;
+    left: 80%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-shadow: -2px -2px 0 brown, 2px -2px 0 brown, -2px 2px 0 brown, 2px 2px 0 brown;
+    letter-spacing: 2px;
+  }
+
+  .kankyocho a { margin: auto; width: 30%; }
+  tbody.show .contents .kankyocho { padding: 0; }
+  tbody.show .contents.is-open .kankyocho { padding: .5em 0 0; }
+  .kankyocho { display: flex; flex-direction: column; padding: 0; }
+
+  .microchipImg { display: none; }
+
+  tbody.show .contents.is-open .microchipImg {
+    display: block;
+    width: 100%;
+    border: #8bae91 7px double;
+    border-radius: 10px;
+  }
+
+  .contents.is-open .frame02 { transition: .3s; }
+  .contents.is-open .frame02:hover { transform: scale(1.05, 1.05); }
+  .align_left { padding: 0 1em; }
+
+  hr, tbody.contents.is-open hr { display: none; }
+
+  tbody.show .contents.is-open hr {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    display: block;
+  }
+
+  @media screen and (max-width: 769px) {
+    .kankyocho a { width: 60%; }
+    .image-text { font-size: 1.5em; }
+  }
+
+
+  /* ===== PC_Modal.css ===== */
+  .modal-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    z-index: 100;
+  }
+
+  .modalPC {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: all 0.2s ease-out;
+    text-align: center;
+  }
+
+  .imgBgColor {
+    background: radial-gradient(circle 200px at center, #f5e279 0%, #e4d362 100%);
+    border: 3px solid #f7e247;
+    margin-bottom: 5px;
+  }
+
+  .modalPC img { display: block; max-width: 100%; height: auto; }
+
+  .modalPC.show {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    width: 60%;
+  }
+
+  .modal-bg.show { opacity: 1; }
+
+  .close-btn {
+    font-size: 2vw;
+    position: absolute;
+    top: -0.3em;
+    right: 0;
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+  }
+
+  .close-btn:hover { background-color: #a3a3a3; color: #fff; }
+  .close-btn:focus { outline: none; }
+
+  .lineClosePC {
+    display: inline-block;
+    vertical-align: middle;
+    color: #313131;
+    line-height: 1;
+    width: 2rem;
+    height: 0.2rem;
+    background: currentColor;
+    border-radius: 0.1rem;
+    position: relative;
+    transform: rotate(45deg);
+  }
+
+  .lineClosePC::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+  }
+
+  @media (max-width: 1100px) {
+    .modalPC.show { width: 80%; }
+  }
+
+  @media (max-width: 767px) {
+    .PcModal { display: none; }
+    .modalPC.show { transform: translate(-50%, -50%) scale(2); }
+    .close-btn { font-size: 12px; }
+  }
+
+
+  /* ===== SP_Modal.css ===== */
+  .SpModal { display: none; }
+
+  .heightspace { height: 25vh; }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 100;
+    background-color: rgba(133, 133, 133, 0.9);
+  }
+
+  .modal.is-active { opacity: 1; pointer-events: auto; }
+
+  .modal__overlay { position: absolute; width: 100%; height: 100%; cursor: pointer; }
+
+  .modal__content {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .modal__content a { font-size: 20px; }
+
+  .modal_inner { filter: drop-shadow(0px 0px 4px #ddd); }
+
+  .modal__close-btn {
+    background: #ddd;
+    position: absolute;
+    right: 0;
+    top: -35px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal__close-btn:hover { opacity: 0.8; }
+
+  .lineClose {
+    display: inline-block;
+    vertical-align: middle;
+    color: #313131;
+    line-height: 1;
+    width: 2rem;
+    height: 0.2rem;
+    background: currentColor;
+    border-radius: 0.1rem;
+    position: relative;
+    transform: rotate(45deg);
+  }
+
+  .lineClose::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+  }
+
+  .swiper-slide img { width: 100%; }
+
+  @media (max-width: 767px) {
+    .SpModal { display: block; }
+  }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- ↑　Price3.jsの$(document).ready(function () を動かすため -->
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+</head>
+
+
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+
+    <div class="header-top">
+
+      <b>和歌山スペイ<span>クリニック</span> <span>さくらねこ</span></b>
+    </div>
+
+    <div class="header_empty">
+      <!-- margin-top: 32px;の為だけのdiv -->
+      <!-- これのお陰で休診宣言の表示がメッチャ楽 -->
+    </div>
+
+    <div class="header-middle">
+
+      <!-- ブログへのアイコン -->
+      <!-- <a class="blogbtn fl_blog" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
+        <img src="pics/path150.png" alt="title-img">
+        <div>ブログ</div>
+      </a> -->
+
+      TEL・FAX <span>073-407-1288</span>
+    </div>
+
+    <div class="header-bottom">
+      手術中は電話が繋がりにくく<span>なっております。</span><span>メニュー>TELをご参照下さい。</span>
+    </div>
+
+    <!-- 休診宣言のなどのお知らせ　CSSのON/OFFで表示非表示切替可 -->
+    <div class="header_notice">
+      <hr>
+      <div class="header_declaration">
+        <div class="glow-dot-button" id="toggle-microchip-button">new! マイクロチップ装着</div>
+
+        <a href="#specialize" class="header-btn">保護猫の手術をご希望の方へ</a>
+        <!-- <a href="#closed-day" class="header-btn">4-5月休診日のご案内</a> -->
+
+      </div>
+      <hr>
+    </div>
+
+    <div class="header_empty2"></div>
+    <!-- 上記の<hr>のmargin-block-end: 0.5em;が白くなってしまうためやむを得ず授けた空div。cssでheight: 1px;を設定 -->
+
+  </header>
+
+  <!-- ナビメニュー -->
+  <div class="sticky">
+
+    <!-- ナビメニュー上の隙間　スマホでON 　2020/12/30非表示にしてみた-->
+    <!-- <div class="navtop">
+      <li class="navtop-li">⇔</li>
+      <li class="navtop-li">メニュー 横スクロール</li>
+      <li class="navtop-li">⇔</li>
+    </div> -->
+
+    <div class="navtop-bottom">
+    </div>
+    <nav class="menu-nav">◀
+      <div>
+        <ul class="menu-ul">
+          <li class="menu-li"><a href="#">ホーム</a></li>
+          <li class="menu-li"><a href="#introduction">病院紹介</a></li>
+          <li class="menu-li"><a href="#procedures-notes">手術の流れと注意点</a></li>
+          <li class="menu-li"><a href="#price">料金案内</a></li>
+          <li class="menu-li"><a href="#TelFax">TEL/FAX/営業時間/休診日</a></li>
+          <li class="menu-li"><a href="#access">アクセス</a></li>
+          <li class="menu-li"><a href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">ブログ</a></li>
+          <!-- <li class="menu-li">Facebook</li> -->
+        </ul>
+      </div>▶
+    </nav>
+
+    <!-- メニューと画像の間の隙間 -->
+    <div class="navbottom-top">
+    </div>
+    <div class="navbottom-bottom">
+    </div>
+  </div>
+
+  <!-- タイトル画像 -->
+  <div class="img-background">
+    <!-- <img class="title-img" src="https://wakayamasakuraneko.github.io/clinic/img_title_test.jpg" alt="title-img"> -->
+    <!-- ↑ 練習用 ↓ 掲載時はこちら -->
+    <img class="title-img" src="pics/img_title_01.jpg" alt="title-img">
+  </div>
+
+
+  <!-- 病院紹介 -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="introduction" class="bold-title">病院紹介</h2>
+      <p>※ 当院は猫の不妊手術専門病院です。一般の診療は行っておりません。</p>
+
+      <p class="color_red">　まずはご予約をお願いいたします。</p>
+      <p>
+        当日ご予約無しでの手術は割増料金がかかる事があります。
+        <!-- <a href="#Ex_charge" class="bloglink-btn">
+          割増料 ⇒表
+        </a> -->
+      </p>
+
+      <!-- <p>外猫に関しては予約のキャンセルを申し訳ないと思わなくても大丈夫です。<a href="https://wakayamasakuraneko.github.io/blog/02/02.htm"
+          class="header-btn"> ⇒ キャンセルに関して</a>
+      </p> -->
+
+      <br><br>
+
+      <b id="specialize">【保護猫の手術を<span>ご希望の</span><span>方へ</span>】</b>
+
+      <p>
+        マイクロチップ装着をご希望の方はお申し出下さい。
+      </p>
+
+      <p>混雑時には外猫の手術を優先する事があります。ご了承ください。</p>
+
+      <p>
+        <!-- <span>ご予約はできるだけ(月)～(木)の平日でお願い致します。</span> -->
+        ご予約はできるだけ(月)～(木)の平日でお願い致します。
+        <!-- ↑↓<span>タグをつけると画面全体に微妙な横スクロールが発生する。これが見つけられずに何ヶ月も苦労した… -->
+      </p>
+      <p>
+        <!-- <span>日曜ご希望の場合は割増料金がかかる事があります。</span>　(例外あり) -->
+        日曜ご希望の場合は割増料金がかかる事があります。　(例外あり)
+      </p>
+
+      <!-- ↓見え隠れするコンテンツ -->
+      <details class="introDetail1">
+        <summary class="introSummary1">その他補足</summary>
+        <p>ご来院の際には洗濯ネットに入れて来るようにお願い致します。
+          <center><a href="https://wakayamasakuraneko.github.io/blog/04/04.htm" class="bloglink-btn"> <i
+                class="far fa-hand-point-right"></i> 洗濯ネットについて
+            </a></center>
+        </p>
+        <p>ペットショップで購入された猫、又は血統証付きの猫に関しては基本お引き受けしておりませんが、多頭飼育問題の際にはご相談下さい。
+        </p>
+      </details>
+
+      <!-- <p>多頭飼育崩壊など一斉手術の場合は日曜でも割増料金は掛かりません。ご相談下さい。</p> -->
+
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- 手術の流れと注意点 -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="procedures-notes" class="bold-title">手術の流れと注意点</h2>
+
+      <h3 class="h3-PN">◎ ご予約と手術の流れ</h3>
+      <p>朝９時頃にご来院して頂き、夕方３～５時にお迎えの流れになります。</p>
+      <p>お外の猫に限り、前泊もお引き受けいたします。ご相談下さい。</p>
+
+      <h3 class="h3-PN-red">◎ 連れて来られる際の<span>入れ物について</span><span>（※重要）</span></h3>
+      <p>連れて来られる際の入れ物はプラスチック製のハードキャリーまたは捕獲器でお越し下さい。</p>
+
+      <div class="align_center">　<a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"><i
+            class="far fa-hand-point-right"></i> キャリーケースに<span>関しての注意事項</span></a></div>
+
+
+
+      <p>捕獲器を剥き出しのままので来られると、猫は大変怯えます。生地などで覆ってお越し下さい。</p>
+
+      <!-- PCの場合の見本用ボタン -->
+      <div class="PcModal">
+        　<span id="modal-trigger" class="positionA bloglink-btn">
+          <i class="far fa-hand-point-right"></i> 捕獲器で来院される際の包み方 → 見本
+        </span>
+        <!-- PC版モーダル内容 -->
+        <div class="modal-bg" id="modal-bg">
+          <div class="modalPC" id="modalPC">
+            <div><b class="close-btn" id="modal-close-btn"><span class="lineClosePC"></span></b></div>
+            <div class="imgBgColor"><img src="pics/path359c.png" alt="image B"></div>
+            <div>　<a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn">
+                <i class="far fa-hand-point-right"></i> 作り方のページはこちら</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- スマホの場合の見本用ボタン -->
+      <div class="SpModal align_center">
+        <div>
+          　<span class="bloglink-btn modalOpen media501" data-modal="1"><i class="far fa-hand-point-right"></i>
+            捕獲器で来院される<span>際の包み方 → 見本</span></span>
+        </div>
+
+        <!-- スマホ版モーダル内容 -->
+        <div class="modal" id="modal">
+          <div class="modal__overlay modalClose"></div>
+          <!-- 「modal__overlay」は背景の灰色部分でCSSで指定している -->
+          <div class="modal__content">
+            <div class="modal_inner">
+              <div class="modal__close-btn modalClose" aria-label="閉じる"><span class="lineClose"></span></div>
+              <!-- スワイパー -->
+              <div class="swiper slideWrpper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <!-- <p class="swiperText"> -->
+                    <img src="pics/path7963.png" alt="写真風呂敷">
+                    <!-- </p> -->
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path7903.png" alt="ｲﾗｽﾄ風呂敷">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path7907.png" alt="ｲﾗｽﾄ紐">
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="pics/path5716.png" alt="写真紐">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn">
+              <i class="far fa-hand-point-right"></i> 作り方の<span>ページはこちら</span></a>
+            <!-- 前後の矢印 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <h3 class="h3-PN">◎ 飲食の制限について</h3>
+      <p>・飲水の制限はありません。</p>
+      <p>・食事の制限はシビアではありませんが、朝は沢山食べない様にご注意下さい。</p>
+
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- 料金表 -->
+  <div id="soto">
+    <!-- <div class="uti"> -->
+    <div class="uti-bottom0">
+      <h2 id="price" class="bold-title">料金表</h2>
+
+      <div class="price-caption-top">
+        <p>※ 手術料金には、ノミ駆虫薬、化膿止めの抗生剤 及び、術後の 皮下補液 も含まれております。(一部例外)</p>
+      </div>
+
+      <ul class="button-wrapper">
+        <li><button id="toggle-button">税切替</button></li>
+        <li><button id="show-all-button">広げる</button></li>
+      </ul>
+
+      <table class="priceList1">
+        <!-- ★　手術料金 -->
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                手術<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+
+          <tr>
+            <td>メス</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">8000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>オス</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">5000円</li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- 耳カット-->
+          <tr>
+            <td>
+              <!-- <ol>で囲むとカラム落ちで行間が広くなるのを防げる -->
+              <ol>手術<span>+耳カット</span></ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">-500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <td>堕胎費</td>
+            <td>
+              <div class="tdcolum">
+                <ol>
+                  <li class="price-excl-tax">1000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+                <ol>
+                  <li>～</li>
+                </ol>
+                <ol>
+                  <li class=" price-excl-tax">3000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+
+
+        <!-- ★　検査・ワクチン -->
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                検査・ワクチン<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+
+          <!-- ３種混合ワクチン -->
+          <tr>
+            <td>
+              ３種混合<span>ワクチン</span>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">3000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- 耳カット３種混合 -->
+          <tr class="menu js-menu">
+            <td>
+              <div class="flexB">
+                <ol>
+                  <li class="menuTd">
+                    <i class="i_box">
+                      <i class="one_i">
+                      </i>
+                    </i>
+                  </li>
+                </ol>
+                <ol>
+                  <li>&nbsp;</li>
+                </ol>
+                <ol>
+                  <li>３種混合<span>ワクチン</span></li>
+                </ol>
+              </div>
+            </td>
+            <td>
+              <div>
+                <ol>
+                  <li>※</li>
+                  <li class="price-excl-tax"> 1500円 </li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+          <tr class="contents">
+            <td colspan="2">
+              <div class="fontSizeB"> 手術時に耳カットを</span><span>入れた場合</span><span>(初回のみ)</span></div>
+              <div class="fontSizeB">
+                <span>クラウドファンディングの</span><span>チケットを</span><span>ご利用の場合は</span><span>2000円(税抜)です。</span><span>ご了承下さい。</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- ３種混合(不活化) -->
+          <tr class="menu js-menu">
+            <td>
+              <div class="flexB">
+                <ol>
+                  <li class="menuTd">
+                    <i class="i_box">
+                      <i class="one_i">
+                      </i>
+                    </i>
+                  </li>
+                </ol>
+                <ol>
+                  <li>&nbsp;</li>
+                </ol>
+                <ol>
+                  <li><span>３種混合</span><span>(不活化)</span></li>
+                </ol>
+              </div>
+            </td>
+            <td>
+              <div>
+                <ol>
+                  生3種+<li class="price-excl-tax">500円 </li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+          <tr class="contents">
+            <td colspan="2">
+              <div>
+                状況により生と不活化を<span>使い分ける場合があります。</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- ５種(４種)混合ワクチン -->
+          <tr class=" sample3">
+            <td>
+              <ol>
+                <span>５種(４種)混合</span><span>ワクチン</span>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">4000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- Fiv/Felv 検査 -->
+          <tr class="sample4">
+            <td>
+              <ol>猫エイズ<span>白血病検査</span></ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">3000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+          <tr>
+            <td>検便</td>
+            <td>
+              <div class="tdcolum">
+                <ol>
+                  <li class="price-excl-tax">1000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+                <ol>
+                  <li>～</li>
+                </ol>
+                <ol>
+                  <li class=" price-excl-tax">1500円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+
+        <!-- ★　抗生剤・駆虫薬 -->
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                抗生剤・駆虫薬 等<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+
+          <!-- レボリューション -->
+          <tr>
+            <td>レボリュー<span>ション</span></td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1200円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- アドボケート -->
+          <tr>
+            <td>アドボケート</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr class="menu js-menu hoverColorB">
+            <td colspan="2">
+              <div class="menuTd">
+                <img class="nomiring" src="pics/ring.png" alt="title-img"></img>
+                <img class="nomiimg" src="pics/nomilr.png" alt="title-img">
+                駆虫薬と表
+              </div>
+            </td>
+          </tr>
+          <tr class="contents">
+            <td class="antiWorm" colspan="2">
+
+              <!-- 駆虫薬テーブル -->
+              <table class="tableInTa" border="0">
+                <tr>
+                  <td class="nowrap">＼</td>
+                  <td class="tategaki">マダニ</td>
+                  <td class="tategaki">ノミ</td>
+                  <td class="tategaki">シラミ</td>
+                  <td class="tategaki">耳ダニ</td>
+                  <td class="tategaki">疥癬</td>
+                  <td class="tategaki">フィラリア</td>
+                  <td class="tategaki">回虫、鈎虫</td>
+                  <td class="tategaki">条虫(※)</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">マイフリーガード</td>
+                  <td>◯</td><td>◯</td><td>◯</td><td>ー</td><td>ー</td><td>ー</td><td>ー</td><td>ー</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">アドボケート</td>
+                  <td>ー</td><td>◯</td><td>◯</td><td>◯</td><td>◯</td><td>◯</td><td>◯</td><td>ー</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">レボリューション</td>
+                  <td>ー</td><td>◯</td><td>◯</td><td>◯</td><td>？</td><td>◯</td><td>◯</td><td>ー</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">ブラベクトプラス</td>
+                  <td>◯</td><td>◯</td><td>◯</td><td>◯</td><td>？</td><td>◯</td><td>◯</td><td>ー</td>
+                </tr>
+                <tr>
+                  <td class="nowrap">ネクスガードCat</td>
+                  <td>◯</td><td>◯</td><td>◯</td><td>◯</td><td>？</td><td>◯</td><td>◯</td><td>◯</td>
+                </tr>
+              </table>
+
+              <div class="padingA">
+                <p>・ブラベクトプラス、またはネクスガードCATをご希望の際は追加料金になります。ご相談下さい。</p>
+                <p>・ブラベクトプラスの効き目は3ヶ月、外猫になるべくの事をしてあげたいという希望のある方はご検討下さい。</p>
+                <p>・ネクスガードCATは駆虫範囲が広く保護の際の初回投与としてお勧めです。</p>
+                <p>・マンソン裂頭条虫(※)・コクシジウム・ジアルジア・トリコモナスは上記のどれも効きません。個別の駆虫が必要です。</p>
+                <p>・「？」…効き目があるという報告もあります</p>
+                <p>・他にも色々ありますが、本院で扱っている駆虫剤は以上です。</p>
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- コンベニア -->
+          <tr class="sample4">
+            <td>
+              <ol>コンベニア<span>(希望者のみ)</span> </ol>
+            </td>
+            <td>
+              <ol class="ulFontSize">
+                <li>2㎏まで</li>
+                <li class="price-excl-tax">1500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+              <ol class="partition"> </ol>
+              <ol class="ulFontSize">
+                <li>2～4㎏</li>
+                <li class="price-excl-tax">2500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+              <ol class="partition"> </ol>
+              <ol class="ulFontSize">
+                <li>以降1㎏ごと</li>
+                <li class="price-excl-tax">500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+
+        <!-- ★　その他 -->
+
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                その他<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+
+          <!-- 入院費 -->
+          <tr class="menu js-menu">
+            <td>
+              <div class="flexB">
+                <ol>
+                  <li class="menuTd">
+                    <i class="i_box">
+                      <i class="one_i">
+                      </i>
+                    </i>
+                  </li>
+                </ol>
+                <ol>
+                  <li>&nbsp;</li>
+                </ol>
+                <ol>
+                  <li>入院費<span>(入院手数料)</span></li>
+                </ol>
+              </div>
+            </td>
+            <td>
+              <div class="tdcolum">
+                <ol>
+                  <li class="price-excl-tax">1000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+                <ol>
+                  <li>～</li>
+                </ol>
+                <ol>
+                  <li class=" price-excl-tax">2000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+          <tr class="contents">
+            <td colspan="2">
+              <div>
+                外猫に限り手術前後の入院が可能です。<span>(休診日を除く)</span>
+              </div>
+              <div>家猫に関しては日帰り出来るスケジュールで<span>ご予約お願い致します。 </span></div>
+            </td>
+          </tr>
+
+          <!-- 爪切り -->
+          <tr>
+            <td>爪切り</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">500円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- マイクロチップ -->
+          <tr class="menu js-menu">
+            <td>
+              <div class="flexB">
+                <ol>
+                  <li class="menuTd">
+                    <i class="i_box">
+                      <i class="one_i">
+                      </i>
+                    </i>
+                  </li>
+                </ol>
+                <ol>
+                  <li>&nbsp;</li>
+                </ol>
+                <ol>
+                  <li>
+                    マイクロチップ<span>装着</span>
+                  </li>
+                </ol>
+              </div>
+            </td>
+            <td>
+              <div>
+                <ol>
+                  <li class="price-excl-tax">3000円</li>
+                  <li class="slash">&nbsp;/&nbsp;</li>
+                  <li class="price-incl-tax"></li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="contents">
+            <td colspan="2">
+              <div class="align_left">事故・災害ではぐれた。<span>もしもの為に。</span></div>
+              <hr>
+              <div class="kankyocho">装着後は⬇️こちらのサイトから
+                <div>
+                  <a class="frame02" href="https://reg.mc.env.go.jp/" target="_blank"><img class="microchipImg"
+                      src="pics/53kb.png" alt="52kb">
+                  </a>
+                </div>ご登録お願いいたします。
+              </div>
+              <hr>
+              <div class="align_left">※ 無麻酔での装着は、<span>技術料が加算されます。</span></div>
+            </td>
+          </tr>
+
+        </tbody>
+
+        <!-- ★　割増料金 -->
+        <thead>
+          <tr>
+            <th colspan="2">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                割増料金<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+          <!-- 予約外手術 -->
+          <tr>
+            <td class="column3">予約外手術</td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>変動あり
+              </ol>
+            </td>
+          </tr>
+
+          <!-- 日曜予約（※家猫、保護猫に限る） -->
+          <tr>
+            <td>
+              <ol>
+                <li>日曜希望<span>（家猫、保護猫</span><span>の場合のみ）</span><span>例外：多頭飼育崩壊</span></li>
+              </ol>
+            </td>
+            <td>
+              <ol>
+                <li class="price-excl-tax">1000円 </li>
+                <li class="slash">&nbsp;/&nbsp;</li>
+                <li class="price-incl-tax"></li>変動あり
+              </ol>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+
+      <table class="priceList2">
+        <colgroup>
+          <col>
+          <col>
+          <col>
+        </colgroup>
+
+        <!-- ★　割引料金 -->
+        <thead>
+          <tr>
+            <th colspan="3">
+              <div class="thBox">
+                <i class="th_box">
+                  <i class="one_th"></i>
+                </i>
+                割引料金<span class="tax-status">税抜</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="tbody">
+          <tr>
+            <td colspan="3">
+              <ol>
+                <li>
+                  耳カットとワクチンの<span>両方をした場合、</span><span><span>数に応じて</span><span>割引料金が</span><span>適応されます。</span></span>
+                </li>
+              </ol>
+            </td>
+          </tr>
+          <tr class="column1">
+            <td>猫の数</td>
+            <td>1匹当たり<span>の割引額</span></td>
+            <td>割引額計</td>
+          </tr>
+          <tr><td>1匹</td><td>ー</td><td>ー</td></tr>
+          <tr><td>2匹</td><td>ー</td><td>ー</td></tr>
+          <tr><td>3匹</td><td>ー</td><td>ー</td></tr>
+          <tr>
+            <td>4匹</td>
+            <td><ol><li class="price-excl-tax">200円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+            <td><ol><li class="price-excl-tax">800円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+          </tr>
+          <tr>
+            <td>5匹</td>
+            <td><ol><li class="price-excl-tax">200円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+            <td><ol><li class="price-excl-tax">1000円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+          </tr>
+          <tr>
+            <td>6匹</td>
+            <td><ol><li class="price-excl-tax">300円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+            <td><ol><li class="price-excl-tax">1800円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+          </tr>
+          <tr>
+            <td>7匹</td>
+            <td><ol><li class="price-excl-tax">400円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+            <td><ol><li class="price-excl-tax">2800円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+          </tr>
+          <tr>
+            <td>8匹</td>
+            <td><ol><li class="price-excl-tax">500円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+            <td><ol><li class="price-excl-tax">4000円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+          </tr>
+          <tr>
+            <td>9匹</td>
+            <td><ol><li class="price-excl-tax">600円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+            <td><ol><li class="price-excl-tax">5400円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+          </tr>
+          <tr>
+            <td>10匹</td>
+            <td><ol><li class="price-excl-tax">700円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+            <td><ol><li class="price-excl-tax">7000円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+          </tr>
+          <tr>
+            <td>11匹</td>
+            <td><ol><li class="price-excl-tax">800円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+            <td><ol><li class="price-excl-tax">8800円 </li><li class="slash">&nbsp;/&nbsp;</li><li class="price-incl-tax"></li></ol></td>
+          </tr>
+
+          <tr class="boderBottom">
+            <td>
+              <ol>12匹<span>以降</span></ol>
+            </td>
+            <td colspan="2">
+              <div class="disf2">
+                <ol>以降</ol>
+                <ol class="disf">
+                  <li class="disf">
+                    <ol class="price-excl-tax">800円&nbsp;</ol>
+                    <ol class="slash">&nbsp;/&nbsp;</ol>
+                    <ol class="price-incl-tax"></ol>
+                    <ol>／1匹</ol>
+                  </li>
+                </ol>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ↓税込税別切り替えボタンを収めるスペース -->
+      <div class="gap2"></div>
+    </div><!-- uti-bottom0 -->
+
+
+    <div class="uti-top0">
+      <div class="price-caption-bottom">
+        <p>★ 耳カット<span>(耳先のＶ字カット)は</span><span>不妊去勢手術を受けた証</span></p>
+        <p>もう子猫を増やすことは<span>ありません。</span></p>
+      </div>
+    </div><!-- uti-top0 -->
+
+  </div><!-- soto -->
+
+
+  <!-- TEL・FAX -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="TelFax" class="bold-title">TEL・FAX</h2>
+      <h3 class="h3-Tel"><i class="fas fa-phone"></i> 073-407-1288<span>（兼 FAX）</span></h3>
+      <p>手術中（主に午前中～昼くらい）の為電話に出られない事があります。</p>
+      <p>ご予約ご用件のメッセージを留守番電話にお伝え下さい。</p>
+      <p>なるべく折り返す様に致しますが、連絡が無い場合、再度ご連絡お願い申し上げます。</p>
+      <h2 id="opening-hours">営業時間と休診日</h2>
+      <h3 class="h3-opening-hours"><b>営業時間</b> <span>午前９時～午後５時</span></h3>
+      <p> ※ お電話は上記の通り、午前中は主に留守番電話に切り替わる事が多いです。</p>
+      <h3 class="h3-opening-hours"><b>休診日</b> 金曜・土曜</h3>
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- アクセス -->
+  <div id="soto">
+    <div class="uti">
+      <h2 id="access" class="bold-title">アクセス</h2>
+      <p>〒640-8324</p>
+      <p>和歌山県和歌山市<span>吹屋町４丁目９−１</span></p>
+      <p>※ 木広町の交差点からは<span>道幅が狭く、</span><span>入りにくいので</span><span>ご注意下さい</span></p>
+      <div class="wrapMaps">
+        <img src="pics/map.png" alt="map-img">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3298.8720491193626!2d135.1865673!3d34.2262853!3m2!1i1024!2i768!4f10!3m3!1m2!1s0x6000b32d2406f717%3A0xb1b26acc7dfa9379!2z5ZKM5q2M5bGx44K544Oa44Kk44Kv44Oq44OL44OD44KvIOOBleOBj-OCiaOBreOBkw!5e0!3m2!1sja!2sjp!4v1681827027923!5m2!1sja!2sjp"
+          width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- 以下 Googleマップへリンク -->
+      <!-- <p class="device">※ 端末によってはメニューボタンが効かない、Google Map が表示されない場合があります。ご了承下さい。</p> -->
+      <!-- <p class="device">Google Map が表示されない場合</p> -->
+      <div class="googlemap-text">
+        <!-- <a href="index_map.htm" class="map-btn">
+          Google Mapで確認<i class="far fa-hand-point-left"></i>
+        </a> -->
+        <a href="index_map.htm" class="map-btn">
+          Google Map が<span>表示されない場合 <i class="far fa-hand-point-left"></i></span>
+        </a>
+      </div>
+    </div><!-- uti -->
+  </div><!-- soto -->
+
+
+  <!-- フッター -->
+  <footer class="footer-top">
+    <div class="footer-left"> </div>
+
+    <div class="footer-right">
+      <ul class="snsbtniti">
+        <!-- ブログ -->
+        <li>
+          <a class="blogbtn fl_blog" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
+            <img src="pics/path150.png" alt="title-img">
+            <div>ブログ</div>
+          </a>
+        </li>
+        <!-- フェイスブック -->
+        <li>
+          <a class="flowbtn fl_fb1" href="https://www.facebook.com/wakayamasakuraneko/" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+            <div>Facebook</div>
+          </a>
+        </li>
+        <!-- インスタ -->
+        <li>
+          <a class="flowbtn insta_btn1" href="https://www.instagram.com/wakayama_spayclinic_sakuraneko/"
+            target="_blank">
+            <i class="fab fa-instagram"></i>
+            <div>Instagram</div>
+          </a>
+        </li>
+        <!-- ツイッター -->
+        <li>
+          <a class="flowbtn fl_X" href="https://twitter.com/wakayama_spay" target="_blank">
+            <i class="twit_X">𝕏</i>
+            <div class="X_bottom">Twitter</div>
+          </a>
+        </li>
+      </ul>
+    </div><!-- footer-right -->
+  </footer>
+
+  <footer class="footer-bottom">
+    和歌山スペイクリニック さくらねこ
+  </footer>
+
+  <script>
+  // ===== PCmodal.js =====
+  "use strict";
+  const modalData = [
+      {
+          trigger: "#modal-trigger",
+          bg: "#modal-bg",
+          modal: "#modalPC",
+          closeBtn: "#modal-close-btn"
+      }
+  ];
+
+  modalData.forEach(function (data) {
+      const trigger = document.querySelector(data.trigger);
+      const bg = document.querySelector(data.bg);
+      const modal = document.querySelector(data.modal);
+      const closeBtn = document.querySelector(data.closeBtn);
+
+      trigger.addEventListener("click", function () {
+          bg.style.display = "block";
+          setTimeout(function () {
+              modal.classList.add("show");
+              bg.classList.add("show");
+          }, 50);
+      });
+
+      modal.addEventListener("click", function () {
+          modal.classList.remove("show");
+          bg.classList.remove("show");
+          setTimeout(function () {
+              bg.style.display = "none";
+          }, 300);
+      });
+
+      bg.addEventListener("click", function (e) {
+          if (e.target === bg || e.target === closeBtn) {
+              modal.classList.remove("show");
+              bg.classList.remove("show");
+              setTimeout(function () {
+                  bg.style.display = "none";
+              }, 300);
+          }
+      });
+
+      closeBtn.addEventListener("click", function () {
+          modal.classList.remove("show");
+          bg.classList.remove("show");
+          setTimeout(function () {
+              bg.style.display = "none";
+          }, 300);
+      });
+  });
+
+
+  // ===== SPmodal.js =====
+  window.addEventListener("DOMContentLoaded", () => {
+      const modal = document.getElementById("modal");
+      const openModalBtns = document.querySelectorAll(".modalOpen");
+      const closeModalBtns = document.querySelectorAll(".modalClose");
+      const slideWrpper = document.querySelectorAll(".slideWrpper");
+
+      const swiper = new Swiper(".swiper", {
+          loop: true,
+          navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+          },
+      });
+
+      openModalBtns.forEach((openModalBtn) => {
+          openModalBtn.addEventListener("click", () => {
+              const modalIndex = openModalBtn.getAttribute('data-modal');
+              swiper.slideTo(modalIndex);
+              modal.classList.add("is-active");
+          });
+      });
+
+      closeModalBtns.forEach((closeModalBtn) => {
+          closeModalBtn.addEventListener("click", () => {
+              modal.classList.remove("is-active");
+          });
+      });
+
+      slideWrpper.forEach((slideWrpper) => {
+          slideWrpper.addEventListener("click", () => {
+              modal.classList.remove("is-active");
+          });
+      });
+  });
+
+
+  // ===== Accordion_main.js =====
+  const tables = document.querySelectorAll('table');
+  tables.forEach(table => {
+      const heads = table.querySelectorAll('thead');
+      const bodies = table.querySelectorAll('.tbody');
+
+      heads.forEach((head, index) => {
+          head.addEventListener('click', () => {
+              if (bodies[index].classList.contains('show')) {
+                  bodies[index].classList.remove('show');
+              } else {
+                  bodies[index].classList.add('show');
+              }
+          });
+
+          const observer = new MutationObserver(() => {
+              if (bodies[index].classList.contains('show')) {
+                  head.classList.add('thead-active');
+              } else {
+                  head.classList.remove('thead-active');
+              }
+          });
+
+          observer.observe(bodies[index], { attributes: true, attributeFilter: ['class'] });
+
+          if (bodies[index].classList.contains('show')) {
+              head.classList.add('thead-active');
+          } else {
+              head.classList.remove('thead-active');
+          }
+      });
+  });
+
+  const toggleButton = document.getElementById("toggle-button");
+  const priceExclTax = document.getElementsByClassName("price-excl-tax");
+  const priceInclTax = document.getElementsByClassName("price-incl-tax");
+  const slash = document.getElementsByClassName("slash");
+  const taxStatus = document.getElementsByClassName("tax-status");
+
+  let currentModeIndex = 2;
+  let taxStatusText = "税抜";
+  const modes = ["excl", "incl", "both"];
+
+  function togglePriceDisplay() {
+      currentModeIndex = (currentModeIndex + 1) % modes.length;
+      const mode = modes[currentModeIndex];
+
+      for (let i = 0; i < priceExclTax.length; i++) {
+          if (mode === "excl") {
+              priceExclTax[i].style.display = "block";
+              priceInclTax[i].style.display = "none";
+              slash[i].style.display = "none";
+          } else if (mode === "incl") {
+              priceExclTax[i].style.display = "none";
+              priceInclTax[i].style.display = "block";
+              slash[i].style.display = "none";
+          } else if (mode === "both") {
+              priceExclTax[i].style.display = "block";
+              priceInclTax[i].style.display = "block";
+              if (window.innerWidth >= 600) {
+                  slash[i].style.display = "inline";
+              }
+          }
+      }
+
+      if (mode === "excl") { taxStatusText = "税抜"; }
+      else if (mode === "incl") { taxStatusText = "税込"; }
+      else if (mode === "both") { taxStatusText = "抜/込"; }
+
+      for (let i = 0; i < taxStatus.length; i++) {
+          taxStatus[i].textContent = taxStatusText;
+          switch (taxStatusText) {
+              case "税抜": taxStatus[i].style.color = "blue"; break;
+              case "税込": taxStatus[i].style.color = "red"; break;
+              case "抜/込":
+                  const parts = taxStatusText.split('/');
+                  taxStatus[i].style.color = "black";
+                  taxStatus[i].innerHTML = `<span style="color: blue;">${parts[0]}</span>/<span style="color: red;">${parts[1]}</span>`;
+                  break;
+              default:
+                  taxStatus[i].style.backgroundColor = "transparent";
+                  taxStatus[i].style.color = "black";
+          }
+      }
+  }
+
+  toggleButton.addEventListener("click", togglePriceDisplay);
+  togglePriceDisplay();
+
+  const tbodyElements = document.getElementsByTagName('tbody');
+  const button = document.getElementById('show-all-button');
+  button.addEventListener('click', () => {
+      const isShowingAll = button.textContent === '折り畳む';
+      for (let i = 0; i < tbodyElements.length; i++) {
+          const tbody = tbodyElements[i];
+          if (isShowingAll) {
+              tbody.classList.remove('show');
+              button.textContent = '広げる';
+          } else {
+              tbody.classList.add('show');
+              button.textContent = '折り畳む';
+          }
+      }
+  });
+
+  for (let i = 0; i < priceExclTax.length; i++) {
+      const exclPriceText = priceExclTax[i].textContent.trim().split("円")[0];
+      const exclPrice = parseInt(exclPriceText);
+      const inclPrice = Math.round(exclPrice * 1.1);
+      priceInclTax[i].textContent = `${inclPrice}円`;
+  }
+
+
+  // ===== acco_in_acco.js =====
+  const menu = document.querySelectorAll(".js-menu");
+
+  function toggle() {
+      const content = this.nextElementSibling;
+      this.classList.toggle("is-active");
+      content.classList.toggle("is-open");
+  }
+
+  for (let i = 0; i < menu.length; i++) { menu[i].addEventListener("click", toggle); }
+
+
+  // ===== microtip_Jump.js =====
+  document.getElementById('toggle-microchip-button').addEventListener('click', () => {
+      const allTbodies = document.querySelectorAll('tbody');
+      const microchipTbody = Array.from(allTbodies).find(tbody => {
+          return Array.from(tbody.querySelectorAll('tr td')).some(td => td.textContent.includes('マイクロチップ'));
+      });
+
+      allTbodies.forEach(tbody => {
+          tbody.classList.remove('show');
+          tbody.querySelectorAll('.js-menu').forEach(menu => menu.classList.remove('is-active'));
+          tbody.querySelectorAll('.contents').forEach(content => content.classList.remove('is-open'));
+      });
+
+      if (microchipTbody) {
+          microchipTbody.classList.add('show');
+          const relevantMenu = Array.from(microchipTbody.querySelectorAll('.js-menu')).find(menu => {
+              return Array.from(menu.querySelectorAll('td')).some(td => td.textContent.includes('マイクロチップ'));
+          });
+          if (relevantMenu) {
+              relevantMenu.classList.add('is-active');
+              let sibling = relevantMenu.nextElementSibling;
+              while (sibling) {
+                  if (sibling.classList.contains('contents')) {
+                      sibling.classList.add('is-open');
+                      break;
+                  }
+                  sibling = sibling.nextElementSibling;
+              }
+              relevantMenu.scrollIntoView({ behavior: 'instant' });
+          }
+      }
+  });
+
+
+  // ===== openPrice1.js =====
+  function partialDisplay() {
+      const tbodies = document.getElementsByTagName('tbody');
+      for (let i = 0; i < tbodies.length; i++) {
+          const tbody = tbodies[i];
+          if (i >= 1) {
+              tbody.classList.remove('show');
+          } else {
+              tbody.classList.add('show');
+          }
+      }
+  }
+
+  partialDisplay();
+
+
+  // ===== line-height-adjustable.js =====
+  document.addEventListener("DOMContentLoaded", function () {
+      const elements = document.querySelectorAll("tbody.show td ol");
+
+      function checkOverflow(element) {
+          const parentWidth = element.parentElement.clientWidth;
+          const clonedElement = element.cloneNode(true);
+          clonedElement.style.display = 'inline-block';
+          clonedElement.style.visibility = 'hidden';
+          clonedElement.style.height = 'auto';
+          clonedElement.style.whiteSpace = 'nowrap';
+          clonedElement.className = element.className;
+          document.body.appendChild(clonedElement);
+          if (clonedElement.scrollWidth > parentWidth) {
+              element.classList.add('wrapped');
+          } else {
+              element.classList.remove('wrapped');
+          }
+          document.body.removeChild(clonedElement);
+      }
+
+      function checkAllElements() {
+          elements.forEach((element) => {
+              requestAnimationFrame(() => checkOverflow(element));
+          });
+      }
+
+      checkAllElements();
+      window.addEventListener('resize', checkAllElements);
+  });
+
+
+  // ===== shooting-star.js =====
+  const gdb = document.querySelector('.glow-dot-button');
+
+  function changeColor() {
+      gdb.classList.add('change-color');
+      setTimeout(() => {
+          gdb.classList.remove('change-color');
+          gdb.style.backgroundColor = '#886c34';
+      }, 1000);
+  }
+
+  function glowButtons() {
+      setTimeout(() => {
+          changeColor();
+      }, 4000);
+      setTimeout(glowButtons, 5000);
+  }
+
+  glowButtons();
+  </script>
+
+</body>
+
+</html>

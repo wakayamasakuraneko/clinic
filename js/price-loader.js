@@ -1,11 +1,11 @@
 // js/price-loader.js
 (async function () {
   // 1) パーツHTMLを取得して差し込み
-  const mainHtml = await fetch("price-html/price-main.htm", {
+  const mainHtml = await fetch("price/html/price-main.htm", {
     // ← 料金表本体パーツ
     cache: "no-store", // ← キャッシュ無効化
   }).then((r) => r.text()); // ← テキストとして取得
-  const discHtml = await fetch("price-html/price-discount.htm", {
+  const discHtml = await fetch("price/html/price-discount.htm", {
     // ← 割引説明パーツ
     cache: "no-store", // ← キャッシュ無効化
   }).then((r) => r.text()); // ← テキストとして取得
