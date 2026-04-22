@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>記事一覧 | 和歌山スペイクリニック</title>
+    <link rel="icon" type="image/png" href="../favicon/favi.png" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
+        background: #f5f0eb;
+        color: #333;
+      }
+
+      /* ヘッダー */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+        background: #fefdcc;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      }
+
+      .site-header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        gap: 12px;
+      }
+
+      .site-title {
+        font-size: 15px;
+        font-weight: bold;
+        color: #5a2d0c;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+
+      /* フィルターボタン群 */
+      .filter-nav {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .filter-btn {
+        background: #fff8e7;
+        color: #3a2010;
+        border: 2px solid #c8a882;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        letter-spacing: 0.05em;
+        transition: background 0.2s, border-color 0.2s;
+        white-space: nowrap;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: #f0d080;
+        border-color: #a07030;
+      }
+
+      @media (max-width: 480px) {
+        .site-header-inner {
+          height: auto;
+          padding: 8px 12px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .filter-nav {
+          justify-content: flex-start;
+        }
+
+        .filter-btn {
+          font-size: 13px;
+          padding: 4px 10px;
+        }
+      }
+
+      /* メインコンテンツ */
+      .main-wrapper {
+        padding-top: 72px;
+        padding-bottom: 60px;
+      }
+
+      @media (max-width: 480px) {
+        .main-wrapper {
+          padding-top: 110px;
+        }
+      }
+
+      .articles-grid {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 16px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* 記事カード */
+      .article-card {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        width: calc(25% - 16px);
+        margin: 8px;
+        background: #fefde0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.18);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .article-card:hover {
+        transform: scale(1.04);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+      }
+
+      .article-card.hidden {
+        display: none;
+      }
+
+      .article-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .card-body {
+        padding: 8px 10px 10px;
+      }
+
+      .card-title {
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 1.5;
+        margin-bottom: 6px;
+      }
+
+      .card-tag {
+        font-size: 13px;
+        color: #2e7d32;
+        text-align: right;
+      }
+
+      @media (max-width: 1000px) {
+        .article-card {
+          width: calc(33.3% - 16px);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .article-card {
+          width: calc(50% - 16px);
+        }
+
+        .card-title {
+          font-size: 14px;
+        }
+      }
+
+
+      /* フッター */
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-title" href="https://wakayamasakuraneko.com/">和歌山スペイクリニック</a>
+        <nav class="filter-nav">
+          <button class="filter-btn active" onclick="showAll(this)">全記事</button>
+          <button class="filter-btn" onclick="filterGenre('外猫', this)">外猫</button>
+          <button class="filter-btn" onclick="filterGenre('保護猫', this)">保護猫</button>
+          <button class="filter-btn" onclick="filterGenre('その他', this)">豆知識</button>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-wrapper">
+      <div id="articles-container" class="articles-grid">
+
+        <a class="article-card" data-genre="その他" href="./01/01.htm">
+          <img src="./images/01.jpg" alt="sakuraneko" />
+          <div class="card-body">
+            <p class="card-title">和歌山スペイクリニックの「スペイ」の意味とは？</p>
+            <p class="card-tag">#その他</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 予約？外猫" href="./02/02.htm">
+          <img src="./images/02.jpg" alt="20190718" />
+          <div class="card-body">
+            <p class="card-title">キャンセルを申し訳ないと思わなくても大丈夫です</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="保護猫 外猫 来院時" href="./03/03.htm">
+          <img src="./images/03.jpg" alt="carry_case" />
+          <div class="card-body">
+            <p class="card-title">連れて来られる際の入れ物について</p>
+            <p class="card-tag">#保護猫 #外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="保護猫" href="./04/04.htm">
+          <img src="./images/04.jpg" alt="net" />
+          <div class="card-body">
+            <p class="card-title">猫ちゃんを入れる洗濯ネットについて</p>
+            <p class="card-tag">#保護猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 捕獲器使い方 捕獲コツ" href="./05/05.htm">
+          <img src="./images/05.jpg" alt="Trap" />
+          <div class="card-body">
+            <p class="card-title">捕獲器の設置方法</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 来院時" href="./06/06.htm">
+          <img src="./images/06.png" alt="carrying" />
+          <div class="card-body">
+            <p class="card-title">捕獲器で来院される際の注意補足</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 捕獲器使い方 来院時" href="./06.5/06.5.htm">
+          <img src="./images/06.5.png" alt="06.5" />
+          <div class="card-body">
+            <p class="card-title">（イラスト版）捕獲器の包み方</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 自宅待機" href="./07/07.htm">
+          <img src="./images/07.jpg" alt="Temperature" />
+          <div class="card-body">
+            <p class="card-title">捕獲した猫の温度管理</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 捕獲コツ" href="./08/08.htm">
+          <img src="./images/08.jpg" alt="tsukamaranai" />
+          <div class="card-body">
+            <p class="card-title">捕まえたい日に捕まらない！</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 捕獲器使い方" href="./09/09.htm">
+          <img src="./images/09.jpg" alt="blog009pic" />
+          <div class="card-body">
+            <p class="card-title">組み立て式捕獲器の注意点</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="その他" href="./10/10.htm">
+          <img src="./images/10.png" alt="VacuumEffect" />
+          <div class="card-body">
+            <p class="card-title">ナワバリ現象</p>
+            <p class="card-tag">#その他</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 捕獲コツ" href="./11/11.htm">
+          <img src="./images/11.png" alt="trapper" />
+          <div class="card-body">
+            <p class="card-title">踏み板を踏まない猫</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 自宅待機" href="./13/13.htm">
+          <img src="./images/13.png" alt="jitakutaiki" />
+          <div class="card-body">
+            <p class="card-title">猫を自宅で待機させる場合の注意点</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="外猫 予約？外猫" href="./14/14.htm">
+          <img src="./14/images/800600day.png" alt="yoyakugai" />
+          <div class="card-body">
+            <p class="card-title">捕まえちゃった💦 どうしよう</p>
+            <p class="card-tag">#外猫</p>
+          </div>
+        </a>
+
+        <a class="article-card" data-genre="保護猫" href="./15/15.htm">
+          <img src="./15/images/d_chashiro800600.jpg" alt="d_chashiro" />
+          <div class="card-body">
+            <p class="card-title">馴れない猫を馴れさせる</p>
+            <p class="card-tag">#保護猫</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <footer>
+      和歌山スペイクリニック さくらねこ
+    </footer>
+
+    <script>
+      function filterGenre(genre, btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        document.querySelectorAll('.article-card').forEach(card => {
+          const g = card.dataset.genre || '';
+          card.classList.toggle('hidden', !g.includes(genre));
+        });
+      }
+
+      function showAll(btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.article-card').forEach(card => {
+          card.classList.remove('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>

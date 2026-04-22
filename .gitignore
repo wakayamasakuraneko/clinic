@@ -7,3 +7,23 @@ Desktop.ini
 
 # Claude Code
 .claude/
+memory/
+
+# ツール系
+.webaxs/
+
+# 作業・草稿ファイル
+_layout - gemini.htm
+_layout-demo.htm
+js/●price-loader.jsとprice-data.jsのそれぞれの役割.txt
+
+# 整理前・不要画像
+pics/未使用/
+pics/没/
+pics/縮小前/
+
+# 記事：非公開コンテンツ
+articles/josekin-mondai/プッシュしない内容/
+
+# Windowsショートカット
+*.lnk
