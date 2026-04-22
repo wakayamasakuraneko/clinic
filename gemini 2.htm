@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gemini V2</title>
+    <link rel="icon" href="favicon/過去ファビコン/favi.png" type="image/png" />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/priceCSS/price-bundle.css" />
+    <style>
+      /* 基本設定 */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      span {
+        display: inline-block;
+      }
+
+      p {
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+      }
+
+      html {
+        background-color: #d8d5a0;
+      }
+      body {
+        font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+        background-color: #f6f4a5;
+        color: #333;
+        line-height: 1.6;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      /* ① ヘッダー：シンプルに */
+      header {
+        background-color: #eee183;
+        text-align: center;
+        padding-top: 0.5em;
+        font-size: 20px;
+      }
+
+      .header-tel {
+        background-color: #eee183;
+        text-align: center;
+        font-size: 20px;
+        color: green;
+      }
+      .header-tel-note {
+        background-color: #eee183;
+        text-align: center;
+        font-size: 17px;
+        color: #000000;
+        padding: 0.2em 0% 0.5em;
+      }
+      .header-notice {
+        background-color: #fff9ca;
+        border-top: 1px solid #e0e0d0;
+        border-bottom: 1px solid #e0e0d0;
+        padding: 0.5em 4%;
+        text-align: right;
+        font-size: 17px;
+      }
+      .header-blog-btn,
+      .bloglink-btn {
+        padding: 3px 15px 3px 10px;
+        background: #f1df50;
+        color: black;
+        display: inline-block;
+        border-radius: 50px;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 1px 0px 3px gray, inset 0px -2px 4px #615712;
+        transition: all 0.3s ease-out;
+        font-size: 0.85em;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      .header-blog-btn:hover,
+      .bloglink-btn:hover {
+        transition: 0.7s;
+        background: #ffe100;
+        border-color: #000;
+      }
+
+      details summary {
+        padding: 3px 15px 3px 10px;
+        background: #f1df50;
+        color: black;
+        display: list-item;
+        list-style-position: inside;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 1px 0px 3px gray, inset 0px -2px 4px #615712;
+        transition: all 0.15s ease-out;
+        text-align: center;
+        user-select: none;
+        /* font-size: 0.85em; */
+        /* font-weight: bold; */
+      }
+      details summary:hover {
+        transition: 0.7s;
+        background: #ffe100;
+        border-color: #000;
+      }
+
+      details {
+        max-width: 9em;
+        margin: 0 auto;
+        background: #f7eb8a;
+        border: solid;
+        border-color: #a68d13;
+        border-radius: 50px;
+        transition: max-width 0.15s ease-out;
+      }
+      details[open] {
+        max-width: 36em;
+        border-radius: 8px;
+      }
+      details[open] summary {
+        display: list-item;
+        border-radius: 6px 6px 0 0;
+      }
+      details p {
+        padding: 0 1em;
+      }
+
+      .sp-only {
+        display: none;
+      }
+      .nav-trim {
+        display: inline;
+      }
+
+      .site-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #5a4a1a;
+        text-decoration: none;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      @media screen and (max-width: 600px) {
+        .site-title {
+          font-size: 17px;
+        }
+      }
+
+      /* ② ヒーローエリア：メッセージを重視 */
+      .hero-wrap {
+        background-color: #000;
+        text-align: center;
+      }
+      .hero-img {
+        /* display: block; */
+        max-width: 900px;
+        width: 85vw;
+        margin-top: 0.8vw;
+        height: auto;
+      }
+
+      /* ③ クイックナビ：タイル型ボタン */
+      .quick-nav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 1em auto 1em;
+        max-width: 800px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .nav-card {
+        background-color: #f6c200;
+        /* アクセントカラー */
+        color: #fff;
+        text-align: center;
+        padding: 1.5em 0.5em;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.2s;
+      }
+
+      .nav-card:hover {
+        transform: translateY(-3px);
+      }
+
+      .nav-card span {
+        display: block;
+        font-size: 0.75em;
+        margin-bottom: 4px;
+      }
+
+      /* ④ お知らせ：スリム化 */
+      .news {
+        background-color: #fff;
+        margin: 1em 4%;
+        padding: 1.2em;
+        border-radius: 8px;
+        border: 1px solid #e0e0d0;
+      }
+
+      .news h2 {
+        font-size: 1em;
+        color: #886c34;
+        margin-bottom: 0.5em;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .news ul {
+        list-style: none;
+        font-size: 0.9em;
+      }
+
+      .news li {
+        padding: 4px 0;
+        border-bottom: 1px dashed #eee;
+      }
+
+      .news li:last-child {
+        border-bottom: none;
+      }
+
+      /* ページ内ジャンプのオフセット（sticky nav分） */
+      section[id] {
+        scroll-margin-top: var(--scroll-offset, 40px);
+      }
+
+      /* ⑤ セクション */
+      section {
+        background-color: #fff;
+        margin: 1em 2%;
+        padding: 2em 5%;
+        border-radius: 12px;
+        border: 3vw solid #fdfdcd;
+        font-size: 22px;
+        line-height: normal;
+      }
+
+      section h2 {
+        margin: 0 0 1em;
+      }
+
+      #introduction h2 {
+        color: #99634b;
+      }
+      #procedures-notes h2 {
+        color: brown;
+      }
+      #price h2 {
+        color: #4a6741;
+      }
+      #TelFax h2 {
+        color: #944929;
+      }
+      #access h2 {
+        color: #2d6d4b;
+      }
+      #TelFax h2:not(:first-of-type) {
+        margin-top: 2em;
+      }
+      #TelFax h3 {
+        color: green;
+        font-weight: normal;
+      }
+      #TelFax h3 b {
+        color: red;
+      }
+
+      /* --- 旧スタイル（::after ライン） ---
+      section h2 {
+        font-size: 1.3em;
+        color: #5a4a1a;
+        width: fit-content;
+        margin: 0 auto 1em;
+        position: relative;
+      }
+      section h2::after {
+        content: "";
+        display: block;
+        width: 60%;
+        height: 3px;
+        background: #f6c200;
+        margin: 8px auto 0;
+      }
+      --- */
+
+      /* ⑥ SNS */
+      .sns-area {
+        text-align: center;
+        padding: 3em 1em;
+        background-color: #fdfdcd;
+      }
+
+      .sns-btns {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 1em;
+      }
+
+      .flowbtn {
+        font-family: 'Arial', sans-serif;
+        width: 66px;
+        height: 58px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        font-size: 30px;
+        transition: .5s;
+        text-decoration: none;
+        box-shadow: 3px 3px 6px -2px #555;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .flowbtn div {
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 0;
+      }
+      .flowbtn .twit_X {
+        font-size: 1em;
+        font-style: normal;
+        line-height: 1;
+      }
+      .flowbtn .X_bottom {
+        margin-top: 0px;
+      }
+      .flowbtn:hover { transform: scale(1.2, 1.2); }
+      .fl_X   { background: #202124; }
+      .fl_fb1 { background: #3b5998; }
+      .insta_btn1 {
+        background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+        overflow: hidden;
+        position: relative;
+      }
+      .insta_btn1:before {
+        content: '';
+        position: absolute;
+        top: 33px;
+        left: -20px;
+        width: 80px;
+        height: 50px;
+        background: radial-gradient(#ffdb2c 5%, rgba(255,105,34,0.65) 55%, rgba(255,88,96,0) 70%);
+        z-index: 0;
+      }
+      .insta_btn1 > * {
+        position: relative;
+        z-index: 1;
+      }
+      @media screen and (max-width: 600px) {
+        .flowbtn {
+          border-radius: 50%;
+          transform: scale(0.8, 0.8);
+        }
+        .flowbtn div { display: none; }
+        .flowbtn:hover { transform: scale(1.0, 1.0); }
+      }
+
+      footer {
+        background-color: #5a4a1a;
+        color: #ffe566;
+        text-align: center;
+        padding: 2em;
+        font-size: 0.8em;
+      }
+
+      /* ページ内ナビ（PC:上sticky / SP:下fixed） */
+      .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: #eee183;
+        border-bottom: 1px solid #e0e0d0;
+        display: flex;
+        align-items: center;
+        padding: 0.5em 0;
+      }
+
+      .site-nav-inner {
+        overflow-x: auto;
+        white-space: nowrap;
+        flex: 1;
+        text-align: center;
+        scrollbar-width: none;
+      }
+
+      .site-nav-inner::-webkit-scrollbar {
+        display: none;
+      }
+
+      .site-nav a {
+        display: inline-block;
+        color: #fff;
+        background-color: #333;
+        text-decoration: none;
+        font-size: 1.1em;
+        padding: 0.4em 0.8em;
+        border-right: 1px solid #666;
+      }
+
+      .site-nav a:last-child {
+        border-right: none;
+      }
+
+      .site-nav a {
+        transition:
+          background-color 0.2s,
+          color 0.2s;
+      }
+
+      .site-nav a:hover {
+        background-color: #bebebe;
+        color: rgb(4, 4, 4);
+        text-decoration: none;
+      }
+
+      .nav-arrow {
+        display: inline-block;
+        color: #886c34;
+        font-size: 0.9em;
+        padding: 0 0.3em;
+      }
+
+      /* トップへ戻るボタン */
+      .footer-page-top__btn {
+        box-shadow: 1px 2px 5px 0 rgba(51, 51, 51, 0.3);
+        display: none;
+        position: fixed;
+        right: 16px;
+        bottom: 24px;
+        width: 70px;
+        height: 70px;
+        transition: transform 0.2s linear;
+        border-radius: 40px;
+        background: #2caf54;
+        color: transparent;
+        font-size: 0;
+        cursor: pointer;
+        border: none;
+        z-index: 200;
+      }
+      .footer-page-top__btn::before {
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 492 492'%3E%3Cpath fill='%23fff' d='M69.8 0L0 69.8 176.2 246 0 422.2 69.8 492l246-246L69.8 0zM246 0l-69.8 69.8L352.4 246 176.2 422.2 246 492l246-246L246 0z'/%3E%3C/svg%3E")
+          50% 50% / 100% 100% no-repeat;
+        content: "";
+        display: block;
+        transition: 0.2s linear;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin: -10px 0 0 -10px;
+        transform: rotate(-90deg);
+      }
+      .footer-page-top__btn:hover {
+        transform: translateY(-3px);
+      }
+      .footer-page-top__btn.is-show {
+        display: block;
+      }
+
+      /* アクセス */
+      .wrapMaps {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 1em;
+      }
+
+      .wrapMaps img {
+        width: 42%;
+        height: 42%;
+        border: 2px solid black;
+        box-sizing: border-box;
+      }
+
+      .wrapMaps iframe {
+        width: 42%;
+        height: inherit;
+      }
+
+      @media screen and (max-width: 1100px) {
+        .wrapMaps img {
+          width: 48%;
+          height: 48%;
+        }
+
+        .wrapMaps iframe {
+          width: 48%;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .site-nav {
+          top: var(--header-height, 66px);
+        }
+        .hero-img {
+          width: 99vw;
+          margin-bottom: -1vw;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        header,
+        .header-tel {
+          font-size: 17px;
+        }
+      }
+
+      /* レスポンシブ */
+      @media screen and (max-width: 600px) {
+        body {
+          background-color: #f6f49c;
+        }
+        section {
+          background-color: #fff;
+          margin: 1em 0%;
+          padding: 2em 3%;
+          border-radius: 12px;
+          border: 2vw solid #fdfdcd;
+          font-size: 20px;
+          line-height: normal;
+        }
+        .quick-nav {
+          grid-template-columns: 1fr;
+          margin: 1em 4% 1em;
+        }
+
+        .wrapMaps {
+          flex-direction: column-reverse;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .wrapMaps img,
+        .wrapMaps iframe {
+          width: 100%;
+          height: auto;
+        }
+
+        .wrapMaps iframe {
+          aspect-ratio: 1;
+        }
+
+        /* SP：ヘッダーをsticky化 */
+        header {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+        section[id] {
+          scroll-margin-top: var(--scroll-offset, 140px);
+        }
+        .sp-only {
+          display: block;
+        }
+        .nav-trim {
+          display: none;
+        }
+        .footer-page-top__btn.is-show {
+          display: none;
+        }
+      }
+      /* ナビページオーバーレイ */
+      .nav-page {
+        position: fixed;
+        inset: 0;
+        z-index: 500;
+        background-color: #f6f4a5;
+        overflow-y: auto;
+        padding: 1.5em 5%;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: transform 0.35s ease, opacity 0.3s ease;
+        font-size: 22px;
+        line-height: 1.8;
+      }
+      .nav-page.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+      }
+      .nav-page-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.5em 2em;
+        border: 3vw solid #fdfdcd;
+      }
+      .nav-page h2 {
+        text-align: center;
+        padding: 0.4em 1em;
+        border-radius: 8px;
+        margin-bottom: 1em;
+        color: #fff;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 -2px 4px rgba(0,0,0,0.15);
+      }
+      .nav-page[data-page="issei"]     .nav-page-inner h2 { background-color: #7aab52; }
+      .nav-page[data-page="soto-neko"] .nav-page-inner h2 { background-color: #d4824a; }
+      .nav-page[data-page="ie-neko"]   .nav-page-inner h2 { background-color: #4a80aa; }
+      .nav-page h3 {
+        margin-top: 1em;
+        font-size: 0.85em;
+        color: #555;
+        border-left: 3px solid #f6c200;
+        padding-left: 0.5em;
+      }
+      .nav-page-back {
+        display: inline-block;
+        margin-bottom: 1.2em;
+        padding: 0.3em 1.2em;
+        background: #5a4a1a;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        font-size: 0.8em;
+        cursor: pointer;
+      }
+      body.nav-page-open {
+        overflow: hidden;
+      }
+      .nav-page[data-page="issei"]     { background-color: #c8ddb0; }
+      .nav-page[data-page="soto-neko"] { background-color: #f5ccaa; }
+      .nav-page[data-page="ie-neko"]   { background-color: #aac4dd; }
+      .nav-page[data-page="issei"]     .nav-page-inner { border-color: #f0f4e8; }
+      .nav-page[data-page="soto-neko"] .nav-page-inner { border-color: #fef0d8; }
+      .nav-page[data-page="ie-neko"]   .nav-page-inner { border-color: #e8f0f8; }
+      @media screen and (max-width: 600px) {
+        .nav-page {
+          font-size: 18px;
+          padding: 1em 3%;
+        }
+        .nav-page-inner {
+          border: 2vw solid #fdfdcd;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="#" class="site-title">和歌山スペイクリニック さくらねこ</a>
+    </header>
+
+    <div class="header-tel">TEL・FAX　073-407-1288</div>
+    <div class="header-tel-note">
+      手術中は電話が繋がりにくく<span>なっております。</span><span>メニュー&gt;TELをご参照下さい。</span>
+    </div>
+    <div class="header-notice"><a href="#" class="header-blog-btn">記事一覧</a></div>
+
+    <nav class="site-nav">
+      <span class="nav-arrow">◀</span>
+      <div class="site-nav-inner">
+        <a href="#introduction">病院紹介</a>
+        <a href="#procedures-notes">手術の流れ<span class="nav-trim">と注意点</span></a>
+        <a href="#price">料金<span class="nav-trim">案内</span></a>
+        <a href="#TelFax">TEL<span class="nav-trim">/FAX</span>/営業<span class="nav-trim">時間/</span>休診日</a>
+        <a href="#access">アクセス</a>
+      </div>
+      <span class="nav-arrow">▶</span>
+    </nav>
+
+    <div class="hero-wrap">
+      <img src="pics/hero.jpg" alt="和歌山スペイクリニック さくらねこ" class="hero-img" />
+    </div>
+
+    <div class="news">
+      <h2>📢 お知らせ</h2>
+      <ul>
+        <li><span>2026.04.01</span> GW期間中も通常通り診療いたします。</li>
+        <li><span>2026.03.15</span> 春のTNR助成金に関するご案内を更新しました。</li>
+      </ul>
+    </div>
+
+    <section id="introduction">
+      <h2>病院紹介</h2>
+      <p>※ 当院は猫の不妊手術専門病院です。一般の診療は行っておりません。</p>
+      <p>当日ご予約無しでの手術は割増料金が発生します。→「手術の流れと注意点」をご参照下さい。</p>
+    </section>
+
+    <section id="procedures-notes">
+      <h2>手術の流れと注意点</h2>
+      <p>
+        一般診療のほか、ワクチン接種、ウイルス検査、ノミダニ駆除なども承っております。手術と同時に行うことも可能ですので、お気軽にご相談ください。
+      </p>
+      <div class="quick-nav">
+        <a href="#issei" class="nav-card">
+          一斉手術の相談は
+          <span>猫が多すぎて1人では手に負えない</span>
+        </a>
+        <a href="#soto-neko" class="nav-card" style="background-color: #ff8c00"> 野良猫・外猫手術、<br />ご希望の場合 </a>
+        <a href="#ie-neko" class="nav-card"> 家猫・保護猫手術、<br />ご希望の場合 </a>
+      </div>
+    </section>
+
+    <section id="price">
+      <div class="price-sticky-wrap">
+      <h2>料金表</h2>
+
+      <div class="price-caption-top">
+        <p>※ 手術料金には、ノミ駆虫薬、化膿止めの抗生剤 及び、術後の 皮下補液 も含まれております。(一部例外)</p>
+      </div>
+
+      <ul class="button-wrapper">
+        <li><button id="toggle-button">税切替</button></li>
+        <li><button id="show-all-button">広げる</button></li>
+      </ul>
+
+      <div id="price-main"></div>
+      <div id="price-discount"></div>
+
+      <div class="gap2"></div>
+      </div><!-- /.price-sticky-wrap -->
+
+      <div class="price-caption-bottom">
+        <p>★ 耳カット<span>(耳先のＶ字カット)は</span><span>不妊去勢手術を受けた証</span></p>
+        <p>もう子猫を増やすことは<span>ありません。</span></p>
+      </div>
+    </section>
+
+    <section id="TelFax">
+      <h2>TEL・FAX</h2>
+
+      <h3>📞 073-407-1288（兼 FAX）</h3>
+      <p>手術中（主に午前中～昼くらい）の為、電話に出られない事があります。</p>
+      <p>ご予約・ご用件のメッセージを留守番電話にお伝え下さい。</p>
+      <p>なるべく折り返す様に致しますが、連絡が無い場合、再度ご連絡お願い申し上げます。</p>
+
+      <h2>営業時間と休診日</h2>
+
+      <h3><b>営業時間</b> 午前９時～午後５時</h3>
+      <p>※ お電話は上記の通り、午前中は主に留守番電話に切り替わる事が多いです。</p>
+
+      <h3><b>休診日</b> 金曜・土曜</h3>
+
+      <h2>5月休診日のご案内</h2>
+      <p>5/5(火)～5/11(月)まで休診いたします。ご了承下さい。</p>
+    </section>
+
+    <section id="access">
+      <h2>アクセス</h2>
+      <p>〒640-8324</p>
+      <p>和歌山県和歌山市<span>吹屋町４丁目９−１</span></p>
+      <p>※ 木広町の交差点からは<span>道幅が狭く、</span><span>入りにくいので</span><span>ご注意下さい</span></p>
+      <div class="wrapMaps">
+        <img src="pics/map.png" alt="map-img" />
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3298.8720491193626!2d135.1865673!3d34.2262853!3m2!1i1024!2i768!4f10!3m3!1m2!1s0x6000b32d2406f717%3A0xb1b26acc7dfa9379!2z5ZKM5q2M5bGx44K544Oa44Kk44Kv44Oq44OL44OD44KvIOOBleOBj-OCieOCreOBkw!5e0!3m2!1sja!2sjp!4v1681827027923!5m2!1sja!2sjp"
+          width="800"
+          height="600"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+
+    <div class="sns-area">
+      <p>日々の活動や、可愛い猫たちの様子を配信中</p>
+      <div class="sns-btns">
+        <a class="flowbtn fl_fb1" href="https://www.facebook.com/wakayamasakuraneko/" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+          <div>Facebook</div>
+        </a>
+        <a class="flowbtn insta_btn1" href="https://www.instagram.com/wakayama_spayclinic_sakuraneko/" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <div>Instagram</div>
+        </a>
+        <a class="flowbtn fl_X" href="https://twitter.com/wakayama_spay" target="_blank">
+          <i class="twit_X">𝕏</i>
+          <div class="X_bottom">Twitter</div>
+        </a>
+      </div>
+    </div>
+
+    <button class="footer-page-top__btn" id="pageTopBtn" onclick="smoothScrollTo(0, 200)">トップへ</button>
+
+    <footer>
+      &copy; 2026 和歌山スペイクリニック さくらねこ<br />
+      和歌山県和歌山市吹屋町4-9-1
+    </footer>
+    <!-- ナビページ：一斉手術の相談 -->
+    <div class="nav-page" data-page="issei">
+      <div class="nav-page-inner">
+        <button class="nav-page-back">← 戻る</button>
+        <h2>一斉手術のご相談</h2>
+        <p>猫が多すぎて1人では手に負えない…そんな方のために、一斉手術のご相談を承っております。</p>
+        <p>地域猫活動・多頭飼育崩壊など、まとまった頭数の手術をご希望の方はお気軽にご連絡ください。</p>
+        <h3>ご予約の流れ</h3>
+        <p>① まずはお電話でご相談ください<br>② 頭数・猫の状態（外猫 / 保護猫）・ご希望日程をお伝えください<br>③ 日程調整の上、ご予約をお取りします</p>
+        <p>※ 一度にお預かりできる頭数には限りがございます。<br>※ 多頭の場合は複数回に分けることもございます。</p>
+      </div>
+    </div>
+
+    <!-- ナビページ：野良猫・外猫手術 -->
+    <div class="nav-page" data-page="soto-neko">
+      <div class="nav-page-inner">
+        <button class="nav-page-back">← 戻る</button>
+        <h2>野良猫・外猫手術</h2>
+        <p>野良猫・地域猫（外猫）の不妊去勢手術を承っております。</p>
+        <p>術後は耳先をＶ字にカット（耳カット）し、手術済みの証とします。捕獲・再手術を防ぐため、必ず耳カットをお願いしております。</p>
+        <h3>手術の流れ</h3>
+        <p>① 前日までにお電話でご予約<br>② 当日、洗濯ネットに入れてご来院<br>③ 手術・覚醒後にお引き渡し<br>④ 元の場所へリリース</p>
+        <h3>料金・注意事項</h3>
+        <p>※ 当日予約なしの場合、割増料金が発生します。<br>※ 手術料金にはノミ駆虫薬・抗生剤・術後の皮下補液が含まれます。<br>※ 詳しい料金は料金表をご覧ください。</p>
+      </div>
+    </div>
+
+    <!-- ナビページ：家猫・保護猫手術 -->
+    <div class="nav-page" data-page="ie-neko">
+      <div class="nav-page-inner">
+        <button class="nav-page-back">← 戻る</button>
+        <h2>家猫・保護猫手術</h2>
+        <p>室内飼育の家猫・保護猫の不妊去勢手術を承っております。</p>
+        <p>混雑時には外猫の手術を優先する事があります。ご了承ください。</p>
+        <p>ご予約はできるだけ(月)～(木)の平日でお願い致します。</p>
+        <p>日曜ご希望の場合は割増料金がかかる事があります。（例外あり）</p>
+        <h3>手術の流れ</h3>
+        <p>① 前日までにお電話でご予約<br>② 当日、洗濯ネットに入れてご来院<br>③ 手術・覚醒後にお引き渡し（日帰り）</p>
+        <h3>注意事項</h3>
+        <p>※ 当日予約なしの場合、割増料金が発生します。<br>※ ペットショップで購入された猫、又は血統証付きの猫に関しては基本お引き受けしておりませんが、多頭飼育問題の際にはご相談下さい。</p>
+        <details>
+          <summary>その他補足</summary>
+          <p>ご来院の際には洗濯ネットに入れて来るようにお願い致します。
+            <center>
+              <a href="https://wakayamasakuraneko.github.io/blog/04/04.htm" class="bloglink-btn">
+                <i class="far fa-hand-point-right"></i> 洗濯ネットについて
+              </a>
+            </center>
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <script src="js/price-loader.js" defer></script>
+    <script>
+      const btn = document.getElementById("pageTopBtn");
+      window.addEventListener("scroll", () => {
+        btn.classList.toggle("is-show", window.scrollY > 200);
+      });
+
+      function updateStickyHeights() {
+        const headerH = document.querySelector("header").offsetHeight;
+        const navH = document.querySelector(".site-nav").offsetHeight;
+        const isSP = window.matchMedia("(max-width: 600px)").matches;
+        document.documentElement.style.setProperty("--header-height", headerH + "px");
+        document.documentElement.style.setProperty("--scroll-offset", (isSP ? headerH + navH : navH) + "px");
+      }
+      updateStickyHeights();
+      window.addEventListener("resize", updateStickyHeights);
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href === "#") {
+            e.preventDefault();
+            smoothScrollTo(0, 200);
+            return;
+          }
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          const offset =
+            parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--scroll-offset")) || 60;
+          const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
+          smoothScrollTo(targetY, 200);
+        });
+      });
+
+      // ナビページ（hash-based）
+      (function () {
+        const navPages = document.querySelectorAll('.nav-page');
+        const pageMap = {};
+        navPages.forEach(el => { pageMap[el.dataset.page] = el; });
+
+        function showPage(hash) {
+          const key = hash.startsWith('#') ? hash.slice(1) : '';
+          navPages.forEach(el => el.classList.remove('active'));
+          if (key && pageMap[key]) {
+            pageMap[key].classList.add('active');
+            pageMap[key].scrollTop = 0;
+            document.body.classList.add('nav-page-open');
+          } else {
+            document.body.classList.remove('nav-page-open');
+          }
+        }
+
+        window.addEventListener('hashchange', () => showPage(location.hash));
+        showPage(location.hash);
+
+        document.querySelectorAll('.nav-page-back').forEach(btn => {
+          btn.addEventListener('click', () => history.back());
+        });
+      })();
+
+      function smoothScrollTo(targetY, duration) {
+        const startY = window.scrollY;
+        const diff = targetY - startY;
+        let start;
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          const p = Math.min((timestamp - start) / duration, 1);
+          const ease = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
+          window.scrollTo(0, startY + diff * ease);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+    </script>
+  </body>
+</html>
