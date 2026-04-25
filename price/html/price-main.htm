@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>料金表（単品プレビュー用）</title>
-  <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="price-preview.css" />
 </head>
 <body>
@@ -301,8 +300,8 @@
         <div class="menuTd">
           <!-- <i id="i_box" class="i_box"> -->
           <!-- <i class="nomi_box"> -->
-          <img class="nomiring" src="pics/ring.png" alt="title-img"></img>
-          <img class="nomiimg" src="pics/nomilr.png" alt="title-img">
+          <img class="nomiring" src="../../pics/Price-List-pic/ring.png" alt="title-img"></img>
+          <img class="nomiimg" src="../../pics/Price-List-pic/nomilr.png" alt="title-img">
           <!-- <i class="fa fa-chevron-right"></i> -->
           駆虫薬と表
         </div>
@@ -329,13 +328,6 @@
           <tbody id="aw-body" class="tbody"></tbody>
         </table>
 
-</div>
-
-<script>
-  document.querySelectorAll("tbody").forEach(el => el.classList.add("show"));
-</script>
-</body>
-</html>
 
         <div class="padingA">
           <p>・ブラベクトプラス、またはネクスガードCATをご希望の際は追加料金になります。ご相談下さい。</p>
@@ -394,6 +386,7 @@
         </div>
       </th>
     </tr>
+
   </thead>
 
   <tbody class="tbody">
@@ -498,7 +491,7 @@
         <div class="kankyocho">装着後は⬇️こちらのサイトから
           <div>
             <a class="frame02" href="https://reg.mc.env.go.jp/" target="_blank"><img class="microchipImg"
-                src="pics/53kb.png" alt="52kb">
+                src="../../pics/Price-List-pic/53kb.png" alt="52kb">
               <!-- <div class="image-text">
                       ご登録
                     </div> -->
@@ -520,7 +513,58 @@
             </td>
           </tr> -->
 
+    <!-- 外猫おすすめセット・保護猫おすすめセット（非表示・後で使用予定）
+    <tr class="menu js-menu">
+      <td colspan="2">
+        <div class="flexB">
+          <ol>
+            <li class="menuTd">
+              <i class="i_box"><i class="one_i"></i></i>
+            </li>
+          </ol>
+          <ol><li>&nbsp;</li></ol>
+          <ol><li>外猫<span>おすすめセット</span></li></ol>
+        </div>
+      </td>
+    </tr>
+    <tr class="contents">
+      <td colspan="2">
+        <div class="padingA">
+          <p>・手術（メス or オス）</p>
+          <p>・不妊手術割引（耳カット）</p>
+          <p>・３種混合ワクチン（耳カット時）</p>
+          <p>※ 各料金は上表「手術」「検査・ワクチン」よりご確認ください。</p>
+        </div>
+      </td>
+    </tr>
 
+    <!-- 保護猫おすすめセット（非表示・後で使用予定）
+    <tr class="menu js-menu">
+      <td colspan="2">
+        <div class="flexB">
+          <ol>
+            <li class="menuTd">
+              <i class="i_box"><i class="one_i"></i></i>
+            </li>
+          </ol>
+          <ol><li>&nbsp;</li></ol>
+          <ol><li>保護猫<span>おすすめセット</span></li></ol>
+        </div>
+      </td>
+    </tr>
+    <tr class="contents">
+      <td colspan="2">
+        <div class="padingA">
+          <p>・手術（メス or オス）</p>
+          <p>・猫エイズ・白血病検査</p>
+          <p>・ネクスガードCAT</p>
+          <p>・爪切り</p>
+          <p>・検便</p>
+          <p>※ 各料金は上表「検査・ワクチン」「抗生剤・駆虫薬」「その他」よりご確認ください。</p>
+        </div>
+      </td>
+    </tr>
+    -->
 
   </tbody>
 
@@ -581,3 +625,11 @@
   </tbody>
 
 </table>
+
+</div>
+
+<script>
+  document.querySelectorAll("tbody").forEach(el => el.classList.add("show"));
+</script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>カラーサンプル（スライド）</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { height: 100%; }
+      body {
+        font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", sans-serif;
+        color: #333;
+        line-height: 1.9;
+        font-size: 1.05rem;
+        overflow: hidden;
+      }
+
+      /* ========== ページ ========== */
+      .page {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 48px 24px 120px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        overflow-y: auto;
+      }
+      .page.active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+      .page.slide-out-left  { transform: translateX(-100%); opacity: 0; }
+      .page.slide-out-right { transform: translateX(100%);  opacity: 0; }
+
+      .page-inner { max-width: 700px; width: 100%; }
+
+      /* ========== ページ背景色 ========== */
+      .page-0 { background-color: #c8ddb0; }
+      .page-1 { background-color: #f5ccaa; }
+      .page-2 { background-color: #aac4dd; }
+      .page-3 { background-color: #a8dcd8; }
+      .page-4 { background-color: #d4c0ee; }
+      .page-5 { background-color: #f0b8cc; }
+      .page-6 { background-color: #a8b8d8; }
+      .page-7 { background-color: #ccd4a0; }
+      .page-8 { background-color: #f2b89a; }
+      .page-9 { background-color: #b0dfcc; }
+
+      /* ========== ラベル ========== */
+      .page-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        opacity: 0.55;
+        margin-bottom: 12px;
+      }
+
+      /* ========== カラーカード ========== */
+      .color-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.5em 2em;
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+      .color-card h2 {
+        text-align: center;
+        padding: 0.4em 1em;
+        border-radius: 8px;
+        margin-bottom: 1em;
+        color: #fff;
+        font-size: 1.15rem;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 -2px 4px rgba(0,0,0,0.15);
+      }
+      .color-card h3 {
+        margin-top: 1em;
+        color: #555;
+        padding-left: 0.5em;
+        border-left: 3px solid #ccc;
+        font-size: 1rem;
+      }
+      .color-card p { margin-top: 0.8em; color: #444; }
+
+      /* ========== ページごとの枠・h2・h3 ========== */
+      .page-0 .color-card { border: 3vw solid #f0f4e8; }
+      .page-0 .color-card h2 { background-color: #7aab52; }
+      .page-0 .color-card h3 { border-color: #7aab52; }
+
+      .page-1 .color-card { border: 3vw solid #fef0d8; }
+      .page-1 .color-card h2 { background-color: #d4824a; }
+      .page-1 .color-card h3 { border-color: #d4824a; }
+
+      .page-2 .color-card { border: 3vw solid #e8f0f8; }
+      .page-2 .color-card h2 { background-color: #4a80aa; }
+      .page-2 .color-card h3 { border-color: #4a80aa; }
+
+      .page-3 .color-card { border: 3vw solid #d4f0ee; }
+      .page-3 .color-card h2 { background-color: #0e8c80; }
+      .page-3 .color-card h3 { border-color: #0e8c80; }
+
+      .page-4 .color-card { border: 3vw solid #eae4f8; }
+      .page-4 .color-card h2 { background-color: #7448b0; }
+      .page-4 .color-card h3 { border-color: #7448b0; }
+
+      .page-5 .color-card { border: 3vw solid #f8dce8; }
+      .page-5 .color-card h2 { background-color: #b83060; }
+      .page-5 .color-card h3 { border-color: #b83060; }
+
+      .page-6 .color-card { border: 3vw solid #d4dcee; }
+      .page-6 .color-card h2 { background-color: #284898; }
+      .page-6 .color-card h3 { border-color: #284898; }
+
+      .page-7 .color-card { border: 3vw solid #e4eac8; }
+      .page-7 .color-card h2 { background-color: #6a7820; }
+      .page-7 .color-card h3 { border-color: #6a7820; }
+
+      .page-8 .color-card { border: 3vw solid #fadacc; }
+      .page-8 .color-card h2 { background-color: #c04820; }
+      .page-8 .color-card h3 { border-color: #c04820; }
+
+      .page-9 .color-card { border: 3vw solid #d6f2e8; }
+      .page-9 .color-card h2 { background-color: #1a9060; }
+      .page-9 .color-card h3 { border-color: #1a9060; }
+
+      /* ========== 色コード ========== */
+      .color-codes {
+        margin-top: 1.2em;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .color-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        color: #555;
+        background: rgba(255,255,255,0.7);
+        padding: 4px 10px;
+        border-radius: 20px;
+      }
+      .swatch {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 1px solid rgba(0,0,0,0.15);
+        flex-shrink: 0;
+      }
+
+      /* ========== 左上：最初へボタン ========== */
+      #btn-to-top {
+        position: fixed;
+        top: 14px;
+        left: max(14px, calc(50% - 350px + 14px));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        color: #888;
+        font-size: 0.65rem;
+        user-select: none;
+        z-index: 200;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(4px);
+        padding: 8px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-family: inherit;
+        transition: color 0.2s, opacity 0.4s;
+        width: 52px;
+        height: 52px;
+      }
+      #btn-to-top:hover { color: #333; }
+      #btn-to-top.hidden { opacity: 0; pointer-events: none; }
+      #btn-to-top .icon { font-size: 1.2rem; line-height: 1; }
+
+      /* ========== ナビゲーション（下部固定） ========== */
+      nav {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        background: rgba(255,255,255,0.88);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(0,0,0,0.08);
+        z-index: 100;
+      }
+      nav button {
+        padding: 8px 18px;
+        border-radius: 24px;
+        border: 1.5px solid #ccc;
+        background: #fff;
+        color: #444;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+        flex-shrink: 0;
+      }
+      nav button:hover { background: #555; color: #fff; border-color: #555; }
+
+      /* ========== ドットインジケーター ========== */
+      .dots { display: flex; gap: 6px; align-items: center; }
+      .dot-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ccc;
+        transition: background 0.3s, width 0.3s;
+      }
+      .dot-item.active .dot { background: #555; width: 22px; border-radius: 4px; }
+      .dot-label { font-size: 0.55rem; color: #bbb; white-space: nowrap; transition: color 0.3s; }
+      .dot-item.active .dot-label { color: #555; font-weight: 700; }
+
+      @media (max-width: 500px) {
+        .dot-item:not(.active) .dot-label { display: none; }
+        nav { height: 60px; }
+        .page { padding-bottom: 80px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- 0: グリーン -->
+    <div class="page page-0 active" id="page-0">
+      <div class="page-inner">
+        <div class="page-label">グリーン系</div>
+        <div class="color-card">
+          <h2>グリーン</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#c8ddb0;"></div>bg #c8ddb0</div>
+          <div class="color-chip"><div class="swatch" style="background:#f0f4e8;"></div>border #f0f4e8</div>
+          <div class="color-chip"><div class="swatch" style="background:#7aab52;"></div>h2 #7aab52</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1: オレンジ -->
+    <div class="page page-1" id="page-1">
+      <div class="page-inner">
+        <div class="page-label">オレンジ系</div>
+        <div class="color-card">
+          <h2>オレンジ</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#f5ccaa;"></div>bg #f5ccaa</div>
+          <div class="color-chip"><div class="swatch" style="background:#fef0d8;"></div>border #fef0d8</div>
+          <div class="color-chip"><div class="swatch" style="background:#d4824a;"></div>h2 #d4824a</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2: ブルー -->
+    <div class="page page-2" id="page-2">
+      <div class="page-inner">
+        <div class="page-label">ブルー系</div>
+        <div class="color-card">
+          <h2>ブルー</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#aac4dd;"></div>bg #aac4dd</div>
+          <div class="color-chip"><div class="swatch" style="background:#e8f0f8;"></div>border #e8f0f8</div>
+          <div class="color-chip"><div class="swatch" style="background:#4a80aa;"></div>h2 #4a80aa</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3: ティール -->
+    <div class="page page-3" id="page-3">
+      <div class="page-inner">
+        <div class="page-label">ティール系</div>
+        <div class="color-card">
+          <h2>ティール</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#a8dcd8;"></div>bg #a8dcd8</div>
+          <div class="color-chip"><div class="swatch" style="background:#d4f0ee;"></div>border #d4f0ee</div>
+          <div class="color-chip"><div class="swatch" style="background:#0e8c80;"></div>h2 #0e8c80</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: パープル -->
+    <div class="page page-4" id="page-4">
+      <div class="page-inner">
+        <div class="page-label">パープル系</div>
+        <div class="color-card">
+          <h2>パープル</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#d4c0ee;"></div>bg #d4c0ee</div>
+          <div class="color-chip"><div class="swatch" style="background:#eae4f8;"></div>border #eae4f8</div>
+          <div class="color-chip"><div class="swatch" style="background:#7448b0;"></div>h2 #7448b0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5: ローズ -->
+    <div class="page page-5" id="page-5">
+      <div class="page-inner">
+        <div class="page-label">ローズ系</div>
+        <div class="color-card">
+          <h2>ローズ</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#f0b8cc;"></div>bg #f0b8cc</div>
+          <div class="color-chip"><div class="swatch" style="background:#f8dce8;"></div>border #f8dce8</div>
+          <div class="color-chip"><div class="swatch" style="background:#b83060;"></div>h2 #b83060</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6: ネイビー -->
+    <div class="page page-6" id="page-6">
+      <div class="page-inner">
+        <div class="page-label">ネイビー系</div>
+        <div class="color-card">
+          <h2>ネイビー</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#a8b8d8;"></div>bg #a8b8d8</div>
+          <div class="color-chip"><div class="swatch" style="background:#d4dcee;"></div>border #d4dcee</div>
+          <div class="color-chip"><div class="swatch" style="background:#284898;"></div>h2 #284898</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7: オリーブ -->
+    <div class="page page-7" id="page-7">
+      <div class="page-inner">
+        <div class="page-label">オリーブ系</div>
+        <div class="color-card">
+          <h2>オリーブ</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#ccd4a0;"></div>bg #ccd4a0</div>
+          <div class="color-chip"><div class="swatch" style="background:#e4eac8;"></div>border #e4eac8</div>
+          <div class="color-chip"><div class="swatch" style="background:#6a7820;"></div>h2 #6a7820</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8: サーモン -->
+    <div class="page page-8" id="page-8">
+      <div class="page-inner">
+        <div class="page-label">サーモン系</div>
+        <div class="color-card">
+          <h2>サーモン</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#f2b89a;"></div>bg #f2b89a</div>
+          <div class="color-chip"><div class="swatch" style="background:#fadacc;"></div>border #fadacc</div>
+          <div class="color-chip"><div class="swatch" style="background:#c04820;"></div>h2 #c04820</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9: ミント -->
+    <div class="page page-9" id="page-9">
+      <div class="page-inner">
+        <div class="page-label">ミント系</div>
+        <div class="color-card">
+          <h2>ミント</h2>
+          <h3>h3 テキストのサンプル</h3>
+          <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+          <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        </div>
+        <div class="color-codes">
+          <div class="color-chip"><div class="swatch" style="background:#b0dfcc;"></div>bg #b0dfcc</div>
+          <div class="color-chip"><div class="swatch" style="background:#d6f2e8;"></div>border #d6f2e8</div>
+          <div class="color-chip"><div class="swatch" style="background:#1a9060;"></div>h2 #1a9060</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 左上：最初へボタン -->
+    <button id="btn-to-top" onclick="goTo(0)">
+      <span class="icon">←</span>
+      <span>最初へ</span>
+    </button>
+
+    <!-- 下部ナビゲーション -->
+    <nav>
+      <button id="btn-prev" onclick="navigate(-1)">← 前へ</button>
+      <div class="dots" id="dots"></div>
+      <button id="btn-next" onclick="navigate(1)">次へ →</button>
+    </nav>
+
+    <script>
+      const TOTAL = 10;
+      const PAGE_LABELS = ["緑", "橙", "青", "青緑", "紫", "薔薇", "紺", "黄緑", "珊瑚", "薄荷"];
+
+      const isReload = performance.getEntriesByType("navigation")[0]?.type === "reload";
+      const saved = parseInt(sessionStorage.getItem("page-color") || "0");
+      let current = (isReload && saved >= 0 && saved < TOTAL) ? saved : 0;
+
+      const dotsEl = document.getElementById("dots");
+      for (let i = 0; i < TOTAL; i++) {
+        const item = document.createElement("div");
+        item.className = "dot-item";
+        item.onclick = () => goTo(i);
+        const d = document.createElement("div");
+        d.className = "dot";
+        const lbl = document.createElement("div");
+        lbl.className = "dot-label";
+        lbl.textContent = PAGE_LABELS[i];
+        item.appendChild(d);
+        item.appendChild(lbl);
+        dotsEl.appendChild(item);
+      }
+
+      function showPage(index) {
+        for (let i = 0; i < TOTAL; i++) {
+          document.getElementById("page-" + i).classList.remove("active", "slide-out-left", "slide-out-right");
+          dotsEl.children[i].classList.remove("active");
+        }
+        current = index;
+        document.getElementById("page-" + current).classList.add("active");
+        dotsEl.children[current].classList.add("active");
+        sessionStorage.setItem("page-color", current);
+        updateNav();
+      }
+
+      function goTo(index, dir) {
+        if (index === current) return;
+        if (dir === undefined) dir = index > current ? 1 : -1;
+
+        const prevEl = document.getElementById("page-" + current);
+        const nextEl = document.getElementById("page-" + index);
+
+        nextEl.classList.remove("slide-out-left", "slide-out-right");
+        nextEl.style.transition = "none";
+        nextEl.style.transform = `translateX(${dir * 100}%)`;
+        nextEl.style.opacity = "0";
+        nextEl.style.pointerEvents = "none";
+        nextEl.getBoundingClientRect();
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            nextEl.style.transition = "";
+            prevEl.classList.remove("active");
+            prevEl.classList.add(dir > 0 ? "slide-out-left" : "slide-out-right");
+            nextEl.style.transform = "";
+            nextEl.style.opacity = "";
+            nextEl.style.pointerEvents = "";
+            nextEl.classList.add("active");
+            dotsEl.children[current].classList.remove("active");
+            current = index;
+            dotsEl.children[current].classList.add("active");
+            document.getElementById("page-" + current).scrollTop = 0;
+            sessionStorage.setItem("page-color", current);
+            updateNav();
+          });
+        });
+      }
+
+      function navigate(dir) {
+        let next = current + dir;
+        if (next < 0) next = TOTAL - 1;
+        if (next >= TOTAL) next = 0;
+        goTo(next, dir);
+      }
+
+      function updateNav() {
+        document.getElementById("btn-to-top").classList.toggle("hidden", current === 0);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") navigate(1);
+        if (e.key === "ArrowLeft"  || e.key === "ArrowUp")   navigate(-1);
+      });
+
+      let touchStartX = 0, touchStartY = 0;
+      document.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      document.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+      }, { passive: true });
+
+      window.addEventListener("pageshow", (e) => {
+        if (e.persisted) { showPage(0); }
+      });
+
+      showPage(current);
+    </script>
+  </body>
+</html>

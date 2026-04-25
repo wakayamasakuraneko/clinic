@@ -1,20 +1,14 @@
 /* rebuilt bundle for price (scoped #price) */
 /* ===== ★テーブル全体・共通（土台） (table.css) ===== */
 
-#price .uti-bottom0,
-#price .uti-top0 {
-  background-color: #ffffe9;
+#price {
+  /* background-color: #fff; */
   font-size: 22px;
 }
 
-#price .uti-bottom0 {
-  padding: 3% 3% 0 3%;
-  margin: 3% 3% 0 3%;
-}
-
-#price .uti-top0 {
-  padding: 1px 3% 3%;
-  margin: 0 3% 3% 3%;
+#price h2 {
+  color: #4a6741;
+  margin: 0 0 1em;
 }
 
 #price table {
@@ -26,7 +20,7 @@
   margin-right: auto;
   table-layout: fixed;
   width: 80%;
-  max-width: 1000px;
+  max-width: 700px;
   border-collapse: collapse;
 }
 
@@ -91,12 +85,6 @@
   #price .tdcolum {
     font-size: 15px;
   }
-
-  #price .uti-bottom0,
-  #price .uti-top0 {
-    padding: 0;
-    background-color: #fefde0;
-  }
 } /* ===== ★税抜/税込トグル＆広げるボタン (tax-button.css) ===== */
 
 #price th .tax-status {
@@ -115,7 +103,7 @@
   display: flex;
   position: sticky;
 
-  top: 80%;
+  top: 90%;
   justify-content: space-around;
   padding-bottom: 0.5em;
   z-index: 1;
@@ -430,6 +418,7 @@
   visibility: hidden;
 }
 
+
 #price tbody.show td {
   border: solid 1px #000;
   border-bottom: 0;
@@ -497,6 +486,7 @@
   cursor: pointer;
   height: 50px;
   position: relative;
+  user-select: none;
 }
 
 #price #tax-status {
@@ -544,6 +534,7 @@
 
 #price .menu {
   cursor: pointer;
+  user-select: none;
 }
 
 #price .menu:hover,
@@ -642,6 +633,7 @@
   white-space: nowrap;
   width: 8em;
   padding: 0 0.3em;
+  box-sizing: content-box;
 }
 
 #price .hoverColorB {

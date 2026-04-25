@@ -31,7 +31,7 @@
 }
 
 .price .priceList1 {
-  margin-top: -2.5em;
+  margin-top: 0;
 }
 
 .price .gap2 {
@@ -79,7 +79,7 @@
   }
 
   .price .priceList1 {
-    margin-top: -3em;
+    margin-top: 0;
   }
 
   .price .gap2 {
@@ -115,7 +115,7 @@
   display: flex;
   position: sticky;
 
-  top: 80%;
+  top: 90%;
   justify-content: space-around;
   padding-bottom: 0.5em;
   z-index: 1;
@@ -430,6 +430,7 @@
   visibility: hidden;
 }
 
+
 .price tbody.show td {
   border: solid 1px #000;
   border-bottom: 0;
@@ -497,6 +498,7 @@
   cursor: pointer;
   height: 50px;
   position: relative;
+  user-select: none;
 }
 
 .price #tax-status {
@@ -544,6 +546,7 @@
 
 .price .menu {
   cursor: pointer;
+  user-select: none;
 }
 
 .price .menu:hover,
@@ -642,6 +645,7 @@
   white-space: nowrap;
   width: 8em;
   padding: 0 0.3em;
+  box-sizing: content-box;
 }
 
 .price .hoverColorB {

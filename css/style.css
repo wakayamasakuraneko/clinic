@@ -22,36 +22,34 @@ body {
   box-sizing: border-box;
   margin: 0px;
   font-family: "Meiryo", "YuGothic", "Yu Gothic", "ヒラギノ角ゴ", "sans-serif";
+  background-color: #f5f5dc;
+  color: #333;
 }
 
 section {
-  background-color: #fdfdcd;
-  border-top: 2px solid #f6f4a5;
-  border-bottom: 2px solid #f6f4a5;
-  border-left: 15px solid #f6f4a5;
-  border-right: 15px solid #f6f4a5;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
+  margin: 1.5em 4%;
+  padding: 2em 5%;
 }
 
 .uti {
-  background-color: #ffffe9;
   font-size: 22px;
-  padding: 3%;
-  margin: 3%;
-  border-radius: 15px;
 }
 
 @media screen and (max-width: 769px) {
+  body {
+    background-color: #f5f5dc;
+  }
+
   section {
-    background-color: #fefde0;
-    border-left: 0;
-    border-right: 0;
+    margin: 1em 3%;
   }
 
   .uti {
     font-size: 20px;
-    background-color: #fefde0;
-    padding: 0;
   }
 
   .bold-title {

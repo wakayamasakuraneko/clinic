@@ -24,7 +24,7 @@
       }
 
       html {
-        background-color: #d8d5a0;
+        background-color: #f6f4a5;
       }
       body {
         font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
@@ -36,13 +36,16 @@
       }
 
       /* ① ヘッダー：シンプルに */
+      header, .header-tel, .header-tel-note, .header-notice,
+      .site-nav, .hero-wrap, .sns-area, footer {
+        margin: 0 2%;
+      }
       header {
         background-color: #eee183;
         text-align: center;
         padding-top: 0.5em;
         font-size: 20px;
       }
-
       .header-tel {
         background-color: #eee183;
         text-align: center;
@@ -61,8 +64,29 @@
         border-top: 1px solid #e0e0d0;
         border-bottom: 1px solid #e0e0d0;
         padding: 0.5em 4%;
-        text-align: right;
         font-size: 17px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .header-quick-nav {
+        display: flex;
+        gap: 6px;
+      }
+      .header-nav-card {
+        background-color: #f6c200;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.25em 0.7em;
+        border-radius: 8px;
+        font-size: 0.7em;
+        font-weight: bold;
+        white-space: nowrap;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        transition: transform 0.2s;
+      }
+      .header-nav-card:hover {
+        transform: translateY(-2px);
       }
       .header-blog-btn,
       .bloglink-btn {
@@ -154,15 +178,18 @@
 
       /* ② ヒーローエリア：メッセージを重視 */
       .hero-wrap {
-        background-color: #000;
+        /* 夕暮れ: background: linear-gradient(to bottom, #05051e 0%, #0e1050 18%, #2a1268 34%, #6a1458 50%, #c03018 66%, #f06010 82%, #ffaa30 100%); */
+        background: linear-gradient(to bottom, #1a4a9a 0%, #2e7fd4 30%, #62b0e8 62%, #b8dff8 85%, #dff0ff 100%);
         text-align: center;
+        border-radius: 0 0 12px 12px;
+        user-select: none;
       }
       .hero-img {
-        /* display: block; */
-        max-width: 900px;
+        max-width: 850px;
         width: 85vw;
         margin-top: 0.8vw;
         height: auto;
+        border-radius: 12px;
       }
 
       /* ③ クイックナビ：タイル型ボタン */
@@ -201,8 +228,8 @@
 
       /* ④ お知らせ：スリム化 */
       .news {
-        background-color: #fff;
-        margin: 1em 4%;
+        background-color: #ffffe9;
+        margin: 1em 2%;
         padding: 1.2em;
         border-radius: 8px;
         border: 1px solid #e0e0d0;
@@ -238,11 +265,11 @@
 
       /* ⑤ セクション */
       section {
-        background-color: #fff;
+        background-color: #ffffe9;
         margin: 1em 2%;
         padding: 2em 5%;
         border-radius: 12px;
-        border: 3vw solid #fdfdcd;
+        /* border: 3vw solid #fdfdcd; */
         font-size: 22px;
         line-height: normal;
       }
@@ -256,6 +283,11 @@
       }
       #procedures-notes h2 {
         color: brown;
+      }
+      .h3-green      { color: #02cd88; }
+      .h3-red  { color: #ff0000; }
+      @media screen and (max-width: 769px) {
+        .align_center { text-align: center; }
       }
       #price h2 {
         color: #4a6741;
@@ -300,6 +332,7 @@
         text-align: center;
         padding: 3em 1em;
         background-color: #fdfdcd;
+        border-radius: 12px 12px 0 0;
       }
 
       .sns-btns {
@@ -410,11 +443,6 @@
         text-decoration: none;
         font-size: 1.1em;
         padding: 0.4em 0.8em;
-        border-right: 1px solid #666;
-      }
-
-      .site-nav a:last-child {
-        border-right: none;
       }
 
       .site-nav a {
@@ -510,7 +538,7 @@
           top: var(--header-height, 66px);
         }
         .hero-img {
-          width: 99vw;
+          width: 91vw;
           margin-bottom: -1vw;
         }
       }
@@ -524,11 +552,12 @@
 
       /* レスポンシブ */
       @media screen and (max-width: 600px) {
-        body {
-          background-color: #f6f49c;
+        header, .header-tel, .header-tel-note, .header-notice,
+        .site-nav, .hero-wrap, .sns-area, footer {
+          margin: 0;
         }
         section {
-          background-color: #fff;
+          background-color: #ffffe9;
           margin: 1em 0%;
           padding: 2em 3%;
           border-radius: 12px;
@@ -583,18 +612,21 @@
         z-index: 500;
         background-color: #f6f4a5;
         overflow-y: auto;
-        padding: 1.5em 5%;
-        opacity: 0;
+        padding: 70px 5% 1.5em;
         pointer-events: none;
         transform: translateX(100%);
-        transition: transform 0.35s ease, opacity 0.3s ease;
+        transition: transform 0.35s ease;
         font-size: 22px;
         line-height: 1.8;
       }
       .nav-page.active {
-        opacity: 1;
-        pointer-events: auto;
         transform: translateX(0);
+        pointer-events: auto;
+        z-index: 502;
+      }
+      .nav-page.nav-page-leaving {
+        transform: translateX(0) !important;
+        transition: none !important;
       }
       .nav-page-inner {
         max-width: 800px;
@@ -602,7 +634,7 @@
         background: #fff;
         border-radius: 12px;
         padding: 1.5em 2em;
-        border: 3vw solid #fdfdcd;
+        /* border: 3vw solid #fdfdcd; */
       }
       .nav-page h2 {
         text-align: center;
@@ -615,23 +647,100 @@
       .nav-page[data-page="issei"]     .nav-page-inner h2 { background-color: #7aab52; }
       .nav-page[data-page="soto-neko"] .nav-page-inner h2 { background-color: #d4824a; }
       .nav-page[data-page="ie-neko"]   .nav-page-inner h2 { background-color: #4a80aa; }
+      .nav-page-divider {
+        border: none;
+        border-top: 2px dashed rgba(0,0,0,0.2);
+        margin: 2em 0;
+      }
       .nav-page h3 {
         margin-top: 1em;
-        font-size: 0.85em;
         color: #555;
         border-left: 3px solid #f6c200;
         padding-left: 0.5em;
       }
-      .nav-page-back {
-        display: inline-block;
-        margin-bottom: 1.2em;
-        padding: 0.3em 1.2em;
+      /* .nav-page[data-page="ie-neko"] h3:nth-of-type(1) { color: #02cd88; } */
+      .nav-page[data-page="ie-neko"] h3:nth-of-type(2) { color: #ff0000; }
+      .nav-page[data-page="soto-neko"] h3:nth-of-type(2) { color: #ff0000; }
+
+      .nav-page-footer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        z-index: 600;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .nav-page-footer-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+      }
+      .nav-page-sample-nav {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .nav-page-sample-nav a {
+        font-size: 0.65em;
+        padding: 0.2em 0.7em;
+        border-radius: 12px;
+        border: 1px solid #bbb;
+        color: #555;
+        text-decoration: none;
+        background: #f4f4f4;
+        transition: background 0.15s;
+      }
+      .nav-page-sample-nav a:hover {
+        background: #e0e0e0;
+      }
+      .nav-page-footer.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-page-footer a {
+        padding: 0.4em 1.2em;
+        border-radius: 20px;
+        border: 1.5px solid #ccc;
+        background: #fff;
+        color: #444;
+        font-size: 0.85em;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+      }
+      .nav-page-footer a:hover {
         background: #5a4a1a;
         color: #fff;
-        border: none;
-        border-radius: 20px;
-        font-size: 0.8em;
-        cursor: pointer;
+        border-color: #5a4a1a;
+      }
+      #nav-page-back-footer {
+        background: #5a4a1a;
+        color: #fff;
+        border-color: #5a4a1a;
+      }
+      #nav-page-back-footer:hover {
+        background: #fff;
+        color: #444;
+        border-color: #ccc;
+      }
+      .nav-label-sp { display: none; }
+      @media screen and (max-width: 600px) {
+        .nav-label-pc { display: none; }
+        .nav-label-sp { display: inline; }
       }
       body.nav-page-open {
         overflow: hidden;
@@ -642,13 +751,26 @@
       .nav-page[data-page="issei"]     .nav-page-inner { border-color: #f0f4e8; }
       .nav-page[data-page="soto-neko"] .nav-page-inner { border-color: #fef0d8; }
       .nav-page[data-page="ie-neko"]   .nav-page-inner { border-color: #e8f0f8; }
+      /* ★ カラーサンプル */
+      .nav-page[data-page="sample-a"]  { background-color: #a8dcd8; }
+      .nav-page[data-page="sample-a"]  .nav-page-inner { border-color: #d4f0ee; }
+      .nav-page[data-page="sample-a"]  .nav-page-inner h2 { background-color: #0e8c80; }
+      .nav-page[data-page="sample-b"]  { background-color: #d4c0ee; }
+      .nav-page[data-page="sample-b"]  .nav-page-inner { border-color: #eae4f8; }
+      .nav-page[data-page="sample-b"]  .nav-page-inner h2 { background-color: #7448b0; }
+      .nav-page[data-page="sample-c"]  { background-color: #f0b8cc; }
+      .nav-page[data-page="sample-c"]  .nav-page-inner { border-color: #f8dce8; }
+      .nav-page[data-page="sample-c"]  .nav-page-inner h2 { background-color: #b83060; }
+      .nav-page[data-page="sample-d"]  { background-color: #a8b8d8; }
+      .nav-page[data-page="sample-d"]  .nav-page-inner { border-color: #d4dcee; }
+      .nav-page[data-page="sample-d"]  .nav-page-inner h2 { background-color: #284898; }
+      .nav-page[data-page="sample-e"]  { background-color: #ccd4a0; }
+      .nav-page[data-page="sample-e"]  .nav-page-inner { border-color: #e4eac8; }
+      .nav-page[data-page="sample-e"]  .nav-page-inner h2 { background-color: #6a7820; }
       @media screen and (max-width: 600px) {
         .nav-page {
           font-size: 18px;
-          padding: 1em 3%;
-        }
-        .nav-page-inner {
-          border: 2vw solid #fdfdcd;
+          padding: 70px 3% 1em;
         }
       }
     </style>
@@ -663,11 +785,19 @@
     <div class="header-tel-note">
       手術中は電話が繋がりにくく<span>なっております。</span><span>メニュー&gt;TELをご参照下さい。</span>
     </div>
-    <div class="header-notice"><a href="#" class="header-blog-btn">記事一覧</a></div>
+    <div class="header-notice">
+      <div class="header-quick-nav">
+        <a href="#issei" class="header-nav-card">一斉手術</a>
+        <a href="#soto-neko" class="header-nav-card" style="background-color: #ff8c00">野良猫・外猫</a>
+        <a href="#ie-neko" class="header-nav-card">家猫・保護猫</a>
+      </div>
+      <a href="#" class="header-blog-btn">記事一覧</a>
+    </div>
 
     <nav class="site-nav">
       <span class="nav-arrow">◀</span>
       <div class="site-nav-inner">
+        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">▲ トップ</a>
         <a href="#introduction">病院紹介</a>
         <a href="#procedures-notes">手術の流れ<span class="nav-trim">と注意点</span></a>
         <a href="#price">料金<span class="nav-trim">案内</span></a>
@@ -697,9 +827,7 @@
 
     <section id="procedures-notes">
       <h2>手術の流れと注意点</h2>
-      <p>
-        一般診療のほか、ワクチン接種、ウイルス検査、ノミダニ駆除なども承っております。手術と同時に行うことも可能ですので、お気軽にご相談ください。
-      </p>
+
       <div class="quick-nav">
         <a href="#issei" class="nav-card">
           一斉手術の相談は
@@ -800,53 +928,155 @@
     <!-- ナビページ：一斉手術の相談 -->
     <div class="nav-page" data-page="issei">
       <div class="nav-page-inner">
-        <button class="nav-page-back">← 戻る</button>
+
         <h2>一斉手術のご相談</h2>
-        <p>猫が多すぎて1人では手に負えない…そんな方のために、一斉手術のご相談を承っております。</p>
-        <p>地域猫活動・多頭飼育崩壊など、まとまった頭数の手術をご希望の方はお気軽にご連絡ください。</p>
-        <h3>ご予約の流れ</h3>
-        <p>① まずはお電話でご相談ください<br>② 頭数・猫の状態（外猫 / 保護猫）・ご希望日程をお伝えください<br>③ 日程調整の上、ご予約をお取りします</p>
-        <p>※ 一度にお預かりできる頭数には限りがございます。<br>※ 多頭の場合は複数回に分けることもございます。</p>
+        <p>猫が多すぎて1人では手に負えない…地域猫活動や多頭飼育崩壊など、まとまった頭数の手術をご希望の方はご相談ください。</p>
+        <h3>こんな方が対象です</h3>
+        <p>・地域猫の一斉TNRを進めたい方<br>・多頭飼育で一人では対応しきれない方<br>・保護団体・行政と連携した活動をされている方</p>
+        <h3>ご相談の際にお伝えください</h3>
+        <p>・おおよその頭数<br>・猫の状態（外猫 / 保護猫）<br>・ご希望の時期</p>
+        <p>一度にお預かりできる頭数には限りがあります。多頭の場合は複数回に分けることもございます。まずはお電話でご相談ください。</p>
+        <div class="align_center">
+          <a href="#issei-form" class="bloglink-btn"><i class="far fa-hand-point-right"></i> ご相談フォームはこちら</a>
+        </div>
+
       </div>
     </div>
 
     <!-- ナビページ：野良猫・外猫手術 -->
     <div class="nav-page" data-page="soto-neko">
       <div class="nav-page-inner">
-        <button class="nav-page-back">← 戻る</button>
+
         <h2>野良猫・外猫手術</h2>
-        <p>野良猫・地域猫（外猫）の不妊去勢手術を承っております。</p>
-        <p>術後は耳先をＶ字にカット（耳カット）し、手術済みの証とします。捕獲・再手術を防ぐため、必ず耳カットをお願いしております。</p>
-        <h3>手術の流れ</h3>
-        <p>① 前日までにお電話でご予約<br>② 当日、洗濯ネットに入れてご来院<br>③ 手術・覚醒後にお引き渡し<br>④ 元の場所へリリース</p>
-        <h3>料金・注意事項</h3>
-        <p>※ 当日予約なしの場合、割増料金が発生します。<br>※ 手術料金にはノミ駆虫薬・抗生剤・術後の皮下補液が含まれます。<br>※ 詳しい料金は料金表をご覧ください。</p>
+        <h3>ご予約と手術の流れ</h3>
+        <p>ご予約や手術の流れはお電話でご案内いたします。まずはご連絡ください。</p>
+        <p>・外猫は状況によって前泊可能です<br>・休診日と重なる前泊はできません</p>
+        <h3>連れて来られる際の入れ物について（※重要）</h3>
+        <p>野良猫・外猫は脱走しやすいため、プラスチック製のハードキャリーまたは捕獲器でお越しください。</p>
+        <div class="align_center">
+          <a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a>
+        </div>
+        <hr class="nav-page-divider">
+        <p>捕獲器は剥き出しのままではなく、生地などで覆ってお越しください（猫が落ち着きます）。<br>組み立て式捕獲器をご使用の場合は、組み立てに不備がないか事前にご確認ください。</p>
+        <div class="align_center">
+          <a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 捕獲器の包み方</a>
+          <a href="https://wakayamasakuraneko.github.io/blog/09/09.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 組み立て式捕獲器の注意点</a>
+        </div>
+        <hr class="nav-page-divider">
+        <p>前日以前から捕獲している場合は、「猫を自宅で待機させる場合の注意点」もご参照ください。</p>
+        <div class="align_center">
+          <a href="https://wakayamasakuraneko.github.io/blog/13/13.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 猫を自宅で待機させる場合の注意点</a>
+        </div>
+        <hr class="nav-page-divider">
+        <p>捕獲率を上げるための工夫</p>
+        <div class="align_center">
+          <a href="https://wakayamasakuraneko.github.io/blog/11/11.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 踏み板を踏まない猫</a>
+        </div>
+        <hr class="nav-page-divider">
+        <h3>補足事項</h3>
+        <p>※ 手術料金にはノミ駆虫薬・抗生剤・術後の皮下補液が含まれます。<br>※ 当日予約なしの場合は割増料金となります。</p>
+        <hr class="nav-page-divider">
+        <details>
+          <summary>外猫おすすめセット</summary>
+          <p>・手術（メス or オス）</p>
+          <p>・不妊手術割引（耳カット）</p>
+          <p>・３種混合ワクチン（耳カット時）</p>
+          <p>※ 各料金は料金表よりご確認ください。</p>
+        </details>
       </div>
     </div>
 
     <!-- ナビページ：家猫・保護猫手術 -->
     <div class="nav-page" data-page="ie-neko">
       <div class="nav-page-inner">
-        <button class="nav-page-back">← 戻る</button>
+
         <h2>家猫・保護猫手術</h2>
-        <p>室内飼育の家猫・保護猫の不妊去勢手術を承っております。</p>
-        <p>混雑時には外猫の手術を優先する事があります。ご了承ください。</p>
-        <p>ご予約はできるだけ(月)～(木)の平日でお願い致します。</p>
-        <p>日曜ご希望の場合は割増料金がかかる事があります。（例外あり）</p>
-        <h3>手術の流れ</h3>
-        <p>① 前日までにお電話でご予約<br>② 当日、洗濯ネットに入れてご来院<br>③ 手術・覚醒後にお引き渡し（日帰り）</p>
-        <h3>注意事項</h3>
-        <p>※ 当日予約なしの場合、割増料金が発生します。<br>※ ペットショップで購入された猫、又は血統証付きの猫に関しては基本お引き受けしておりませんが、多頭飼育問題の際にはご相談下さい。</p>
+        <h3>ご予約と手術の流れ</h3>
+        <p>ご予約や手術の流れはお電話でご案内いたします。まずはご連絡ください。</p>
+        <p>・日帰りとなるため、朝お預け・夕方お迎えが可能な日程でご予約ください。<br>・ご予約はできるだけ（月～木）の平日でお願いいたします。（日曜希望は割増料金となります）</p>
+        <p>・混雑時は外猫の手術を優先することがあります。ご了承ください。<br>・ペットショップ購入・血統証付きの猫は原則お引き受けしておりません。<br>　※ 多頭飼育崩壊の場合はご相談ください。</p>
+        <h3>連れて来られる際の入れ物について（※重要）</h3>
+        <p>・ハードキャリーでお越しください</p>
+        <div class="align_center">
+          <a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a>
+        </div>
+        <p>・ご来院の際は洗濯ネットに入れてお越しください</p>
+        <div class="align_center">
+          <a href="https://wakayamasakuraneko.github.io/blog/04/04.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 洗濯ネットについて</a>
+        </div>
+        <hr class="nav-page-divider">
         <details>
-          <summary>その他補足</summary>
-          <p>ご来院の際には洗濯ネットに入れて来るようにお願い致します。
-            <center>
-              <a href="https://wakayamasakuraneko.github.io/blog/04/04.htm" class="bloglink-btn">
-                <i class="far fa-hand-point-right"></i> 洗濯ネットについて
-              </a>
-            </center>
-          </p>
+          <summary>保護猫おすすめセット</summary>
+          <p>・手術（メス or オス）</p>
+          <p>・猫エイズ・白血病検査</p>
+          <p>・ネクスガードCAT</p>
+          <p>・爪切り</p>
+          <p>・検便</p>
+          <p>※ 各料金は料金表よりご確認ください。</p>
         </details>
+      </div>
+    </div>
+
+    <!-- ★ カラーサンプルページ（確認後に削除） -->
+    <div class="nav-page" data-page="sample-a">
+      <div class="nav-page-inner">
+        <h2>サンプル A：ティール</h2>
+        <h3>h3 テキストのサンプル</h3>
+        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+      </div>
+    </div>
+    <div class="nav-page" data-page="sample-b">
+      <div class="nav-page-inner">
+        <h2>サンプル B：パープル</h2>
+        <h3>h3 テキストのサンプル</h3>
+        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+      </div>
+    </div>
+    <div class="nav-page" data-page="sample-c">
+      <div class="nav-page-inner">
+        <h2>サンプル C：ローズ</h2>
+        <h3>h3 テキストのサンプル</h3>
+        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+      </div>
+    </div>
+    <div class="nav-page" data-page="sample-d">
+      <div class="nav-page-inner">
+        <h2>サンプル D：ネイビー</h2>
+        <h3>h3 テキストのサンプル</h3>
+        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+      </div>
+    </div>
+    <div class="nav-page" data-page="sample-e">
+      <div class="nav-page-inner">
+        <h2>サンプル E：オリーブ</h2>
+        <h3>h3 テキストのサンプル</h3>
+        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
+        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+      </div>
+    </div>
+
+    <!-- ご相談フォーム（一斉手術） -->
+    <section id="issei-form">
+      <h2>一斉手術のご相談フォーム</h2>
+      <p>（フォームはここに設置予定）</p>
+    </section>
+
+    <div class="nav-page-footer" id="nav-page-footer">
+      <div class="nav-page-footer-main">
+        <a id="nav-page-prev" href="#"></a>
+        <a id="nav-page-back-footer" href="gemini 2.htm#procedures-notes">↩ 戻る</a>
+        <a id="nav-page-next" href="#"></a>
+      </div>
+      <div class="nav-page-sample-nav">
+        <a href="#sample-a">A: ティール</a>
+        <a href="#sample-b">B: パープル</a>
+        <a href="#sample-c">C: ローズ</a>
+        <a href="#sample-d">D: ネイビー</a>
+        <a href="#sample-e">E: オリーブ</a>
       </div>
     </div>
 
@@ -891,24 +1121,77 @@
         const pageMap = {};
         navPages.forEach(el => { pageMap[el.dataset.page] = el; });
 
+        const footer   = document.getElementById('nav-page-footer');
+        const prevLink = document.getElementById('nav-page-prev');
+        const nextLink = document.getElementById('nav-page-next');
+        const NAV_LINKS = {
+          'issei':     { prev: { href: '#ie-neko',   label: '← 家猫・保護猫手術', labelSp: '← 保護猫'   }, next: { href: '#soto-neko', label: '野良猫・外猫手術 →', labelSp: '外猫 →'   } },
+          'soto-neko': { prev: { href: '#issei',     label: '← 一斉手術の相談',   labelSp: '← 一斉手術' }, next: { href: '#ie-neko',   label: '家猫・保護猫手術 →', labelSp: '保護猫 →' } },
+          'ie-neko':   { prev: { href: '#soto-neko', label: '← 野良猫・外猫手術', labelSp: '← 外猫'     }, next: { href: '#issei',    label: '一斉手術の相談 →',   labelSp: '一斉手術 →'} },
+        };
+
+        let currentKey = null;
+
         function showPage(hash) {
           const key = hash.startsWith('#') ? hash.slice(1) : '';
-          navPages.forEach(el => el.classList.remove('active'));
-          if (key && pageMap[key]) {
-            pageMap[key].classList.add('active');
-            pageMap[key].scrollTop = 0;
-            document.body.classList.add('nav-page-open');
-          } else {
+
+          if (!key || !pageMap[key]) {
+            navPages.forEach(el => {
+              el.style.transition = '';
+              el.style.transform  = '';
+              el.classList.remove('active', 'nav-page-leaving');
+            });
             document.body.classList.remove('nav-page-open');
+            footer.classList.remove('active');
+            currentKey = null;
+            return;
           }
+
+          if (key === currentKey) return;
+
+          // prev か next かを判定
+          const isNext = !(currentKey && NAV_LINKS[currentKey] && NAV_LINKS[currentKey].prev.href === '#' + key);
+
+          // 退場ページ：インラインスタイルをクリアしてから leaving にする（タイムアウトなし）
+          if (currentKey && pageMap[currentKey]) {
+            const outgoing = pageMap[currentKey];
+            outgoing.style.transition = '';
+            outgoing.style.transform  = '';
+            outgoing.classList.remove('active');
+            outgoing.classList.add('nav-page-leaving');
+          }
+
+          // 入場ページ：transition:none を先にセットしてからクラス操作
+          const incoming = pageMap[key];
+          incoming.style.transition = 'none';
+          incoming.classList.remove('active', 'nav-page-leaving');
+          incoming.style.transform  = isNext ? 'translateX(100%)' : 'translateX(-100%)';
+
+          // リフロー強制（開始位置をブラウザに確定させる）
+          incoming.offsetHeight;
+
+          // トランジション開始
+          incoming.style.transition = 'transform 0.35s ease';
+          incoming.style.transform  = 'translateX(0)';
+          incoming.classList.add('active');
+          incoming.scrollTop = 0;
+          document.body.classList.add('nav-page-open');
+
+          const links = NAV_LINKS[key];
+          if (links) {
+            prevLink.href      = links.prev.href;
+            prevLink.innerHTML = `<span class="nav-label-pc">${links.prev.label}</span><span class="nav-label-sp">${links.prev.labelSp}</span>`;
+            nextLink.href        = links.next.href;
+            nextLink.innerHTML   = `<span class="nav-label-pc">${links.next.label}</span><span class="nav-label-sp">${links.next.labelSp}</span>`;
+            footer.classList.add('active');
+          }
+
+          currentKey = key;
         }
 
         window.addEventListener('hashchange', () => showPage(location.hash));
         showPage(location.hash);
 
-        document.querySelectorAll('.nav-page-back').forEach(btn => {
-          btn.addEventListener('click', () => history.back());
-        });
       })();
 
       function smoothScrollTo(targetY, duration) {

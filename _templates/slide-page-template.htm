@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>スライドページ テンプレート</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body { height: 100%; }
+      body {
+        font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", sans-serif;
+        color: #333;
+        line-height: 1.9;
+        font-size: 1.05rem;
+        overflow: hidden;
+      }
+
+      /* ========== ページ ========== */
+      .page {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 48px 24px 120px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        overflow-y: auto;
+      }
+      .page.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+      }
+      .page.slide-out-left  { transform: translateX(-100%); opacity: 0; }
+      .page.slide-out-right { transform: translateX(100%);  opacity: 0; }
+
+      .page-inner {
+        max-width: 660px;
+        width: 100%;
+      }
+
+      /* ========== 背景色（ページごとに変える） ========== */
+      .page-0 { background-color: #fff8ef; }
+      .page-1 { background-color: #fffbf0; }
+      .page-2 { background-color: #f7f5f9; }
+      .page-3 { background-color: #f0f6fb; }
+      .page-4 { background-color: #f0f7f2; }
+      /* 最終ページ */
+      .page-5 {
+        background-color: #f5f5f5;
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* ========== ラベル・タイトル ========== */
+      .page-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        opacity: 0.45;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .page-title {
+        font-size: 1.7rem;
+        font-weight: 800;
+        line-height: 1.45;
+        margin-top: 24px;
+        margin-bottom: 28px;
+      }
+
+      .page-0 .page-label { color: #e07b00; }
+      .page-0 .page-title { color: #7a3d00; }
+      .page-1 .page-label { color: #b88a00; }
+      .page-1 .page-title { color: #7a5c00; }
+      .page-2 .page-label { color: #8a6db0; }
+      .page-2 .page-title { color: #3d2b5a; }
+      .page-3 .page-label { color: #3a7ca8; }
+      .page-3 .page-title { color: #1a3d5a; }
+      .page-4 .page-label { color: #4a7c59; }
+      .page-4 .page-title { color: #1a4a2a; }
+
+      p { margin-bottom: 16px; }
+      p:last-child { margin-bottom: 0; }
+
+      .info-box {
+        border-left: 4px solid #e07b00;
+        background: #fff7ec;
+        color: #5a3a00;
+        border-radius: 0 10px 10px 0;
+        padding: 14px 18px;
+        margin: 16px 0;
+        font-size: 0.93rem;
+        line-height: 1.8;
+      }
+
+      /* ========== 左上：トップへボタン（page-1以降で表示） ========== */
+      #btn-to-top {
+        position: fixed;
+        top: 14px;
+        left: max(14px, calc(50% - 330px + 14px));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        color: #888;
+        font-size: 0.65rem;
+        user-select: none;
+        z-index: 200;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(4px);
+        padding: 8px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-family: inherit;
+        transition: color 0.2s, opacity 0.4s;
+        width: 52px;
+        height: 52px;
+        justify-content: center;
+      }
+      #btn-to-top:hover { color: #e07b00; }
+      #btn-to-top.hidden { opacity: 0; pointer-events: none; }
+      #btn-to-top .icon { font-size: 1.2rem; line-height: 1; }
+
+      /* ========== ナビゲーション（下部固定） ========== */
+      nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        background: rgba(255,255,255,0.88);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(0,0,0,0.08);
+        z-index: 100;
+      }
+
+      nav button {
+        padding: 8px 18px;
+        border-radius: 24px;
+        border: 1.5px solid #ccc;
+        background: #fff;
+        color: #444;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+        flex-shrink: 0;
+      }
+      nav button:hover:not(:disabled) {
+        background: #e07b00;
+        color: #fff;
+        border-color: #e07b00;
+      }
+      nav button:disabled { opacity: 0.25; cursor: default; }
+
+      /* ========== ドットインジケーター ========== */
+      .dots { display: flex; gap: 10px; align-items: center; }
+      .dot-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ccc;
+        transition: background 0.3s, width 0.3s;
+      }
+      .dot-item.active .dot {
+        background: #e07b00;
+        width: 22px;
+        border-radius: 4px;
+      }
+      .dot-label {
+        font-size: 0.58rem;
+        color: #bbb;
+        white-space: nowrap;
+        transition: color 0.3s;
+      }
+      .dot-item.active .dot-label {
+        color: #e07b00;
+        font-weight: 700;
+      }
+
+      @media (max-width: 500px) {
+        .dot-item:not(.active) .dot-label { display: none; }
+        nav { height: 60px; }
+        .page { padding-bottom: 80px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ページ 0 -->
+    <div class="page page-0 active" id="page-0">
+      <div class="page-inner">
+        <div class="page-label">はじめに</div>
+        <div class="page-title">ページ 0 のタイトル</div>
+        <p>ここに本文を書きます。左右スワイプまたは下のボタンでページを移動できます。</p>
+        <div class="info-box">スワイプ・矢印キー・ドットクリックでも移動できます。</div>
+      </div>
+    </div>
+
+    <!-- ページ 1 -->
+    <div class="page page-1" id="page-1">
+      <div class="page-inner">
+        <div class="page-label">01</div>
+        <div class="page-title">ページ 1 のタイトル</div>
+        <p>本文サンプルです。</p>
+        <p>・項目サンプル<br>・項目サンプル</p>
+        <div class="info-box">ポイントや補足をここに書きます。</div>
+      </div>
+    </div>
+
+    <!-- ページ 2 -->
+    <div class="page page-2" id="page-2">
+      <div class="page-inner">
+        <div class="page-label">02</div>
+        <div class="page-title">ページ 2 のタイトル</div>
+        <p>本文サンプルです。</p>
+        <p>・項目サンプル<br>・項目サンプル</p>
+        <div class="info-box">ポイントや補足をここに書きます。</div>
+      </div>
+    </div>
+
+    <!-- ページ 3 -->
+    <div class="page page-3" id="page-3">
+      <div class="page-inner">
+        <div class="page-label">03</div>
+        <div class="page-title">ページ 3 のタイトル</div>
+        <p>本文サンプルです。</p>
+        <p>・項目サンプル<br>・項目サンプル</p>
+        <div class="info-box">ポイントや補足をここに書きます。</div>
+      </div>
+    </div>
+
+    <!-- ページ 4 -->
+    <div class="page page-4" id="page-4">
+      <div class="page-inner">
+        <div class="page-label">04</div>
+        <div class="page-title">ページ 4 のタイトル</div>
+        <p>本文サンプルです。</p>
+        <p>・項目サンプル<br>・項目サンプル</p>
+        <div class="info-box">ポイントや補足をここに書きます。</div>
+      </div>
+    </div>
+
+    <!-- 最終ページ -->
+    <div class="page page-5" id="page-5">
+      <div class="page-inner">
+        <div style="font-size:3rem; margin-bottom:20px;">🐾</div>
+        <div style="font-size:1.5rem; font-weight:700; color:#3a3a3a; margin-bottom:12px;">おわり</div>
+        <p style="color:#888; font-size:0.95rem;">最終ページのサンプルです。</p>
+      </div>
+    </div>
+
+    <!-- 左上：トップへボタン -->
+    <button id="btn-to-top" onclick="goTo(0)">
+      <span class="icon">←</span>
+      <span>最初へ</span>
+    </button>
+
+    <!-- 下部ナビゲーション -->
+    <nav>
+      <button id="btn-prev" onclick="navigate(-1)">← 前へ</button>
+      <div class="dots" id="dots"></div>
+      <button id="btn-next" onclick="navigate(1)">次へ →</button>
+    </nav>
+
+    <script>
+      const TOTAL = 6;
+      const PAGE_LABELS = ["はじめ", "01", "02", "03", "04", "おわり"];
+
+      const isReload = performance.getEntriesByType("navigation")[0]?.type === "reload";
+      const saved = parseInt(sessionStorage.getItem("page") || "0");
+      let current = (isReload && saved >= 0 && saved < TOTAL) ? saved : 0;
+
+      // ドット生成
+      const dotsEl = document.getElementById("dots");
+      for (let i = 0; i < TOTAL; i++) {
+        const item = document.createElement("div");
+        item.className = "dot-item";
+        item.onclick = () => goTo(i);
+
+        const d = document.createElement("div");
+        d.className = "dot";
+
+        const lbl = document.createElement("div");
+        lbl.className = "dot-label";
+        lbl.textContent = PAGE_LABELS[i];
+
+        item.appendChild(d);
+        item.appendChild(lbl);
+        dotsEl.appendChild(item);
+      }
+
+      // アニメーションなし初期表示
+      function showPage(index) {
+        for (let i = 0; i < TOTAL; i++) {
+          document.getElementById("page-" + i).classList.remove("active", "slide-out-left", "slide-out-right");
+          dotsEl.children[i].classList.remove("active");
+        }
+        current = index;
+        document.getElementById("page-" + current).classList.add("active");
+        dotsEl.children[current].classList.add("active");
+        sessionStorage.setItem("page", current);
+        updateNav();
+      }
+
+      // スライドアニメーション付き移動
+      function goTo(index, dir) {
+        if (index === current) return;
+        if (dir === undefined) dir = index > current ? 1 : -1;
+
+        const prevEl = document.getElementById("page-" + current);
+        const nextEl = document.getElementById("page-" + index);
+
+        // 開始位置をセット（transition:none で即時）
+        nextEl.classList.remove("slide-out-left", "slide-out-right");
+        nextEl.style.transition = "none";
+        nextEl.style.transform = `translateX(${dir * 100}%)`;
+        nextEl.style.opacity = "0";
+        nextEl.style.pointerEvents = "none";
+        nextEl.getBoundingClientRect(); // reflow で確定
+
+        // double rAF でトランジション開始
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            nextEl.style.transition = "";
+            prevEl.classList.remove("active");
+            prevEl.classList.add(dir > 0 ? "slide-out-left" : "slide-out-right");
+            nextEl.style.transform = "";
+            nextEl.style.opacity = "";
+            nextEl.style.pointerEvents = "";
+            nextEl.classList.add("active");
+            dotsEl.children[current].classList.remove("active");
+            current = index;
+            dotsEl.children[current].classList.add("active");
+            document.getElementById("page-" + current).scrollTop = 0;
+            sessionStorage.setItem("page", current);
+            updateNav();
+          });
+        });
+      }
+
+      function navigate(dir) {
+        let next = current + dir;
+        if (next < 0) next = TOTAL - 1;
+        if (next >= TOTAL) next = 0;
+        goTo(next, dir);
+      }
+
+      function updateNav() {
+        document.getElementById("btn-prev").disabled = false;
+        document.getElementById("btn-next").disabled = false;
+        document.getElementById("btn-to-top").classList.toggle("hidden", current === 0);
+      }
+
+      // キーボード
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") navigate(1);
+        if (e.key === "ArrowLeft"  || e.key === "ArrowUp")   navigate(-1);
+      });
+
+      // スワイプ（縦スクロールと干渉しないよう |dx|>|dy| で判定）
+      let touchStartX = 0, touchStartY = 0;
+      document.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      document.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+      }, { passive: true });
+
+      // bfcache 対策
+      window.addEventListener("pageshow", (e) => {
+        if (e.persisted) { showPage(0); }
+      });
+
+      showPage(current);
+    </script>
+  </body>
+</html>
