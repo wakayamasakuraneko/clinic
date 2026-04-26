@@ -645,7 +645,7 @@
         box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 -2px 4px rgba(0,0,0,0.15);
       }
       .nav-page[data-page="issei"]     .nav-page-inner h2 { background-color: #7aab52; }
-      .nav-page[data-page="soto-neko"] .nav-page-inner h2 { background-color: #d4824a; }
+      .nav-page[data-page="soto-neko"] .nav-page-inner h2 { background-color: #ef8200; }
       .nav-page[data-page="ie-neko"]   .nav-page-inner h2 { background-color: #4a80aa; }
       .nav-page-divider {
         border: none;
@@ -689,10 +689,26 @@
         width: 100%;
       }
       .nav-page-sample-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
         display: flex;
         gap: 6px;
         justify-content: center;
         flex-wrap: wrap;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        z-index: 600;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .nav-page-sample-nav.active {
+        opacity: 1;
+        pointer-events: auto;
       }
       .nav-page-sample-nav a {
         font-size: 0.65em;
@@ -745,11 +761,11 @@
       body.nav-page-open {
         overflow: hidden;
       }
-      .nav-page[data-page="issei"]     { background-color: #c8ddb0; }
-      .nav-page[data-page="soto-neko"] { background-color: #f5ccaa; }
-      .nav-page[data-page="ie-neko"]   { background-color: #aac4dd; }
+      .nav-page[data-page="issei"]     { background-color: #b0dfcc; }
+      .nav-page[data-page="soto-neko"] { background-color: #fddcaa; }
+      .nav-page[data-page="ie-neko"]   { background-color: #bbdeff; }
       .nav-page[data-page="issei"]     .nav-page-inner { border-color: #f0f4e8; }
-      .nav-page[data-page="soto-neko"] .nav-page-inner { border-color: #fef0d8; }
+      .nav-page[data-page="soto-neko"] .nav-page-inner { border-color: #fef2dc; }
       .nav-page[data-page="ie-neko"]   .nav-page-inner { border-color: #e8f0f8; }
       /* ★ カラーサンプル */
       .nav-page[data-page="sample-a"]  { background-color: #a8dcd8; }
@@ -787,9 +803,9 @@
     </div>
     <div class="header-notice">
       <div class="header-quick-nav">
-        <a href="#issei" class="header-nav-card">一斉手術</a>
-        <a href="#soto-neko" class="header-nav-card" style="background-color: #ff8c00">野良猫・外猫</a>
-        <a href="#ie-neko" class="header-nav-card">家猫・保護猫</a>
+        <a href="#issei" class="header-nav-card" style="background-color: #7aab52">一斉手術</a>
+        <a href="#soto-neko" class="header-nav-card" style="background-color: #ef8200">野良猫・外猫</a>
+        <a href="#ie-neko" class="header-nav-card" style="background-color: #4a80aa">家猫・保護猫</a>
       </div>
       <a href="#" class="header-blog-btn">記事一覧</a>
     </div>
@@ -829,12 +845,12 @@
       <h2>手術の流れと注意点</h2>
 
       <div class="quick-nav">
-        <a href="#issei" class="nav-card">
+        <a href="#issei" class="nav-card" style="background-color: #7aab52">
           一斉手術の相談は
           <span>猫が多すぎて1人では手に負えない</span>
         </a>
-        <a href="#soto-neko" class="nav-card" style="background-color: #ff8c00"> 野良猫・外猫手術、<br />ご希望の場合 </a>
-        <a href="#ie-neko" class="nav-card"> 家猫・保護猫手術、<br />ご希望の場合 </a>
+        <a href="#soto-neko" class="nav-card" style="background-color: #ef8200"> 野良猫・外猫手術、<br />ご希望の場合 </a>
+        <a href="#ie-neko" class="nav-card" style="background-color: #4a80aa"> 家猫・保護猫手術、<br />ご希望の場合 </a>
       </div>
     </section>
 
@@ -1071,13 +1087,13 @@
         <a id="nav-page-back-footer" href="gemini 2.htm#procedures-notes">↩ 戻る</a>
         <a id="nav-page-next" href="#"></a>
       </div>
-      <div class="nav-page-sample-nav">
-        <a href="#sample-a">A: ティール</a>
-        <a href="#sample-b">B: パープル</a>
-        <a href="#sample-c">C: ローズ</a>
-        <a href="#sample-d">D: ネイビー</a>
-        <a href="#sample-e">E: オリーブ</a>
-      </div>
+    </div>
+    <div class="nav-page-sample-nav" id="nav-page-sample-nav">
+      <a href="#sample-a">A: ティール</a>
+      <a href="#sample-b">B: パープル</a>
+      <a href="#sample-c">C: ローズ</a>
+      <a href="#sample-d">D: ネイビー</a>
+      <a href="#sample-e">E: オリーブ</a>
     </div>
 
     <script src="js/price-loader.js" defer></script>
@@ -1121,9 +1137,10 @@
         const pageMap = {};
         navPages.forEach(el => { pageMap[el.dataset.page] = el; });
 
-        const footer   = document.getElementById('nav-page-footer');
-        const prevLink = document.getElementById('nav-page-prev');
-        const nextLink = document.getElementById('nav-page-next');
+        const footer     = document.getElementById('nav-page-footer');
+        const sampleNav  = document.getElementById('nav-page-sample-nav');
+        const prevLink   = document.getElementById('nav-page-prev');
+        const nextLink   = document.getElementById('nav-page-next');
         const NAV_LINKS = {
           'issei':     { prev: { href: '#ie-neko',   label: '← 家猫・保護猫手術', labelSp: '← 保護猫'   }, next: { href: '#soto-neko', label: '野良猫・外猫手術 →', labelSp: '外猫 →'   } },
           'soto-neko': { prev: { href: '#issei',     label: '← 一斉手術の相談',   labelSp: '← 一斉手術' }, next: { href: '#ie-neko',   label: '家猫・保護猫手術 →', labelSp: '保護猫 →' } },
@@ -1143,6 +1160,7 @@
             });
             document.body.classList.remove('nav-page-open');
             footer.classList.remove('active');
+            sampleNav.classList.remove('active');
             currentKey = null;
             return;
           }
@@ -1185,6 +1203,7 @@
             nextLink.innerHTML   = `<span class="nav-label-pc">${links.next.label}</span><span class="nav-label-sp">${links.next.labelSp}</span>`;
             footer.classList.add('active');
           }
+          sampleNav.classList.add('active');
 
           currentKey = key;
         }
