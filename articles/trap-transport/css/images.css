@@ -1,0 +1,54 @@
+/* ==========================
+  画像
+========================== */
+
+/* PC用 */
+
+.carrying_man_img {
+  margin-left: 5vw;
+  /* width: 35vw; */
+  width: 600;
+}
+
+.vw_img {
+  width: 50vw;
+  /* width: 50%; */
+  /* width: 60%; */
+  /* width: 550; */
+}
+
+.float_img {
+  float: left;
+  margin-right: 2vw;
+  /* width: 35vw; */
+  width: 45%;
+}
+
+.clear {
+  clear: both;
+  /*floatの解除、これをしないと、画像の右横にテキストが並ぶ*/
+}
+
+@media screen and (max-width: 1000px) {
+  .vw_img {
+    width: 600px;
+  }
+}
+
+/* スマホ用 */
+
+@media screen and (max-width: 769px) {
+  .carrying_man_img {
+    width: 100%;
+    margin-left: 0;
+  }
+  /* 写真の大きさ */
+  .vw_img {
+    width: 100%;
+  }
+  /* float_imgの写真の大きさ */
+  .float_img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

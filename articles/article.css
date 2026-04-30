@@ -1,0 +1,123 @@
+html {
+  background-color: #f6f4a5;
+  scroll-behavior: smooth;
+}
+
+a {
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  color: #333;
+  line-height: 1.85;
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", sans-serif;
+}
+
+.page-inner {
+  max-width: 660px;
+  margin: 0 auto;
+  background: #ffffe9;
+  padding: 80px 6% 48px;
+}
+
+/* ========== 固定ナビ ========== */
+#article-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #eee183;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px max(16px, calc(50% - 330px + 16px));
+  z-index: 200;
+  box-sizing: border-box;
+}
+#article-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.62rem;
+  padding: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.13);
+  border: 1px solid rgba(220,220,220,0.7);
+  transition: color 0.2s, box-shadow 0.2s;
+}
+#article-nav a:hover {
+  color: #4a7c2d;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+#article-nav .nav-icon { font-size: 1.35rem; line-height: 1; }
+#article-nav .fa-home  { font-size: 1.25rem; }
+
+/* ========== ヒーロー画像 ========== */
+.hero-img {
+  display: block;
+  width: 80%;
+  max-width: 640px;
+  height: auto;
+  margin: 0 auto 36px;
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.12);
+}
+
+/* ========== タイトル ========== */
+h1 {
+  font-size: 1.95rem;
+  font-weight: 800;
+  color: #3a6522;
+  border-bottom: 3px solid #d8edc8;
+  padding-bottom: 10px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+h1::before { content: "🐾"; font-size: 1.4rem; }
+
+/* ========== 本文 ========== */
+p {
+  font-size: 1.15rem;
+  margin-bottom: 1.4em;
+}
+p:last-of-type { margin-bottom: 0; }
+
+/* ========== フッター ========== */
+footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px dashed #ccc;
+  text-align: center;
+}
+.article-dates {
+  margin-top: 16px;
+  font-size: 0.82rem;
+  color: #999;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* ========== スマホ ========== */
+@media screen and (max-width: 640px) {
+  body {
+    margin: 0;
+    padding: 0% 2%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  h1 { font-size: 1.55rem; }
+  p  { font-size: 1.08rem; }
+  .hero-img { width: 100%; }
+}

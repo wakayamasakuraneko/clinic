@@ -1,0 +1,31 @@
+/* =======================
+テキスト
+======================== */
+
+/* PC版 */
+
+.frameText {
+  font-family: "Nico Moji", "M PLUS Rounded 1c";
+  font-weight: 100;
+  text-align: left;
+  color: white;
+  background-color: #583405;
+  padding: 0 1em;
+  border-bottom: 3px solid #000000;
+  font-size: 30px;
+}
+
+.frameText span {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 769px) {
+  /* スマホ用 */
+  .frameText {
+    font-size: 22px;
+  }
+  .frameText span {
+    font-size: 20px;
+  }
+}

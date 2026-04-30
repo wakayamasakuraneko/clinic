@@ -1,0 +1,66 @@
+/* ==========================
+  画像
+========================== */
+
+img {
+  margin: 0 auto;
+}
+
+/* PC用 */
+
+.capture_method_img {
+  margin-left: 5vw;
+  /* width: 35vw; */
+  width: 600;
+}
+
+.vw_img {
+  width: 50vw;
+  /* width: 50%; */
+  /* width: 60%; */
+  /* width: 550; */
+}
+
+.small_img {
+  width: 35vw;
+}
+
+div.center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  /* width: 450px; */
+  width: 35vw;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .vw_img {
+    width: 600px;
+  }
+  .small_img {
+    width: 500px;
+  }
+  .flex-wrap {
+    width: 400px;
+  }
+}
+
+/* スマホ用 */
+
+@media screen and (max-width: 700px) {
+  .vw_img {
+    width: 100%;
+    margin-left: 0;
+  }
+  .small_img {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .flex-wrap {
+    width: 100%;
+  }
+}

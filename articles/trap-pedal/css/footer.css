@@ -1,0 +1,54 @@
+/* ブログ5・6と共通 */
+
+/* ==========================
+「ホームへ」ボタン周辺
+========================== */
+
+footer {
+  /* 共通 */
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.home-btn {
+  /* PC */
+  font-size: 35px;
+  /* 文字の大きさ以外は共通 */
+  background-color: #ffc90d;
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+  border-radius: 4px;
+  padding: 3px 15px;
+  /* display: inline-block; */
+}
+
+.home-btn:hover {
+  /* 共通 */
+  opacity: 1;
+}
+
+.icon {
+  /* 三毛猫と桜のアイコン */
+  /* PC */
+  margin-bottom: -3px;
+  width: 35px;
+}
+
+/* ======================
+スマホ用
+========================*/
+
+@media screen and (max-width: 769px) {
+  .home-btn {
+    /* font-size: 5vw; */
+    font-size: 25px;
+  }
+  /* 三毛猫と桜のアイコン */
+  .icon {
+    margin-bottom: -0.5vw;
+    /* width: 6vw; */
+    width: 25px;
+  }
+}

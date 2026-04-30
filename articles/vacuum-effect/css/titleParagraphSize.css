@@ -1,0 +1,100 @@
+/* PC版 */
+
+.Eng {
+  font-family: 'Stalinist One', cursive;
+  /* font-weight: 100; */
+}
+
+h2 {
+  text-align: center;
+  font-size: 33px;
+  /* text-align: center;なぜかこっちでこれを指定しても無効 */
+}
+
+h2 span {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+h3 {
+  font-family: "Nico Moji", "M PLUS Rounded 1c";
+  text-align: center;
+  font-weight: 100;
+  font-size: 33px;
+}
+
+h3 span {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+h1 {
+  font-family: "Nico Moji";
+  font-weight: 100;
+  font-size: 55px;
+  text-align: center;
+}
+
+h1 span {
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-size: 24px;
+}
+
+.green {
+  color: green;
+  font-size: 24px;
+}
+
+.href {
+  color: red;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+p {
+  font-size: 27px;
+  font-weight: bold;
+  font-family: "M PLUS Rounded 1c";
+}
+
+.orange {
+  font-weight: normal;
+  text-align: right;
+  color: orange;
+}
+
+@media screen and (max-width: 769px) {
+  /* スマホ用 */
+  h2 {
+    font-size: 27px;
+  }
+  /* h2 span {
+    font-size: 25px;
+  } */
+  h3 {
+    font-size: 27px;
+  }
+  h3 span {
+    font-size: 25px;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  .black {
+    font-size: 24px;
+  }
+  .green {
+    font-size: 24px;
+  }
+  .href {
+    color: red;
+    text-decoration: none;
+  }
+  p {
+    font-size: 20px;
+  }
+}

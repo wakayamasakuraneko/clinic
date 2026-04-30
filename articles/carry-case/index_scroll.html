@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>連れて来られる際の入れ物について｜和歌山スペイクリニック さくらねこ</title>
+    <link rel="icon" href="../../favicon/dummy.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../article.css" />
+    <style>
+      /* ========== このページ固有の上書き ========== */
+      .page-inner {
+        max-width: 900px;
+        padding: 80px 3% 36px;
+      }
+
+      /* ========== セクションラベル ========== */
+      .section-label {
+        font-size: 1.05rem;
+        font-weight: bold;
+        padding: 10px 14px;
+        border-radius: 0 8px 8px 0;
+        margin: 36px 0 16px;
+        border-left: 5px solid;
+      }
+      .ng-label   { background: #fde8e8; color: #c0392b; border-color: #e74c3c; }
+      .ok-label   { background: #e8f5e9; color: #2e7d32; border-color: #4caf50; }
+      .caut-label { background: #fff8e1; color: #b45309; border-color: #fbbf24; }
+
+      /* ========== カードグリッド ========== */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .ok-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 440px;
+      }
+
+      /* ========== カード ========== */
+      .item-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        display: flex;
+        flex-direction: column;
+      }
+      .card-head {
+        font-size: 0.82rem;
+        font-weight: bold;
+        padding: 8px 10px;
+        text-align: center;
+        line-height: 1.4;
+      }
+      .ng-card .card-head   { background: #fde8e8; color: #c0392b; }
+      .ok-card .card-head   { background: #e8f5e9; color: #2e7d32; }
+      .caut-card .card-head { background: #fff8e1; color: #b45309; }
+
+      /* ========== 画像ラッパー（重ね合わせ用） ========== */
+      .card-img-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background: #e3ffe9;
+        overflow: hidden;
+      }
+      .card-img-wrap .card-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .card-x-img {
+        position: absolute;
+        top: -1%;
+        left: 2%;
+        width: 91%;
+        object-fit: contain;
+        pointer-events: none;
+        opacity: 0.5;
+        z-index: 5;
+      }
+      .card-sub {
+        position: absolute;
+        bottom: 5em;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 6px 8px;
+        text-align: center;
+        font-size: 17px;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow:  0px  1px 0 rgb(255,0,0),
+                      0px -1px 0 rgb(255,0,0),
+                     -1px  0px 0 rgb(255,0,0),
+                      1px  0px 0 rgb(255,0,0);
+        z-index: 10;
+      }
+
+      .card-note {
+        font-size: 17px;
+        padding: 6px 10px 10px;
+        line-height: 1.5;
+        color: #555;
+        flex: 1;
+        margin: 0;
+      }
+
+      /* ========== 締めのひとこと ========== */
+      .final-note {
+        margin-top: 36px;
+        background: #e8f5e9;
+        border-radius: 10px;
+        padding: 16px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1rem;
+        color: #2e7d32;
+      }
+      .final-note img {
+        display: block;
+        width: 100%;
+        max-width: 380px;
+        margin: 12px auto 0;
+        border-radius: 8px;
+      }
+
+      /* ========== スマホ ========== */
+      @media (max-width: 640px) {
+        .card-grid {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          gap: 10px;
+          padding-bottom: 10px;
+          transform: scaleY(-1);
+        }
+        .ok-grid { max-width: none; }
+        .card-grid .item-card {
+          flex: 0 0 78%;
+          scroll-snap-align: center;
+          border: 1px solid rgba(0,0,0,0.13);
+          transform: scaleY(-1);
+        }
+        .card-grid::-webkit-scrollbar {
+          height: 6px;
+        }
+        .card-grid::-webkit-scrollbar-track {
+          background: rgba(0,0,0,0.08);
+          border-radius: 3px;
+          margin: 0 4px;
+        }
+        .card-grid::-webkit-scrollbar-thumb {
+          background: #a0a090;
+          border-radius: 3px;
+        }
+      }
+      @media (max-width: 380px) {
+        .card-grid .item-card { flex: 0 0 88%; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav id="article-nav">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </nav>
+
+    <div class="page-inner">
+
+      <h1>連れて来られる際の入れ物について</h1>
+
+      <!-- NG セクション -->
+      <div class="section-label ng-label">😠 望ましくない入れ物</div>
+      <div class="card-grid">
+
+        <div class="item-card ng-card">
+          <div class="card-head">チャック式の入れ物</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/NG_01.png" alt="チャック式" />
+            <p class="card-sub">チャックは分離して開きます！</p>
+          </div>
+          <p class="card-note">何度も脱走されたので、依頼主の「大丈夫」と言う言葉は信用しない事にしました。</p>
+        </div>
+
+        <div class="item-card ng-card">
+          <div class="card-head">気密性の高い入れ物</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/NG_02.png" alt="気密性" />
+            <img class="card-x-img" src="pic/NG_X.png" alt="×" />
+            <p class="card-sub">熱中症の危険性</p>
+          </div>
+          <p class="card-note">蒸れやすく通気性も十分ではありません。熱中症の危険を考慮して下さい。</p>
+        </div>
+
+        <div class="item-card ng-card">
+          <div class="card-head">籐製の入れ物</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/NG_03.png" alt="籐製" />
+            <img class="card-x-img" src="pic/NG_X.png" alt="×" />
+            <p class="card-sub">(=^・^=) 脱走します</p>
+          </div>
+          <p class="card-note">オシャレさ ＜＜＜ 機能性だと思って下さい。</p>
+        </div>
+
+        <div class="item-card ng-card">
+          <div class="card-head">洗濯カゴとワイヤーネット</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/NG_04.png" alt="洗濯カゴ" />
+            <img class="card-x-img" src="pic/NG_X.png" alt="×" />
+            <p class="card-sub">作り方の記事も見た事ありますが…</p>
+          </div>
+          <p class="card-note">この程度の組み合わせでは、猫は容易く脱走します。</p>
+        </div>
+
+        <div class="item-card ng-card">
+          <div class="card-head">段ボール</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/NG_05.png" alt="段ボール" />
+            <img class="card-x-img" src="pic/NG_X.png" alt="×" />
+          </div>
+          <p class="card-note">脱走しない訳がありません・・・</p>
+        </div>
+
+      </div>
+
+      <!-- OK セクション -->
+      <div class="section-label ok-label">◎ 理想的なキャリーケース</div>
+      <div class="card-grid ok-grid">
+
+        <div class="item-card ok-card">
+          <div class="card-head">広く中の状態も確認しやすい</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/OK_01.png" alt="OKキャリー1" />
+          </div>
+        </div>
+
+        <div class="item-card ok-card">
+          <div class="card-head">丈夫で広く通気性も良い</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/OK_02.png" alt="OKキャリー2" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 注意セクション -->
+      <div class="section-label caut-label">⚠️ 以下の状態に気を付けて下さい</div>
+      <div class="card-grid">
+
+        <div class="item-card caut-card">
+          <div class="card-head">狭過ぎ</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/NG-semasugi.jpg" alt="狭過ぎ" />
+          </div>
+        </div>
+
+        <div class="item-card caut-card">
+          <div class="card-head">きつ過ぎ</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/NG-kitsusugi.jpg" alt="きつ過ぎ" />
+          </div>
+        </div>
+
+        <div class="item-card caut-card">
+          <div class="card-head">詰め込み過ぎ</div>
+          <div class="card-img-wrap">
+            <img class="card-img" src="pic/NG-tsumekomi.jpg" alt="詰め込み過ぎ" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 締めのひとこと -->
+      <div class="final-note">
+        大きさにゆとりのあるキャリーでいらしてください。
+        <img src="pic/OK-yuttari.jpg" alt="ゆったりキャリー" />
+      </div>
+
+      <footer>
+        <div class="article-dates">
+          <span>掲載: 2020年8月</span>
+          <span>更新: 2026年4月</span>
+        </div>
+      </footer>
+
+    </div>
+
+  </body>
+</html>

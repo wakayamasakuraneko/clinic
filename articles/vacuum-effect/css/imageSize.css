@@ -1,0 +1,51 @@
+.frameImg {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.image {
+  text-align: center;
+}
+
+.frame {
+  /* font-weight: bold; */
+  width: 45vw;
+  text-align: center;
+  border: 3px solid #000000;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.barrierCat_img {
+  width: 45vw;
+  border: 3px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+  .frame {
+    width: 60vw;
+  }
+  .barrierCat_img {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .frame {
+    width: 80vw;
+  }
+  .barrierCat_img {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .frame {
+    width: 100%;
+  }
+  .barrierCat_img {
+    width: 100%;
+  }
+}

@@ -1,0 +1,18 @@
+/* =======================
+flex
+======================== */
+
+/* PC版 */
+
+.flex {
+  display: flex;
+}
+
+.vertical {
+  writing-mode: vertical-rl;
+  text-align: center;
+}
+
+@media screen and (max-width: 769px) {
+  /* スマホ用 */
+}

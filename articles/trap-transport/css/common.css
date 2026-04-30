@@ -1,0 +1,19 @@
+body {
+  margin: 0px;
+  padding: 50px;
+  padding-top: 10px;
+  /* width:100%; */
+  background: #fefde0;
+  border: 20px solid #fdfdcd;
+  /* box-sizing: border-box; */
+  font-family: 'Noto Sans JP', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+/* スマホ用 */
+
+@media screen and (max-width: 769px) {
+  body {
+    padding: 10px;
+    border: 5px solid #fefde0;
+  }
+}

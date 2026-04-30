@@ -1,0 +1,28 @@
+/* PC版 */
+
+.vw_img {
+  width: 45vw;
+}
+
+.float_img {
+  width: 35vw;
+  float: left;
+  margin-right: 2vw;
+  margin-bottom: 10px;
+}
+
+.clear {
+  clear: both;
+  /*floatの解除、これをしないと、画像の右横にテキストが並ぶ*/
+}
+
+@media screen and (max-width: 769px) {
+  /* スマホ用 */
+  .vw_img {
+    width: 100%;
+  }
+  .float_img {
+    width: 100%;
+    /* border-radius: 10px; */
+  }
+}

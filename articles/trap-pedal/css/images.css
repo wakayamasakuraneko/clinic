@@ -1,0 +1,54 @@
+/* PC版 */
+
+.image {
+  margin: 0 auto;
+  width: 50vw;
+  text-align: center;
+}
+
+.vw_img {
+  width: 100%;
+}
+.vw80_img {
+  width: 80%;
+}
+.vw60_img {
+  width: 60%;
+}
+
+.wrapImg{
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+}
+
+.SpreadFeed {
+  height: 350px;
+  margin: 2px;
+  width: auto;
+}
+
+
+@media screen and (max-width: 769px) {}
+
+@media screen and (max-width: 700px) {
+  .image {
+    width: 80vw;
+  }
+  .vw80_img {
+    width: 100%;
+  }
+  .vw60_img {
+    width: 100%;
+  }
+  .SpreadFeed {
+    height: 200px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .image {
+    width: 100%;
+  }
+}

@@ -1,0 +1,63 @@
+/* =======================
+テキスト
+======================== */
+
+/* PC版 */
+
+.title {
+  font-size: 30px;
+}
+
+p {
+  font-size: 27px;
+}
+
+p span {
+  color: red;
+}
+
+.font-red {
+  color: red;
+}
+
+.font-blue {
+  color: blue;
+}
+
+a {
+  color: rgb(15, 0, 153);
+  /* background: wheat; */
+  /* border-radius: .2em; */
+  /* padding: 0 .3em; */
+  /* text-decoration: none; */
+  transition: 0.5s;
+}
+
+a:hover {
+  /* color: rgb(255, 224, 195); */
+  background: rgb(243, 200, 120);
+}
+
+@media screen and (max-width: 769px) {
+
+  /* スマホ用 */
+  .title {
+    font-size: 25px;
+  }
+
+  p {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  /* スマホ用 */
+  .title {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}

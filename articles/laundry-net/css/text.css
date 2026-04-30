@@ -1,0 +1,38 @@
+/* =======================
+テキスト
+======================== */
+
+.title {
+  font-size: 30px;
+}
+
+.title span {
+  color: green;
+  font-size: 24px;
+}
+
+p {
+  font-size: 27px;
+}
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: #ffa500;
+}
+
+/* スマホ用 */
+
+@media screen and (max-width: 769px) {
+  .title {
+    font-size: 22px;
+  }
+  .title span {
+    font-size: 20px;
+  }
+  p {
+    font-size: 20px;
+  }
+}

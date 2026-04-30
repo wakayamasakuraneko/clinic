@@ -1,0 +1,29 @@
+/* blog008はpaddingやborderが他と少しだけ違う */
+
+body {
+  margin: 0px;
+  /* paddingはblog008特有の6% */
+  padding: 6%;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  /* width:100%; */
+  background: #fefde0;
+  border: 20px solid #fdfdcd;
+  /* box-sizing: border-box; */
+  font-family: 'Noto Sans JP', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+span {
+  display: inline-block;
+}
+
+/* スマホ用 */
+
+@media screen and (max-width: 769px) {
+
+  /* blog008は特別にpaddingを広くしborderも色着けた */
+  body {
+    padding: 15px;
+    border: 10px solid #fdfdcd;
+  }
+}

@@ -1,0 +1,49 @@
+/* =======================
+テキスト
+======================== */
+
+/* PC版 */
+
+.title {
+  font-size: 30px;
+}
+
+.title span {
+  color: green;
+  font-size: 24px;
+}
+
+p {
+  font-size: 27px;
+  /* font-size: 2vw; */
+  /* margin-block-start: 0em; */
+  /* margin-block-end: 0em; */
+}
+
+p span {
+  /* font-weight: bold; */
+  font-weight: 600;
+  color: #2e992e;
+}
+
+p a {
+  font-weight: 600;
+  color: #33961aec;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 769px) {
+  /* スマホ用 */
+  .title {
+    /* font-size: 4vw; */
+    font-size: 22px;
+  }
+  .title span {
+    /* font-size: 4vw; */
+    font-size: 15px;
+  }
+  p {
+    /* font-size: 4vw; */
+    font-size: 18px;
+  }
+}
