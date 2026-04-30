@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gemini V2</title>
-    <link rel="icon" href="favicon/過去ファビコン/favi.png" type="image/png" />
+    <link rel="icon" href="favicon/dummy.svg" type="image/svg+xml" /><!-- プッシュ時: href="favicon/favi.svg" -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/priceCSS/price-bundle.css" />
     <style>
@@ -36,8 +36,14 @@
       }
 
       /* ① ヘッダー：シンプルに */
-      header, .header-tel, .header-tel-note, .header-notice,
-      .site-nav, .hero-wrap, .sns-area, footer {
+      header,
+      .header-tel,
+      .header-tel-note,
+      .header-notice,
+      .site-nav,
+      .hero-wrap,
+      .sns-area,
+      footer {
         margin: 0 2%;
       }
       header {
@@ -67,26 +73,34 @@
         font-size: 17px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
       }
       .header-quick-nav {
         display: flex;
-        gap: 6px;
+        gap: 12px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        padding-bottom: 2px;
       }
       .header-nav-card {
-        background-color: #f6c200;
-        color: #fff;
+        padding: 3px 15px 3px 10px;
+        color: white;
+        display: inline-block;
+        border-radius: 50px;
         text-decoration: none;
-        padding: 0.25em 0.7em;
-        border-radius: 8px;
-        font-size: 0.7em;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease-out,
+          filter 0.2s ease-out;
+        font-size: 0.85em;
         font-weight: bold;
         white-space: nowrap;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        transition: transform 0.2s;
       }
       .header-nav-card:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        filter: brightness(1.12);
       }
       .header-blog-btn,
       .bloglink-btn {
@@ -97,7 +111,9 @@
         border-radius: 50px;
         text-decoration: none;
         cursor: pointer;
-        box-shadow: 1px 0px 3px gray, inset 0px -2px 4px #615712;
+        box-shadow:
+          1px 0px 3px gray,
+          inset 0px -2px 4px #615712;
         transition: all 0.3s ease-out;
         font-size: 0.85em;
         font-weight: bold;
@@ -120,7 +136,9 @@
         box-sizing: border-box;
         border-radius: 50px;
         cursor: pointer;
-        box-shadow: 1px 0px 3px gray, inset 0px -2px 4px #615712;
+        box-shadow:
+          1px 0px 3px gray,
+          inset 0px -2px 4px #615712;
         transition: all 0.15s ease-out;
         text-align: center;
         user-select: none;
@@ -204,8 +222,6 @@
       }
 
       .nav-card {
-        background-color: #f6c200;
-        /* アクセントカラー */
         color: #fff;
         text-align: center;
         padding: 1.5em 0.5em;
@@ -284,10 +300,16 @@
       #procedures-notes h2 {
         color: brown;
       }
-      .h3-green      { color: #02cd88; }
-      .h3-red  { color: #ff0000; }
+      .h3-green {
+        color: #02cd88;
+      }
+      .h3-red {
+        color: #ff0000;
+      }
       @media screen and (max-width: 769px) {
-        .align_center { text-align: center; }
+        .align_center {
+          text-align: center;
+        }
       }
       #price h2 {
         color: #4a6741;
@@ -343,7 +365,7 @@
       }
 
       .flowbtn {
-        font-family: 'Arial', sans-serif;
+        font-family: "Arial", sans-serif;
         width: 66px;
         height: 58px;
         display: inline-flex;
@@ -352,7 +374,7 @@
         justify-content: center;
         gap: 4px;
         font-size: 30px;
-        transition: .5s;
+        transition: 0.5s;
         text-decoration: none;
         box-shadow: 3px 3px 6px -2px #555;
         color: #fff;
@@ -373,22 +395,28 @@
       .flowbtn .X_bottom {
         margin-top: 0px;
       }
-      .flowbtn:hover { transform: scale(1.2, 1.2); }
-      .fl_X   { background: #202124; }
-      .fl_fb1 { background: #3b5998; }
+      .flowbtn:hover {
+        transform: scale(1.2, 1.2);
+      }
+      .fl_X {
+        background: #202124;
+      }
+      .fl_fb1 {
+        background: #3b5998;
+      }
       .insta_btn1 {
         background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
         overflow: hidden;
         position: relative;
       }
       .insta_btn1:before {
-        content: '';
+        content: "";
         position: absolute;
         top: 33px;
         left: -20px;
         width: 80px;
         height: 50px;
-        background: radial-gradient(#ffdb2c 5%, rgba(255,105,34,0.65) 55%, rgba(255,88,96,0) 70%);
+        background: radial-gradient(#ffdb2c 5%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
         z-index: 0;
       }
       .insta_btn1 > * {
@@ -400,8 +428,12 @@
           border-radius: 50%;
           transform: scale(0.8, 0.8);
         }
-        .flowbtn div { display: none; }
-        .flowbtn:hover { transform: scale(1.0, 1.0); }
+        .flowbtn div {
+          display: none;
+        }
+        .flowbtn:hover {
+          transform: scale(1, 1);
+        }
       }
 
       footer {
@@ -552,8 +584,14 @@
 
       /* レスポンシブ */
       @media screen and (max-width: 600px) {
-        header, .header-tel, .header-tel-note, .header-notice,
-        .site-nav, .hero-wrap, .sns-area, footer {
+        header,
+        .header-tel,
+        .header-tel-note,
+        .header-notice,
+        .site-nav,
+        .hero-wrap,
+        .sns-area,
+        footer {
           margin: 0;
         }
         section {
@@ -630,7 +668,7 @@
       }
       .nav-page-inner {
         max-width: 800px;
-        margin: 0 auto;
+        margin: 0 auto 60px;
         background: #fff;
         border-radius: 12px;
         padding: 1.5em 2em;
@@ -642,14 +680,22 @@
         border-radius: 8px;
         margin-bottom: 1em;
         color: #fff;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 -2px 4px rgba(0,0,0,0.15);
+        box-shadow:
+          0 3px 6px rgba(0, 0, 0, 0.2),
+          inset 0 -2px 4px rgba(0, 0, 0, 0.15);
       }
-      .nav-page[data-page="issei"]     .nav-page-inner h2 { background-color: #7aab52; }
-      .nav-page[data-page="soto-neko"] .nav-page-inner h2 { background-color: #ef8200; }
-      .nav-page[data-page="ie-neko"]   .nav-page-inner h2 { background-color: #4a80aa; }
+      .nav-page[data-page="issei"] .nav-page-inner h2 {
+        background-color: #7aab52;
+      }
+      .nav-page[data-page="soto-neko"] .nav-page-inner h2 {
+        background-color: #ef8200;
+      }
+      .nav-page[data-page="ie-neko"] .nav-page-inner h2 {
+        background-color: #4a80aa;
+      }
       .nav-page-divider {
         border: none;
-        border-top: 2px dashed rgba(0,0,0,0.2);
+        border-top: 2px dashed rgba(0, 0, 0, 0.2);
         margin: 2em 0;
       }
       .nav-page h3 {
@@ -659,8 +705,12 @@
         padding-left: 0.5em;
       }
       /* .nav-page[data-page="ie-neko"] h3:nth-of-type(1) { color: #02cd88; } */
-      .nav-page[data-page="ie-neko"] h3:nth-of-type(2) { color: #ff0000; }
-      .nav-page[data-page="soto-neko"] h3:nth-of-type(2) { color: #ff0000; }
+      .nav-page[data-page="ie-neko"] h3:nth-of-type(2) {
+        color: #ff0000;
+      }
+      .nav-page[data-page="soto-neko"] h3:nth-of-type(2) {
+        color: #ff0000;
+      }
 
       .nav-page-footer {
         position: fixed;
@@ -730,18 +780,19 @@
       .nav-page-footer a {
         padding: 0.4em 1.2em;
         border-radius: 20px;
-        border: 1.5px solid #ccc;
+        border: 1.5px solid transparent;
         background: #fff;
-        color: #444;
+        color: white;
         font-size: 0.85em;
         font-weight: bold;
         text-decoration: none;
-        transition: background 0.15s, color 0.15s, border-color 0.15s;
+        transition:
+          filter 0.2s,
+          transform 0.2s;
       }
       .nav-page-footer a:hover {
-        background: #5a4a1a;
-        color: #fff;
-        border-color: #5a4a1a;
+        filter: brightness(1.15);
+        transform: translateY(-2px);
       }
       #nav-page-back-footer {
         background: #5a4a1a;
@@ -753,36 +804,84 @@
         color: #444;
         border-color: #ccc;
       }
-      .nav-label-sp { display: none; }
+      .nav-label-sp {
+        display: none;
+      }
       @media screen and (max-width: 600px) {
-        .nav-label-pc { display: none; }
-        .nav-label-sp { display: inline; }
+        .nav-label-pc {
+          display: none;
+        }
+        .nav-label-sp {
+          display: inline;
+        }
       }
       body.nav-page-open {
         overflow: hidden;
       }
-      .nav-page[data-page="issei"]     { background-color: #b0dfcc; }
-      .nav-page[data-page="soto-neko"] { background-color: #fddcaa; }
-      .nav-page[data-page="ie-neko"]   { background-color: #bbdeff; }
-      .nav-page[data-page="issei"]     .nav-page-inner { border-color: #f0f4e8; }
-      .nav-page[data-page="soto-neko"] .nav-page-inner { border-color: #fef2dc; }
-      .nav-page[data-page="ie-neko"]   .nav-page-inner { border-color: #e8f0f8; }
+      .nav-page[data-page="issei"] {
+        background-color: #b0dfcc;
+      }
+      .nav-page[data-page="soto-neko"] {
+        background-color: #fddcaa;
+      }
+      .nav-page[data-page="ie-neko"] {
+        background-color: #bbdeff;
+      }
+      .nav-page[data-page="issei"] .nav-page-inner {
+        border-color: #f0f4e8;
+      }
+      .nav-page[data-page="soto-neko"] .nav-page-inner {
+        border-color: #fef2dc;
+      }
+      .nav-page[data-page="ie-neko"] .nav-page-inner {
+        border-color: #e8f0f8;
+      }
       /* ★ カラーサンプル */
-      .nav-page[data-page="sample-a"]  { background-color: #a8dcd8; }
-      .nav-page[data-page="sample-a"]  .nav-page-inner { border-color: #d4f0ee; }
-      .nav-page[data-page="sample-a"]  .nav-page-inner h2 { background-color: #0e8c80; }
-      .nav-page[data-page="sample-b"]  { background-color: #d4c0ee; }
-      .nav-page[data-page="sample-b"]  .nav-page-inner { border-color: #eae4f8; }
-      .nav-page[data-page="sample-b"]  .nav-page-inner h2 { background-color: #7448b0; }
-      .nav-page[data-page="sample-c"]  { background-color: #f0b8cc; }
-      .nav-page[data-page="sample-c"]  .nav-page-inner { border-color: #f8dce8; }
-      .nav-page[data-page="sample-c"]  .nav-page-inner h2 { background-color: #b83060; }
-      .nav-page[data-page="sample-d"]  { background-color: #a8b8d8; }
-      .nav-page[data-page="sample-d"]  .nav-page-inner { border-color: #d4dcee; }
-      .nav-page[data-page="sample-d"]  .nav-page-inner h2 { background-color: #284898; }
-      .nav-page[data-page="sample-e"]  { background-color: #ccd4a0; }
-      .nav-page[data-page="sample-e"]  .nav-page-inner { border-color: #e4eac8; }
-      .nav-page[data-page="sample-e"]  .nav-page-inner h2 { background-color: #6a7820; }
+      .nav-page[data-page="sample-a"] {
+        background-color: #a8dcd8;
+      }
+      .nav-page[data-page="sample-a"] .nav-page-inner {
+        border-color: #d4f0ee;
+      }
+      .nav-page[data-page="sample-a"] .nav-page-inner h2 {
+        background-color: #0e8c80;
+      }
+      .nav-page[data-page="sample-b"] {
+        background-color: #d4c0ee;
+      }
+      .nav-page[data-page="sample-b"] .nav-page-inner {
+        border-color: #eae4f8;
+      }
+      .nav-page[data-page="sample-b"] .nav-page-inner h2 {
+        background-color: #7448b0;
+      }
+      .nav-page[data-page="sample-c"] {
+        background-color: #f0b8cc;
+      }
+      .nav-page[data-page="sample-c"] .nav-page-inner {
+        border-color: #f8dce8;
+      }
+      .nav-page[data-page="sample-c"] .nav-page-inner h2 {
+        background-color: #b83060;
+      }
+      .nav-page[data-page="sample-d"] {
+        background-color: #a8b8d8;
+      }
+      .nav-page[data-page="sample-d"] .nav-page-inner {
+        border-color: #d4dcee;
+      }
+      .nav-page[data-page="sample-d"] .nav-page-inner h2 {
+        background-color: #284898;
+      }
+      .nav-page[data-page="sample-e"] {
+        background-color: #ccd4a0;
+      }
+      .nav-page[data-page="sample-e"] .nav-page-inner {
+        border-color: #e4eac8;
+      }
+      .nav-page[data-page="sample-e"] .nav-page-inner h2 {
+        background-color: #6a7820;
+      }
       @media screen and (max-width: 600px) {
         .nav-page {
           font-size: 18px;
@@ -806,14 +905,21 @@
         <a href="#issei" class="header-nav-card" style="background-color: #7aab52">一斉手術</a>
         <a href="#soto-neko" class="header-nav-card" style="background-color: #ef8200">野良猫・外猫</a>
         <a href="#ie-neko" class="header-nav-card" style="background-color: #4a80aa">家猫・保護猫</a>
+        <a href="articles/" class="header-nav-card" style="background-color: #f1df50; color: black">記事一覧</a>
       </div>
-      <a href="#" class="header-blog-btn">記事一覧</a>
     </div>
 
     <nav class="site-nav">
       <span class="nav-arrow">◀</span>
       <div class="site-nav-inner">
-        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">▲ トップ</a>
+        <a
+          href="#"
+          onclick="
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return false;
+          "
+          >▲ トップ</a
+        >
         <a href="#introduction">病院紹介</a>
         <a href="#procedures-notes">手術の流れ<span class="nav-trim">と注意点</span></a>
         <a href="#price">料金<span class="nav-trim">案内</span></a>
@@ -849,29 +955,32 @@
           一斉手術の相談は
           <span>猫が多すぎて1人では手に負えない</span>
         </a>
-        <a href="#soto-neko" class="nav-card" style="background-color: #ef8200"> 野良猫・外猫手術、<br />ご希望の場合 </a>
+        <a href="#soto-neko" class="nav-card" style="background-color: #ef8200">
+          野良猫・外猫手術、<br />ご希望の場合
+        </a>
         <a href="#ie-neko" class="nav-card" style="background-color: #4a80aa"> 家猫・保護猫手術、<br />ご希望の場合 </a>
       </div>
     </section>
 
     <section id="price">
       <div class="price-sticky-wrap">
-      <h2>料金表</h2>
+        <h2>料金表</h2>
 
-      <div class="price-caption-top">
-        <p>※ 手術料金には、ノミ駆虫薬、化膿止めの抗生剤 及び、術後の 皮下補液 も含まれております。(一部例外)</p>
+        <div class="price-caption-top">
+          <p>※ 手術料金には、ノミ駆虫薬、化膿止めの抗生剤 及び、術後の 皮下補液 も含まれております。(一部例外)</p>
+        </div>
+
+        <ul class="button-wrapper">
+          <li><button id="toggle-button">税切替</button></li>
+          <li><button id="show-all-button">広げる</button></li>
+        </ul>
+
+        <div id="price-main"></div>
+        <div id="price-discount"></div>
+
+        <div class="gap2"></div>
       </div>
-
-      <ul class="button-wrapper">
-        <li><button id="toggle-button">税切替</button></li>
-        <li><button id="show-all-button">広げる</button></li>
-      </ul>
-
-      <div id="price-main"></div>
-      <div id="price-discount"></div>
-
-      <div class="gap2"></div>
-      </div><!-- /.price-sticky-wrap -->
+      <!-- /.price-sticky-wrap -->
 
       <div class="price-caption-bottom">
         <p>★ 耳カット<span>(耳先のＶ字カット)は</span><span>不妊去勢手術を受けた証</span></p>
@@ -944,54 +1053,71 @@
     <!-- ナビページ：一斉手術の相談 -->
     <div class="nav-page" data-page="issei">
       <div class="nav-page-inner">
-
         <h2>一斉手術のご相談</h2>
-        <p>猫が多すぎて1人では手に負えない…地域猫活動や多頭飼育崩壊など、まとまった頭数の手術をご希望の方はご相談ください。</p>
+        <p>
+          猫が多すぎて1人では手に負えない…地域猫活動や多頭飼育崩壊など、まとまった頭数の手術をご希望の方はご相談ください。
+        </p>
         <h3>こんな方が対象です</h3>
-        <p>・地域猫の一斉TNRを進めたい方<br>・多頭飼育で一人では対応しきれない方<br>・保護団体・行政と連携した活動をされている方</p>
+        <p>
+          ・地域猫の一斉TNRを進めたい方<br />・多頭飼育で一人では対応しきれない方<br />・保護団体・行政と連携した活動をされている方
+        </p>
         <h3>ご相談の際にお伝えください</h3>
-        <p>・おおよその頭数<br>・猫の状態（外猫 / 保護猫）<br>・ご希望の時期</p>
-        <p>一度にお預かりできる頭数には限りがあります。多頭の場合は複数回に分けることもございます。まずはお電話でご相談ください。</p>
+        <p>・おおよその頭数<br />・猫の状態（外猫 / 保護猫）<br />・ご希望の時期</p>
+        <p>
+          一度にお預かりできる頭数には限りがあります。多頭の場合は複数回に分けることもございます。まずはお電話でご相談ください。
+        </p>
         <div class="align_center">
           <a href="#issei-form" class="bloglink-btn"><i class="far fa-hand-point-right"></i> ご相談フォームはこちら</a>
         </div>
-
       </div>
     </div>
 
     <!-- ナビページ：野良猫・外猫手術 -->
     <div class="nav-page" data-page="soto-neko">
       <div class="nav-page-inner">
-
         <h2>野良猫・外猫手術</h2>
         <h3>ご予約と手術の流れ</h3>
         <p>ご予約や手術の流れはお電話でご案内いたします。まずはご連絡ください。</p>
-        <p>・外猫は状況によって前泊可能です<br>・休診日と重なる前泊はできません</p>
+        <p>・外猫は状況によって前泊可能です<br />・休診日と重なる前泊はできません</p>
         <h3>連れて来られる際の入れ物について（※重要）</h3>
         <p>野良猫・外猫は脱走しやすいため、プラスチック製のハードキャリーまたは捕獲器でお越しください。</p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a>
+          <a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a
+          >
         </div>
-        <hr class="nav-page-divider">
-        <p>捕獲器は剥き出しのままではなく、生地などで覆ってお越しください（猫が落ち着きます）。<br>組み立て式捕獲器をご使用の場合は、組み立てに不備がないか事前にご確認ください。</p>
+        <hr class="nav-page-divider" />
+        <p>
+          捕獲器は剥き出しのままではなく、生地などで覆ってお越しください（猫が落ち着きます）。<br />組み立て式捕獲器をご使用の場合は、組み立てに不備がないか事前にご確認ください。
+        </p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 捕獲器の包み方</a>
-          <a href="https://wakayamasakuraneko.github.io/blog/09/09.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 組み立て式捕獲器の注意点</a>
+          <a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 捕獲器の包み方</a
+          >
+          <a href="https://wakayamasakuraneko.github.io/blog/09/09.htm" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 組み立て式捕獲器の注意点</a
+          >
         </div>
-        <hr class="nav-page-divider">
+        <hr class="nav-page-divider" />
         <p>前日以前から捕獲している場合は、「猫を自宅で待機させる場合の注意点」もご参照ください。</p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/13/13.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 猫を自宅で待機させる場合の注意点</a>
+          <a href="https://wakayamasakuraneko.github.io/blog/13/13.htm" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 猫を自宅で待機させる場合の注意点</a
+          >
         </div>
-        <hr class="nav-page-divider">
+        <hr class="nav-page-divider" />
         <p>捕獲率を上げるための工夫</p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/11/11.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 踏み板を踏まない猫</a>
+          <a href="https://wakayamasakuraneko.github.io/blog/11/11.htm" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 踏み板を踏まない猫</a
+          >
         </div>
-        <hr class="nav-page-divider">
+        <hr class="nav-page-divider" />
         <h3>補足事項</h3>
-        <p>※ 手術料金にはノミ駆虫薬・抗生剤・術後の皮下補液が含まれます。<br>※ 当日予約なしの場合は割増料金となります。</p>
-        <hr class="nav-page-divider">
+        <p>
+          ※ 手術料金にはノミ駆虫薬・抗生剤・術後の皮下補液が含まれます。<br />※ 当日予約なしの場合は割増料金となります。
+        </p>
+        <hr class="nav-page-divider" />
         <details>
           <summary>外猫おすすめセット</summary>
           <p>・手術（メス or オス）</p>
@@ -1005,22 +1131,30 @@
     <!-- ナビページ：家猫・保護猫手術 -->
     <div class="nav-page" data-page="ie-neko">
       <div class="nav-page-inner">
-
         <h2>家猫・保護猫手術</h2>
         <h3>ご予約と手術の流れ</h3>
         <p>ご予約や手術の流れはお電話でご案内いたします。まずはご連絡ください。</p>
-        <p>・日帰りとなるため、朝お預け・夕方お迎えが可能な日程でご予約ください。<br>・ご予約はできるだけ（月～木）の平日でお願いいたします。（日曜希望は割増料金となります）</p>
-        <p>・混雑時は外猫の手術を優先することがあります。ご了承ください。<br>・ペットショップ購入・血統証付きの猫は原則お引き受けしておりません。<br>　※ 多頭飼育崩壊の場合はご相談ください。</p>
+        <p>
+          ・日帰りとなるため、朝お預け・夕方お迎えが可能な日程でご予約ください。<br />・ご予約はできるだけ（月～木）の平日でお願いいたします。（日曜希望は割増料金となります）
+        </p>
+        <p>
+          ・混雑時は外猫の手術を優先することがあります。ご了承ください。<br />・ペットショップ購入・血統証付きの猫は原則お引き受けしておりません。<br />　※
+          多頭飼育崩壊の場合はご相談ください。
+        </p>
         <h3>連れて来られる際の入れ物について（※重要）</h3>
         <p>・ハードキャリーでお越しください</p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a>
+          <a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a
+          >
         </div>
         <p>・ご来院の際は洗濯ネットに入れてお越しください</p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/04/04.htm" class="bloglink-btn"><i class="far fa-hand-point-right"></i> 洗濯ネットについて</a>
+          <a href="https://wakayamasakuraneko.github.io/blog/04/04.htm" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 洗濯ネットについて</a
+          >
         </div>
-        <hr class="nav-page-divider">
+        <hr class="nav-page-divider" />
         <details>
           <summary>保護猫おすすめセット</summary>
           <p>・手術（メス or オス）</p>
@@ -1039,7 +1173,7 @@
         <h2>サンプル A：ティール</h2>
         <h3>h3 テキストのサンプル</h3>
         <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
       </div>
     </div>
     <div class="nav-page" data-page="sample-b">
@@ -1047,7 +1181,7 @@
         <h2>サンプル B：パープル</h2>
         <h3>h3 テキストのサンプル</h3>
         <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
       </div>
     </div>
     <div class="nav-page" data-page="sample-c">
@@ -1055,7 +1189,7 @@
         <h2>サンプル C：ローズ</h2>
         <h3>h3 テキストのサンプル</h3>
         <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
       </div>
     </div>
     <div class="nav-page" data-page="sample-d">
@@ -1063,7 +1197,7 @@
         <h2>サンプル D：ネイビー</h2>
         <h3>h3 テキストのサンプル</h3>
         <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
       </div>
     </div>
     <div class="nav-page" data-page="sample-e">
@@ -1071,7 +1205,7 @@
         <h2>サンプル E：オリーブ</h2>
         <h3>h3 テキストのサンプル</h3>
         <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br>・箇条書きサンプル</p>
+        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
       </div>
     </div>
 
@@ -1084,7 +1218,7 @@
     <div class="nav-page-footer" id="nav-page-footer">
       <div class="nav-page-footer-main">
         <a id="nav-page-prev" href="#"></a>
-        <a id="nav-page-back-footer" href="gemini 2.htm#procedures-notes">↩ 戻る</a>
+        <a id="nav-page-back-footer" href="index.html#procedures-notes">↩ 戻る</a>
         <a id="nav-page-next" href="#"></a>
       </div>
     </div>
@@ -1133,34 +1267,57 @@
 
       // ナビページ（hash-based）
       (function () {
-        const navPages = document.querySelectorAll('.nav-page');
+        const navPages = document.querySelectorAll(".nav-page");
         const pageMap = {};
-        navPages.forEach(el => { pageMap[el.dataset.page] = el; });
+        navPages.forEach((el) => {
+          pageMap[el.dataset.page] = el;
+        });
 
-        const footer     = document.getElementById('nav-page-footer');
-        const sampleNav  = document.getElementById('nav-page-sample-nav');
-        const prevLink   = document.getElementById('nav-page-prev');
-        const nextLink   = document.getElementById('nav-page-next');
+        const footer = document.getElementById("nav-page-footer");
+        const sampleNav = document.getElementById("nav-page-sample-nav");
+        const prevLink = document.getElementById("nav-page-prev");
+        const nextLink = document.getElementById("nav-page-next");
         const NAV_LINKS = {
-          'issei':     { prev: { href: '#ie-neko',   label: '← 家猫・保護猫手術', labelSp: '← 保護猫'   }, next: { href: '#soto-neko', label: '野良猫・外猫手術 →', labelSp: '外猫 →'   } },
-          'soto-neko': { prev: { href: '#issei',     label: '← 一斉手術の相談',   labelSp: '← 一斉手術' }, next: { href: '#ie-neko',   label: '家猫・保護猫手術 →', labelSp: '保護猫 →' } },
-          'ie-neko':   { prev: { href: '#soto-neko', label: '← 野良猫・外猫手術', labelSp: '← 外猫'     }, next: { href: '#issei',    label: '一斉手術の相談 →',   labelSp: '一斉手術 →'} },
+          issei: {
+            prev: { href: "#ie-neko", label: "← 家猫・保護猫手術", labelSp: "← 保護猫" },
+            next: { href: "#soto-neko", label: "野良猫・外猫手術 →", labelSp: "外猫 →" },
+          },
+          "soto-neko": {
+            prev: { href: "#issei", label: "← 一斉手術の相談", labelSp: "← 一斉手術" },
+            next: { href: "#ie-neko", label: "家猫・保護猫手術 →", labelSp: "保護猫 →" },
+          },
+          "ie-neko": {
+            prev: { href: "#soto-neko", label: "← 野良猫・外猫手術", labelSp: "← 外猫" },
+            next: { href: "#issei", label: "一斉手術の相談 →", labelSp: "一斉手術 →" },
+          },
         };
+
+        const PAGE_COLORS = {
+          issei: "#7aab52",
+          "soto-neko": "#ef8200",
+          "ie-neko": "#4a80aa",
+        };
+
+        function applyBtnColor(el, pageKey) {
+          const c = PAGE_COLORS[pageKey] || "#888";
+          el.style.background = c;
+          el.style.borderColor = c;
+        }
 
         let currentKey = null;
 
         function showPage(hash) {
-          const key = hash.startsWith('#') ? hash.slice(1) : '';
+          const key = hash.startsWith("#") ? hash.slice(1) : "";
 
           if (!key || !pageMap[key]) {
-            navPages.forEach(el => {
-              el.style.transition = '';
-              el.style.transform  = '';
-              el.classList.remove('active', 'nav-page-leaving');
+            navPages.forEach((el) => {
+              el.style.transition = "";
+              el.style.transform = "";
+              el.classList.remove("active", "nav-page-leaving");
             });
-            document.body.classList.remove('nav-page-open');
-            footer.classList.remove('active');
-            sampleNav.classList.remove('active');
+            document.body.classList.remove("nav-page-open");
+            footer.classList.remove("active");
+            sampleNav.classList.remove("active");
             currentKey = null;
             return;
           }
@@ -1168,49 +1325,50 @@
           if (key === currentKey) return;
 
           // prev か next かを判定
-          const isNext = !(currentKey && NAV_LINKS[currentKey] && NAV_LINKS[currentKey].prev.href === '#' + key);
+          const isNext = !(currentKey && NAV_LINKS[currentKey] && NAV_LINKS[currentKey].prev.href === "#" + key);
 
           // 退場ページ：インラインスタイルをクリアしてから leaving にする（タイムアウトなし）
           if (currentKey && pageMap[currentKey]) {
             const outgoing = pageMap[currentKey];
-            outgoing.style.transition = '';
-            outgoing.style.transform  = '';
-            outgoing.classList.remove('active');
-            outgoing.classList.add('nav-page-leaving');
+            outgoing.style.transition = "";
+            outgoing.style.transform = "";
+            outgoing.classList.remove("active");
+            outgoing.classList.add("nav-page-leaving");
           }
 
           // 入場ページ：transition:none を先にセットしてからクラス操作
           const incoming = pageMap[key];
-          incoming.style.transition = 'none';
-          incoming.classList.remove('active', 'nav-page-leaving');
-          incoming.style.transform  = isNext ? 'translateX(100%)' : 'translateX(-100%)';
+          incoming.style.transition = "none";
+          incoming.classList.remove("active", "nav-page-leaving");
+          incoming.style.transform = isNext ? "translateX(100%)" : "translateX(-100%)";
 
           // リフロー強制（開始位置をブラウザに確定させる）
           incoming.offsetHeight;
 
           // トランジション開始
-          incoming.style.transition = 'transform 0.35s ease';
-          incoming.style.transform  = 'translateX(0)';
-          incoming.classList.add('active');
+          incoming.style.transition = "transform 0.35s ease";
+          incoming.style.transform = "translateX(0)";
+          incoming.classList.add("active");
           incoming.scrollTop = 0;
-          document.body.classList.add('nav-page-open');
+          document.body.classList.add("nav-page-open");
 
           const links = NAV_LINKS[key];
           if (links) {
-            prevLink.href      = links.prev.href;
+            prevLink.href = links.prev.href;
             prevLink.innerHTML = `<span class="nav-label-pc">${links.prev.label}</span><span class="nav-label-sp">${links.prev.labelSp}</span>`;
-            nextLink.href        = links.next.href;
-            nextLink.innerHTML   = `<span class="nav-label-pc">${links.next.label}</span><span class="nav-label-sp">${links.next.labelSp}</span>`;
-            footer.classList.add('active');
+            applyBtnColor(prevLink, links.prev.href.slice(1));
+            nextLink.href = links.next.href;
+            nextLink.innerHTML = `<span class="nav-label-pc">${links.next.label}</span><span class="nav-label-sp">${links.next.labelSp}</span>`;
+            applyBtnColor(nextLink, links.next.href.slice(1));
+            footer.classList.add("active");
           }
-          sampleNav.classList.add('active');
+          sampleNav.classList.add("active");
 
           currentKey = key;
         }
 
-        window.addEventListener('hashchange', () => showPage(location.hash));
+        window.addEventListener("hashchange", () => showPage(location.hash));
         showPage(location.hash);
-
       })();
 
       function smoothScrollTo(targetY, duration) {

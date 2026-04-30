@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>散布フィルター テンプレート</title>
+    <link rel="icon" href="../favicon/サンプルページ用のファビコン/scatter-favi.svg" type="image/svg+xml" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { height: 100%; }
+      body {
+        font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", sans-serif;
+        color: #333;
+        overflow: hidden;
+      }
+
+      /* ========== 固定ヘッダー（.page の外に置く） ========== */
+      /*
+        position: fixed の子要素は、親に transform が掛かると
+        viewport 基準ではなくその親基準になってしまう。
+        .page はスライドアニメーションで transform を使うため、
+        ヘッダーは必ず .page の外・body の直下に置くこと。
+      */
+      .scatter-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: #fefdcc;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      }
+
+      .scatter-header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        gap: 12px;
+      }
+
+      .variant-label {
+        font-size: 13px;
+        font-weight: bold;
+        color: #666;
+        white-space: nowrap;
+      }
+
+      /* ========== フィルターボタン ========== */
+      .filter-nav {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      /* ▼ ボタンの色・形は自由に変える */
+      .filter-btn {
+        background: #fff8e7;
+        color: #3a2010;
+        border: 2px solid #c8a882;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+        white-space: nowrap;
+        font-family: inherit;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: #f0d080;
+        border-color: #a07030;
+      }
+
+      @media (max-width: 480px) {
+        .scatter-header-inner {
+          height: auto;
+          padding: 8px 12px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+        .filter-btn { font-size: 13px; padding: 4px 10px; }
+      }
+
+      /* ========== スライドページ ========== */
+      .page {
+        position: fixed;
+        inset: 0;
+        padding-top: 56px;   /* 固定ヘッダーの高さ分 */
+        padding-bottom: 80px; /* 下部ナビ分 */
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        overflow-y: auto;
+      }
+      .page.active          { opacity: 1; pointer-events: auto; transform: translateX(0); }
+      .page.slide-out-left  { transform: translateX(-100%); opacity: 0; }
+      .page.slide-out-right { transform: translateX(100%);  opacity: 0; }
+
+      @media (max-width: 480px) {
+        /* スマホはヘッダーが2行になる分、padding-top を増やす */
+        .page { padding-top: 108px; }
+      }
+
+      .page-0 { background: #f4f1ec; }
+      .page-1 { background: #f1ecf4; }
+      .page-2 { background: #ecf4f1; }
+      .page-3 { background: #f4f4ec; }
+      .page-4 { background: #f4ecec; }
+
+      /* ========== 速度トグル ========== */
+      .speed-nav {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      .speed-btn {
+        background: #f0f0f0;
+        color: #777;
+        border: 1.5px solid #ccc;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 4px 10px;
+        border-radius: 16px;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+        white-space: nowrap;
+      }
+      .speed-btn.active { background: #555; color: #fff; border-color: #555; }
+      .speed-btn:hover:not(.active) { background: #e0e0e0; border-color: #aaa; }
+      #btn-no-rotation,
+      #btn-simultaneous { background: #eaf2ff; color: #2563b0; border-color: #90b8e8; }
+      #btn-no-rotation.active,
+      #btn-simultaneous.active { background: #2563b0; color: #fff; border-color: #1a4a90; }
+      #btn-no-rotation:hover:not(.active),
+      #btn-simultaneous:hover:not(.active) { background: #d0e6ff; border-color: #5a9ad8; }
+      .speed-nav-sep { width: 1px; height: 18px; background: #ccc; flex-shrink: 0; }
+
+      /* ========== カードグリッド ========== */
+      .cards-grid {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 16px;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* ========== カード ========== */
+      /*
+        ▼ data-genre 属性でジャンルを指定する
+           複数ジャンルは半角スペース区切り
+           例: data-genre="A B"
+      */
+      .card {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        width: calc(25% - 16px);
+        margin: 8px;
+        background: #fefde0;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .card:hover {
+        transform: scale(1.04);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+      }
+      .card.hidden { display: none; }
+
+      .card-img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        background: #ddd;
+      }
+
+      .card-body { padding: 10px 12px 12px; }
+
+      .card-title {
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 1.5;
+        margin-bottom: 6px;
+      }
+
+      .card-tag {
+        font-size: 13px;
+        color: #2e7d32;
+        text-align: right;
+      }
+
+      @media (max-width: 1000px) { .card { width: calc(33.3% - 16px); } }
+      @media (max-width: 700px)  {
+        .card { width: calc(50% - 16px); }
+        .card-title { font-size: 14px; }
+      }
+
+      /* ========== 散布アニメーション ========== */
+      /*
+        CSS カスタムプロパティ --dx / --dy / --rot を
+        JavaScript 側でランダムに設定して使う。
+      */
+
+      @keyframes scatterOut {
+        to {
+          transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot));
+          opacity: 0;
+        }
+      }
+
+      @keyframes gatherIn {
+        from {
+          transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot));
+          opacity: 0;
+        }
+      }
+
+      /* 離散中 */
+      .card.is-scattering {
+        animation: scatterOut 0.38s cubic-bezier(0.55, 0, 0.7, 0.2) forwards;
+        pointer-events: none;
+        position: relative;
+        z-index: 5;
+      }
+
+      /* 集合中 */
+      .card.is-gathering {
+        animation: gatherIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+        will-change: transform, opacity;
+      }
+
+      /* ========== 下部ナビゲーション ========== */
+      /*
+        セレクターは必ず .page-nav のようなクラスを使うこと。
+        nav { } と書くと .filter-nav（<nav>要素）にも適用されて
+        フィルターボタンが画面下部に飛んでしまう。
+      */
+      .page-nav {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        background: rgba(255,255,255,0.88);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(0,0,0,0.08);
+        z-index: 100;
+      }
+      .page-nav button {
+        padding: 8px 18px;
+        border-radius: 24px;
+        border: 1.5px solid #ccc;
+        background: #fff;
+        color: #444;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+        flex-shrink: 0;
+      }
+      .page-nav button:hover { background: #555; color: #fff; border-color: #555; }
+
+      /* ========== ドットインジケーター ========== */
+      .dots { display: flex; gap: 10px; align-items: center; }
+      .dot-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        user-select: none;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ccc;
+        transition: background 0.3s, width 0.3s;
+      }
+      .dot-item.active .dot { background: #555; width: 22px; border-radius: 4px; }
+      .dot-label { font-size: 0.58rem; color: #bbb; white-space: nowrap; transition: color 0.3s; }
+      .dot-item.active .dot-label { color: #555; font-weight: 700; }
+
+      @media (max-width: 500px) {
+        .dot-item:not(.active) .dot-label { display: none; }
+        .page-nav { height: 60px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ========== 固定ヘッダー（.page の外） ========== -->
+    <!--
+      ▼ フィルターボタン
+        showAll()         → 全件表示
+        filterGenre('X')  → data-genre に 'X' を含むカードだけ表示
+
+      data-filter 属性はページ切り替え時に active ボタンを復元するために使う。
+      ジャンルを追加するときは data-filter にジャンル名を入れる。
+    -->
+    <header class="scatter-header">
+      <div class="scatter-header-inner">
+        <span class="variant-label" id="variant-label">バリアント 1 — ランダム散布</span>
+        <!-- 速度トグル：全ページ共通 -->
+        <div id="speed-toggle" class="speed-nav">
+          <button class="speed-btn"        data-speed="gear1"  onclick="setSpeed('gear1',  this)">1速</button>
+          <button class="speed-btn"        data-speed="gear2"  onclick="setSpeed('gear2',  this)">2速</button>
+          <button class="speed-btn active" data-speed="gear3"  onclick="setSpeed('gear3',  this)">3速</button>
+          <button class="speed-btn"        data-speed="gear4"  onclick="setSpeed('gear4',  this)">4速</button>
+          <button class="speed-btn"        data-speed="gear5"  onclick="setSpeed('gear5',  this)">5速</button>
+          <span class="speed-nav-sep"></span>
+          <button class="speed-btn" id="btn-no-rotation"    onclick="toggleRotation(this)">無回転</button>
+          <button class="speed-btn" id="btn-simultaneous" onclick="toggleSimultaneous(this)">同時収束</button>
+        </div>
+        <nav class="filter-nav" id="filter-nav-0">
+          <button class="filter-btn active" data-filter="all"  onclick="showAll(this)">すべて</button>
+          <button class="filter-btn"        data-filter="A"    onclick="filterGenre('A', this)">ジャンルA</button>
+          <button class="filter-btn"        data-filter="B"    onclick="filterGenre('B', this)">ジャンルB</button>
+          <button class="filter-btn"        data-filter="C"    onclick="filterGenre('C', this)">ジャンルC</button>
+        </nav>
+        <nav class="filter-nav" id="filter-nav-1" style="display:none">
+          <button class="filter-btn active" data-filter="all"  onclick="showAll(this)">すべて</button>
+          <button class="filter-btn"        data-filter="A"    onclick="filterGenre('A', this)">ジャンルA</button>
+          <button class="filter-btn"        data-filter="B"    onclick="filterGenre('B', this)">ジャンルB</button>
+          <button class="filter-btn"        data-filter="C"    onclick="filterGenre('C', this)">ジャンルC</button>
+        </nav>
+        <nav class="filter-nav" id="filter-nav-2" style="display:none">
+          <button class="filter-btn active" data-filter="all"  onclick="showAll(this)">すべて</button>
+          <button class="filter-btn"        data-filter="A"    onclick="filterGenre('A', this)">ジャンルA</button>
+          <button class="filter-btn"        data-filter="B"    onclick="filterGenre('B', this)">ジャンルB</button>
+          <button class="filter-btn"        data-filter="C"    onclick="filterGenre('C', this)">ジャンルC</button>
+        </nav>
+        <nav class="filter-nav" id="filter-nav-3" style="display:none">
+          <button class="filter-btn active" data-filter="all"  onclick="showAll(this)">すべて</button>
+          <button class="filter-btn"        data-filter="A"    onclick="filterGenre('A', this)">ジャンルA</button>
+          <button class="filter-btn"        data-filter="B"    onclick="filterGenre('B', this)">ジャンルB</button>
+          <button class="filter-btn"        data-filter="C"    onclick="filterGenre('C', this)">ジャンルC</button>
+        </nav>
+        <nav class="filter-nav" id="filter-nav-4" style="display:none">
+          <button class="filter-btn active" data-filter="all"  onclick="showAll(this)">すべて</button>
+          <button class="filter-btn"        data-filter="A"    onclick="filterGenre('A', this)">ジャンルA</button>
+          <button class="filter-btn"        data-filter="B"    onclick="filterGenre('B', this)">ジャンルB</button>
+          <button class="filter-btn"        data-filter="C"    onclick="filterGenre('C', this)">ジャンルC</button>
+        </nav>
+      </div>
+    </header>
+
+
+    <!-- ========== ページ 0：バリアント 1 ========== -->
+    <div class="page page-0 active" id="page-0">
+      <!--
+        ▼ カード一覧
+          data-genre="A"     → ジャンルA のみ
+          data-genre="A B"   → ジャンルA と B の両方にヒット
+          href は任意のリンク先に変える
+      -->
+      <div class="cards-grid">
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#b5d5f5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 01</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B" href="#">
+          <div class="card-img" style="background:#f5c5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 02</p>
+            <p class="card-tag">#ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#c5f5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 03</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A B" href="#">
+          <div class="card-img" style="background:#d5b5f5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 04（A・B 両方）</p>
+            <p class="card-tag">#ジャンルA #ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#b5d5f5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 05</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B C" href="#">
+          <div class="card-img" style="background:#f5f5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 06（B・C 両方）</p>
+            <p class="card-tag">#ジャンルB #ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#c5f5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 07</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#b5d5f5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 08</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+      </div>
+    </div><!-- /page-0 -->
+
+
+    <!-- ========== ページ 1：バリアント 2 ========== -->
+    <div class="page page-1" id="page-1">
+      <div class="cards-grid">
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#c5e5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 01</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B" href="#">
+          <div class="card-img" style="background:#f5c5e5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 02</p>
+            <p class="card-tag">#ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#c5d5f5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 03</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A B" href="#">
+          <div class="card-img" style="background:#e5f5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 04（A・B 両方）</p>
+            <p class="card-tag">#ジャンルA #ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#c5e5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 05</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B C" href="#">
+          <div class="card-img" style="background:#f5e5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 06（B・C 両方）</p>
+            <p class="card-tag">#ジャンルB #ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#c5d5f5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 07</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#c5e5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 08</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+      </div>
+    </div><!-- /page-1 -->
+
+
+    <!-- ========== ページ 2：バリアント 3 ========== -->
+    <div class="page page-2" id="page-2">
+      <div class="cards-grid">
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#b5e5d5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 01</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B" href="#">
+          <div class="card-img" style="background:#f5d5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 02</p>
+            <p class="card-tag">#ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#d5b5e5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 03</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A B" href="#">
+          <div class="card-img" style="background:#e5f5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 04（A・B 両方）</p>
+            <p class="card-tag">#ジャンルA #ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#b5e5d5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 05</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B C" href="#">
+          <div class="card-img" style="background:#b5d5e5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 06（B・C 両方）</p>
+            <p class="card-tag">#ジャンルB #ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#d5b5e5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 07</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#b5e5d5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 08</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+      </div>
+    </div><!-- /page-2 -->
+
+
+    <!-- ========== ページ 3：バリアント 4 ========== -->
+    <div class="page page-3" id="page-3">
+      <div class="cards-grid">
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#f5e5a5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 01</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B" href="#">
+          <div class="card-img" style="background:#e5d5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 02</p>
+            <p class="card-tag">#ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#d5e5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 03</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A B" href="#">
+          <div class="card-img" style="background:#f5d5a5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 04（A・B 両方）</p>
+            <p class="card-tag">#ジャンルA #ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#f5e5a5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 05</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B C" href="#">
+          <div class="card-img" style="background:#e5f5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 06（B・C 両方）</p>
+            <p class="card-tag">#ジャンルB #ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#d5e5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 07</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#f5e5a5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 08</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+      </div>
+    </div><!-- /page-3 -->
+
+
+    <!-- ========== ページ 4：バリアント 5 ========== -->
+    <div class="page page-4" id="page-4">
+      <div class="cards-grid">
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#f5b5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 01</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B" href="#">
+          <div class="card-img" style="background:#f5c5d5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 02</p>
+            <p class="card-tag">#ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#e5b5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 03</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A B" href="#">
+          <div class="card-img" style="background:#f5d5e5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 04（A・B 両方）</p>
+            <p class="card-tag">#ジャンルA #ジャンルB</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#f5b5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 05</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="B C" href="#">
+          <div class="card-img" style="background:#f5c5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 06（B・C 両方）</p>
+            <p class="card-tag">#ジャンルB #ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="C" href="#">
+          <div class="card-img" style="background:#e5b5c5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 07</p>
+            <p class="card-tag">#ジャンルC</p>
+          </div>
+        </a>
+
+        <a class="card" data-genre="A" href="#">
+          <div class="card-img" style="background:#f5b5b5;"></div>
+          <div class="card-body">
+            <p class="card-title">カードタイトル 08</p>
+            <p class="card-tag">#ジャンルA</p>
+          </div>
+        </a>
+
+      </div>
+    </div><!-- /page-4 -->
+
+
+    <!-- 下部ナビゲーション -->
+    <nav class="page-nav">
+      <button id="btn-prev" onclick="navigate(-1)">← 前へ</button>
+      <div class="dots" id="dots"></div>
+      <button id="btn-next" onclick="navigate(1)">次へ →</button>
+    </nav>
+
+
+    <script>
+      /* ============================================================
+         スライドナビゲーション
+         ページを追加したら TOTAL / PAGE_LABELS / VARIANT_NAMES を更新する
+      ============================================================ */
+      const TOTAL = 5;
+      const PAGE_LABELS   = ["ランダム散布", "放射状散布", "下方落下", "渦巻き散布", "中心収束"];
+      const VARIANT_NAMES = ["バリアント 1 — ランダム散布", "バリアント 2 — 放射状散布", "バリアント 3 — 下方落下", "バリアント 4 — 渦巻き散布", "バリアント 5 — 中心収束"];
+
+      /* 速度設定（ページ0のスピードトグルで切り替える） */
+      const SPEED_CONFIGS = {
+        gear1: { scatterDur: 600, waitMs: 630, gatherDur: 800, staggerMs: 65 },
+        gear2: { scatterDur: 370, waitMs: 400, gatherDur: 510, staggerMs: 42 },
+        gear3: { scatterDur: 230, waitMs: 260, gatherDur: 330, staggerMs: 27 },
+        gear4: { scatterDur: 145, waitMs: 175, gatherDur: 215, staggerMs: 17 },
+        gear5: { scatterDur:  90, waitMs: 115, gatherDur: 150, staggerMs: 10 },
+      };
+      let currentSpeed    = 'gear3';
+      let currentRotation    = true;   // false = 無回転モード
+      let currentSimultaneous = false; // true = 同時収束モード
+
+      /* ページごとのアニメーション設定
+         scatter: 'random' = 完全ランダム方向
+                  'radial' = カードの画面位置から外側へ放射状に飛ぶ
+         速度は常に SPEED_CONFIGS[currentSpeed] を使う */
+      const VARIANT_CONFIG = [
+        { scatter: 'random'    },
+        { scatter: 'radial'    },
+        { scatter: 'drop'      },
+        { scatter: 'vortex'    },
+        { scatter: 'implosion' },
+      ];
+
+      /* 速度設定とページ設定をマージして返す */
+      function getCfg() {
+        return { ...SPEED_CONFIGS[currentSpeed], ...VARIANT_CONFIG[current] };
+      }
+
+      const isReload = performance.getEntriesByType("navigation")[0]?.type === "reload";
+      const saved = parseInt(sessionStorage.getItem("scatter-page") || "0");
+      let current = (isReload && saved >= 0 && saved < TOTAL) ? saved : 0;
+
+      /* ページごとの現在フィルター状態（null = すべて） */
+      const pageFilterState = new Array(TOTAL).fill(null);
+
+      /* ドット生成 */
+      const dotsEl = document.getElementById("dots");
+      for (let i = 0; i < TOTAL; i++) {
+        const item = document.createElement("div");
+        item.className = "dot-item";
+        item.onclick = () => goTo(i);
+        const d = document.createElement("div");
+        d.className = "dot";
+        const lbl = document.createElement("div");
+        lbl.className = "dot-label";
+        lbl.textContent = PAGE_LABELS[i];
+        item.appendChild(d);
+        item.appendChild(lbl);
+        dotsEl.appendChild(item);
+      }
+
+      function showPage(index) {
+        for (let i = 0; i < TOTAL; i++) {
+          document.getElementById("page-" + i).classList.remove("active", "slide-out-left", "slide-out-right");
+          dotsEl.children[i].classList.remove("active");
+        }
+        current = index;
+        document.getElementById("page-" + current).classList.add("active");
+        dotsEl.children[current].classList.add("active");
+        sessionStorage.setItem("scatter-page", current);
+        updateNav();
+      }
+
+      function goTo(index, dir) {
+        if (index === current) return;
+        if (dir === undefined) dir = index > current ? 1 : -1;
+
+        const prevEl = document.getElementById("page-" + current);
+        const nextEl = document.getElementById("page-" + index);
+
+        nextEl.classList.remove("slide-out-left", "slide-out-right");
+        nextEl.style.transition = "none";
+        nextEl.style.transform = `translateX(${dir * 100}%)`;
+        nextEl.style.opacity = "0";
+        nextEl.style.pointerEvents = "none";
+        nextEl.getBoundingClientRect();
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            nextEl.style.transition = "";
+            prevEl.classList.remove("active");
+            prevEl.classList.add(dir > 0 ? "slide-out-left" : "slide-out-right");
+            nextEl.style.transform = "";
+            nextEl.style.opacity = "";
+            nextEl.style.pointerEvents = "";
+            nextEl.classList.add("active");
+            dotsEl.children[current].classList.remove("active");
+            current = index;
+            dotsEl.children[current].classList.add("active");
+            document.getElementById("page-" + current).scrollTop = 0;
+            sessionStorage.setItem("scatter-page", current);
+            updateNav();
+          });
+        });
+      }
+
+      function navigate(dir) {
+        let next = current + dir;
+        if (next < 0) next = TOTAL - 1;
+        if (next >= TOTAL) next = 0;
+        goTo(next, dir);
+      }
+
+      /* ヘッダーのラベル・速度トグル・フィルターナビをページに合わせて更新 */
+      function updateNav() {
+        document.getElementById("variant-label").textContent = VARIANT_NAMES[current];
+        /* ページごとのフィルターナビを切り替える */
+        for (let i = 0; i < TOTAL; i++) {
+          const nav = document.getElementById("filter-nav-" + i);
+          if (nav) nav.style.display = i === current ? "" : "none";
+        }
+        syncFilterButtons(pageFilterState[current]);
+      }
+
+      /* 表示中のフィルターナビの active を現在ページの状態に同期する */
+      function syncFilterButtons(genre) {
+        const nav = document.getElementById("filter-nav-" + current);
+        if (!nav) return;
+        nav.querySelectorAll(".filter-btn").forEach(btn => {
+          const f = btn.dataset.filter;
+          btn.classList.toggle("active", genre === null ? f === "all" : f === genre);
+        });
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") navigate(1);
+        if (e.key === "ArrowLeft"  || e.key === "ArrowUp")   navigate(-1);
+      });
+
+      let touchStartX = 0, touchStartY = 0;
+      document.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      document.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+      }, { passive: true });
+
+      window.addEventListener("pageshow", (e) => {
+        if (e.persisted) { showPage(0); }
+      });
+
+      /* ============================================================
+         散布フィルター
+         ヘッダーは共有なので、常に current ページを対象にする。
+         ページごとにフィルター状態（pageFilterState）を記憶し、
+         ページ切り替え時に syncFilterButtons() で復元する。
+      ============================================================ */
+      let _filtering = false;
+
+      /* カードの散布ベクトルを計算する */
+      function getScatterVec(card, cfg) {
+        const rot = r => currentRotation ? r : 0;
+        if (cfg.scatter === 'radial') {
+          /* カードの画面中心 → ビューポート中心 からの方向角に沿って外側へ */
+          const rect  = card.getBoundingClientRect();
+          const cx    = rect.left + rect.width  / 2;
+          const cy    = rect.top  + rect.height / 2;
+          const angle = Math.atan2(cy - window.innerHeight / 2, cx - window.innerWidth / 2)
+                        + (Math.random() - 0.5) * 0.5;
+          const dist  = 280 + Math.random() * 220;
+          return { dx: Math.cos(angle) * dist, dy: Math.sin(angle) * dist, rot: rot((Math.random() - 0.5) * 30) };
+        }
+        if (cfg.scatter === 'drop') {
+          /* 落下しながら水平中央（X軸中央）に収束し、同じ位置から舞い戻る */
+          const rect   = card.getBoundingClientRect();
+          const cardCx = rect.left + rect.width / 2;
+          const dx = (window.innerWidth / 2 - cardCx) * 1.0 + (Math.random() - 0.5) * 10;
+          const dy = window.innerHeight + 80 + Math.random() * 80;
+          return { dx, dy, rot: rot((Math.random() - 0.5) * 20) };
+        }
+        if (cfg.scatter === 'vortex') {
+          /* 放射方向から約70°ずらして螺旋状に飛ぶ */
+          const rect  = card.getBoundingClientRect();
+          const cx    = rect.left + rect.width  / 2;
+          const cy    = rect.top  + rect.height / 2;
+          const radial = Math.atan2(cy - window.innerHeight / 2, cx - window.innerWidth / 2);
+          const angle  = radial + 1.2 + (Math.random() - 0.5) * 0.4;
+          const dist   = 300 + Math.random() * 200;
+          return { dx: Math.cos(angle) * dist, dy: Math.sin(angle) * dist, rot: rot((Math.random() - 0.5) * 180) };
+        }
+        if (cfg.scatter === 'implosion') {
+          /* カードの画面位置から画面中央に向かって収束し、中央から弾け出る */
+          const rect = card.getBoundingClientRect();
+          const cx   = rect.left + rect.width  / 2;
+          const cy   = rect.top  + rect.height / 2;
+          const dx   = (window.innerWidth  / 2 - cx) + (Math.random() - 0.5) * 20;
+          const dy   = (window.innerHeight / 2 - cy) + (Math.random() - 0.5) * 20;
+          return { dx, dy, rot: rot((Math.random() - 0.5) * 30) };
+        }
+        /* random（デフォルト） */
+        const angle = Math.random() * Math.PI * 2;
+        const dist  = 150 + Math.random() * 350;
+        return { dx: Math.cos(angle) * dist, dy: Math.sin(angle) * dist, rot: rot((Math.random() - 0.5) * 45) };
+      }
+
+      function doFilter(genre, pageEl, cfg) {
+        if (_filtering) return;
+
+        const allCards = [...pageEl.querySelectorAll(".card")];
+        const nextVisible = genre === null
+          ? allCards
+          : allCards.filter(c => (c.dataset.genre || "").includes(genre));
+        const currentVisible = allCards.filter(c => !c.classList.contains("hidden"));
+
+        _filtering = true;
+
+        /* --- Phase 1: 散る --- */
+        currentVisible.forEach(card => {
+          const { dx, dy, rot } = getScatterVec(card, cfg);
+          card.style.setProperty("--dx",  dx  + "px");
+          card.style.setProperty("--dy",  dy  + "px");
+          card.style.setProperty("--rot", rot + "deg");
+          card.style.animationDuration = cfg.scatterDur + "ms";
+          card.classList.remove("is-gathering");
+          card.classList.add("is-scattering");
+        });
+
+        setTimeout(() => {
+          allCards.forEach(c => {
+            c.classList.remove("is-scattering", "is-gathering");
+            c.style.removeProperty("--dx");
+            c.style.removeProperty("--dy");
+            c.style.removeProperty("--rot");
+            c.style.animationDelay = "";
+            c.style.animationDuration = "";
+            c.classList.add("hidden");
+          });
+
+          /* --- Phase 2: 集まる --- */
+          /* 'random' 以外はカード位置を使うため、display:none のまま
+             getBoundingClientRect() を呼ぶとゼロが返ってしまう。
+             先に hidden を外してリフローを挟んでから座標を測る。 */
+          const posDependent = cfg.scatter !== 'random';
+          if (posDependent) {
+            nextVisible.forEach(card => card.classList.remove("hidden"));
+            nextVisible[0]?.getBoundingClientRect(); // reflow
+          }
+          nextVisible.forEach((card, i) => {
+            let dx, dy, rot;
+            if (cfg.scatter === 'implosion') {
+              const rect   = card.getBoundingClientRect();
+              const cardCx = rect.left + rect.width  / 2;
+              const cardCy = rect.top  + rect.height / 2;
+              dx  = window.innerWidth  / 2 - cardCx + (Math.random() - 0.5) * 20;
+              dy  = window.innerHeight / 2 - cardCy + (Math.random() - 0.5) * 20;
+              rot = currentRotation ? (Math.random() - 0.5) * 30 : 0;
+            } else if (cfg.scatter === 'drop') {
+              const rect   = card.getBoundingClientRect();
+              const cardCx = rect.left + rect.width / 2;
+              dx  = (window.innerWidth / 2 - cardCx) * 0.75 + (Math.random() - 0.5) * 30;
+              dy  = window.innerHeight + 80 + Math.random() * 80;
+              rot = currentRotation ? (Math.random() - 0.5) * 20 : 0;
+            } else {
+              ({ dx, dy, rot } = getScatterVec(card, cfg));
+            }
+            card.style.setProperty("--dx",  dx  + "px");
+            card.style.setProperty("--dy",  dy  + "px");
+            card.style.setProperty("--rot", rot + "deg");
+            card.style.animationDuration = cfg.gatherDur + "ms";
+            card.style.animationDelay    = currentSimultaneous ? "0ms" : i * cfg.staggerMs + "ms";
+            if (!posDependent) card.classList.remove("hidden");
+            card.classList.add("is-gathering");
+          });
+
+          const effectiveStagger = currentSimultaneous ? 0 : cfg.staggerMs;
+          const totalGather = cfg.gatherDur + (nextVisible.length > 0 ? (nextVisible.length - 1) * effectiveStagger : 0) + 60;
+          setTimeout(() => {
+            nextVisible.forEach(card => {
+              card.classList.remove("is-gathering");
+              card.style.removeProperty("--dx");
+              card.style.removeProperty("--dy");
+              card.style.removeProperty("--rot");
+              card.style.animationDelay = "";
+              card.style.animationDuration = "";
+            });
+            _filtering = false;
+          }, totalGather);
+
+        }, cfg.waitMs);
+      }
+
+      function setSpeed(speed, btn) {
+        currentSpeed = speed;
+        document.querySelectorAll("[data-speed]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      }
+
+      function toggleRotation(btn) {
+        currentRotation = !currentRotation;
+        btn.classList.toggle("active", !currentRotation);
+      }
+
+      function toggleSimultaneous(btn) {
+        currentSimultaneous = !currentSimultaneous;
+        btn.classList.toggle("active", currentSimultaneous);
+      }
+
+      function filterGenre(genre, btn) {
+        const pageEl = document.getElementById("page-" + current);
+        pageFilterState[current] = genre;
+        syncFilterButtons(genre);
+        doFilter(genre, pageEl, getCfg());
+      }
+
+      function showAll(btn) {
+        const pageEl = document.getElementById("page-" + current);
+        pageFilterState[current] = null;
+        syncFilterButtons(null);
+        doFilter(null, pageEl, getCfg());
+      }
+
+      showPage(current);
+    </script>
+
+  </body>
+</html>
