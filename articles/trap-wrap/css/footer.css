@@ -1,0 +1,56 @@
+/* ==============================
+Footer
+============================== */
+
+footer {
+  text-align: center;
+}
+
+.home-btn {
+  font-size: 35px;
+  text-decoration: none;
+  background-color: #ffc90d;
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 8px;
+  padding: 3px 15px;
+  margin-top: 10px;
+  margin-top: 1em;
+  margin-bottom: 4vw;
+  /* margin-bottom: 10vw; スマホ版だと画面下が白く空いてしまうので仕方なくボトムを長く取った  */
+}
+
+.home-btn:hover {
+  opacity: 1;
+}
+
+/* 三毛猫と桜のアイコンPC */
+
+/* アイコンが存在しないとネガティブマージンが効かないので焦った */
+
+/* 普通のマージンだとアイコンが無くても効くのが嫌らしい */
+
+.icon {
+  margin-bottom: -3px;
+  width: 35px;
+}
+
+/* ======================
+スマホ用
+========================*/
+
+@media screen and (max-width: 769px) {
+
+  /* 三毛猫と桜のアイコンスマホ */
+  .icon {
+    width: 20px;
+    margin-bottom: -0.5vw;
+  }
+
+  /* スマホ */
+  .home-btn {
+    font-size: 20px;
+    padding: 10px 15px;
+  }
+}

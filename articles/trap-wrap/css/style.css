@@ -1,0 +1,154 @@
+/* ==============================================
+   捕獲器の包み方 — ページ専用スタイル
+   modal.css は別ファイルで管理
+   ============================================== */
+
+
+/* ========== 画像サイズ ========== */
+
+/* 全 img 要素の基底幅 */
+img {
+  width: 100%;
+}
+
+/* 幅を明示指定するサイズクラス */
+.img70 { width: 70%; }
+.img80 { width: 80%; }
+.img90 { width: 90%; }
+
+
+/* ========== 「用意して頂くもの」セクション ========== */
+
+/* ベージュ背景の枠ボックス */
+#prep-section-wrap {
+  background: #dacab3;
+  width: 99%;
+  padding: 20px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin-bottom: 3em;
+}
+
+
+/* ========== 手順カードのコンテナ ========== */
+
+
+/* カードを縦に積む内側コンテナ */
+#uti {
+  max-width: 450px;
+  flex-direction: column;
+}
+
+
+/* ========== 手順1コマ分のカード（.card） ========== */
+
+/* 画像＋説明テキストをまとめる1枚のカード */
+.card {
+  border: 1px solid;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+
+/* カード内セル（画像・テキスト共通） */
+.card > div {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+/* 画像コマ: 中央配置 */
+.card > div:nth-of-type(1) {
+  margin: auto;
+}
+
+/* テキストコマ: 白背景・角丸ボックス */
+.card > div:nth-of-type(2) {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-shadow:
+    0 0 3px 2px #0e6f2e68,
+    0 0 4px 5px #ffffff inset;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+
+/* モーダルトリガーの基準点（.positionA の position:absolute が効くように） */
+.positionR {
+  position: relative;
+}
+
+
+/* ========== モーダルトリガーの波紋アニメーション ========== */
+
+/* 「Photo」ボタンの配置・円形・点滅アニメーション */
+.positionA {
+  position: absolute;
+  top: 3%;
+  right: 1%;
+  width: 11vmin;
+  height: 11vmin;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: blinkBorder 2s ease infinite running;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* 緑の枠線が消えていくアニメーション */
+@keyframes blinkBorder {
+  0%   { border: 15px double #168e1cd7; box-shadow: 0px 0px 2px 2px #168e1cd7; color: #168e1cd7; }
+  100% { border: 3px solid #168e1c0f; color: #168e1c0f; }
+}
+
+/* 「Photo」文字の色フェードアニメーション */
+.textPhoto {
+  animation: blinkcolor 2s ease infinite running;
+}
+
+@keyframes blinkcolor {
+  0%   { color: #168e1c56; }
+  100% { color: #168e1c; }
+}
+
+/* 指マーク画像: 右下に絶対配置 */
+.imgFing {
+  width: 35%;
+  position: absolute;
+  bottom: 0%;
+}
+
+
+/* ========== レスポンシブ ========== */
+
+/* PC大画面（1100px〜）: 横並びカードの幅を制限 */
+@media screen and (min-width: 1100px) {
+  /* 暫定: セクション高さ制限 */
+  #prep-section-wrap { max-height: 500px; }
+}
+
+/* タブレット以下（769px以下） */
+@media screen and (max-width: 769px) {
+  /* カード角丸を小さく */
+  .card { border-radius: 10px; }
+/* テキストコマは中央寄せ */
+  .card > div:nth-of-type(2) { margin: auto; }
+  /* 小さい画像クラスの幅を拡大 */
+  .img70 { width: 90%; }
+}
+
+/* スマホ（500px以下） */
+@media screen and (max-width: 500px) {
+  /* sotosoto のパディングを縮小 */
+  #prep-section-wrap { padding: 2%; width: 95%; }
+  /* カードを折り返し可能に */
+  .card { flex-wrap: wrap; }
+  /* Photo ボタンを大きく */
+  .positionA { width: 20vmin; height: 20vmin; }
+}

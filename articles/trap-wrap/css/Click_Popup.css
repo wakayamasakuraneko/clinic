@@ -1,0 +1,154 @@
+/* 参考：CSSのみでクリックで画像を拡大する（Lightboxもどき） */
+/* https://pixelog.net/post/2019/05/20/214000/ */
+
+.lb {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .7);
+    opacity: 0;
+    transition: .3s opacity ease;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.lb img {
+    width: auto;
+    max-height: 100%;
+    cursor: pointer;
+}
+
+.lb img,
+.lb iframe {
+    transform: scale(.85);
+    transition: .3s all ease;
+}
+
+.lb:target {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 101;
+}
+
+.lb:target img,
+.lb:target iframe {
+    transform: scale(1);
+}
+
+/* 波紋の位置大きさ等 */
+.positionA {
+    position: absolute;
+    top: 3%;
+    right: 1%;
+    width: 11vmin;
+    height: 11vmin;
+    box-sizing: border-box;
+    /* border: solid 10px #2f00ff; */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: blinkBorder 2s ease infinite running;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+@keyframes blinkBorder {
+    0% {
+        border: 15px double #168e1cd7;
+        box-shadow: 0px 0px 2px 2px #168e1cd7;
+        color: #168e1cd7;
+    }
+
+    100% {
+        border: 3px solid #168e1c0f;
+        /* box-shadow: 0px 2px 2px 2px #168e1c0f; */
+        color: #168e1c0f;
+    }
+}
+
+@keyframes blinkcolor {
+    0% {
+        color: #168e1c56;
+
+    }
+
+    100% {
+        /* box-shadow: 0px 2px 2px 2px #168e1c0f; */
+        color: #168e1c;
+    }
+}
+
+.textPhoto {
+    animation: blinkcolor 2s ease infinite running;
+}
+
+/* 指マーク */
+.imgFing {
+    width: 35%;
+    position: absolute;
+    bottom: 0%;
+}
+
+@media screen and (min-width: 1000px) {
+    .lb img {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .lb img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .positionA {
+        width: 20vmin;
+        height: 20vmin;
+    }
+
+}
+
+
+
+
+
+/* なんちゃって閉じるボタン*/
+/* .lb::before,
+.lb::after {
+    display: block;
+    position: fixed;
+    content: "";
+    width: 24px;
+    height: 3px;
+    top: 24px;
+    right: 12px;
+    background: #fff;
+    border-radius: 4px;
+} */
+
+/* .lb::before {
+    transform: rotate(-315deg);
+}
+
+.lb::after {
+    transform: rotate(315deg);
+} */
+
+/* .anime {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    animation: blinkcolor 2s ease infinite running;
+    margin: 0 auto;
+} */

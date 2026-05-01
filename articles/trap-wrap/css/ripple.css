@@ -1,0 +1,66 @@
+/* lick_Popup.cssと内容同じ */
+/* 違う点は.lbが必要ないので削除 */
+
+/* 波紋の位置大きさ等 */
+.positionA {
+    position: absolute;
+    top: 3%;
+    right: 1%;
+    width: 11vmin;
+    height: 11vmin;
+    box-sizing: border-box;
+    /* border: solid 10px #2f00ff; */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: blinkBorder 2s ease infinite running;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+@keyframes blinkBorder {
+    0% {
+        border: 15px double #168e1cd7;
+        box-shadow: 0px 0px 2px 2px #168e1cd7;
+        color: #168e1cd7;
+    }
+
+    100% {
+        border: 3px solid #168e1c0f;
+        color: #168e1c0f;
+    }
+}
+
+@keyframes blinkcolor {
+    0% {
+        color: #168e1c56;
+    }
+
+    100% {
+        color: #168e1c;
+    }
+}
+
+.textPhoto {
+    animation: blinkcolor 2s ease infinite running;
+}
+
+/* 指マーク */
+.imgFing {
+    width: 35%;
+    position: absolute;
+    bottom: 0%;
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .positionA {
+        width: 20vmin;
+        height: 20vmin;
+    }
+
+}

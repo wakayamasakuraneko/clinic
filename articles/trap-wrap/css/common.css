@@ -1,0 +1,144 @@
+/* common */
+
+
+#sotosoto {
+  background: #dacab3;
+  width: 99%;
+  padding: 20px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin-bottom: 3em;
+}
+
+#soto {
+  width: 99%;
+  /* box-sizing: border-box;
+  -webkit-box-sizing: border-box; */
+  margin: 0 auto;
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+
+#uti {
+  max-width: 450px;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: center;
+}
+
+ul.flx34 {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  margin: 1vw 1vw 2vw 1vw;
+  padding: 20px;
+  list-style: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-shadow:
+    0 0 8px 5px #ffffff,
+    0 0 5px 5px #0e6f2e68 inset;
+  border-radius: 3em 1em 4em 1.4em/1.4em 4em 1em 3em;
+}
+
+ul.flx34 li {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+/* 画像のコマ */
+ul.flx34 li:nth-of-type(1) {
+  margin: auto;
+}
+
+/* 画像の下の文字コマ */
+ul.flx34 li:nth-of-type(2) {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-shadow:
+    0 0 3px 2px #0e6f2e68,
+    0 0 4px 5px #ffffff inset;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+/* 新聞紙でもOKの枠のみ */
+ul.shadow {
+  margin-top: 5em;
+  /* border: solid #d3253f; */
+  box-shadow:
+    0 0 2px 1.5px #31338dec,
+    0 0 2px 3px #229b1c inset;
+  border-radius: 20px;
+}
+
+.positionR {
+  position: relative;
+}
+
+@media screen and (min-width: 1100px) {
+  /* ul.flx34 { */
+  .row {
+    max-width: 450px;
+  }
+}
+
+/* 要るのかどうだか分からない */
+@media screen and (min-width: 1100px) {
+  #sotosoto {
+    max-height: 500px;
+  }
+
+  .column {
+    max-height: 400px;
+  }
+}
+
+/* スマホ用 */
+
+@media screen and (max-width: 769px) {
+  #soto.column {
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  ul.flx34 {
+    border-radius: 10px;
+  }
+
+  ul.row {
+    flex-direction: row;
+  }
+
+  ul.flx34 li:nth-of-type(2) {
+    margin: auto;
+  }
+
+  /* ul.flx34 li.TextAlign {
+    text-align: justify;
+  } */
+}
+
+@media screen and (max-width: 500px) {
+  #sotosoto {
+    padding: 2%;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  ul.flx34 {
+    flex-wrap: wrap;
+  }
+}
