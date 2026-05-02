@@ -1,0 +1,36 @@
+/* Chrome、Safari */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+
+/* Chrome、Safari以外 */
+summary {
+  width: 8em;
+  border: 2px solid#ffa435;
+  border-radius: 10px;
+  background: #ffd96f;
+  display: block;
+  list-style: none;
+  font-size: 27px;
+}
+
+summary {
+  cursor: pointer;
+}
+
+details {
+  height: 2em;
+  transition: .5s;
+}
+
+details[open] {
+  height: fit-content;
+  background: #c3f6ff;
+}
+
+
+
+.detailFlex {
+  display: flex;
+}

@@ -1,0 +1,36 @@
+/* アコーディオン関係 */
+
+.accordion,
+.no-style-button {
+    color: #444;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.6s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    font-weight: bold;
+}
+
+.accordion {
+    background-color: #faffb5;
+    border: 1px solid #ab9e58;
+    font-size: 17px;
+}
+
+.no-style-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+}
+
+.accordion:hover,
+.accordion.is-active {
+    background-color: #ffdd77;
+}
+
+.no-style-button:hover,
+.no-style-button.is-active {
+    background-color: #ace0e0;
+}

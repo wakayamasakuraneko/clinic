@@ -1,0 +1,360 @@
+<!DOCTYPE html><!-- 馴れない猫を馴れさせる -->
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>馴れない猫を馴れさせる｜和歌山スペイクリニック さくらねこ</title>
+  <link rel="icon" href="../../favicon/dummy.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/css01.css">
+  <link rel="stylesheet" href="css/css02.css">
+  <link rel="stylesheet" href="css/css03.css">
+  <link rel="stylesheet" href="css/css04.css">
+  <link rel="stylesheet" href="css/css05.css">
+  <link rel="stylesheet" href="css/css06.css">
+  <style>
+    body { padding-top: 68px; }
+
+    #article-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #eee183;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      z-index: 200;
+      box-sizing: border-box;
+    }
+    #article-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      color: #666;
+      text-decoration: none;
+      font-size: 0.62rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.13);
+      border: 1px solid rgba(220, 220, 220, 0.7);
+      transition: color 0.2s, box-shadow 0.2s;
+    }
+    #article-nav a:hover { color: #4a7c2d; }
+    #article-nav .nav-icon { font-size: 1.35rem; line-height: 1; }
+
+    footer {
+      background: none;
+      color: inherit;
+      display: block;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px dashed #ccc;
+    }
+    .article-dates {
+      font-size: 0.82rem;
+      color: #999;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="article-nav">
+    <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+    <div style="display:flex;gap:8px;">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </div>
+  </nav>
+
+  <header>
+    <h2>馴れない猫を馴れさせる</h2>
+  </header>
+
+  <img src="images/d_kyoubouneko.jpg" alt="kyoubouneko" style="display: block; margin: auto;">
+  <br>
+
+  <div class="maxWidth900px">
+    <p class="introP">猫を新しい環境に慣らすためには、愛情と忍耐が必要です。不可能ではありません。時間を掛けて猫との絆を深める方法を見ていきましょう。</p>
+
+    <div class="Negative_Margin">
+
+      <div class="all-open">
+        <button id="toggle-all">全て広げるor閉じる</button>
+      </div>
+
+      <button class="accordion">
+        <div class="i_box">
+          <div class="one_i"></div>
+        </div>
+        &emsp;脱走防止と食事の確認
+      </button>
+      <div class="panel">
+        <div class="panel-content">
+          <img src="images/dassou_shokuji.jpg" alt="dassou_shokuji">
+          <p>猫が別の部屋に逃げてしまうと、再捕獲が難しくなり、猫にさらなる恐怖を与えかねません。そのため、ケージの開閉は、窓や他の部屋への扉が全て閉まっていることを確認する癖をつけましょう。<br><br>
+            人の気配を感じると食事を摂らない事があるため、別室でケージを覆って少し暗くしてやると、安心だと認識してもらえる場合があります。<br>
+            温度管理にも注意し、2日以上食べない場合は最寄りの動物病院に相談してください。</p>
+        </div>
+      </div>
+
+      <button class="accordion">
+        <div class="i_box">
+          <div class="one_i"></div>
+        </div>
+        &emsp;馴れてくると人前でも食べる
+      </button>
+      <div class="panel">
+        <div class="panel-content">
+          <img class="step-image hidden" src="images/Jap01_09.jpg" alt="Jap01_09">
+          <img class="step-image hidden" src="images/Jap01_01.jpg" alt="Jap01_01">
+          <img class="step-image hidden" src="images/Jap01_02.jpg" alt="Jap01_02">
+          <img class="step-image hidden" src="images/Jap01_03.jpg" alt="Jap01_03">
+          <img class="step-image hidden" src="images/Jap01_04.jpg" alt="Jap01_04">
+          <img class="step-image hidden" src="images/Jap01_05.jpg" alt="Jap01_05">
+          <img class="step-image hidden" src="images/Jap01_06.jpg" alt="Jap01_06">
+          <img class="step-image hidden" src="images/Jap01_07.jpg" alt="Jap01_07">
+          <img class="step-image hidden" src="images/Jap01_08.jpg" alt="Jap01_08">
+          <p>
+            食事が安定し排尿排便も問題なく確認できたら、ケージの覆いを減らし、猫を人と同じ空間で過ごす訓練を始めましょう。視線を気にせず食事を摂れていれば猫が馴れてきた証拠です。<br>
+            猫がこちらを見ていたら、敵意のないアイコンタクトとしてゆっくり目を閉じてみてください。
+          </p>
+        </div>
+      </div>
+
+      <button class="accordion">
+        <div class="i_box">
+          <div class="one_i"></div>
+        </div>
+        &emsp;優しく話しかけてみる
+      </button>
+      <div class="panel">
+        <div class="panel-content">
+          <img src="images/hanasikake3.jpg" alt="hanasikake3">
+          <p>猫が安心して食事を摂れるようになったら、優しく話しかけてみましょう。猫の反応は得られないかもしれませんが、声をかけられることが無害であることを覚えて貰いましょう。<br>
+            また猫が鳴いたら、優しく返事してみましょう。以降のステップをいくらか短縮できるかもしれません。猫は信頼している相手にしか鳴かないのです。</p>
+        </div>
+      </div>
+
+      <button class="accordion">
+        <div class="i_box">
+          <div class="one_i"></div>
+        </div>
+        &emsp;ケージ越しに体をさすってみる
+      </button>
+      <div class="panel">
+        <div class="panel-content">
+          <img src="images/bouchuuru2.jpg" alt="bouchuuru2">
+          <p>
+            孫の手や撫で用ブラシを使えば先端にチュールを付けて食べさせる事も出来ます。更にそれらを使えば頭を撫でる事もできる筈です。<br>最初は怒っていますが、害が無いと分かれば徐々に慣れてくるでしょう。<br>直接手で触る場合は噛まれる危険があるためケージ越しに、まずは下半身側を触る訓練から始めます。
+          </p>
+        </div>
+      </div>
+
+      <button class="accordion">
+        <div class="i_box">
+          <div class="one_i"></div>
+        </div>
+        &emsp;ケージを開けて触る訓練
+      </button>
+      <div class="panel">
+        <div class="panel-content">
+          <img src="images/ke-jinai4.jpg" alt="ke-jinai">
+          <p>
+            ケージ越しにお尻側を触って怒らなくなってきたら、孫の手や撫で用ブラシで与えていたチュールを今度は直接手につけて食べさせる事を試してみます。<br>これが出来れば食べてる間に顔を触る事が出来るかもしれません。猫が安心していると感じたら徐々に触れる範囲を増やして行きます。<br>馴れないうちは厚手袋やバスタオルを併用しながらが良いでしょう。
+          </p>
+        </div>
+      </div>
+
+      <button class="accordion">
+        <div class="i_box">
+          <div class="one_i"></div>
+        </div>
+        &emsp;抱っこの訓練
+      </button>
+      <div class="panel">
+        <div class="panel-content">
+          <img src="images/net_hug.jpg" alt="net_hug">
+          <p>ここから先は上級者向けですが、抱っこを訓練する方法もあります。<br> ケージ内で洗濯ネットを被せてゆっくりと体を包み込み、全身入れたらケージから出してバスタオルで包んだ状態で撫でてみます。
+            <br>これに慣れれば直接抱っこできるまでもう少しです。<br><br>
+            ※ ネット入れタオル巻きは爪切りや投薬にも応用できます。できればマスターしておきたい所ですね。
+          </p>
+        </div>
+      </div>
+
+      <button class="accordion">
+        <div class="i_box">
+          <div class="one_i"></div>
+        </div>
+        &emsp;おまけ：馴れやすさ馴れにくさ
+      </button>
+      <div class="panel panel-no-padding">
+        <div class="green-box">
+          <div class="sub-item">
+            　●　育ち方の違い
+            <p>外に長くいればいるほど馴れにくく、3-4ヶ月齢以上は難易度が高くなる。<br>
+              置き餌や撒き餌で育つと人前で食べる事に抵抗を感じる様になり、人が居る所では食べなくなってしまう。<br>人前で食べる猫は警戒心がまだ低い傾向にある(だからと言って油断は禁物)。</p>
+          </div>
+          <div class="sub-item">
+            　●　性別による違い
+            <p>子猫の内はメスの方が警戒心が強く馴れづらい。オスは割とちょろい傾向にある。<br>
+              一方で、一度も人の愛情に触れずにいるとオスでも非常に手強くなる。</p>
+          </div>
+          <div class="table-container">
+            <button class="no-style-button">
+              &nbsp;<div class="i_box">
+                <div class="one_i"></div>
+              </div>
+              &emsp;体重による違い
+            </button>
+            <div class="panel">
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>～500g</td>
+                    <td class="desktop-only"><img src="images/BW/500g.png" alt="画像①"></td>
+                    <td class="desktop-only">ちょろい</td>
+                    <td class="mobile-only" rowspan="2">ちょろい</td>
+                  </tr>
+                  <tr>
+                    <td class="mobile-only"><img src="images/BW/500g.png" alt="画像②"></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>～1kg</td>
+                    <td class="desktop-only"><img src="images/BW/1000g.png" alt="1000g"></td>
+                    <td class="desktop-only">引っ掻かれたり噛まれたりするかも知れないが大体の人は可能。</td>
+                    <td class="mobile-only" rowspan="2">引っ掻かれたり噛まれたりするかも知れないが大体の人は可能。</td>
+                  </tr>
+                  <tr>
+                    <td class="mobile-only"><img src="images/BW/1000g.png" alt="1000g"></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>～1.5kg</td>
+                    <td class="desktop-only"><img src="images/BW/1500g.png" alt="1500g"></td>
+                    <td class="desktop-only">そこそこ危なくなってくるので、バスタオルや厚手袋が必要。</td>
+                    <td class="mobile-only" rowspan="2">そこそこ危なくなってくるので、バスタオルや厚手袋が必要。</td>
+                  </tr>
+                  <tr>
+                    <td class="mobile-only"><img src="images/BW/1500g.png" alt="1500g"></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>～2kg</td>
+                    <td class="desktop-only"><img src="images/BW/2000g.png" alt="2000g"></td>
+                    <td class="desktop-only">脱走時のタモ(大きい魚網)があった方が良い。結構きついが一般的なボランティアレベルなら可。初心者にはキツイ。</td>
+                    <td class="mobile-only" rowspan="2">脱走時のタモ(大きい魚網)があった方が良い。結構きついが一般的なボランティアレベルなら可。初心者にはキツイ。</td>
+                  </tr>
+                  <tr>
+                    <td class="mobile-only"><img src="images/BW/2000g.png" alt="2000g"></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>～3kg</td>
+                    <td class="desktop-only"><img src="images/BW/3000g.png" alt="3000g"></td>
+                    <td class="desktop-only">中〜上級者レベル　コツや方法を知っていれば可。
+                      忍耐が無いと駄目。心の余裕を。</td>
+                    <td class="mobile-only" rowspan="2">中〜上級者レベル　コツや方法を知っていれば可。
+                      忍耐が無いと駄目。心の余裕を。</td>
+                  </tr>
+                  <tr>
+                    <td class="mobile-only"><img src="images/BW/3000g.png" alt="3000g"></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>3～5kg</td>
+                    <td class="desktop-only"><img src="images/BW/4000g.png" alt="4000g"></td>
+                    <td class="desktop-only">上級者も普通に大怪我を警戒。ケージの入れ替えは2人掛かりで。</td>
+                    <td class="mobile-only" rowspan="2">上級者も普通に大怪我を警戒。ケージの入れ替えは2人掛かりで。</td>
+                  </tr>
+                  <tr>
+                    <td class="mobile-only"><img src="images/BW/4000g.png" alt="4000g"></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>5kg～</td>
+                    <td class="desktop-only"><img src="images/BW/5000g.png" alt="5000g"></td>
+                    <td class="desktop-only">ここから先は大体オスの世界。メスの野良はほぼいない。</td>
+                    <td class="mobile-only" rowspan="2">ここから先は大体オスの世界。メスの野良はほぼいない。</td>
+                  </tr>
+                  <tr>
+                    <td class="mobile-only"><img src="images/BW/5000g.png" alt="5000g"></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>7kg～</td>
+                    <td class="desktop-only"><img src="images/BW/7000g.png" alt="7000g"></td>
+                    <td class="desktop-only">
+                      レベルMAX。達人でも大怪我するレベル。もうビーストマスター…と思いきやここまで巨大だと体格を維持するのに人の餌付けが不可欠になってくるので、意外と馴れている事も…</td>
+                    <td class="mobile-only" rowspan="2">
+                      レベルMAX。達人でも大怪我するレベル。もうビーストマスター…と思いきやここまで巨大だと体格を維持するのに人の餌付けが不可欠になってくるので、意外と馴れている事も…</td>
+                  </tr>
+                  <tr>
+                    <td class="mobile-only"><img src="images/BW/7000g.png" alt="7000g"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="accordion">
+        <div class="i_box">
+          <div class="one_i"></div>
+        </div>
+        &emsp;もし噛まれたら…
+      </button>
+      <div class="panel border2px">
+        <div class="panel-content">
+          <img src="images/hand.jpg" alt="hand">
+          <p>
+            噛み傷は引っかき傷より見た目の範囲は小さいですが、雑菌が深く入るため、腫れや化膿が続くことがあります。<br>噛まれた場合は、患部を水でよく洗い、病院を受診してください。<br>その他、体調不良があったら病院へ。
+          </p>
+        </div>
+      </div>
+      <br><br>
+
+    </div> <!-- Negative_Margin -->
+
+    <br><br>
+
+    <div class="image-container">
+      <img src="images/d_kuroneko.png" alt="怒る茶白猫" style="display: block; margin: auto;">
+      <div class="image-text">＼ シャーーーーー ／<span class="no-shadow"></span></div>
+    </div>
+
+  </div> <!-- maxWidth900px -->
+
+  <footer>
+    <div class="article-dates">
+      <span>掲載: 2024年5月</span>
+      <span class="update-date"></span>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script06.js"></script>
+  <script src="../article.js"></script>
+</body>
+
+</html>

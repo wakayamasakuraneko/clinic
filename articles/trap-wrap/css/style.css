@@ -9,24 +9,43 @@
 /* 全 img 要素の基底幅 */
 img {
   width: 100%;
+  user-select: none;
 }
 
 /* 幅を明示指定するサイズクラス */
+.img01 { width: 100%; }
 .img70 { width: 70%; }
 .img80 { width: 80%; }
 .img90 { width: 90%; }
 
 
+/* ========== ページ基盤 ========== */
+
+.page-inner {
+  padding: 80px 3% 48px;
+  text-align: center;
+}
+
+
+/* ========== img-pair ========== */
+
+.img-pair {
+  margin-bottom: 5px;
+}
+
+
 /* ========== 「用意して頂くもの」セクション ========== */
 
 /* ベージュ背景の枠ボックス */
-#prep-section-wrap {
-  background: #dacab3;
-  width: 99%;
+.prep-section-wrap {
+  background: #dacab378;
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  margin-bottom: 3em;
+  margin: 0 auto 3em;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -34,9 +53,9 @@ img {
 
 
 /* カードを縦に積む内側コンテナ */
-#uti {
+.card-column {
   max-width: 450px;
-  flex-direction: column;
+  margin: 0 auto;
 }
 
 
@@ -44,10 +63,15 @@ img {
 
 /* 画像＋説明テキストをまとめる1枚のカード */
 .card {
-  border: 1px solid;
+  /* border: 1px solid; */
   display: flex;
-  padding: 20px;
   flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.card-column .card:not(:last-child) {
+  margin-bottom: 1.5em;
 }
 
 /* カード内セル（画像・テキスト共通） */
@@ -62,21 +86,19 @@ img {
   margin: auto;
 }
 
-/* テキストコマ: 白背景・角丸ボックス */
+/* テキストコマ: 白背景・下角丸ボックス */
 .card > div:nth-of-type(2) {
   width: 100%;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-shadow:
-    0 0 3px 2px #0e6f2e68,
-    0 0 4px 5px #ffffff inset;
   background-color: #ffffff;
-  border-radius: 10px;
+  border-top: 1px solid;
+  border-radius: 0 0 10px 10px;
 }
 
 
 /* モーダルトリガーの基準点（.positionA の position:absolute が効くように） */
-.positionR {
+.has-modal {
   position: relative;
 }
 
@@ -130,13 +152,11 @@ img {
 /* PC大画面（1100px〜）: 横並びカードの幅を制限 */
 @media screen and (min-width: 1100px) {
   /* 暫定: セクション高さ制限 */
-  #prep-section-wrap { max-height: 500px; }
+  .prep-section-wrap { max-height: 500px; }
 }
 
 /* タブレット以下（769px以下） */
 @media screen and (max-width: 769px) {
-  /* カード角丸を小さく */
-  .card { border-radius: 10px; }
 /* テキストコマは中央寄せ */
   .card > div:nth-of-type(2) { margin: auto; }
   /* 小さい画像クラスの幅を拡大 */
@@ -146,9 +166,11 @@ img {
 /* スマホ（500px以下） */
 @media screen and (max-width: 500px) {
   /* sotosoto のパディングを縮小 */
-  #prep-section-wrap { padding: 2%; width: 95%; }
+  .prep-section-wrap { padding: 2%; width: 95%; }
   /* カードを折り返し可能に */
   .card { flex-wrap: wrap; }
   /* Photo ボタンを大きく */
   .positionA { width: 20vmin; height: 20vmin; }
+  /* 横並びカードが縦積みになったときの間隔 */
+  .img-pair .card:not(:last-child) { margin-bottom: 1.5em; }
 }

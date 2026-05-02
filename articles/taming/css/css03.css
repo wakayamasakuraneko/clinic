@@ -1,0 +1,147 @@
+/* panel（パネル）img幅、table */
+
+img {
+    margin: 0 2%;
+    max-width: 100%;
+    height: auto;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    /* background-color: white; */
+    /* background-color: #faffb5; */
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-top: none;
+    transition: max-height 0.2s ease-out;
+}
+
+.panel-no-padding,
+.table-container .panel {
+    padding: 0;
+    margin: 0 10px;
+}
+
+.panel-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* パネルごとのイラスト */
+.panel-content img {
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+.green-box {
+    background-color: #e0f7fa;
+    /* background-color: #eefafb; */
+    border: 1px solid #004d40;
+    padding: 15px;
+}
+
+.sub-item {
+    font-weight: bold;
+    background-color: #e0f7fa;
+    /* background-color: #eefafb; */
+    padding: 10px;
+    border: 1px solid #004d40;
+}
+
+.sub-item p {
+    font-weight: normal;
+}
+
+.table-container {
+    background-color: #e0f7fa;
+    /* background-color: #eefafb; */
+    padding: 0;
+    border: 1px solid #004d40;
+}
+
+td img {
+    max-width: 150px;
+    height: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+tbody {
+    border-bottom: solid 2px;
+}
+
+tbody:last-of-type {
+    border-bottom: 0;
+}
+
+td:first-child {
+    font-size: 1.5em;
+    white-space: nowrap;
+    text-align: center;
+}
+
+td {
+    padding: 8px;
+    /* text-align: left; */
+    font-size: 20px;
+    border: 1px solid #ddd;
+}
+
+/* 「もし噛まれたら…」のみborder-bottom太め */
+.border2px {
+    border-bottom: 2px solid;
+}
+
+/* PC表示 */
+@media screen and (min-width: 769px) {
+    .mobile-only {
+        display: none;
+    }
+
+    .desktop-only {
+        display: table-cell;
+    }
+}
+
+/* スマホ表示 */
+@media screen and (max-width: 768px) {
+
+    .panel-no-padding {
+        margin: 0px;
+    }
+
+    .panel {
+        padding: 0px 8px;
+    }
+
+    .panel-content {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+    }
+
+    /* パネルごとのイラスト */
+    .panel-content img {
+/*         max-width: 350px; */
+        width: 100%;
+        margin: auto;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: table-cell;
+    }
+
+    /* 「体重ごとの猫の顔」イラスト */
+    td img {
+        max-width: 18vw;
+    }
+}

@@ -44,7 +44,7 @@
     }
 
     .site-title {
-      font-size: 15px;
+      font-size: 1.2rem;
       font-weight: bold;
       color: #5a2d0c;
       white-space: nowrap;
@@ -123,6 +123,7 @@
 
     /* 記事カード */
     .article-card {
+      position: relative;
       display: block;
       text-decoration: none;
       color: #333;
@@ -182,16 +183,21 @@
     }
 
     .card-title {
-      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px dashed #64121291;
+      font-size: 1.2rem;
       font-weight: bold;
       line-height: 1.5;
-      margin-bottom: 6px;
+      min-height: 3.5em;
+      margin-bottom: 1em;
     }
 
     .card-tag {
-      font-size: 13px;
-      color: #2e7d32;
       text-align: right;
+      font-size: 1rem;
+      color: #2e7d32;
     }
 
     @media (max-width: 1000px) {
@@ -206,7 +212,7 @@
       }
 
       .card-title {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
       }
     }
 
@@ -290,7 +296,7 @@
         </div>
       </a>
 
-      <a class="article-card" data-genre="外猫 捕獲器使い方 来院時" href="./trap-wrap/06.5.htm">
+      <a class="article-card" data-genre="外猫 捕獲器使い方 来院時" href="./trap-wrap/index.html">
         <img src="./images/06.5.png" alt="06.5" />
         <div class="card-body">
           <p class="card-title">（イラスト版）捕獲器の包み方</p>
@@ -346,7 +352,7 @@
         </div>
       </a>
 
-      <a class="article-card" data-genre="外猫 予約？外猫" href="./no-appointment/14.htm">
+      <a class="article-card" data-genre="外猫 予約？外猫" href="./no-appointment/index.html">
         <img src="./no-appointment/images/800600day.png" alt="yoyakugai" />
         <div class="card-body">
           <p class="card-title">捕まえちゃった💦 どうしよう</p>

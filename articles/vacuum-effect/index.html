@@ -8,18 +8,75 @@
   <link rel="icon" href="../../favicon/dummy.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../article.css" />
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+  <style>
+    .frame {
+      display: flex;
+      width: 70%;
+      max-width: 640px;
+      height: auto;
+      margin: 0 auto 36px;
+      border-radius: 14px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+      flex-direction: column;
+    }
+    .nico-huge span {
+      display: contents;
+    }
+    .nico-huge {
+      font-family: "Nico Moji", "M PLUS Rounded 1c";
+      font-weight: bold;
+      font-size: 55px;
+      text-align: center;
+    }
+    .Eng {
+      font-family: 'Arial Black', sans-serif;
+      font-size: 1.2em;
+    }
+    h3 {
+      font-family: "Nico Moji", "M PLUS Rounded 1c";
+      text-align: center;
+      font-size: 33px;
+    }
+    p {
+      font-size: 27px;
+      font-family: "M PLUS Rounded 1c";
+    }
+    p:not(.orange) {
+      font-weight: bold;
+    }
+    .frameText {
+      font-family: "Nico Moji", "M PLUS Rounded 1c";
+      font-weight: 100;
+      text-align: left;
+      color: white;
+      background-color: #583405;
+      padding: 0 1em;
+      font-size: 24px;
+    }
+    @media screen and (max-width: 769px) {
+      .frameText { font-size: 21px; }
+    }
+    @media screen and (max-width: 500px) {
+      .frame { width: 95%; }
+    }
+  </style>
 </head>
 
 <body>
 
   <nav id="article-nav">
-    <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
-    <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+    <div style="display:flex;gap:8px;">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </div>
   </nav>
 
   <div class="page-inner">
 
-    <h1>ナワバリ現象 <span>(<a href="#footnote">※</a>)</span></h1>
+    <h1>ナワバリ現象 <span>(<a href="#footnote" class="red" style="text-decoration:none;">※</a>)</span></h1>
 
     <br>
 
@@ -27,28 +84,28 @@
       <div class="frameText">
         ① ネコはナワバリ<span>意識</span>があるので、<span>他</span>の<span>地域</span>のネコはナワバリ<span>内</span>に<span>入</span>って<span>来</span>られない
       </div>
-      <img class="frameImg" src="images/frame1.jpg" alt="frame">
+      <img src="images/frame1.jpg" alt="frame">
     </div>
     <br>
     <div class="frame">
       <div class="frameText">
         ② ところが<span>何</span>らかの<span>理由</span>でナワバリ<span>主</span>が<span>居</span>なくなると…
       </div>
-      <img class="frameImg" src="images/frame2.jpg" alt="frame">
+      <img src="images/frame2.jpg" alt="frame">
     </div>
     <br>
     <div class="frame">
       <div class="frameText">
         ③ <span>他</span>の<span>地域</span>のネコが<span>流入</span>して<span>来</span>る
       </div>
-      <img class="frameImg" src="images/frame3.jpg" alt="frame">
+      <img src="images/frame3.jpg" alt="frame">
     </div>
     <br>
     <div class="frame">
       <div class="frameText">
         ④ すると<span>元々</span>のナワバリにトラブル<span>大発生</span>
       </div>
-      <img class="frameImg" src="images/frame4.jpg" alt="frame">
+      <img src="images/frame4.jpg" alt="frame">
     </div>
 
     <br><br>
@@ -63,21 +120,17 @@
       という事で、猫はナワバリ主が居た方が爆増しにくかったり、臭くなかったり、うるさくなかったりします。
     </p>
 
-    <br><br><br><br>
+    <br><br><br>
 
-    <div class="image">
-      <img class="barrierCat_img" src="images/barrierCat.jpg" alt="barrierCat">
-    </div>
+    <img class="article-img" src="images/barrierCat.jpg" alt="barrierCat">
 
     <p>
       そしてこのナワバリ現象は避妊去勢したネコにも習性として残り、上記問題の解消に一役買ってくれたりします。
     </p>
 
-    <br><br><br><br>
+    <br><br><br>
 
-    <h2>
-      ただし！エサ<span>置</span>き<span>放置</span>は<span class="Eng">NG !</span>
-    </h2>
+    <p class="nico-huge">ただし！エサ<span>置</span>き<span>放置</span>は<span class="Eng">NG !</span></p>
 
     <h3>
       <span>無限</span>にネコが<span>流入</span>して<span>来</span>ます。
@@ -87,20 +140,22 @@
       エサやトイレについてご近所のご理解があればより理想的ですね。
     </p>
 
-    <br><br><br><br>
+    <br><br><br>
 
-    <p class="orange smaller" id="footnote">
+    <p class="orange" id="footnote">
       ※ ナワバリ現象は英語の「Vacuum Effect(直訳：真空効果)」を当ブログが勝手に訳付けしたものであり、教科書や辞書に載っている言葉ではありません。
     </p>
 
     <footer>
       <div class="article-dates">
         <span>掲載: 2021年3月</span>
+        <span class="update-date"></span>
       </div>
     </footer>
 
   </div>
 
+  <script src="../article.js"></script>
 </body>
 
 </html>

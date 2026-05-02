@@ -1,0 +1,19 @@
+.img001 {
+  text-align: center;
+}
+
+img {
+  width: 50vw;
+}
+
+@media screen and (max-width: 1000px) {
+  img {
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  img {
+    width: 100%;
+  }
+}

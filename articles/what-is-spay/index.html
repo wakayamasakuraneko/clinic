@@ -8,12 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="../article.css" />
     <style>
-      .green {
-        color: #4a7c2d;
-        font-weight: 500;
-        /* background: linear-gradient(transparent 65%, #dff0cc 65%); */
-      }
-
       .recommend-box {
         background-color: #fff7f9;
         border-left: 5px solid #ffb3c1;
@@ -49,15 +43,18 @@
   <body>
 
     <nav id="article-nav">
-      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
-      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+      <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+      <div style="display:flex;gap:8px;">
+        <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+        <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+      </div>
     </nav>
 
     <div class="page-inner">
 
       <h1>スペイとは？</h1>
 
-      <img class="hero-img" src="pic/jokamachi.jpg" alt="さくらねこ" />
+      <img class="article-img" src="pic/jokamachi.jpg" alt="さくらねこ" />
 
       <p>
         スペイ（spay）とは、避妊手術のことです。<br>
@@ -85,14 +82,14 @@
         特に外猫さんの場合、耳カットがないと「不妊手術がまだの猫」と間違われ、<strong>再度手術のために捕獲・開腹されてしまうリスク</strong>があります。猫への負担を避けるためにも、耳カットを強く推奨しています。
       </p>
 
-      <p>
+      <p style="font-weight: 500;">
         <span class="green">「耳カットは痛そう」という声もありますが、手術中の麻酔が効いている間に行うため、痛みはなく、その後の生活にも全く支障はありません。</span>
       </p>
 
       <footer>
         <div class="article-dates">
           <span>掲載: 2019年7月</span>
-          <span>更新: 2026年3月</span>
+          <span class="update-date">更新: 2026年3月</span>
         </div>
       </footer>
 

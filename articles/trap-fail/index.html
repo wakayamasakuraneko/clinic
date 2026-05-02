@@ -8,20 +8,62 @@
   <link rel="icon" href="../../favicon/dummy.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../article.css" />
+  <style>
+    .issei-frame {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+      font-size: 25px;
+      border: 3px solid rgb(90, 90, 205);
+      color: blue;
+      background: #f6ff0b;
+      border-radius: .8em;
+      padding: 0.2em 0.8em;
+      text-decoration: none;
+      transition: all .3s ease-out;
+    }
+    .issei-frame:hover {
+      transform: scale(1.05, 1.1);
+      color: blue;
+      background: #b8ff6c;
+    }
+    @media (max-width: 480px) {
+      .issei-frame {
+        font-size: 17px;
+      }
+    }
+    .flower-shop {
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      background: white;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 0 .5em;
+      user-select: text;
+      transition: all .3s ease-out;
+    }
+    .flower-shop:hover {
+      transform: scale(1.05, 1.1);
+      background: #b8ff6c;
+    }
+  </style>
 </head>
 
 <body>
 
   <nav id="article-nav">
-    <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
-    <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+    <div style="display:flex;gap:8px;">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </div>
   </nav>
 
   <div class="page-inner">
 
     <h1>捕まえたい日に捕まらない！</h1>
 
-    <img class="blog_pic" src="images/gazing.jpg" alt="gazing">
+    <img class="article-img" src="images/gazing.jpg" alt="gazing">
 
     <p>今日手術の予約が入っているから捕まえないと！</p>
 
@@ -61,7 +103,7 @@
       本来なら踏板を踏むと扉が閉まる構造になっている捕獲器ですが、普段は扉が閉まらないように針金やヒモで扉が閉まらない様に細工をしておきます。
     </p>
 
-    <img class="blog_pic_01" src="images/wirework.jpg" alt="wirework">
+    <img class="article-img" src="images/wirework.jpg" alt="wirework">
 
     <p>
       この状態で捕獲器の中でエサを食べさせる事に慣れさせ、いざ捕まえる日になったら細工を外して扉が閉まるようにしておきます。
@@ -79,7 +121,10 @@
       触れはしないが、近くまで来てエサを食べる猫であればうまくいく可能性があります。
     </p>
 
-    <img class="blog_pic_02" src="images/accustom01.jpg" alt="accustom01">
+    <div class="img-pair">
+      <img class="article-img" src="images/accustom01.jpg" alt="accustom01">
+      <img class="article-img" src="images/accustom02.jpg" alt="accustom02">
+    </div>
 
     <p>
       画像の様なサイドに出入口のあるキャリーケースの一番奥で食べさせる習慣を付けると良いでしょう。
@@ -88,8 +133,6 @@
     <p>
       普段からこのキャリーの奥でエサを食べる様に馴らしておき、いざ手術の日に素早く静かに蓋を閉める・・・で上手くいく場合があります。
     </p>
-
-    <img class="blog_pic_02" src="images/accustom02.jpg" alt="accustom02">
 
     <p>
       キャリーの中から外の気配が分からないように被せ物をして人の気配を悟らせない方法も良いでしょう。
@@ -139,7 +182,7 @@
 
     <br>
 
-    <img class="blog_pic" src="images/Drop_Trap.jpg" alt="Drop_Trap">
+    <img class="article-img" src="images/Drop_Trap.jpg" alt="Drop_Trap">
 
     <p>
       普通の捕獲器に対し警戒心を持ってしまった猫に関しては、イラストの様な大型スズメ取りのトラップ(ドロップトラップ)もあります。
@@ -148,8 +191,8 @@
     <p>
       どうしても捕まらない場合は、
       <span>
-        <a href="https://www.facebook.com/joukamachinyanko/" target="_blank">
-          <img class="flower_icon" src="images/flower_icon.png" alt="flower_icon">
+        <a class="flower-shop" href="https://www.facebook.com/joukamachinyanko/" target="_blank">
+          🌼
           城下町にゃんこの会
         </a>
       </span>
@@ -182,24 +225,23 @@
       なるべく短い期間で終わらせるのが理想的でしょう。
     </p>
 
-    <div class="issei-soto">
-      <img class="blog_pic" src="images/okiraku_cat.png" alt="okiraku_cat.png">
-      <br> <br>
-      <a class="issei-frame" target="_blank"
-        href="https://docs.google.com/forms/d/1IyfiV8BDJW4jtUcPEGuDIL1OUeFb-Lq_bFuaaJ8U9oo/viewform?fbclid=IwAR07Z37l87vZu9FMIyPOgQkmXBHi3VCfRAo8ABWwIWQcRqJLEBOW3N58c8E&edit_requested=true">
-        一斉手術のご相談<span class="kierudotto">・</span><span>入力フォーム</span>
-      </a>
-    </div>
+    <img class="article-img" src="images/okiraku_cat.png" alt="okiraku_cat.png">
+    <br>
+    <a class="issei-frame" target="_blank"
+      href="https://docs.google.com/forms/d/1IyfiV8BDJW4jtUcPEGuDIL1OUeFb-Lq_bFuaaJ8U9oo/viewform?fbclid=IwAR07Z37l87vZu9FMIyPOgQkmXBHi3VCfRAo8ABWwIWQcRqJLEBOW3N58c8E&edit_requested=true">
+      一斉手術のご相談・入力フォーム
+    </a>
 
     <footer>
       <div class="article-dates">
         <span>作成: 2020年5月</span>
-        <span>最終更新: 2023年12月</span>
+        <span class="update-date">更新: 2026年5月</span>
       </div>
     </footer>
 
   </div>
 
+  <script src="../article.js"></script>
 </body>
 
 </html>

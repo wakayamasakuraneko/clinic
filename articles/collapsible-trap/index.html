@@ -8,13 +8,59 @@
   <link rel="icon" href="../../favicon/dummy.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../article.css" />
+  <style>
+    .page-inner {
+      text-align: center;
+    }
+    .img-pair {
+      flex-wrap: wrap;
+    }
+    .article-img {
+      border-radius: 5px;
+    }
+    .center {
+      text-align: center;
+    }
+    .img-triple {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      /* height: 700px; */
+    }
+    .img-triple .article-img {
+      width: 60%;
+      margin: 0;
+    }
+    .img-triple .article-img:nth-of-type(1) {
+      margin: 0 auto auto 0;
+    }
+    .img-triple .article-img:nth-of-type(2) {
+      margin: auto;
+    }
+    .img-triple .article-img:nth-of-type(3) {
+      margin: auto 0 0 auto;
+    }
+    @media screen and (max-width: 640px) {
+      .img-triple .article-img,
+      .img-triple .article-img:nth-of-type(1),
+      .img-triple .article-img:nth-of-type(2),
+      .img-triple .article-img:nth-of-type(3) {
+        width: 100%;
+        margin: 0 auto 36px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
   <nav id="article-nav">
-    <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
-    <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+    <div style="display:flex;gap:8px;">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </div>
   </nav>
 
   <div class="page-inner">
@@ -25,26 +71,26 @@
       組み立て式で持ち運びに便利な捕獲器
     </p>
 
-    <img class="float_img" src="images/asse_01.jpg" alt="assemble">
-    <img class="float_img" src="images/asse_02.jpg" alt="assemble">
-
-    <div class="clear"></div>
+    <div class="img-pair">
+      <img class="article-img" src="images/asse_01.jpg" alt="assemble">
+      <img class="article-img" src="images/asse_02.jpg" alt="assemble">
+    </div>
 
     <p>
       組み立てた感じは写真の通り。
     </p>
 
-    <img class="float_img" src="images/asse_03a.jpg" alt="assemble">
-    <img class="float_img" src="images/asse_04a.jpg" alt="assemble">
-    <img class="float_img" src="images/asse_05a.jpg" alt="back">
-
-    <div class="clear"></div>
+    <div class="img-pair img-triple">
+      <img class="article-img" src="images/asse_03a.jpg" alt="assemble">
+      <img class="article-img" src="images/asse_04a.jpg" alt="assemble">
+      <img class="article-img" src="images/asse_05a.jpg" alt="back">
+    </div>
 
     <p>
       折りたためるため、収納性に優れています。
     </p>
 
-    <br><br>
+    <br>
 
     <h2 class="title">
       この記事で伝えたい事は、「背面の組み立てと強度」についてです
@@ -58,45 +104,45 @@
       組み立てる際は下の写真の通り、小さな金具の穴を通し…
     </p>
 
-    <img class="float_img" src="images/asse_06.jpg" alt="Through the hole">
-    <img class="float_img" src="images/asse_07.jpg" alt="Through the hole">
-    <img class="float_img" src="images/asse_08a.jpg" alt="Not Through">
-
-    <div class="clear"></div>
+    <div class="img-pair img-triple">
+      <img class="article-img" src="images/asse_06.jpg" alt="Through the hole">
+      <img class="article-img" src="images/asse_07.jpg" alt="Through the hole">
+      <img class="article-img" src="images/asse_08a.jpg" alt="Not Through">
+    </div>
 
     <p>
       フックでロックする必要があります。
     </p>
 
-    <br><br>
+    <br>
 
     <p>
       ところが下の写真の様に、軸がチューブ管に入っていないと・・・
     </p>
 
-    <img class="vw_img" src="images/asse_09b.jpg" alt="Not Through">
+    <img class="article-img" src="images/asse_09b.jpg" alt="Not Through">
 
     <p>
       あるいはフックロックが十分でないと・・・
     </p>
 
-    <img class="vw_img" src="images/asse_10b.jpg" alt="Not Lock">
+    <img class="article-img" src="images/asse_10b.jpg" alt="Not Lock">
 
     <p>
       背面の扉が開いてしまいます。
     </p>
 
-    <img class="vw_img" src="images/asse_11.jpg" alt="back open">
+    <img class="article-img" src="images/asse_11.jpg" alt="back open">
 
     <p>
       そして猫が脱走する事に…
     </p>
 
-    <img class="vw_img" src="images/asse_12.jpg" alt="Cat away.">
+    <img class="article-img" src="images/asse_12.jpg" alt="Cat away.">
 
-    <br><br>
+    <br>
 
-    <p class="red">
+    <p class="red" style="font-weight: bold;">
       要するに！！
     </p>
 
@@ -112,20 +158,20 @@
       できれば以下の写真の様に、針金で補強して下さい！
     </p>
 
-    <img class="float_img" src="images/asse_13.jpg" alt="tie wire">
-    <img class="float_img" src="images/asse_14.jpg" alt="tie wire">
-    <img class="float_img" src="images/asse_15.jpg" alt="tie wire">
+    <div class="img-pair img-triple">
+      <img class="article-img" src="images/asse_13.jpg" alt="tie wire">
+      <img class="article-img" src="images/asse_14.jpg" alt="tie wire">
+      <img class="article-img" src="images/asse_15.jpg" alt="tie wire">
+    </div>
 
-    <div class="clear"></div>
+    <br>
 
-    <br><br><br><br><br><br>
-
-    <div class="flex">
-      <div>
-        <img class="vw_img" src="images/asse_16.jpg" alt="Good bye.">
+    <div>
+      <div class="center">
+        <p>＼しめしめ／</p>
       </div>
-      <div class="vertical">
-        <p>／しめしめ＼</p>
+      <div>
+        <img class="article-img" src="images/asse_16.jpg" alt="Good bye.">
       </div>
     </div>
 
@@ -136,11 +182,13 @@
     <footer>
       <div class="article-dates">
         <span>掲載: 2021年2月</span>
+        <span class="update-date">更新: 2026年5月</span>
       </div>
     </footer>
 
   </div>
 
+  <script src="../article.js"></script>
 </body>
 
 </html>

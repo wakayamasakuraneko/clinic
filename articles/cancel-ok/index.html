@@ -17,52 +17,45 @@
         color: #888;
         margin-bottom: 12px;
       }
-      .related-cards {
+      .article-card {
         display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-      .related-card {
-        display: block;
+        align-items: center;
+        gap: 16px;
         text-decoration: none;
-        color: #333;
-        flex: 1 1 180px;
-        background: #f5f5e8;
+        color: inherit;
+        background: #f5f5f5;
         border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 1px 6px rgba(0,0,0,0.10);
-        transition: transform 0.2s, box-shadow 0.2s;
+        padding: 7px 7px;
+        margin: 16px auto;
+        max-width: 560px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transition: background .2s;
       }
-      .related-card:hover {
-        transform: scale(1.03);
-        box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+      .article-card:hover { background: #ebebeb; }
+      .article-card img {
+        width: 100px;
+        height: auto;
+        border-radius: 6px;
+        flex-shrink: 0;
       }
-      .related-card img {
-        display: block;
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        object-fit: cover;
-      }
-      .related-card-title {
-        font-size: 0.9rem;
-        font-weight: bold;
-        padding: 8px 10px;
-        line-height: 1.5;
-      }
+      .article-card .article-title { margin: 0; }
     </style>
   </head>
   <body>
 
     <nav id="article-nav">
-      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
-      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+      <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+      <div style="display:flex;gap:8px;">
+        <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+        <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+      </div>
     </nav>
 
     <div class="page-inner">
 
       <h1>キャンセルを申し訳ないと思わなくても大丈夫です</h1>
 
-      <img class="hero-img" src="pic/20190718.jpg" alt="キャンセル" />
+      <img class="article-img" src="pic/20190718.jpg" alt="キャンセル" />
 
       <p>
         捕獲の難しい外猫さんの手術のご予約をキャンセルする事は、基本的に<strong>「よくある事」</strong>なので、申し訳ないと思わなくても大丈夫です。
@@ -76,22 +69,20 @@
 
       <div class="related-articles">
         <div class="related-label">関連記事</div>
-        <div class="related-cards">
-          <a class="related-card" href="#">
-            <img src="../../../../🐦‍⬛GitHub内のblogのクローン/blog/BlogHome/images/08.jpg" alt="捕まえたい日に捕まらない！" />
-            <div class="related-card-title">捕まえたい日に捕まらない！</div>
-          </a>
-          <a class="related-card" href="#">
-            <img src="../../../../🐦‍⬛GitHub内のblogのクローン/blog/BlogHome/images/11.png" alt="踏み板を踏まない猫" />
-            <div class="related-card-title">踏み板を踏まない猫</div>
-          </a>
-        </div>
+        <a class="article-card" href="../trap-fail/index.html">
+          <img src="../images/08.jpg" alt="捕まえたい日に捕まらない！">
+          <p class="article-title">捕まえたい日に捕まらない！</p>
+        </a>
+        <a class="article-card" href="../trap-pedal/index.html">
+          <img src="../images/11.png" alt="踏み板を踏まない猫">
+          <p class="article-title">踏み板を踏まない猫</p>
+        </a>
       </div>
 
       <footer>
         <div class="article-dates">
           <span>掲載: 2019年7月</span>
-          <span>更新: 2026年4月</span>
+          <span class="update-date">更新: 2026年4月</span>
         </div>
       </footer>
 

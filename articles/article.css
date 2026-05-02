@@ -9,6 +9,7 @@ a {
 
 body {
   margin: 0;
+  padding: 0;
   color: #333;
   line-height: 1.85;
   font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", sans-serif;
@@ -61,8 +62,8 @@ body {
 #article-nav .nav-icon { font-size: 1.35rem; line-height: 1; }
 #article-nav .fa-home  { font-size: 1.25rem; }
 
-/* ========== ヒーロー画像 ========== */
-.hero-img {
+/* ========== 記事内画像 ========== */
+.article-img {
   display: block;
   width: 80%;
   max-width: 640px;
@@ -70,6 +71,27 @@ body {
   margin: 0 auto 36px;
   border-radius: 14px;
   box-shadow: 0 3px 14px rgba(0,0,0,0.12);
+}
+
+/* PC: 横並び2枚 / スマホ: 縦積み。子の .article-img は幅・マージンを上書き */
+.img-pair {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.img-pair .article-img {
+  width: 48%;
+  margin: 0;
+}
+@media screen and (max-width: 640px) {
+  .img-pair {
+    display: block;
+  }
+  .img-pair .article-img {
+    width: 100%;
+    margin: 0 auto 36px;
+  }
 }
 
 /* ========== タイトル ========== */
@@ -89,9 +111,16 @@ h1::before { content: "🐾"; font-size: 1.4rem; }
 /* ========== 本文 ========== */
 p {
   font-size: 1.15rem;
-  margin-bottom: 1.4em;
+  /* margin-bottom: 1.4em; */
 }
-p:last-of-type { margin-bottom: 0; }
+/* p:last-of-type { margin-bottom: 0; } */
+
+/* ========== ユーティリティ ========== */
+.red    { color: #c0392b; }
+.orange { color: #e07800; }
+.green  { color: #5a9a00; }
+.blue   { color: #2e7db8; }
+span { display: inline-block; }
 
 /* ========== フッター ========== */
 footer {
@@ -113,11 +142,10 @@ footer {
 @media screen and (max-width: 640px) {
   body {
     margin: 0;
-    padding: 0% 2%;
     border-radius: 0;
     box-shadow: none;
   }
   h1 { font-size: 1.55rem; }
   p  { font-size: 1.08rem; }
-  .hero-img { width: 100%; }
+  .article-img { width: 100%; }
 }

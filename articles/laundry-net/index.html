@@ -13,8 +13,11 @@
 <body>
 
   <nav id="article-nav">
-    <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
-    <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+    <div style="display:flex;gap:8px;">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </div>
   </nav>
 
   <div class="page-inner">
@@ -25,9 +28,7 @@
       <b>※ 人馴れしていない外猫ちゃんは入れて来なくても大丈夫です。</b>
     </p>
 
-    <div class="img001">
-      <img class="LaundryNet" src="images/LaundryNet.jpg" alt="LaundryNet">
-    </div>
+    <img class="article-img" src="images/LaundryNet.jpg" alt="LaundryNet">
 
     <p>
       十分に慣れていて抱っこが出来る猫ちゃんは写真の様な洗濯ネットに入れて来て頂けると大変助かります。
@@ -52,11 +53,13 @@
     <footer>
       <div class="article-dates">
         <span>掲載: 2019年8月</span>
+        <span class="update-date"></span>
       </div>
     </footer>
 
   </div>
 
+  <script src="../article.js"></script>
 </body>
 
 </html>

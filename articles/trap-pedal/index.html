@@ -8,13 +8,54 @@
   <link rel="icon" href="../../favicon/dummy.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../article.css" />
+  <style>
+    .frame {
+      display: flex;
+      width: 70%;
+      max-width: 640px;
+      height: auto;
+      margin: 0 auto 36px;
+      border-radius: 14px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.52);
+      flex-direction: column;
+    }
+    .frameText {
+      font-weight: 100;
+      text-align: left;
+      color: white;
+      background-color: #583405;
+      padding: 0 1em;
+      font-size: 24px;
+    }
+    .img-pair .article-img {
+      height: 350px;
+      width: auto;
+      margin: 2px;
+    }
+    @media screen and (max-width: 769px) {
+      .frameText { font-size: 21px; }
+    }
+    @media screen and (max-width: 700px) {
+      .img-pair .article-img { height: 200px; }
+    }
+    @media screen and (max-width: 640px) {
+      .img-pair { display: flex; }
+      .img-pair .article-img { width: auto; }
+    }
+    @media screen and (max-width: 500px) {
+      .frame { width: 95%; }
+    }
+  </style>
 </head>
 
 <body>
 
   <nav id="article-nav">
-    <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
-    <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+    <div style="display:flex;gap:8px;">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </div>
   </nav>
 
   <div class="page-inner">
@@ -22,7 +63,7 @@
     <h1>踏み板を踏まない猫</h1>
 
     <div class="frame">
-      <img class="frameImg" src="images/nt1.png" alt="Notice_Tread">
+      <img src="images/nt1.png" alt="Notice_Tread">
       <div class="frameText">
         ！？この踏み心地おかしい！
       </div>
@@ -31,7 +72,7 @@
     <br>
 
     <div class="frame">
-      <img class="frameImg" src="images/nt2.png" alt="Notice_Tread">
+      <img src="images/nt2.png" alt="Notice_Tread">
       <div class="frameText">
         でもお腹が空いたのでエサだけ食べよう
       </div>
@@ -40,7 +81,7 @@
     <br>
 
     <div class="frame">
-      <img class="frameImg" src="images/nt3.png" alt="Notice_Tread">
+      <img src="images/nt3.png" alt="Notice_Tread">
       <div class="frameText">
         ご馳走様でした～！
       </div>
@@ -66,13 +107,9 @@
       新聞紙やプラスチック板、段ボールなどを敷いて踏板を隠し、違和感をなくします。
     </p>
 
-    <div class="image">
-      <img class="vw80_img" src="images/np1.png" alt="NewsPaper">
-      <br>
-      <img class="vw80_img" src="images/np2.png" alt="NewsPaper">
-      <br>
-      <img class="vw80_img" src="images/np3.png" alt="NewsPaper">
-    </div>
+    <img class="article-img" src="images/np1.png" alt="NewsPaper">
+    <img class="article-img" src="images/np2.png" alt="NewsPaper">
+    <img class="article-img" src="images/np3.png" alt="NewsPaper">
 
     <br><br><br>
 
@@ -84,9 +121,9 @@
       猫が左右に広がったエサを食べようとしている内に踏板を踏んでくれるかもしれません。
     </p>
 
-    <div class="wrapImg">
-      <img class="SpreadFeed" src="images/sf1.png" alt="Spread_Feed">
-      <img class="SpreadFeed" src="images/sf2.png" alt="Spread_Feed">
+    <div class="img-pair">
+      <img class="article-img" src="images/sf1.png" alt="Spread_Feed">
+      <img class="article-img" src="images/sf2.png" alt="Spread_Feed">
     </div>
 
     <p>
@@ -99,17 +136,13 @@
       ◇ 他にも吊り餌式捕獲器で足元から注意力を逸らすという方法もあります。
     </p>
 
-    <div class="image">
-      <img class="vw_img" src="images/hh1.png" alt="Hanged_Hook">
-    </div>
+    <img class="article-img" src="images/hh1.png" alt="Hanged_Hook">
 
     <p>
       ※　吊り餌式の捕獲器は、捕獲器内で暴れた際に猫を痛める可能性があるため、捕獲後は内壁側に括り付けてご使用下さい。
     </p>
 
-    <div class="image">
-      <img class="vw80_img" src="images/hh2.jpg" alt="Hanged_Hook">
-    </div>
+    <img class="article-img" src="images/hh2.jpg" alt="Hanged_Hook">
 
     <br><br>
 
@@ -125,13 +158,8 @@
       つっかえ棒はなんでも良いですが水の入ったペットボトルが安定してお勧めです。
     </p>
 
-    <div class="image">
-      <img class="vw60_img" src="images/trap.jpg" alt="trap">
-    </div>
-
-    <div class="image">
-      <img class="vw_img" src="images/trapper_NEW.png" alt="trapper_NEW" />
-    </div>
+    <img class="article-img" src="images/trap.jpg" alt="trap">
+    <img class="article-img" src="images/trapper_NEW.png" alt="trapper_NEW" />
 
     <p>
       本番で肝心な時に扉がひっかかって降りない！という事が無い様に、ちゃんと扉が閉まるか練習してみて下さい。
@@ -140,11 +168,13 @@
     <footer>
       <div class="article-dates">
         <span>掲載: 2021年8月</span>
+        <span class="update-date"></span>
       </div>
     </footer>
 
   </div>
 
+  <script src="../article.js"></script>
 </body>
 
 </html>

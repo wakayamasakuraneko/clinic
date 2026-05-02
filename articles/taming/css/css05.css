@@ -1,0 +1,89 @@
+/* ヘッダー、フッター */
+header {
+    text-align: center;
+}
+
+footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2em;
+    padding: .5em 0;
+    color: white;
+    background: #483b0c;
+}
+
+footer .back-to-top {
+    position: static;
+}
+
+footer .sakuseikousin {
+    position: absolute;
+    right: 5%;
+}
+
+a.back-to-index,
+a.back-to-top {
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 24px;
+    transition: all .3s ease-out;
+    color: #ffffff;
+}
+
+/* a.back-to-index {
+    font-weight: bold;
+    background: #483b0c;
+    letter-spacing: 3px;
+} */
+
+a.back-to-index,
+a.back-to-top {
+    color: #000;
+    background-color: #eee183;
+}
+
+a.back-to-index:hover,
+a.back-to-top:hover {
+    transform: scale(1.15, 1.15);
+    background: #eeda41;
+}
+
+.sakuseikousin2 {
+    display: none;
+    text-align: center;
+    color: white;
+    background: #483b0c;
+}
+
+
+
+@media (max-width: 600px) {
+
+    /* footer {
+        padding: .3em 0;
+    } */
+
+    footer div {
+        margin: 3px 0;
+    }
+
+    footer .sakuseikousin {
+        position: static;
+    }
+
+    footer .back-to-top {
+        margin-top: 3px;
+    }
+
+    .sakuseikousin {
+        display: none;
+    }
+
+    .sakuseikousin2 {
+        display: block;
+    }
+}

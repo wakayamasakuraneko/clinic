@@ -1,0 +1,118 @@
+button {
+  cursor: pointer;
+  /* overflow: hidden; */
+
+  padding: 0px 0.2em;
+  border-width: 1px;
+  font-size: 25px;
+  /* background: #d2d2d2; */
+  /* border: 3px solid #a1710a; */
+  border-radius: 0.2em;
+
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+  /* 必要に応じて適宜調整してください */
+
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  /* background-color: #ffffff; */
+  color: #fff;
+  /* color: #000000; */
+  border-radius: 10px;
+  padding: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  font-size: 24px;
+  z-index: 20;
+  padding: 0.2em 1em;
+}
+
+.BG555 {
+  width: 60%;
+  background-color: #555;
+  text-align: left;
+  border: 3px double #ffffff;
+}
+
+.disfl {
+  width: 50%;
+  background-color: #555;
+  border: 3px double #ffffff;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.disfl img {
+  width: 80%;
+}
+
+.BG_A {
+  width: fit-content;
+  background-color: #555;
+  /* width: 80%; */
+}
+
+.gradientG {
+  width: 60%;
+  background: radial-gradient(circle 200px at center,
+      #d5ffe8 0%,
+      /* #9cf8c7 70%, */
+      #8bfcb8 100%);
+  border: 3px solid #20a053;
+  text-align: center;
+}
+
+.gradientB {
+  width: 60%;
+  background: radial-gradient(circle 100px at center,
+      #d5fffe 0%,
+      /* #9cf8c7 70%, */
+      #8bfafc 100%);
+  border: 3px solid #2bd4d7;
+  text-align: center;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  transition-delay: 0.2s;
+  opacity: 1;
+}
+
+
+button img {
+  width: 50%;
+}
+
+.imgWidth img {
+  width: 100%;
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+  /* .tooltip:hover::before { */
+  /* ツールチップを左側に表示する場合のスタイル */
+  /* left: auto;
+    right: 0;
+    transform: translateX(50%);
+  } */
+  .tooltip .tooltiptext {
+    width: 80%;
+  }
+
+  .disfl img {
+    width: 100%;
+  }
+}
