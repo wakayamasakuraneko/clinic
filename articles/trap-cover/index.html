@@ -1,0 +1,455 @@
+<!DOCTYPE html><!-- 捕獲器の包み方（trap-transport × trap-wrap 統合版） -->
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>捕獲器でのご来院方法｜和歌山スペイクリニック</title>
+  <link rel="icon" href="../../favicon/dummy.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../article.css" />
+  <style>
+    img { width: 100%; user-select: none; }
+    .img01 { width: 100%; }
+    .img70 { width: 70%; }
+    .img80 { width: 80%; }
+    .img90 { width: 90%; }
+
+    .page-inner { padding: 80px 3% 48px; text-align: center; }
+    .img-pair { margin-bottom: 5px; display: flex; gap: 8px; align-items: stretch; }
+    .img-pair .card { flex: 1; }
+    .img-pair .card > div:nth-of-type(1) { flex: 1; display: flex; align-items: center; justify-content: center; }
+
+    .prep-section-wrap {
+      background: #dacab378;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      margin: 0 auto 3em;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-column { max-width: 450px; margin: 0 auto; }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
+    .card-column .card:not(:last-child) { margin-bottom: 1.5em; }
+    .card > div { margin: 0; padding: 10px; text-align: center; }
+    .card > div:nth-of-type(1) { margin: auto; }
+    .card > div:nth-of-type(2) {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #fff;
+      border-top: 1px solid;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .has-modal { position: relative; }
+
+    .positionA {
+      position: absolute;
+      top: 3%; right: 1%;
+      width: 11vmin; height: 11vmin;
+      box-sizing: border-box;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: blinkBorder 2s ease infinite;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    @keyframes blinkBorder {
+      0%   { border: 15px double #168e1cd7; box-shadow: 0 0 2px 2px #168e1cd7; color: #168e1cd7; }
+      100% { border: 3px solid #168e1c0f; color: #168e1c0f; }
+    }
+    .textPhoto { animation: blinkcolor 2s ease infinite; }
+    @keyframes blinkcolor {
+      0%   { color: #168e1c56; }
+      100% { color: #168e1c; }
+    }
+    .imgFing { width: 35%; position: absolute; bottom: 0; }
+
+    /* Modal */
+    .modal-trigger { cursor: pointer; }
+    .modal-bg {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      z-index: 100;
+    }
+    .modal {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0;
+      transition: all 0.2s ease-out;
+    }
+    .modal img { display: block; max-width: 100%; height: auto; }
+    .modal.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .modal-bg.show { opacity: 1; }
+    .close-btn {
+      position: absolute;
+      top: 0; right: 0;
+      padding: 5px 10px;
+      background: #fff; color: #000;
+      border: none; cursor: pointer;
+    }
+    .close-btn:hover { background: #000; color: #fff; }
+    .close-btn:focus { outline: none; }
+
+    /* 注意ボックス */
+    .notes {
+      text-align: left;
+      background: #f9f9f9;
+      border-left: 4px solid #c8a800;
+      border-radius: 4px;
+      padding: 0.6em 1em;
+      margin: 1.2em auto;
+      max-width: 450px;
+    }
+    .notes ul { margin: 0; padding-left: 1.4em; }
+    .notes li { margin: 0.35em 0; font-size: 0.95rem; }
+    .red { color: #c0392b; font-weight: bold; }
+
+    .season-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin: 1em auto 1.5em;
+      max-width: 500px;
+    }
+    .season-imgs img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: 769px) {
+      .card > div:nth-of-type(2) { margin: auto; }
+      .img70 { width: 90%; }
+    }
+    @media screen and (max-width: 500px) {
+      .prep-section-wrap { padding: 2%; width: 95%; }
+      .card { flex-wrap: wrap; }
+      .positionA { width: 20vmin; height: 20vmin; }
+      .img-pair .card:not(:last-child) { margin-bottom: 1.5em; }
+    }
+    @media screen and (max-width: 767px) {
+      .modal.show { transform: translate(-50%, -50%) scale(2); }
+      .close-btn { font-size: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="article-nav">
+    <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+    <div style="display:flex;gap:8px;">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </div>
+  </nav>
+
+  <div class="page-inner">
+
+    <h1>捕獲器でのご来院方法</h1>
+
+    <!-- <img class="article-img" src="../trap-transport/images/carrying_man.png" alt="捕獲器を運ぶ人"> -->
+
+    <div class="notes">
+      <p>捕獲器はそのまま運ばず、布などで包んでからお持ちください。</p>
+      <p>猫のストレス軽減と、尿漏れ対策になります。</p>
+    </div>
+
+    <div class="season-imgs">
+      <img src="../../images/seasons-and-trap/summer-newspaper-illust.jpg" alt="夏・新聞紙イラスト">
+      <img src="../../images/seasons-and-trap/winter-furoshiki-illust.jpg" alt="冬・風呂敷イラスト">
+    </div>
+
+    <div class="notes">
+      <ul>
+        <li>布はなるべく<strong>薄い生地</strong>が理想（布団のシーツ等）</li>
+        <li class="red">ビニールシートは絶対NG — 熱中症になります</li>
+        <li>夏の暑い日は、通気をよくしておく</li>
+        <li>冬の場合はなるべく暖かく</li>
+      </ul>
+    </div>
+
+    <h2>捕獲器の包み方（その１）</h2>
+
+    <!-- ======== 方法① 小さい布 ======== -->
+
+    <div class="prep-section-wrap">
+
+      <h3>準備</h3>
+
+      <div class="img-pair">
+
+        <div class="card">
+          <div>
+            <img src="../trap-wrap/images/path523s.png" alt="新聞紙">
+          </div>
+          <div>
+            新聞紙
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <img src="../trap-wrap/images/path2299a.png" alt="ペットシーツ">
+          </div>
+          <div>
+            ペットシーツ
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <img class="img90" src="../trap-wrap/images/path521.png" alt="被せ物">
+          </div>
+          <div>
+            <span>被せ物（風呂敷、</span><span>バスタオル等）</span>
+          </div>
+        </div>
+
+      </div><!-- /.img-pair -->
+    </div>
+
+    <h3>手順</h3>
+
+    <div class="card-column">
+
+      <div class="card">
+        <div>
+          <img src="../trap-wrap/images/path2299z.png" alt="path2299z">
+        </div>
+        <div>
+          <span>① 新聞紙の上に</span><span>ペットシーツを</span><span>敷きます。</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <img src="../trap-wrap/images/path2299y.png" alt="path2299y">
+        </div>
+        <div>
+          ② 捕獲器を<span>置きます。</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <img class="img80" src="../trap-wrap/images/path2299.png" alt="path2299">
+        </div>
+        <div>
+          <span>③ 布やバスタオルを</span><span>被せます</span>
+        </div>
+      </div>
+
+      <div class="card has-modal">
+        <div>
+          <img class="img80" src="../trap-wrap/images/path1102.png" alt="path1102">
+          <div id="modal-trigger2" class="positionA modal-trigger">
+            <div class="textPhoto">Photo</div>
+            <img class="imgFing" src="../trap-wrap/images/fing2.png" alt="fing">
+          </div>
+          <div class="modal-bg" id="modal-bg2">
+            <div class="modal" id="modal2">
+              <button class="close-btn" id="modal-close-btn2">x</button>
+              <img src="../trap-wrap/images/IM0333.jpg" alt="IM0333">
+            </div>
+          </div>
+        </div>
+        <div>
+          <span>④ ビニール紐で</span><span>結わえて</span><span>完成！</span>
+        </div>
+      </div>
+
+      <div class="card has-modal">
+        <div>
+          <img class="img80" src="../trap-wrap/images/path465.png" alt="path465">
+          <div id="modal-trigger3" class="positionA modal-trigger">
+            <div class="textPhoto">Photo</div>
+            <img class="imgFing" src="../trap-wrap/images/fing2.png" alt="fing">
+          </div>
+          <div class="modal-bg" id="modal-bg3">
+            <div class="modal" id="modal3">
+              <button class="close-btn" id="modal-close-btn3">x</button>
+              <img src="../trap-wrap/images/IMG_150042.jpg" alt="IMG_150042">
+            </div>
+          </div>
+        </div>
+        <div>
+          <span>適当な被せ物が</span><span>無ければ、</span><span>新聞紙でもOKです。</span>
+        </div>
+      </div>
+
+    </div><!-- /.card-column -->
+
+    <br><br>
+
+    <!-- ======== 方法② 大きい布 ======== -->
+
+    <h2>捕獲器の包み方（その２）</h2>
+
+    <div class="prep-section-wrap">
+      <h4 style="margin: 0.8em 0 0.4em;">準備</h4>
+      <div class="img-pair">
+
+        <div class="card">
+          <div>
+            <img class="img70" src="../trap-wrap/images/path9060.png" alt="大きめの布">
+          </div>
+          <div>
+            <span>大きめの布</span><span>（生地、</span><span>シーツ類等）</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <img class="img80" src="../trap-wrap/images/path2299a.png" alt="ペットシーツ">
+          </div>
+          <div>
+            ペットシーツ
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <h3>手順</h3>
+
+    <div class="card-column">
+
+      <div class="card">
+        <div>
+          <img class="img01" src="../trap-wrap/images/path2299b.png" alt="path2299b">
+        </div>
+        <div>
+          <span>① 布を広げ、</span><span>ペットシーツを</span><span>敷きます。</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <img class="img01" src="../trap-wrap/images/path2299c.png" alt="path2299c">
+        </div>
+        <div>
+          <span>② 捕獲器を</span><span>置きます。</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <img class="img01" src="../trap-wrap/images/path4109.png" alt="path4109">
+        </div>
+        <div>
+          <span>③ 畳んで、</span><span>畳んで・・・</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <img class="img01" src="../trap-wrap/images/path4996.png" alt="path4996">
+        </div>
+        <div>
+          <span>④ 両端を中央に</span><span>持ってきて・・・</span>
+        </div>
+      </div>
+
+      <div class="card has-modal">
+        <div>
+          <img class="img80" src="../trap-wrap/images/g5032.png" alt="g5032">
+          <div id="modal-trigger" class="positionA modal-trigger">
+            <div class="textPhoto">Photo</div>
+            <img class="imgFing" src="../trap-wrap/images/fing2.png" alt="fing">
+          </div>
+          <div class="modal-bg" id="modal-bg">
+            <div class="modal" id="modal">
+              <button class="close-btn" id="modal-close-btn">x</button>
+              <img src="../trap-wrap/images/H008.jpg" alt="完成写真">
+            </div>
+          </div>
+        </div>
+        <div>
+          <span>⑤ 風呂敷包みで</span><span>完成！</span>
+        </div>
+      </div>
+
+    </div><!-- /.card-column -->
+
+    <div class="notes">
+      <ul>
+        <li>使用した布はハイターに漬けてから洗濯を</li>
+        <li>捕獲器は次の猫を捕まえる前によく洗うこと（伝染病対策）</li>
+      </ul>
+    </div>
+
+    <footer>
+      <div class="article-dates">
+        <span>掲載: 2026年5月</span>
+        <span class="update-date"></span>
+      </div>
+    </footer>
+
+  </div><!-- /.page-inner -->
+
+  <script>
+    "use strict";
+    const modalData = [
+      { trigger: "#modal-trigger",  bg: "#modal-bg",  modal: "#modal",  closeBtn: "#modal-close-btn"  },
+      { trigger: "#modal-trigger2", bg: "#modal-bg2", modal: "#modal2", closeBtn: "#modal-close-btn2" },
+      { trigger: "#modal-trigger3", bg: "#modal-bg3", modal: "#modal3", closeBtn: "#modal-close-btn3" },
+    ];
+
+    modalData.forEach(function(data) {
+      const trigger  = document.querySelector(data.trigger);
+      const bg       = document.querySelector(data.bg);
+      const modal    = document.querySelector(data.modal);
+      const closeBtn = document.querySelector(data.closeBtn);
+
+      trigger.addEventListener("click", function() {
+        bg.style.display = "block";
+        setTimeout(function() {
+          modal.classList.add("show");
+          bg.classList.add("show");
+        }, 50);
+      });
+
+      modal.addEventListener("click", function() {
+        modal.classList.remove("show");
+        bg.classList.remove("show");
+        setTimeout(function() { bg.style.display = "none"; }, 300);
+      });
+
+      bg.addEventListener("click", function(e) {
+        if (e.target === bg || e.target === closeBtn) {
+          modal.classList.remove("show");
+          bg.classList.remove("show");
+          setTimeout(function() { bg.style.display = "none"; }, 300);
+        }
+      });
+
+      closeBtn.addEventListener("click", function() {
+        modal.classList.remove("show");
+        bg.classList.remove("show");
+        setTimeout(function() { bg.style.display = "none"; }, 300);
+      });
+    });
+  </script>
+  <script src="../article.js"></script>
+</body>
+
+</html>

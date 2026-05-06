@@ -1,0 +1,398 @@
+<!DOCTYPE html><!-- 捕獲後の猫を自宅で待機させる際の注意 -->
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>猫を自宅で待機させる場合の注意点｜和歌山スペイクリニック さくらねこ</title>
+  <link rel="icon" href="../../favicon/dummy.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../article.css" />
+  <style>
+    /* セクション見出し */
+    .sec {
+      margin: 1.5em 0;
+      border: 2px solid #c8a800;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .sec > h2 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 0.45em 0.9em;
+      background: linear-gradient(135deg, #f5e642, #e8c830);
+      border-left: 5px solid #a08000;
+      border-radius: 0;
+      margin: 0;
+    }
+    .sec > h2 + * {
+      margin-top: 0.8em;
+    }
+    .sec > p,
+    .sec > ul,
+    .sec > .section-card {
+      margin-left: 0.8em;
+      margin-right: 0.8em;
+    }
+    .sec > p:last-child,
+    .sec > ul:last-child,
+    .sec > .section-card:last-child {
+      margin-bottom: 0.8em;
+    }
+
+    /* リスト */
+    .sec ul {
+      padding-left: 1.5em;
+      margin: 0.3em 0 0.5em;
+    }
+    .sec ul li {
+      margin: 0.35em 0;
+    }
+    .sec ul ul {
+      margin-top: 0.2em;
+    }
+
+    /* セクションカード（夏/冬・小分類） */
+    .section-card {
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 0.6em 0;
+    }
+    .section-card h3 {
+      background: #f5f5f5;
+      border-left: 3px solid #bbb;
+      margin: 0;
+      padding: 0.2em 0.8em;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #444;
+    }
+    .section-card .section-body {
+      padding: 0.4em 0.8em;
+    }
+    .section-card .section-body ul {
+      padding-left: 1.4em;
+      margin: 0.3em 0;
+    }
+    .section-card .section-body li {
+      margin: 0.3em 0;
+    }
+
+    /* 夏冬画像セル */
+    .img-pair {
+      display: flex;
+      gap: 6px;
+    }
+    .img-cell {
+      flex: 1;
+      border-radius: 4px;
+      padding: 0.5em;
+      text-align: center;
+    }
+    .img-cell img {
+      max-width: 100%;
+      border-radius: 6px;
+    }
+    .img-cell img.summer { background: #d0f0ff; }
+    .img-cell img.winter { background: #ffe8cc; }
+    @media screen and (max-width: 640px) {
+      .img-pair { flex-direction: column; }
+      .img-acc-body img.img-wide-sp { max-width: 100%; }
+    }
+
+    /* 画像アコーディオン */
+    .img-acc { margin: 0.4em 0 0.6em 0; }
+    .img-acc > summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #5a7a00;
+      text-decoration: underline;
+      user-select: none;
+      display: inline-block;
+    }
+    .img-acc > summary::-webkit-details-marker { display: none; }
+    .img-acc-body {
+      padding: 0.6em 0.5em;
+      text-align: center;
+border-radius: 4px;
+      margin-top: 4px;
+    }
+    .img-acc-body img {
+      max-width: 80%;
+      border-radius: 6px;
+      margin: 0.3em auto;
+      display: block;
+    }
+    .img-acc-body p,
+    .img-cell p { font-size: 0.9rem; color: #555; margin: 0.3em 0; }
+
+    /* 画像横並び（PC）→ 縦積み（スマホ） */
+    .img-row {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    .img-row img {
+      max-width: 48%;
+      border-radius: 6px;
+    }
+    @media screen and (max-width: 640px) {
+      .img-row { display: block; }
+      .img-row img {
+        max-width: 80%;
+        margin: 0.3em auto;
+        display: block;
+      }
+    }
+
+    /* 関連記事カード */
+    .article-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+      background: #f5f5f5;
+      border-radius: 10px;
+      padding: 7px 7px;
+      margin: 12px auto;
+      max-width: 560px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      transition: background .2s;
+    }
+    .article-card:hover { background: #ebebeb; }
+    .article-card img {
+      width: 100px;
+      height: auto;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .article-card .article-title { margin: 0; }
+
+    /* 吹き出し */
+    .balloon4 {
+      position: relative;
+      margin: 0 auto;
+      padding: 0.8em 1em;
+      width: fit-content;
+      border: 3px solid rgb(205 193 67);
+      background: rgb(255 254 159);
+      border-radius: 2em;
+    }
+    .balloon4::before {
+      content: "";
+      position: absolute;
+      width: 13px; height: 12px;
+      bottom: 0; left: 79px;
+      border: inherit; background: inherit;
+      border-radius: 50%;
+    }
+    .balloon4::after {
+      content: "";
+      position: absolute;
+      width: 20px; height: 18px;
+      bottom: 3px; left: 62px;
+      border: inherit; background: inherit;
+      border-radius: 50%;
+    }
+    .balloon4 p { margin: 0; padding: 0; }
+
+  </style>
+</head>
+
+<body>
+
+  <nav id="article-nav">
+    <a href="#" onclick="smoothScrollTo(0,200);return false;"><i class="fas fa-arrow-up"></i> トップへ</a>
+    <div style="display:flex;gap:8px;">
+      <a href="../index.html"><span class="nav-icon">≡</span> 一覧へ</a>
+      <a href="../../index.html"><i class="fas fa-home"></i> ホーム</a>
+    </div>
+  </nav>
+
+  <div class="page-inner">
+
+    <h1>猫を自宅で待機させる場合の注意点</h1>
+
+    <img class="article-img" src="images/hero.jpg" alt="待機中の猫">
+
+    <section class="sec">
+      <h2>はじめに</h2>
+      <p>触れない猫は、最初に入っている容器から<strong>無理に移し替えない</strong>こと（脱走・怪我の元）。</p>
+      <p>管理が最も楽なのは<strong>捕獲器</strong>（給餌・排泄の処理がしやすいため）。</p>
+      <div class="img-acc-body">
+        <p>無理に移し替えようとすると逃げられます！一晩待機なら捕獲器で十分</p>
+        <img src="images/escape-from-transfer.jpg" alt="移し替え中に逃げられた図" class="img-wide-sp">
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>待機期間</h2>
+      <ul>
+        <li>手術<strong>前日〜当日</strong>に捕獲するのが理想</li>
+        <li>保護予定でもないのに、１週間も前からの捕獲は長すぎる</li>
+        <li>特に授乳中の母猫は残された子猫が危険</li>
+      </ul>
+    </section>
+
+    <section class="sec">
+      <h2>給水・給餌</h2>
+      <ul>
+        <li>ウェットフードに水またはお湯を足すと食事と水分が１つの皿で済む</li>
+        <li>成猫なら一晩の絶食は問題なし。ただし<strong>夏の長期絶水は危険</strong></li>
+        <li>子猫・痩せた猫に長時間の絶食は危険。夜の間も与えておくこと</li>
+        <!-- <li>ウェットよりドライフードの方が腹を壊しにくい傾向がある</li> -->
+      </ul>
+    </section>
+
+    <section class="sec">
+      <h2>温度管理</h2>
+      <div class="section-card">
+        <h3>夏</h3>
+        <div class="section-body">
+          <ul>
+            <li>日なた放置はNG。<strong>車内放置は絶対ダメ</strong>（致命的）</li>
+            <li>一晩以上の待機なら必ず水を</li>
+          </ul>
+        </div>
+      </div>
+      <div class="section-card">
+        <h3>冬</h3>
+        <div class="section-body">
+          <ul>
+            <li>夜間に屋外で待機させる場合は毛布・段ボール等で防寒を</li>
+          </ul>
+          <details class="img-acc">
+            <summary>▶ 関連記事</summary>
+            <a class="article-card" href="../trap-temperature/index.html">
+              <img src="../trap-temperature/images/thumb.jpg" alt="温度管理">
+              <p class="article-title">捕獲した猫の温度管理</p>
+            </a>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>捕獲器で待機させる場合</h2>
+
+      <div class="section-card">
+        <h3>被せ物をする</h3>
+        <div class="section-body">
+          <ul>
+            <li>逃げ場のない状態での外からの視線は猫に強いストレス。布・段ボール・新聞紙など<strong>何か被せる</strong>（夏は通気も確保しながら）</li>
+          </ul>
+          <details class="img-acc">
+            <summary>▶ 写真で確認</summary>
+            <div class="img-pair">
+              <div class="img-cell">
+                <p>夏は涼し気に</p>
+                <img src="../trap-temperature/images/summer-cat-photo.png" alt="夏の被せ物" class="summer">
+              </div>
+              <div class="img-cell">
+                <p>冬は暖かく</p>
+                <img src="../trap-temperature/images/winter-trap-wrap-blue.png" alt="冬の被せ物" class="winter">
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3>給餌・給水</h3>
+        <div class="section-body">
+          <ul>
+            <li>食器は<strong>脱走しない程度の隙間</strong>から差し入れる（丈の低い皿なら開閉隙間は狭くて済む）</li>
+            <li>容器の回収は無理せず、返還後でOK</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3>排泄物の処理</h3>
+        <div class="section-body">
+          <ul>
+            <li>おしっこ：下に敷いたペットシーツを交換するだけ</li>
+          </ul>
+          <details class="img-acc">
+            <summary style="margin-left: 1em;">▶ 写真</summary>
+            <div class="img-acc-body">
+              <p>▼ ペットシーツを捕獲器の下に敷くと汚れたときの交換が楽</p>
+              <img src="images/petsheet.jpg" alt="ペットシーツ" class="img-wide-sp">
+            </div>
+          </details>
+          <ul>
+            <li>うんち：棒でつついて落とす。猫が怖がるなら無理しない
+              <ul>
+                <li>捕獲器内に新聞紙を敷いておくと処理しやすい</li>
+                <li><strong>水で洗い流すのはNG</strong>（猫が濡れて凍える）</li>
+                <li>猫砂は散らかるので使わない方が良い</li>
+              </ul>
+            </li>
+            <li>消臭スプレーは猫に直接かけない</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3>便利アイテムの紹介</h3>
+        <div class="section-body">
+          <ul>
+            <li>捕獲器内を区画分けできるアイテム（ディバイダー）があると給餌・掃除がしやすい</li>
+            <li><a href="https://www.google.com/search?q=捕獲器+ディバイダー" target="_blank" rel="noopener">「捕獲器 ディバイダー」</a>または<a href="https://www.google.com/search?q=捕獲器+デバイダー" target="_blank" rel="noopener">「捕獲器 デバイダー」</a>で検索</li>
+          </ul>
+          <details class="img-acc">
+            <summary>▶ ディバイダー写真</summary>
+            <div class="img-acc-body">
+              <div class="img-pair">
+                <div class="img-cell" style="background: #d6edd6;">
+                  <img src="images/divider-v.png" alt="ディバイダー">
+                </div>
+                <div class="img-cell">
+                  <img src="images/IMG_divider.jpg" alt="ディバイダー">
+                </div>
+              </div>
+            </div>
+          </details>
+          <details class="img-acc">
+            <summary>▶ 自作ディバイダー見本</summary>
+            <div class="img-acc-body">
+              <div class="img-pair">
+                <div class="img-cell" style="background: #f5e6d6;">
+                  <img src="images/rect26317c.png" alt="ディバイダー自作">
+                </div>
+                <div class="img-cell" style="background: #d6e8f5;">
+                  <img src="images/rect26318c.png" alt="ディバイダー自作">
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>キャリーケースで待機させる場合</h2>
+      <ul>
+        <li>できるだけ<strong>大きいサイズ</strong>を使う（小さいと給餌も掃除も困難）</li>
+        <li>水はこぼれやすい。置けない場合はウェットフードで水分補給</li>
+        <li>底には新聞紙・ペットシーツ等を敷いておく（脱走の恐れがある場合、無理に交換しようとしないこと）</li>
+        <li><strong>脱走は一瞬</strong>。開ける際は必ず締め切った部屋で</li>
+      </ul>
+    </section>
+
+
+    <footer>
+      <div class="article-dates">
+        <span>掲載: 2023年6月</span>
+        <span class="update-date"></span>
+      </div>
+    </footer>
+
+  </div><!-- /.page-inner -->
+
+  <script src="../article.js"></script>
+</body>
+
+</html>

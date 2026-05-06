@@ -1,498 +1,542 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>記事一覧 | 和歌山スペイクリニック</title>
+    <link rel="icon" href="../favicon/dummy.svg" type="image/svg+xml" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>記事一覧 | 和歌山スペイクリニック</title>
-  <link rel="icon" href="../favicon/dummy.svg" type="image/svg+xml" />
-  <!-- プッシュ時: href="../favicon/favi.svg" -->
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
-      background: #f5f0eb;
-      color: #333;
-    }
-
-    /* ヘッダー */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-      background: #fefdcc;
-      border-bottom: 1px solid #ccc;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-    }
-
-    .site-header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-      gap: 12px;
-    }
-
-    .site-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #5a2d0c;
-      white-space: nowrap;
-      text-decoration: none;
-    }
-
-    /* フィルターボタン群 */
-    .filter-nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .filter-btn {
-      background: #fff8e7;
-      color: #3a2010;
-      border: 2px solid #c8a882;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 5px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      letter-spacing: 0.05em;
-      transition:
-        background 0.2s,
-        border-color 0.2s;
-      white-space: nowrap;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: #f0d080;
-      border-color: #a07030;
-    }
-
-    @media (max-width: 480px) {
-      .site-header-inner {
-        height: auto;
-        padding: 8px 12px;
+      body {
+        font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", sans-serif;
+        background: #f7f6ed;
+        color: #1a1a1a;
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        min-height: 100vh;
+        padding-top: 52px;
+      }
+
+      /* ヘッダー */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 52px;
+        background: #fefdcc;
+        border-bottom: 1px solid #d8cc84;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+      }
+      .brand {
+        font-size: 1.05rem;
+        font-weight: bold;
+        color: #3a2010;
+        text-decoration: none;
+      }
+
+      /* フィルタ */
+      .filters {
+        position: sticky;
+        top: 52px;
+        z-index: 90;
+        background: #fff;
+        border-bottom: 1px solid #e8e0c8;
+        display: flex;
         gap: 8px;
+        padding: 8px 16px;
+        flex-wrap: wrap;
       }
-
-      .filter-nav {
-        justify-content: flex-start;
-      }
-
-      .filter-btn {
-        font-size: 13px;
-        padding: 4px 10px;
-      }
-    }
-
-    /* メインコンテンツ */
-    .main-wrapper {
-      padding-top: 60px;
-      padding-bottom: 60px;
-    }
-
-    @media (max-width: 480px) {
-      .main-wrapper {
-        padding-top: 80px;
-      }
-    }
-
-    .articles-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: min(2vw, 20px);
-      padding: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* 記事カード */
-    .article-card {
-      position: relative;
-      display: block;
-      text-decoration: none;
-      color: #333;
-      background: #fefde0;
-      border-radius: 0px;
-      overflow: hidden;
-      box-shadow: 0 0 5px 1px #2c2c2c;
-      transition:
-        transform 0.2s,
-        box-shadow 0.2s;
-    }
-
-    .article-card:hover {
-      transform: scale(1.04);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
-    }
-
-    .article-card.hidden {
-      display: none;
-    }
-
-    @keyframes scatterOut {
-      to {
-        transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot));
-        opacity: 0;
-      }
-    }
-
-    @keyframes gatherIn {
-      from {
-        transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot));
-        opacity: 0;
-      }
-    }
-
-    .article-card.is-scattering {
-      animation: scatterOut 145ms cubic-bezier(0.55, 0, 0.7, 0.2) forwards;
-      pointer-events: none;
-      position: relative;
-      z-index: 5;
-    }
-
-    .article-card.is-gathering {
-      animation: gatherIn 215ms cubic-bezier(0.22, 1, 0.36, 1) both;
-      will-change: transform, opacity;
-    }
-
-    .article-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 8px 10px 10px;
-    }
-
-    .card-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 2px dashed #64121291;
-      font-size: 1.2rem;
-      font-weight: bold;
-      line-height: 1.5;
-      min-height: 3.5em;
-      margin-bottom: 1em;
-    }
-
-    .card-tag {
-      text-align: right;
-      font-size: 1rem;
-      color: #2e7d32;
-    }
-
-    @media (max-width: 1000px) {
-      .articles-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .articles-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .card-title {
+      .fbtn {
+        border: 1px solid #d1c9a8;
+        padding: 5px 16px;
+        border-radius: 999px;
+        background: #fff;
+        color: #3a2010;
+        cursor: pointer;
         font-size: 0.9rem;
+        white-space: nowrap;
+        transition:
+          background 0.15s,
+          color 0.15s,
+          border-color 0.15s;
       }
-    }
-
-    @media (max-width: 480px) {
-      .articles-grid {
-        padding: 10px;
-        gap: min(3vw, 16px);
+      .fbtn.is-active {
+        background: #3a2010;
+        color: #fff;
+        border-color: #3a2010;
       }
-    }
 
-    /* フッター */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #888;
-    }
-  </style>
-</head>
+      /* グリッド */
+      main {
+        flex: 1;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+        max-width: 1200px;
+        margin: 24px auto;
+        padding: 0 16px;
+      }
 
-<body>
-  <header class="site-header">
-    <div class="site-header-inner">
-      <a class="site-title" href="../index.html">和歌山スペイクリニック</a>
-      <nav class="filter-nav">
-        <button class="filter-btn active" onclick="showAll(this)">全記事</button>
-        <button class="filter-btn" onclick="filterGenre('外猫', this)">外猫</button>
-        <button class="filter-btn" onclick="filterGenre('保護猫', this)">保護猫</button>
-        <button class="filter-btn" onclick="filterGenre('その他', this)">豆知識</button>
-      </nav>
-    </div>
-  </header>
+      /* カード */
+      .card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid #ede9d4;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .card:focus-visible {
+        outline: 3px solid #a07030;
+        outline-offset: 2px;
+      }
+      .card.hidden {
+        display: none;
+      }
 
-  <div class="main-wrapper">
-    <div id="articles-container" class="articles-grid">
-      <a class="article-card" data-genre="その他" href="./what-is-spay/index.html">
-        <img src="./what-is-spay/pic/jokamachi.jpg" alt="さくらねこ" />
-        <div class="card-body">
-          <p class="card-title">和歌山スペイクリニックの「スペイ」の意味とは？</p>
-          <p class="card-tag">#その他</p>
-        </div>
-      </a>
+      /* クリックエフェクト⑤ カードスケール＋フェード */
+      .card.is-clicking {
+        animation: cardClickScale 0.1s ease-out forwards;
+      }
+      @keyframes cardClickScale {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.08);
+          opacity: 0;
+        }
+      }
 
-      <a class="article-card" data-genre="外猫 予約？外猫" href="./cancel-ok/index.html">
-        <img src="./cancel-ok/pic/20190718.jpg" alt="キャンセル" />
-        <div class="card-body">
-          <p class="card-title">キャンセルを申し訳ないと思わなくても大丈夫です</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+      @keyframes scatterOut {
+        to {
+          transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot));
+          opacity: 0;
+        }
+      }
+      @keyframes gatherIn {
+        from {
+          transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot));
+          opacity: 0;
+        }
+      }
+      .card.is-scattering {
+        animation: scatterOut 145ms cubic-bezier(0.55, 0, 0.7, 0.2) forwards;
+        pointer-events: none;
+        position: relative;
+        z-index: 5;
+      }
+      .card.is-gathering {
+        animation: gatherIn 215ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        will-change: transform, opacity;
+      }
 
-      <a class="article-card" data-genre="保護猫 外猫 来院時" href="./carry-case/index.html">
-        <img src="./carry-case/pic/hero.jpg" alt="carry_case" />
-        <div class="card-body">
-          <p class="card-title">連れて来られる際の入れ物について</p>
-          <p class="card-tag">#保護猫 #外猫</p>
-        </div>
-      </a>
+      /* サムネイル */
+      .thumb {
+        aspect-ratio: 16/9;
+        background: #f2f0e4;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-      <a class="article-card" data-genre="保護猫" href="./laundry-net/index.html">
-        <img src="./images/04.jpg" alt="net" />
-        <div class="card-body">
-          <p class="card-title">猫ちゃんを入れる洗濯ネットについて</p>
-          <p class="card-tag">#保護猫</p>
-        </div>
-      </a>
+      /* メタ情報 */
+      .meta {
+        padding: 10px 12px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .card-title {
+        font-size: 0.95rem;
+        font-weight: bold;
+        line-height: 1.45;
+        margin: 0;
+      }
+      .chips {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        font-size: 0.72rem;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: #fef3c7;
+        color: #92400e;
+      }
 
-      <a class="article-card" data-genre="外猫 捕獲器使い方 捕獲コツ" href="./trap-setup/index.html">
-        <img src="./images/05.jpg" alt="Trap" />
-        <div class="card-body">
-          <p class="card-title">捕獲器の設置方法</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+      /* 画像オーバーレイ（taming用） */
+      .thumb .image-text,
+      .thumb .image-text2 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-weight: bold;
+        font-size: 18px;
+        color: white;
+        text-shadow:
+          -2px -2px 0 rgb(54, 111, 1),
+          2px -2px 0 rgb(54, 111, 1),
+          -2px 2px 0 rgb(54, 111, 1),
+          2px 2px 0 rgb(54, 111, 1);
+        pointer-events: none;
+        z-index: 1;
+      }
+      .thumb .image-text {
+        top: 8%;
+      }
+      .thumb .image-text2 {
+        bottom: 1em;
+      }
 
-      <a class="article-card" data-genre="外猫 来院時" href="./trap-transport/index.html">
-        <img src="./images/06.png" alt="carrying" />
-        <div class="card-body">
-          <p class="card-title">捕獲器で来院される際の注意補足</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+      /* フッター */
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 0.85rem;
+        color: #888;
+        border-top: 1px solid #e8e0c8;
+        margin-top: 16px;
+      }
 
-      <a class="article-card" data-genre="外猫 捕獲器使い方 来院時" href="./trap-wrap/index.html">
-        <img src="./images/06.5.png" alt="06.5" />
-        <div class="card-body">
-          <p class="card-title">（イラスト版）捕獲器の包み方</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+      /* レスポンシブ */
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+          padding-inline: 8px;
+          gap: 10px;
+        }
+      }
+      @media (max-width: 480px) {
+        .card-title {
+          font-size: 0.85rem;
+        }
+        .thumb .image-text,
+        .thumb .image-text2 {
+          font-size: 3vw;
+        }
+      }
+    </style>
+  </head>
 
-      <a class="article-card" data-genre="外猫 自宅待機" href="./trap-temperature/index.html">
-        <img src="./images/07.jpg" alt="Temperature" />
-        <div class="card-body">
-          <p class="card-title">捕獲した猫の温度管理</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">和歌山スペイクリニック さくらねこ</a>
+    </header>
 
-      <a class="article-card" data-genre="外猫 捕獲コツ" href="./trap-fail/index.html">
-        <img src="./images/08.jpg" alt="tsukamaranai" />
-        <div class="card-body">
-          <p class="card-title">捕まえたい日に捕まらない！</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+    <nav class="filters" aria-label="カテゴリ">
+      <button class="fbtn is-active" data-filter="all" aria-pressed="true">すべて</button>
+      <button class="fbtn" data-filter="外猫" aria-pressed="false">外猫</button>
+      <button class="fbtn" data-filter="保護猫" aria-pressed="false">保護猫</button>
+      <button class="fbtn" data-filter="その他" aria-pressed="false">豆知識・その他</button>
+    </nav>
 
-      <a class="article-card" data-genre="外猫 捕獲器使い方" href="./collapsible-trap/index.html">
-        <img src="./images/09.jpg" alt="blog009pic" />
-        <div class="card-body">
-          <p class="card-title">組み立て式捕獲器の注意点</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+    <main>
+      <div class="grid">
+        <a class="card" href="./what-is-spay/index.html" data-cats="その他">
+          <div class="thumb">
+            <img src="./what-is-spay/images/thumb.jpg" alt="さくらねこ" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">和歌山スペイクリニックの「スペイ」の意味とは？</p>
+            <div class="chips"><span class="chip">その他</span></div>
+          </div>
+        </a>
 
-      <a class="article-card" data-genre="その他" href="./vacuum-effect/index.html">
-        <img src="./images/10.png" alt="VacuumEffect" />
-        <div class="card-body">
-          <p class="card-title">ナワバリ現象</p>
-          <p class="card-tag">#その他</p>
-        </div>
-      </a>
+        <a class="card" href="./cancel-ok/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./cancel-ok/images/thumb.jpg" alt="キャンセル" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">キャンセルを申し訳ないと思わなくても大丈夫です</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-      <a class="article-card" data-genre="外猫 捕獲コツ" href="./trap-pedal/index.html">
-        <img src="./images/11.png" alt="trapper" />
-        <div class="card-body">
-          <p class="card-title">踏み板を踏まない猫</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+        <a class="card" href="./carry-case/index.html" data-cats="保護猫,外猫">
+          <div class="thumb">
+            <img src="./carry-case/images/thumb.jpg" alt="carry_case" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">連れて来られる際の入れ物について</p>
+            <div class="chips"><span class="chip">保護猫</span><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-      <a class="article-card" data-genre="外猫 自宅待機" href="./home-wait/13.htm">
-        <img src="./images/13.png" alt="jitakutaiki" />
-        <div class="card-body">
-          <p class="card-title">猫を自宅で待機させる場合の注意点</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+        <a class="card" href="./laundry-net/index.html" data-cats="保護猫">
+          <div class="thumb">
+            <img src="./laundry-net/images/thumb.jpg" alt="net" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">猫ちゃんを入れる洗濯ネットについて</p>
+            <div class="chips"><span class="chip">保護猫</span></div>
+          </div>
+        </a>
 
-      <a class="article-card" data-genre="外猫 予約？外猫" href="./no-appointment/index.html">
-        <img src="./no-appointment/images/800600day.png" alt="yoyakugai" />
-        <div class="card-body">
-          <p class="card-title">捕まえちゃった💦 どうしよう</p>
-          <p class="card-tag">#外猫</p>
-        </div>
-      </a>
+        <a class="card" href="./trap-setup/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./trap-setup/images/thumb.jpg" alt="Trap" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">捕獲器の設置方法</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-      <a class="article-card" data-genre="保護猫" href="./taming/15.htm">
-        <img src="./taming/images/d_chashiro800600.jpg" alt="d_chashiro" />
-        <div class="card-body">
-          <p class="card-title">馴れない猫を馴れさせる</p>
-          <p class="card-tag">#保護猫</p>
-        </div>
-      </a>
+        <a class="card" href="./trap-cover/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./trap-cover/images/carrying_man.png" alt="捕獲器でのご来院方法" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">捕獲器でのご来院方法</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-      <a class="article-card" data-genre="外猫 その他" href="./TNR/index.htm">
-        <img src="./TNR/pics/tnr-hero.jpg" alt="TNR" />
-        <div class="card-body">
-          <p class="card-title">TNRのこと、少しだけ知ってほしい</p>
-          <p class="card-tag">#外猫 #その他</p>
-        </div>
-      </a>
-    </div>
-  </div>
+        <!-- 旧版（非表示）
+        <a class="card" href="./trap-transport/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./trap-transport/images/thumb.png" alt="carrying" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">捕獲器で来院される際の注意補足</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-  <footer>和歌山スペイクリニック さくらねこ</footer>
+        <a class="card" href="./trap-wrap/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./trap-wrap/images/thumb.png" alt="06.5" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">（イラスト版）捕獲器の包み方</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
+        -->
 
-  <script>
-    let _filtering = false;
+        <a class="card" href="./trap-temperature/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./trap-temperature/images/thumb.jpg" alt="Temperature" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">捕獲した猫の温度管理</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-    function doFilter(genre) {
-      if (_filtering) return;
-      const allCards = [...document.querySelectorAll(".article-card")];
-      const nextVisible = genre === null
-        ? allCards
-        : allCards.filter(c => (c.dataset.genre || "").includes(genre));
-      const currentVisible = allCards.filter(c => !c.classList.contains("hidden"));
+        <a class="card" href="./trap-fail/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./trap-fail/images/thumb.jpg" alt="tsukamaranai" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">捕まえたい日に捕まらない！</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-      _filtering = true;
+        <a class="card" href="./trap-pedal/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./trap-pedal/images/thumb.png" alt="trapper" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">踏み板を踏まない猫</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-      /* --- Phase 1: 散る（中心収束・無回転） --- */
-      currentVisible.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        card.style.setProperty("--dx", (window.innerWidth / 2 - cx) + (Math.random() - 0.5) * 20 + "px");
-        card.style.setProperty("--dy", (window.innerHeight / 2 - cy) + (Math.random() - 0.5) * 20 + "px");
-        card.style.setProperty("--rot", "0deg");
-        card.classList.remove("is-gathering");
-        card.classList.add("is-scattering");
-      });
+        <a class="card" href="./collapsible-trap/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./collapsible-trap/images/thumb.jpg" alt="blog009pic" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">組み立て式捕獲器の注意点</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-      setTimeout(() => {
-        allCards.forEach(c => {
-          c.classList.remove("is-scattering", "is-gathering");
-          c.style.removeProperty("--dx");
-          c.style.removeProperty("--dy");
-          c.style.removeProperty("--rot");
-          c.style.animationDelay = "";
-          c.style.animationDuration = "";
-          c.classList.add("hidden");
-        });
+        <a class="card" href="./vacuum-effect/index.html" data-cats="その他">
+          <div class="thumb">
+            <img src="./vacuum-effect/images/thumb.png" alt="VacuumEffect" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">ナワバリ現象</p>
+            <div class="chips"><span class="chip">その他</span></div>
+          </div>
+        </a>
 
-        /* --- Phase 2: 集まる（中央から・同時・無回転） --- */
-        nextVisible.forEach(card => card.classList.remove("hidden"));
-        nextVisible[0]?.getBoundingClientRect(); // reflow
+        <a class="card" href="./home-wait/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./home-wait/images/thumb.png" alt="jitakutaiki" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">猫を自宅で待機させる場合の注意点</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
 
-        nextVisible.forEach(card => {
+        <a class="card" href="./no-appointment/index.html" data-cats="外猫">
+          <div class="thumb">
+            <img src="./no-appointment/images/thumb.jpg" alt="yoyakugai" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">捕まえちゃった💦 どうしよう</p>
+            <div class="chips"><span class="chip">外猫</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="./taming/index.html" data-cats="保護猫">
+          <div class="thumb">
+            <img src="./taming/images/thumb.jpg" alt="d_chashiro" loading="lazy" />
+            <div class="image-text">ファー💢懐いてなんか</div>
+            <div class="image-text2">やるもんかー💢💢</div>
+          </div>
+          <div class="meta">
+            <p class="card-title">馴れない猫を馴れさせる</p>
+            <div class="chips"><span class="chip">保護猫</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="./TNR/index.htm" data-cats="外猫,その他">
+          <div class="thumb">
+            <img src="./TNR/images/thumb.jpg" alt="TNR" loading="lazy" />
+          </div>
+          <div class="meta">
+            <p class="card-title">TNRのこと、少しだけ知ってほしい</p>
+            <div class="chips"><span class="chip">外猫</span><span class="chip">その他</span></div>
+          </div>
+        </a>
+      </div>
+    </main>
+
+    <footer>和歌山スペイクリニック さくらねこ</footer>
+
+    <script>
+      let _filtering = false;
+
+      function getCats(card) {
+        return (card.dataset.cats || "")
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+      }
+
+      function doFilter(key) {
+        if (_filtering) return;
+        const allCards = [...document.querySelectorAll(".card")];
+        const nextVisible = key === null ? allCards : allCards.filter((c) => getCats(c).includes(key));
+        const currentVisible = allCards.filter((c) => !c.classList.contains("hidden"));
+
+        _filtering = true;
+
+        currentVisible.forEach((card) => {
           const rect = card.getBoundingClientRect();
-          const cardCx = rect.left + rect.width / 2;
-          const cardCy = rect.top + rect.height / 2;
-          card.style.setProperty("--dx", (window.innerWidth / 2 - cardCx) + (Math.random() - 0.5) * 20 + "px");
-          card.style.setProperty("--dy", (window.innerHeight / 2 - cardCy) + (Math.random() - 0.5) * 20 + "px");
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          card.style.setProperty("--dx", window.innerWidth / 2 - cx + (Math.random() - 0.5) * 20 + "px");
+          card.style.setProperty("--dy", window.innerHeight / 2 - cy + (Math.random() - 0.5) * 20 + "px");
           card.style.setProperty("--rot", "0deg");
-          card.style.animationDuration = "215ms";
-          card.style.animationDelay = "0ms";
-          card.classList.add("is-gathering");
+          card.classList.remove("is-gathering");
+          card.classList.add("is-scattering");
         });
 
         setTimeout(() => {
-          nextVisible.forEach(card => {
-            card.classList.remove("is-gathering");
-            card.style.removeProperty("--dx");
-            card.style.removeProperty("--dy");
-            card.style.removeProperty("--rot");
-            card.style.animationDelay = "";
-            card.style.animationDuration = "";
+          allCards.forEach((c) => {
+            c.classList.remove("is-scattering", "is-gathering");
+            c.style.removeProperty("--dx");
+            c.style.removeProperty("--dy");
+            c.style.removeProperty("--rot");
+            c.style.animationDelay = "";
+            c.style.animationDuration = "";
+            c.classList.add("hidden");
           });
-          _filtering = false;
-        }, 275);
-      }, 175);
-    }
 
-    document.querySelectorAll(".article-card").forEach(card => {
-      card.addEventListener("click", function (e) {
-        if (_filtering) return;
-        e.preventDefault();
-        const href = this.href;
-        const rect = this.getBoundingClientRect();
+          nextVisible.forEach((card) => card.classList.remove("hidden"));
+          nextVisible[0]?.getBoundingClientRect();
 
-        Object.assign(this.style, {
-          position: "fixed",
-          top: rect.top + "px",
-          left: rect.left + "px",
-          width: rect.width + "px",
-          height: rect.height + "px",
-          margin: "0",
-          zIndex: "100",
-          borderRadius: "8px",
-          opacity: "1",
-          transition: "top 0.6s cubic-bezier(0.4,0,0.2,1), left 0.6s cubic-bezier(0.4,0,0.2,1), width 0.6s cubic-bezier(0.4,0,0.2,1), height 0.6s cubic-bezier(0.4,0,0.2,1), border-radius 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.2s cubic-bezier(0.4,0,0.2,1)"
+          nextVisible.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const cardCx = rect.left + rect.width / 2;
+            const cardCy = rect.top + rect.height / 2;
+            card.style.setProperty("--dx", window.innerWidth / 2 - cardCx + (Math.random() - 0.5) * 20 + "px");
+            card.style.setProperty("--dy", window.innerHeight / 2 - cardCy + (Math.random() - 0.5) * 20 + "px");
+            card.style.setProperty("--rot", "0deg");
+            card.style.animationDuration = "215ms";
+            card.style.animationDelay = "0ms";
+            card.classList.add("is-gathering");
+          });
+
+          setTimeout(() => {
+            nextVisible.forEach((card) => {
+              card.classList.remove("is-gathering");
+              card.style.removeProperty("--dx");
+              card.style.removeProperty("--dy");
+              card.style.removeProperty("--rot");
+              card.style.animationDelay = "";
+              card.style.animationDuration = "";
+            });
+            _filtering = false;
+          }, 275);
+        }, 175);
+      }
+
+      document.querySelectorAll(".fbtn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".fbtn").forEach((b) => {
+            b.classList.remove("is-active");
+            b.setAttribute("aria-pressed", "false");
+          });
+          this.classList.add("is-active");
+          this.setAttribute("aria-pressed", "true");
+          const key = this.dataset.filter;
+          doFilter(key === "all" ? null : key);
         });
-
-        this.getBoundingClientRect(); // reflow
-
-        Object.assign(this.style, {
-          top: "0",
-          left: "0",
-          width: "80vw",
-          height: "80vh",
-          borderRadius: "0",
-          opacity: "0"
-        });
-
-        setTimeout(() => { window.location.href = href; }, 200);
       });
-    });
 
-    function filterGenre(genre, btn) {
-      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      doFilter(genre);
-    }
-
-    function showAll(btn) {
-      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      doFilter(null);
-    }
-  </script>
-</body>
-
+      document.querySelectorAll(".card").forEach((card) => {
+        card.addEventListener("click", function (e) {
+          if (_filtering) return;
+          e.preventDefault();
+          const href = this.href;
+          this.classList.add("is-clicking");
+          setTimeout(() => {
+            window.location.href = href;
+          }, 100);
+        });
+      });
+    </script>
+  </body>
 </html>
