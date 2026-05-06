@@ -145,6 +145,7 @@ footer {
     border-radius: 0;
     box-shadow: none;
   }
+  .page-inner { padding: 80px 3% 48px; }
   h1 { font-size: 1.55rem; }
   p  { font-size: 1.08rem; }
   .article-img { width: 100%; }

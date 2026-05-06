@@ -69,7 +69,7 @@
         /* 画像を全画面に表示 */
         background:
           linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, transparent 40%, rgba(0, 0, 0, 0.6) 100%),
-          url("pics/tnr-hero.jpg") 65% center / cover no-repeat;
+          url("images/thumb.jpg") 65% center / cover no-repeat;
         color: #fff;
         display: flex;
         flex-direction: column;
@@ -281,7 +281,7 @@
         .page-0 {
           background:
             linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, transparent 40%, rgba(0, 0, 0, 0.6) 100%),
-            url("pics/tnr-hero-sm.jpg") center center / cover no-repeat;
+            url("images/thumb-sm.jpg") center center / cover no-repeat;
           padding: 48px 24px 120px;
           text-align: center;
         }
@@ -690,15 +690,12 @@
       #btn-to-top i { font-size: 1.1rem; }
 
       /* ========== 表紙リンクボタン ========== */
-      .cover-link:first-child {
-        position: absolute;
-        top: 14px;
-        left: max(14px, calc(50% - 330px + 14px));
-      }
-      .cover-link:last-child {
+      .cover-links {
         position: absolute;
         top: 14px;
         right: max(14px, calc(50% - 330px + 14px));
+        display: flex;
+        gap: 8px;
       }
       .cover-link {
         display: flex;
@@ -720,6 +717,7 @@
       }
       .cover-link:hover { color: #e07b00; }
       .cover-link i { font-size: 1.1rem; }
+      .cover-link .nav-icon { font-size: 1.4rem; line-height: 1; }
 
       /* ========== ページ6 謎ボタン ========== */
       .sub-links {
@@ -818,11 +816,11 @@
           <div class="page-title"><ruby>少<rt>すこ</rt></ruby>しだけ<ruby>知<rt>し</rt></ruby>ってほしい、<br />TNRのこと。</div>
           <!-- <div class="catch-copy">この耳の形、知ってる？</div> -->
           <div class="cover-links">
-            <a class="cover-link" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
-              <i class="fa-solid fa-reply"></i>
+            <a class="cover-link" href="../index.html">
+              <span class="nav-icon">≡</span>
               <span>一覧へ</span>
             </a>
-            <a class="cover-link" href="https://wakayamasakuraneko.com/index.htm">
+            <a class="cover-link" href="../../index.html">
               <i class="fa-solid fa-house"></i>
               <span>ホームへ</span>
             </a>
@@ -842,7 +840,7 @@
         <div class="page-label">野良猫のはなし</div>
         <div class="page-title">TNRのこと、<br />少しだけ知ってほしい。</div>
         <img
-          src="pics/tnr-hero.jpg"
+          src="images/thumb.jpg"
           alt="野良猫のイラスト"
           style="width: 100%; max-width: 360px; border-radius: 12px; display: block; margin: 20px auto"
         />
@@ -1893,11 +1891,11 @@
     <!-- ページ 6: おわり -->
     <div class="page page-6" id="page-6">
       <div class="cover-links">
-        <a class="cover-link" href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">
+        <a class="cover-link" href="../index.html">
           <i class="fa-solid fa-reply"></i>
           <span>一覧へ</span>
         </a>
-        <a class="cover-link" href="https://wakayamasakuraneko.com/index.htm">
+        <a class="cover-link" href="../../index.html">
           <i class="fa-solid fa-house"></i>
           <span>ホームへ</span>
         </a>

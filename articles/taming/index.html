@@ -24,7 +24,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 16px;
+      padding: 8px max(16px, calc(50% - 330px + 16px));
       z-index: 200;
       box-sizing: border-box;
     }
@@ -37,6 +37,7 @@
       color: #666;
       text-decoration: none;
       font-size: 0.62rem;
+      padding: 0;
       width: 52px;
       height: 52px;
       border-radius: 10px;
@@ -45,8 +46,9 @@
       border: 1px solid rgba(220, 220, 220, 0.7);
       transition: color 0.2s, box-shadow 0.2s;
     }
-    #article-nav a:hover { color: #4a7c2d; }
+    #article-nav a:hover { color: #4a7c2d; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
     #article-nav .nav-icon { font-size: 1.35rem; line-height: 1; }
+    #article-nav .fa-home  { font-size: 1.25rem; }
 
     footer {
       background: none;
