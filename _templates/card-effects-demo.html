@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>カードエフェクト見本</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", sans-serif;
+        background: #f7f6ed;
+        padding: 40px 20px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 8px;
+        font-size: 1.15rem;
+        color: #3a2010;
+      }
+      .note {
+        text-align: center;
+        font-size: 0.8rem;
+        color: #888;
+        margin-bottom: 36px;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        max-width: 860px;
+        margin: 0 auto;
+      }
+      @media (max-width: 600px) {
+        .demo-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .demo-section h2 {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #555;
+        margin-bottom: 10px;
+        font-weight: normal;
+      }
+
+      /* カード共通 */
+      .card {
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        border: 1px solid #ede9d4;
+        position: relative;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .thumb {
+        aspect-ratio: 16/9;
+        background: #e8e4d4;
+        overflow: hidden;
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .meta {
+        padding: 10px 12px 12px;
+      }
+      .card-title {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #1a1a1a;
+      }
+
+      .status {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: #a07030;
+        height: 1.3em;
+      }
+
+      /* ===== ① リップル ===== */
+      .ripple-wave {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(58, 32, 16, 0.22);
+        transform: scale(0);
+        animation: ripple-anim 0.5s ease-out forwards;
+        pointer-events: none;
+      }
+      @keyframes ripple-anim {
+        to {
+          transform: scale(4.5);
+          opacity: 0;
+        }
+      }
+
+      /* ===== ② フラッシュ ===== */
+      .card-flash::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #fff;
+        opacity: 0;
+        pointer-events: none;
+        border-radius: inherit;
+      }
+      .card-flash.flashing::after {
+        animation: flash-anim 0.35s ease-out forwards;
+      }
+      @keyframes flash-anim {
+        0% {
+          opacity: 0;
+        }
+        25% {
+          opacity: 0.85;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* ===== ③ ボーダー点灯 ===== */
+      .card-border.lighting {
+        animation: border-glow 0.45s ease-out forwards;
+      }
+      @keyframes border-glow {
+        0% {
+          box-shadow:
+            0 2px 10px rgba(0, 0, 0, 0.08),
+            0 0 0 0 rgba(160, 112, 48, 0);
+        }
+        35% {
+          box-shadow:
+            0 2px 10px rgba(0, 0, 0, 0.08),
+            0 0 0 5px rgba(160, 112, 48, 0.55);
+        }
+        100% {
+          box-shadow:
+            0 2px 10px rgba(0, 0, 0, 0.08),
+            0 0 0 10px rgba(160, 112, 48, 0);
+        }
+      }
+
+      /* ===== ④ サムネズーム ===== */
+      .card-thumb-zoom .thumb {
+        transition: transform 0.3s ease-out;
+      }
+      .card-thumb-zoom.zooming .thumb {
+        transform: scale(1.25);
+      }
+
+      /* ===== ⑤ カードスケール＋フェード ===== */
+      .card-scale-fade.zooming {
+        animation: scale-fade-anim 0.3s ease-out forwards;
+      }
+      @keyframes scale-fade-anim {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.08);
+          opacity: 0;
+        }
+      }
+
+      /* ===== ⑥ グラデーションボーダー点灯＋スケールフェード ===== */
+      .card-combo {
+        overflow: visible; /* ::before をカード外側に出すため */
+      }
+      .card-combo .thumb {
+        overflow: hidden;
+      }
+      .card-combo::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: 12px;
+        padding: 2px;
+        background: linear-gradient(
+          to top right,
+          transparent 0%,
+          transparent 35%,
+          rgba(220, 160, 40, 0.95) 50%,
+          transparent 65%,
+          transparent 100%
+        );
+        background-size: 300% 300%;
+        background-position: 0% 100%;
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .card-combo.zooming {
+        animation: scale-fade-anim 0.3s ease-out forwards;
+      }
+      .card-combo.zooming::before {
+        animation: border-gradient-sweep 0.25s ease-out forwards;
+      }
+      @keyframes border-gradient-sweep {
+        0% {
+          background-position: 0% 100%;
+          opacity: 1;
+        }
+        85% {
+          background-position: 100% 0%;
+          opacity: 1;
+        }
+        100% {
+          background-position: 100% 0%;
+          opacity: 0;
+        }
+      }
+
+      /* ===== ⑦ 水平スピン（Y軸） ===== */
+      .card-spin.zooming {
+        animation: spin-out 0.55s ease-in-out forwards;
+      }
+      @keyframes spin-out {
+        0% {
+          transform: perspective(700px) rotateY(0deg);
+          opacity: 1;
+        }
+        75% {
+          transform: perspective(700px) rotateY(720deg);
+          opacity: 1;
+        }
+        100% {
+          transform: perspective(700px) rotateY(720deg);
+          opacity: 0;
+        }
+      }
+
+      /* ===== ⑧ 縦スピン（X軸） ===== */
+      .card-spin-x.zooming {
+        animation: spin-out-x 0.2s ease-in-out forwards;
+      }
+      @keyframes spin-out-x {
+        0% {
+          transform: perspective(700px) rotateX(0deg);
+          opacity: 1;
+        }
+        75% {
+          transform: perspective(700px) rotateX(270deg);
+          opacity: 1;
+        }
+        /* 100% {
+          transform: perspective(700px) rotateX(720deg);
+          opacity: 0;
+        } */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>カードクリックエフェクト 見本</h1>
+    <p class="note">各カードをクリックして比較してください（遷移はシミュレートのみ）</p>
+
+    <div class="demo-grid">
+      <!-- ① リップル -->
+      <div class="demo-section">
+        <h2>① リップル</h2>
+        <div class="card" id="card-ripple">
+          <div class="thumb"><img src="../favicon/favi.png" alt="thumb" /></div>
+          <div class="meta"><p class="card-title">クリックしてみてください</p></div>
+        </div>
+        <div class="status" id="status-ripple"></div>
+      </div>
+
+      <!-- ② フラッシュ -->
+      <div class="demo-section">
+        <h2>② フラッシュ</h2>
+        <div class="card card-flash" id="card-flash">
+          <div class="thumb"><img src="../favicon/favi.png" alt="thumb" /></div>
+          <div class="meta"><p class="card-title">クリックしてみてください</p></div>
+        </div>
+        <div class="status" id="status-flash"></div>
+      </div>
+
+      <!-- ③ ボーダー点灯 -->
+      <div class="demo-section">
+        <h2>③ ボーダー点灯</h2>
+        <div class="card card-border" id="card-border">
+          <div class="thumb"><img src="../favicon/favi.png" alt="thumb" /></div>
+          <div class="meta"><p class="card-title">クリックしてみてください</p></div>
+        </div>
+        <div class="status" id="status-border"></div>
+      </div>
+
+      <!-- ④ サムネズーム -->
+      <div class="demo-section">
+        <h2>④ サムネズーム</h2>
+        <div class="card card-thumb-zoom" id="card-thumb-zoom">
+          <div class="thumb"><img src="../favicon/favi.png" alt="thumb" /></div>
+          <div class="meta"><p class="card-title">クリックしてみてください</p></div>
+        </div>
+        <div class="status" id="status-thumb-zoom"></div>
+      </div>
+
+      <!-- ⑤ カードスケール＋フェード -->
+      <div class="demo-section">
+        <h2>⑤ カードスケール＋フェード</h2>
+        <div class="card card-scale-fade" id="card-scale-fade">
+          <div class="thumb"><img src="../favicon/favi.png" alt="thumb" /></div>
+          <div class="meta"><p class="card-title">クリックしてみてください</p></div>
+        </div>
+        <div class="status" id="status-scale-fade"></div>
+      </div>
+
+      <!-- ⑥ ボーダー点灯＋スケールフェード -->
+      <div class="demo-section">
+        <h2>⑥ ボーダー点灯＋スケールフェード</h2>
+        <div class="card card-combo" id="card-combo">
+          <div class="thumb"><img src="../favicon/favi.png" alt="thumb" /></div>
+          <div class="meta"><p class="card-title">クリックしてみてください</p></div>
+        </div>
+        <div class="status" id="status-combo"></div>
+      </div>
+
+      <!-- ⑦ 水平スピン（Y軸） -->
+      <div class="demo-section">
+        <h2>⑦ 水平スピン（Y軸）</h2>
+        <div class="card card-spin" id="card-spin">
+          <div class="thumb"><img src="../favicon/favi.png" alt="thumb" /></div>
+          <div class="meta"><p class="card-title">クリックしてみてください</p></div>
+        </div>
+        <div class="status" id="status-spin"></div>
+      </div>
+
+      <!-- ⑧ 縦スピン（X軸） -->
+      <div class="demo-section">
+        <h2>⑧ 縦スピン（X軸）</h2>
+        <div class="card card-spin-x" id="card-spin-x">
+          <div class="thumb"><img src="../favicon/favi.png" alt="thumb" /></div>
+          <div class="meta"><p class="card-title">クリックしてみてください</p></div>
+        </div>
+        <div class="status" id="status-spin-x"></div>
+      </div>
+    </div>
+
+    <script>
+      function showStatus(id, delay) {
+        const el = document.getElementById(id);
+        el.textContent = "→ 遷移します...";
+        setTimeout(() => {
+          el.textContent = "（デモ: 遷移をシミュレート）";
+        }, delay);
+        setTimeout(() => {
+          el.textContent = "";
+        }, delay + 1800);
+      }
+
+      // ① リップル
+      document.getElementById("card-ripple").addEventListener("click", function (e) {
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 2.2;
+        const wave = document.createElement("span");
+        wave.className = "ripple-wave";
+        Object.assign(wave.style, {
+          width: size + "px",
+          height: size + "px",
+          left: e.clientX - rect.left - size / 2 + "px",
+          top: e.clientY - rect.top - size / 2 + "px",
+        });
+        this.appendChild(wave);
+        setTimeout(() => wave.remove(), 600);
+        showStatus("status-ripple", 300);
+      });
+
+      // ② フラッシュ
+      document.getElementById("card-flash").addEventListener("click", function () {
+        this.classList.add("flashing");
+        this.addEventListener("animationend", () => this.classList.remove("flashing"), { once: true });
+        showStatus("status-flash", 300);
+      });
+
+      // ③ ボーダー点灯
+      document.getElementById("card-border").addEventListener("click", function () {
+        this.classList.add("lighting");
+        this.addEventListener("animationend", () => this.classList.remove("lighting"), { once: true });
+        showStatus("status-border", 400);
+      });
+
+      // ④ サムネズーム
+      document.getElementById("card-thumb-zoom").addEventListener("click", function () {
+        this.classList.add("zooming");
+        setTimeout(() => this.classList.remove("zooming"), 400);
+        showStatus("status-thumb-zoom", 300);
+      });
+
+      // ⑤ カードスケール＋フェード
+      document.getElementById("card-scale-fade").addEventListener("click", function () {
+        this.classList.add("zooming");
+        this.addEventListener("animationend", () => this.classList.remove("zooming"), { once: true });
+        showStatus("status-scale-fade", 300);
+      });
+
+      // ⑥ ボーダー点灯＋スケールフェード
+      document.getElementById("card-combo").addEventListener("click", function () {
+        this.classList.add("zooming");
+        this.addEventListener("animationend", () => this.classList.remove("zooming"), { once: true });
+        showStatus("status-combo", 300);
+      });
+
+      // ⑦ 水平スピン（Y軸）
+      document.getElementById("card-spin").addEventListener("click", function () {
+        this.classList.add("zooming");
+        this.addEventListener("animationend", () => this.classList.remove("zooming"), { once: true });
+        showStatus("status-spin", 450);
+      });
+
+      // ⑧ 縦スピン（X軸）
+      document.getElementById("card-spin-x").addEventListener("click", function () {
+        this.classList.add("zooming");
+        this.addEventListener("animationend", () => this.classList.remove("zooming"), { once: true });
+        showStatus("status-spin-x", 350);
+      });
+    </script>
+  </body>
+</html>

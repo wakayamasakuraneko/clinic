@@ -1,0 +1,66 @@
+/* --- フィルタUI --- */
+.filters {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-border);
+}
+.fbtn {
+  border: 1px solid var(--color-border);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-text);
+  cursor: pointer;
+}
+.fbtn.is-active {
+  background: var(--color-text);
+  color: #fff;
+  border-color: var(--color-text);
+}
+
+/* --- 表示/非表示 --- */
+.card.is-hidden {
+  /* display: none; */
+}
+
+/* --- カテゴリ表示（位置・見た目） --- */
+/* A) サムネ左上のバッジ（1つ代表カテゴリを出す場合に） */
+.thumb {
+  position: relative;
+}
+
+/* ↓サムネ左上バッジは今回非表示 */
+.badge.badge--thumb {
+  display: none;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  background: rgba(17, 24, 39, 0.9);
+  color: #fff;
+  border-radius: 999px;
+}
+
+/* B) タイトル下のチップ（複数カテゴリ向け） */
+.chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.chip {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--chip-ink);
+}
+
+/* C) 角リボン（お好みで切替可能：badge--ribbon を .thumb 内に置く）
+.badge--ribbon{
+  position:absolute; top:0; right:0; background:#ef4444; color:#fff; padding:6px 10px;
+  clip-path: polygon(0 0,100% 0,100% 70%,80% 100%,0 100%); font-size:12px;
+}
+*/

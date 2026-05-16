@@ -3,11 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gemini V2</title>
-    <link rel="icon" href="favicon/dummy.svg" type="image/svg+xml" /><!-- プッシュ時: href="favicon/favi.svg" -->
+    <title>和歌山スペイクリニック さくらねこ</title>
+    <link rel="icon" href="favicon/dummy.svg" type="image/svg+xml" />
+    <!-- プッシュ時: href="favicon/favi.svg" -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/priceCSS/price-bundle.css" />
+    <link rel="stylesheet" href="css/colors.css" />
     <style>
+
       /* 基本設定 */
       * {
         box-sizing: border-box;
@@ -23,21 +26,17 @@
         margin-block-end: 1em;
       }
 
-      html {
-        background-color: #f6f4a5;
-      }
       body {
         font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
-        background-color: #f6f4a5;
-        color: #333;
+        background-color: var(--bg-page);
+        color: var(--c-text);
         line-height: 1.6;
         max-width: 1000px;
         margin: 0 auto;
       }
 
       /* ① ヘッダー：シンプルに */
-      header,
-      .header-tel,
+      .header-wrap,
       .header-tel-note,
       .header-notice,
       .site-nav,
@@ -46,90 +45,112 @@
       footer {
         margin: 0 2%;
       }
+      .header-wrap {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        background-color: var(--bg-header);
+        align-items: center;
+      }
       header {
-        background-color: #eee183;
+        grid-column: 1;
+        grid-row: 1;
         text-align: center;
         padding-top: 0.5em;
         font-size: 20px;
       }
       .header-tel {
-        background-color: #eee183;
+        grid-column: 1;
+        grid-row: 2;
         text-align: center;
         font-size: 20px;
-        color: green;
+      }
+      .header-articles-btn {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        color: var(--c-articles-btn);
+        text-decoration: none;
+        font-size: 0.62rem;
+        width: 52px;
+        height: 52px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.13);
+        border: 1px solid rgba(220, 220, 220, 0.7);
+        margin: 4px 8px;
+        transition:
+          color 0.2s,
+          box-shadow 0.2s;
+      }
+      .header-articles-btn:hover {
+        color: var(--c-articles-btn-hover);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      }
+      .header-articles-btn .nav-icon {
+        font-size: 1.35rem;
+        line-height: 1;
       }
       .header-tel-note {
-        background-color: #eee183;
+        background-color: var(--bg-header);
         text-align: center;
         font-size: 17px;
-        color: #000000;
+        color: var(--c-black);
         padding: 0.2em 0% 0.5em;
       }
       .header-notice {
-        background-color: #fff9ca;
-        border-top: 1px solid #e0e0d0;
-        border-bottom: 1px solid #e0e0d0;
+        background-color: var(--bg-notice);
+        border-top: 1px solid var(--bd-light);
+        border-bottom: 1px solid var(--bd-light);
         padding: 0.5em 4%;
-        font-size: 17px;
+        font-size: 1.5rem;
+        gap: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      .header-quick-nav {
-        display: flex;
-        gap: 12px;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        max-width: 100%;
-        padding-bottom: 2px;
-      }
-      .header-nav-card {
-        padding: 3px 15px 3px 10px;
-        color: white;
+      .header-notice-btn {
+        padding: 2px 12px;
+        background: var(--bg-notice-btn);
+        color: var(--c-mid-gray);
         display: inline-block;
         border-radius: 50px;
         text-decoration: none;
-        cursor: pointer;
-        transition:
-          transform 0.2s ease-out,
-          filter 0.2s ease-out;
         font-size: 0.85em;
-        font-weight: bold;
+        border: 1px solid var(--bd-gray);
         white-space: nowrap;
       }
-      .header-nav-card:hover {
-        transform: translateY(-3px);
-        filter: brightness(1.12);
+      .header-notice-btn:hover {
+        background: var(--bg-notice-btn-hover);
       }
-      .header-blog-btn,
       .bloglink-btn {
-        padding: 3px 15px 3px 10px;
-        background: #f1df50;
-        color: black;
+        padding: .5em .8em;
+        background: #fff28e;
+        color: var(--c-black);
         display: inline-block;
-        border-radius: 50px;
+        border-radius: 10px;
         text-decoration: none;
         cursor: pointer;
-        box-shadow:
-          1px 0px 3px gray,
-          inset 0px -2px 4px #615712;
+        /* box-shadow: 1px 0px 3px var(--c-gray),
+              inset 0px -2px 4px var(--c-brown-shadow); */
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
         transition: all 0.3s ease-out;
-        font-size: 0.85em;
+        font-size: .9em;
         font-weight: bold;
         white-space: nowrap;
       }
-      .header-blog-btn:hover,
       .bloglink-btn:hover {
-        transition: 0.7s;
-        background: #ffe100;
-        border-color: #000;
+        background: var(--bg-btn-yellow-hover);
       }
 
-      details summary {
+      .nav-page details summary {
         padding: 3px 15px 3px 10px;
-        background: #f1df50;
-        color: black;
+        background: var(--bg-btn-yellow);
+        color: var(--c-black);
         display: list-item;
         list-style-position: inside;
         width: 100%;
@@ -137,39 +158,78 @@
         border-radius: 50px;
         cursor: pointer;
         box-shadow:
-          1px 0px 3px gray,
-          inset 0px -2px 4px #615712;
+          1px 0px 3px var(--c-gray),
+          inset 0px -2px 4px var(--c-brown-shadow);
         transition: all 0.15s ease-out;
         text-align: center;
         user-select: none;
-        /* font-size: 0.85em; */
-        /* font-weight: bold; */
       }
-      details summary:hover {
+      .nav-page details summary:hover {
         transition: 0.7s;
-        background: #ffe100;
-        border-color: #000;
+        background: var(--bg-btn-yellow-hover);
+        border-color: var(--c-black);
       }
 
-      details {
+      .nav-page details {
         max-width: 9em;
         margin: 0 auto;
-        background: #f7eb8a;
+        background: var(--bg-details);
         border: solid;
-        border-color: #a68d13;
+        border-color: var(--c-brown-light);
         border-radius: 50px;
         transition: max-width 0.15s ease-out;
       }
-      details[open] {
+      .nav-page details[open] {
         max-width: 36em;
         border-radius: 8px;
       }
-      details[open] summary {
+      .nav-page details[open] summary {
         display: list-item;
         border-radius: 6px 6px 0 0;
       }
-      details p {
+      .nav-page details p {
         padding: 0 1em;
+      }
+
+      details.news {
+        max-width: none;
+        transition: none;
+      }
+      #ticket-info {
+        font-size: 1.2em;
+      }
+      details.news > summary {
+        font-size: 1em;
+        font-weight: bold;
+        color: var(--c-brown-mid);
+        cursor: pointer;
+        margin-bottom: 0.5em;
+        user-select: none;
+      }
+      details.news details {
+        margin-top: 1em;
+      }
+      details.news details > summary {
+        font-weight: bold;
+        color: var(--c-mid-gray);
+        cursor: pointer;
+        user-select: none;
+      }
+
+      /* details アニメーション */
+      details[open] > *:not(summary) {
+        animation: detailsSlideDown 0.3s ease forwards;
+      }
+      details.closing > *:not(summary) {
+        animation: detailsSlideUp 0.25s ease forwards;
+      }
+      @keyframes detailsSlideDown {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes detailsSlideUp {
+        from { opacity: 1; transform: translateY(0); }
+        to   { opacity: 0; transform: translateY(-8px); }
       }
 
       .sp-only {
@@ -182,7 +242,7 @@
       .site-title {
         font-size: 1.2em;
         font-weight: bold;
-        color: #5a4a1a;
+        color: var(--c-brown);
         text-decoration: none;
         text-align: center;
         white-space: nowrap;
@@ -197,9 +257,10 @@
       /* ② ヒーローエリア：メッセージを重視 */
       .hero-wrap {
         /* 夕暮れ: background: linear-gradient(to bottom, #05051e 0%, #0e1050 18%, #2a1268 34%, #6a1458 50%, #c03018 66%, #f06010 82%, #ffaa30 100%); */
-        background: linear-gradient(to bottom, #1a4a9a 0%, #2e7fd4 30%, #62b0e8 62%, #b8dff8 85%, #dff0ff 100%);
+        /* background: linear-gradient(to bottom, #1a4a9a 0%, #2e7fd4 30%, #62b0e8 62%, #b8dff8 85%, #dff0ff 100%); */
+        background: var(--bg-hero);
         text-align: center;
-        border-radius: 0 0 12px 12px;
+        border-radius: 0;
         user-select: none;
       }
       .hero-img {
@@ -207,7 +268,7 @@
         width: 85vw;
         margin-top: 0.8vw;
         height: auto;
-        border-radius: 12px;
+        border-radius: 0;
       }
 
       /* ③ クイックナビ：タイル型ボタン */
@@ -222,7 +283,7 @@
       }
 
       .nav-card {
-        color: #fff;
+        color: var(--c-white);
         text-align: center;
         padding: 1.5em 0.5em;
         text-decoration: none;
@@ -244,16 +305,16 @@
 
       /* ④ お知らせ：スリム化 */
       .news {
-        background-color: #ffffe9;
+        background-color: var(--bg-section);
         margin: 1em 2%;
         padding: 1.2em;
         border-radius: 8px;
-        border: 1px solid #e0e0d0;
+        border: 1px solid var(--bd-light);
       }
 
       .news h2 {
         font-size: 1em;
-        color: #886c34;
+        color: var(--c-brown-mid);
         margin-bottom: 0.5em;
         display: flex;
         align-items: center;
@@ -267,7 +328,7 @@
 
       .news li {
         padding: 4px 0;
-        border-bottom: 1px dashed #eee;
+        border-bottom: 1px dashed var(--bd-extra-light);
       }
 
       .news li:last-child {
@@ -281,11 +342,12 @@
 
       /* ⑤ セクション */
       section {
-        background-color: #ffffe9;
+        background-color: var(--bg-section);
         margin: 1em 2%;
         padding: 2em 5%;
         border-radius: 12px;
         /* border: 3vw solid #fdfdcd; */
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
         font-size: 22px;
         line-height: normal;
       }
@@ -295,40 +357,31 @@
       }
 
       #introduction h2 {
-        color: #99634b;
+        color: var(--c-h2-introduction);
       }
       #procedures-notes h2 {
-        color: brown;
+        color: var(--c-h2-procedures);
       }
-      .h3-green {
-        color: #02cd88;
-      }
-      .h3-red {
-        color: #ff0000;
-      }
+
       @media screen and (max-width: 769px) {
         .align_center {
           text-align: center;
         }
       }
       #price h2 {
-        color: #4a6741;
+        color: var(--c-h2-price);
       }
       #TelFax h2 {
-        color: #944929;
+        color: var(--c-h2-telfax);
       }
       #access h2 {
-        color: #2d6d4b;
+        color: var(--c-h2-access);
       }
       #TelFax h2:not(:first-of-type) {
         margin-top: 2em;
       }
       #TelFax h3 {
-        color: green;
         font-weight: normal;
-      }
-      #TelFax h3 b {
-        color: red;
       }
 
       /* --- 旧スタイル（::after ライン） ---
@@ -353,7 +406,7 @@
       .sns-area {
         text-align: center;
         padding: 3em 1em;
-        background-color: #fdfdcd;
+        background-color: var(--bg-sns);
         border-radius: 12px 12px 0 0;
       }
 
@@ -376,8 +429,8 @@
         font-size: 30px;
         transition: 0.5s;
         text-decoration: none;
-        box-shadow: 3px 3px 6px -2px #555;
-        color: #fff;
+        box-shadow: 3px 3px 6px -2px var(--c-mid-gray);
+        color: var(--c-white);
         border-radius: 4px;
         cursor: pointer;
         user-select: none;
@@ -399,10 +452,10 @@
         transform: scale(1.2, 1.2);
       }
       .fl_X {
-        background: #202124;
+        background: var(--bg-x);
       }
       .fl_fb1 {
-        background: #3b5998;
+        background: var(--bg-fb);
       }
       .insta_btn1 {
         background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
@@ -437,8 +490,8 @@
       }
 
       footer {
-        background-color: #5a4a1a;
-        color: #ffe566;
+        background-color: var(--c-brown);
+        color: var(--c-footer-text);
         text-align: center;
         padding: 2em;
         font-size: 0.8em;
@@ -449,8 +502,8 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        background-color: #eee183;
-        border-bottom: 1px solid #e0e0d0;
+        background-color: var(--bg-header);
+        border-bottom: 1px solid var(--bd-light);
         display: flex;
         align-items: center;
         padding: 0.5em 0;
@@ -470,8 +523,8 @@
 
       .site-nav a {
         display: inline-block;
-        color: #fff;
-        background-color: #333;
+        color: var(--c-white);
+        background-color: var(--bg-nav-a);
         text-decoration: none;
         font-size: 1.1em;
         padding: 0.4em 0.8em;
@@ -484,55 +537,16 @@
       }
 
       .site-nav a:hover {
-        background-color: #bebebe;
-        color: rgb(4, 4, 4);
+        background-color: var(--bg-nav-a-hover);
+        color: var(--c-near-black);
         text-decoration: none;
       }
 
       .nav-arrow {
         display: inline-block;
-        color: #886c34;
+        color: var(--c-brown-mid);
         font-size: 0.9em;
         padding: 0 0.3em;
-      }
-
-      /* トップへ戻るボタン */
-      .footer-page-top__btn {
-        box-shadow: 1px 2px 5px 0 rgba(51, 51, 51, 0.3);
-        display: none;
-        position: fixed;
-        right: 16px;
-        bottom: 24px;
-        width: 70px;
-        height: 70px;
-        transition: transform 0.2s linear;
-        border-radius: 40px;
-        background: #2caf54;
-        color: transparent;
-        font-size: 0;
-        cursor: pointer;
-        border: none;
-        z-index: 200;
-      }
-      .footer-page-top__btn::before {
-        background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 492 492'%3E%3Cpath fill='%23fff' d='M69.8 0L0 69.8 176.2 246 0 422.2 69.8 492l246-246L69.8 0zM246 0l-69.8 69.8L352.4 246 176.2 422.2 246 492l246-246L246 0z'/%3E%3C/svg%3E")
-          50% 50% / 100% 100% no-repeat;
-        content: "";
-        display: block;
-        transition: 0.2s linear;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        margin: -10px 0 0 -10px;
-        transform: rotate(-90deg);
-      }
-      .footer-page-top__btn:hover {
-        transform: translateY(-3px);
-      }
-      .footer-page-top__btn.is-show {
-        display: block;
       }
 
       /* アクセス */
@@ -545,7 +559,7 @@
       .wrapMaps img {
         width: 42%;
         height: 42%;
-        border: 2px solid black;
+        border: 2px solid var(--c-black);
         box-sizing: border-box;
       }
 
@@ -566,9 +580,6 @@
       }
 
       @media screen and (max-width: 600px) {
-        .site-nav {
-          top: var(--header-height, 66px);
-        }
         .hero-img {
           width: 91vw;
           margin-bottom: -1vw;
@@ -576,16 +587,15 @@
       }
 
       @media screen and (max-width: 500px) {
-        header,
-        .header-tel {
+        .header-wrap header,
+        .header-wrap .header-tel {
           font-size: 17px;
         }
       }
 
       /* レスポンシブ */
       @media screen and (max-width: 600px) {
-        header,
-        .header-tel,
+        .header-wrap,
         .header-tel-note,
         .header-notice,
         .site-nav,
@@ -595,13 +605,15 @@
           margin: 0;
         }
         section {
-          background-color: #ffffe9;
+          background-color: var(--bg-section);
           margin: 1em 0%;
-          padding: 2em 3%;
+          padding: 2em 4%;
           border-radius: 12px;
-          border: 2vw solid #fdfdcd;
           font-size: 20px;
           line-height: normal;
+        }
+        .header-notice {
+          flex-direction: column;
         }
         .quick-nav {
           grid-template-columns: 1fr;
@@ -624,12 +636,6 @@
           aspect-ratio: 1;
         }
 
-        /* SP：ヘッダーをsticky化 */
-        header {
-          position: sticky;
-          top: 0;
-          z-index: 100;
-        }
         section[id] {
           scroll-margin-top: var(--scroll-offset, 140px);
         }
@@ -639,16 +645,17 @@
         .nav-trim {
           display: none;
         }
-        .footer-page-top__btn.is-show {
-          display: none;
-        }
+      }
+      .tel-highlight {
+        display: inline;
+        background: linear-gradient(transparent 70%, var(--c-tel-highlight) 70%);
       }
       /* ナビページオーバーレイ */
       .nav-page {
         position: fixed;
         inset: 0;
         z-index: 500;
-        background-color: #f6f4a5;
+        background-color: var(--bg-page);
         overflow-y: auto;
         padding: 70px 5% 1.5em;
         pointer-events: none;
@@ -669,29 +676,38 @@
       .nav-page-inner {
         max-width: 800px;
         margin: 0 auto 60px;
-        background: #fff;
+        background: var(--c-white);
         border-radius: 12px;
         padding: 1.5em 2em;
         /* border: 3vw solid #fdfdcd; */
+      }
+      .nav-page-inner ul {
+        list-style-type: "・ ";
+        padding-left: 1.2em;
+        margin: 0 0 0.8em;
+      }
+      .nav-page-inner li {
+        line-height: 1.6;
+        margin-block-start: 1em;
       }
       .nav-page h2 {
         text-align: center;
         padding: 0.4em 1em;
         border-radius: 8px;
         margin-bottom: 1em;
-        color: #fff;
+        color: var(--c-white);
         box-shadow:
           0 3px 6px rgba(0, 0, 0, 0.2),
           inset 0 -2px 4px rgba(0, 0, 0, 0.15);
       }
       .nav-page[data-page="issei"] .nav-page-inner h2 {
-        background-color: #7aab52;
+        background-color: var(--c-issei);
       }
       .nav-page[data-page="soto-neko"] .nav-page-inner h2 {
-        background-color: #ef8200;
+        background-color: var(--c-soto-neko);
       }
       .nav-page[data-page="ie-neko"] .nav-page-inner h2 {
-        background-color: #4a80aa;
+        background-color: var(--c-ie-neko);
       }
       .nav-page-divider {
         border: none;
@@ -700,16 +716,16 @@
       }
       .nav-page h3 {
         margin-top: 1em;
-        color: #555;
-        border-left: 3px solid #f6c200;
+        color: var(--c-mid-gray);
+        border-left: 3px solid var(--bd-nav-h3);
         padding-left: 0.5em;
       }
       /* .nav-page[data-page="ie-neko"] h3:nth-of-type(1) { color: #02cd88; } */
       .nav-page[data-page="ie-neko"] h3:nth-of-type(2) {
-        color: #ff0000;
+        color: var(--c-red);
       }
       .nav-page[data-page="soto-neko"] h3:nth-of-type(2) {
-        color: #ff0000;
+        color: var(--c-red);
       }
 
       .nav-page-footer {
@@ -738,41 +754,6 @@
         gap: 20px;
         width: 100%;
       }
-      .nav-page-sample-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        gap: 6px;
-        justify-content: center;
-        flex-wrap: wrap;
-        padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(8px);
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-        z-index: 600;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
-      .nav-page-sample-nav.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .nav-page-sample-nav a {
-        font-size: 0.65em;
-        padding: 0.2em 0.7em;
-        border-radius: 12px;
-        border: 1px solid #bbb;
-        color: #555;
-        text-decoration: none;
-        background: #f4f4f4;
-        transition: background 0.15s;
-      }
-      .nav-page-sample-nav a:hover {
-        background: #e0e0e0;
-      }
       .nav-page-footer.active {
         opacity: 1;
         pointer-events: auto;
@@ -781,8 +762,8 @@
         padding: 0.4em 1.2em;
         border-radius: 20px;
         border: 1.5px solid transparent;
-        background: #fff;
-        color: white;
+        background: var(--c-white);
+        color: var(--c-white);
         font-size: 0.85em;
         font-weight: bold;
         text-decoration: none;
@@ -795,14 +776,14 @@
         transform: translateY(-2px);
       }
       #nav-page-back-footer {
-        background: #5a4a1a;
-        color: #fff;
-        border-color: #5a4a1a;
+        background: var(--c-brown);
+        color: var(--c-white);
+        border-color: var(--c-brown);
       }
       #nav-page-back-footer:hover {
-        background: #fff;
-        color: #444;
-        border-color: #ccc;
+        background: var(--c-white);
+        color: var(--c-back-btn-hover);
+        border-color: var(--bd-gray);
       }
       .nav-label-sp {
         display: none;
@@ -819,68 +800,22 @@
         overflow: hidden;
       }
       .nav-page[data-page="issei"] {
-        background-color: #b0dfcc;
+        background-color: var(--bg-issei);
       }
       .nav-page[data-page="soto-neko"] {
-        background-color: #fddcaa;
+        background-color: var(--bg-soto-neko);
       }
       .nav-page[data-page="ie-neko"] {
-        background-color: #bbdeff;
+        background-color: var(--bg-ie-neko);
       }
       .nav-page[data-page="issei"] .nav-page-inner {
-        border-color: #f0f4e8;
+        border-color: var(--bd-issei-inner);
       }
       .nav-page[data-page="soto-neko"] .nav-page-inner {
-        border-color: #fef2dc;
+        border-color: var(--bd-soto-neko-inner);
       }
       .nav-page[data-page="ie-neko"] .nav-page-inner {
-        border-color: #e8f0f8;
-      }
-      /* ★ カラーサンプル */
-      .nav-page[data-page="sample-a"] {
-        background-color: #a8dcd8;
-      }
-      .nav-page[data-page="sample-a"] .nav-page-inner {
-        border-color: #d4f0ee;
-      }
-      .nav-page[data-page="sample-a"] .nav-page-inner h2 {
-        background-color: #0e8c80;
-      }
-      .nav-page[data-page="sample-b"] {
-        background-color: #d4c0ee;
-      }
-      .nav-page[data-page="sample-b"] .nav-page-inner {
-        border-color: #eae4f8;
-      }
-      .nav-page[data-page="sample-b"] .nav-page-inner h2 {
-        background-color: #7448b0;
-      }
-      .nav-page[data-page="sample-c"] {
-        background-color: #f0b8cc;
-      }
-      .nav-page[data-page="sample-c"] .nav-page-inner {
-        border-color: #f8dce8;
-      }
-      .nav-page[data-page="sample-c"] .nav-page-inner h2 {
-        background-color: #b83060;
-      }
-      .nav-page[data-page="sample-d"] {
-        background-color: #a8b8d8;
-      }
-      .nav-page[data-page="sample-d"] .nav-page-inner {
-        border-color: #d4dcee;
-      }
-      .nav-page[data-page="sample-d"] .nav-page-inner h2 {
-        background-color: #284898;
-      }
-      .nav-page[data-page="sample-e"] {
-        background-color: #ccd4a0;
-      }
-      .nav-page[data-page="sample-e"] .nav-page-inner {
-        border-color: #e4eac8;
-      }
-      .nav-page[data-page="sample-e"] .nav-page-inner h2 {
-        background-color: #6a7820;
+        border-color: var(--bd-ie-neko-inner);
       }
       @media screen and (max-width: 600px) {
         .nav-page {
@@ -892,22 +827,44 @@
   </head>
 
   <body>
-    <header>
-      <a href="#" class="site-title">和歌山スペイクリニック さくらねこ</a>
-    </header>
-
-    <div class="header-tel">TEL・FAX　073-407-1288</div>
+    <div class="header-wrap">
+      <header>
+        <a href="#" class="site-title">和歌山スペイクリニック さくらねこ</a>
+      </header>
+      <div class="header-tel green">TEL・FAX　073-407-1288</div>
+      <a class="header-articles-btn" href="articles/index.html">
+        <span class="nav-icon">≡</span>
+        <span>記事一覧</span>
+      </a>
+    </div>
     <div class="header-tel-note">
       手術中は電話が繋がりにくく<span>なっております。</span><span>メニュー&gt;TELをご参照下さい。</span>
     </div>
     <div class="header-notice">
-      <div class="header-quick-nav">
-        <a href="#issei" class="header-nav-card" style="background-color: #7aab52">一斉手術</a>
-        <a href="#soto-neko" class="header-nav-card" style="background-color: #ef8200">野良猫・外猫</a>
-        <a href="#ie-neko" class="header-nav-card" style="background-color: #4a80aa">家猫・保護猫</a>
-        <a href="articles/" class="header-nav-card" style="background-color: #f1df50; color: black">記事一覧</a>
-      </div>
+      <a href="#ticket-info" class="header-notice-btn">🎫 和歌山県地域猫チケットのご案内</a>
+      <a href="#news" class="header-notice-btn" id="notice-months-btn"></a>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var now = new Date();
+        var m1 = now.getMonth() + 1;
+        var m2 = m1 === 12 ? 1 : m1 + 1;
+        document.getElementById('notice-months-btn').textContent = m1 + '月・' + m2 + '月の臨時休診';
+        document.getElementById('notice-months-text').textContent = m1 + '月・' + m2 + '月の臨時休診の予定はありません。';
+
+        document.querySelectorAll('details').forEach(function (det) {
+          det.querySelector(':scope > summary').addEventListener('click', function (e) {
+            if (!det.open) return;
+            e.preventDefault();
+            det.classList.add('closing');
+            setTimeout(function () {
+              det.classList.remove('closing');
+              det.open = false;
+            }, 250);
+          });
+        });
+      });
+    </script>
 
     <nav class="site-nav">
       <span class="nav-arrow">◀</span>
@@ -915,7 +872,7 @@
         <a
           href="#"
           onclick="
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            smoothScrollTo(0, 200);
             return false;
           "
           >▲ トップ</a
@@ -933,14 +890,6 @@
       <img src="images/hero.jpg" alt="和歌山スペイクリニック さくらねこ" class="hero-img" />
     </div>
 
-    <div class="news">
-      <h2>📢 お知らせ</h2>
-      <ul>
-        <li><span>2026.04.01</span> GW期間中も通常通り診療いたします。</li>
-        <li><span>2026.03.15</span> 春のTNR助成金に関するご案内を更新しました。</li>
-      </ul>
-    </div>
-
     <section id="introduction">
       <h2>病院紹介</h2>
       <p>※ 当院は猫の不妊手術専門病院です。一般の診療は行っておりません。</p>
@@ -949,6 +898,9 @@
 
     <section id="procedures-notes">
       <h2>手術の流れと注意点</h2>
+      <p><span class="tel-highlight">お電話で説明致します。まずはご連絡下さい。</span></p>
+      <p><span class="tel-highlight">捕獲器、またはハードキャリーでお越し下さい。</span></p>
+      <p>食事の制限はシビアではありませんが、当日朝の食事は制限して下さい。</p>
 
       <div class="quick-nav">
         <a href="#issei" class="nav-card" style="background-color: #7aab52">
@@ -966,8 +918,9 @@
       <div class="price-sticky-wrap">
         <h2>料金表</h2>
 
-        <div class="price-caption-top">
-          <p>※ 手術料金には、ノミ駆虫薬、化膿止めの抗生剤 及び、術後の 皮下補液 も含まれております。(一部例外)</p>
+        <div class="price-caption">
+          ※ 手術料金には、ノミ駆虫薬、<span>化膿止めの抗生剤</span> <span>及び、術後の </span><span>皮下補液 も</span
+          ><span>含まれております。(一部例外)</span>
         </div>
 
         <ul class="button-wrapper">
@@ -982,30 +935,49 @@
       </div>
       <!-- /.price-sticky-wrap -->
 
-      <div class="price-caption-bottom">
-        <p>★ 耳カット<span>(耳先のＶ字カット)は</span><span>不妊去勢手術を受けた証</span></p>
-        <p>もう子猫を増やすことは<span>ありません。</span></p>
+      <div class="price-caption">
+        ★ 耳カット<span>(耳先のＶ字カット)は</span><span>不妊去勢手術を受けた証。</span
+        ><span>もう子猫を増やすことは</span><span>ありません。</span>
       </div>
     </section>
 
     <section id="TelFax">
       <h2>TEL・FAX</h2>
 
-      <h3>📞 073-407-1288（兼 FAX）</h3>
+      <h3 class="green">📞 073-407-1288（兼 FAX）</h3>
       <p>手術中（主に午前中～昼くらい）の為、電話に出られない事があります。</p>
       <p>ご予約・ご用件のメッセージを留守番電話にお伝え下さい。</p>
       <p>なるべく折り返す様に致しますが、連絡が無い場合、再度ご連絡お願い申し上げます。</p>
 
       <h2>営業時間と休診日</h2>
 
-      <h3><b>営業時間</b> 午前９時～午後５時</h3>
+      <h3 class="green"><b class="red">営業時間</b> 午前９時～午後５時</h3>
       <p>※ お電話は上記の通り、午前中は主に留守番電話に切り替わる事が多いです。</p>
 
-      <h3><b>休診日</b> 金曜・土曜</h3>
-
-      <h2>5月休診日のご案内</h2>
-      <p>5/5(火)～5/11(月)まで休診いたします。ご了承下さい。</p>
+      <h3 class="green"><b class="red">休診日</b> 金曜・土曜</h3>
     </section>
+
+    <div class="news" id="news">
+      <h2>📢 お知らせ</h2>
+      <p id="notice-months-text"></p>
+    </div>
+
+    <details class="news" id="ticket-info">
+      <summary>🎫 地域猫対策支援チケットについて</summary>
+      <p>2026年4月より、和歌山県の「地域猫対策支援チケット」を、当院でもご利用いただけるようになりました。</p>
+      <p>地域猫活動やTNR活動での不妊去勢手術にご利用いただけます。</p>
+      <p>※ 和歌山市在住の方はご利用いただけません。</p>
+      <p>
+        捕獲は予定通りにいかないことも多いため、キャンセルについてはお気になさらなくて大丈夫です。<br />ただ、急な捕獲・急なご来院では対応が難しい場合もありますので、事前にご予約枠を確保してご利用下さい。
+      </p>
+      <p>制度の詳細や申請方法については、和歌山県・各保健所へご確認ください。</p>
+      <details>
+        <summary>和歌山市が対象外となる理由について</summary>
+        <p>和歌山市は「中核市」のため、和歌山県とは別の制度・予算で地域猫対策事業が運用されています。</p>
+        <p>そのため、和歌山県の地域猫対策支援チケットは、和歌山市在住の方は対象外となっています。</p>
+        <p>詳細については、和歌山市または各保健所へご確認ください。</p>
+      </details>
+    </details>
 
     <section id="access">
       <h2>アクセス</h2>
@@ -1044,8 +1016,6 @@
       </div>
     </div>
 
-    <button class="footer-page-top__btn" id="pageTopBtn" onclick="smoothScrollTo(0, 200)">トップへ</button>
-
     <footer>
       &copy; 2026 和歌山スペイクリニック さくらねこ<br />
       和歌山県和歌山市吹屋町4-9-1
@@ -1077,12 +1047,15 @@
       <div class="nav-page-inner">
         <h2>野良猫・外猫手術</h2>
         <h3>ご予約と手術の流れ</h3>
-        <p>ご予約や手術の流れはお電話でご案内いたします。まずはご連絡ください。</p>
-        <p>・外猫は状況によって前泊可能です<br />・休診日と重なる前泊はできません</p>
+        <p><span class="tel-highlight">ご予約や手術の流れはお電話でご案内いたします。まずはご連絡ください。</span></p>
+        <ul>
+          <li>外猫は状況によって前泊可能です</li>
+          <li>休診日と重なる前泊はできません</li>
+        </ul>
         <h3>連れて来られる際の入れ物について（※重要）</h3>
         <p>野良猫・外猫は脱走しやすいため、プラスチック製のハードキャリーまたは捕獲器でお越しください。</p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"
+          <a href="articles/carry-case/index.html#ok-carrier" class="bloglink-btn"
             ><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a
           >
         </div>
@@ -1091,24 +1064,24 @@
           捕獲器は剥き出しのままではなく、生地などで覆ってお越しください（猫が落ち着きます）。<br />組み立て式捕獲器をご使用の場合は、組み立てに不備がないか事前にご確認ください。
         </p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/06.5/06.5.htm" class="bloglink-btn"
-            ><i class="far fa-hand-point-right"></i> 捕獲器の包み方</a
+          <a href="articles/trap-cover/index.html" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 捕獲器でのご来院方法</a
           >
-          <a href="https://wakayamasakuraneko.github.io/blog/09/09.htm" class="bloglink-btn"
+          <a href="articles/collapsible-trap/index.html" class="bloglink-btn"
             ><i class="far fa-hand-point-right"></i> 組み立て式捕獲器の注意点</a
           >
         </div>
         <hr class="nav-page-divider" />
         <p>前日以前から捕獲している場合は、「猫を自宅で待機させる場合の注意点」もご参照ください。</p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/13/13.htm" class="bloglink-btn"
-            ><i class="far fa-hand-point-right"></i> 猫を自宅で待機させる場合の注意点</a
+          <a href="articles/home-wait/index.html" class="bloglink-btn"
+            ><i class="far fa-hand-point-right"></i> 自宅待機の注意点</a
           >
         </div>
         <hr class="nav-page-divider" />
         <p>捕獲率を上げるための工夫</p>
         <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/11/11.htm" class="bloglink-btn"
+          <a href="articles/trap-pedal/index.html" class="bloglink-btn"
             ><i class="far fa-hand-point-right"></i> 踏み板を踏まない猫</a
           >
         </div>
@@ -1133,84 +1106,47 @@
       <div class="nav-page-inner">
         <h2>家猫・保護猫手術</h2>
         <h3>ご予約と手術の流れ</h3>
-        <p>ご予約や手術の流れはお電話でご案内いたします。まずはご連絡ください。</p>
-        <p>
-          ・日帰りとなるため、朝お預け・夕方お迎えが可能な日程でご予約ください。<br />・ご予約はできるだけ（月～木）の平日でお願いいたします。（日曜希望は割増料金となります）
-        </p>
-        <p>
-          ・混雑時は外猫の手術を優先することがあります。ご了承ください。<br />・ペットショップ購入・血統証付きの猫は原則お引き受けしておりません。<br />　※
-          多頭飼育崩壊の場合はご相談ください。
-        </p>
+        <ul>
+          <li>日帰りとなるため、朝お預け・夕方お迎えが可能な日程でご予約ください。</li>
+          <li>ご予約はできるだけ（月～木）の平日でお願いいたします。（日曜希望は割増料金となります）</li>
+          <li>食事の制限はシビアではありませんが、当日朝の食事は制限して下さい。</li>
+          <li>混雑時は外猫の手術を優先することがあります。ご了承ください。</li>
+          <li>ペットショップ購入・血統証付きの猫は原則お引き受けしておりません。（※ 多頭飼育崩壊の場合はご相談ください）</li>
+        </ul>
         <h3>連れて来られる際の入れ物について（※重要）</h3>
-        <p>・ハードキャリーでお越しください</p>
-        <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/03/03.htm" class="bloglink-btn"
-            ><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a
-          >
-        </div>
-        <p>・ご来院の際は洗濯ネットに入れてお越しください</p>
-        <div class="align_center">
-          <a href="https://wakayamasakuraneko.github.io/blog/04/04.htm" class="bloglink-btn"
-            ><i class="far fa-hand-point-right"></i> 洗濯ネットについて</a
-          >
-        </div>
+        <ul>
+          <li>ソフトキャリーは脱走等、トラブルが多発します。<br>プラスチック製のハードキャリーでお越しください。
+            <div class="align_center">
+              <a href="articles/carry-case/index.html" class="bloglink-btn"
+                ><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a
+              >
+            </div>
+          </li>
+          <li>ご来院の際は洗濯ネットに入れてお越しください
+            <div class="align_center">
+              <a href="articles/laundry-net/index.html" class="bloglink-btn"
+                ><i class="far fa-hand-point-right"></i> 洗濯ネットについて</a
+              >
+            </div>
+          </li>
+        </ul>
         <hr class="nav-page-divider" />
         <details>
           <summary>保護猫おすすめセット</summary>
-          <p>・手術（メス or オス）</p>
-          <p>・猫エイズ・白血病検査</p>
-          <p>・ネクスガードCAT</p>
-          <p>・爪切り</p>
-          <p>・検便</p>
+          <ul>
+            <li>手術（メス or オス）</li>
+            <li>猫エイズ・白血病検査</li>
+            <li>ネクスガードCAT</li>
+            <li>爪切り</li>
+            <li>検便</li>
+          </ul>
           <p>※ 各料金は料金表よりご確認ください。</p>
         </details>
       </div>
     </div>
 
-    <!-- ★ カラーサンプルページ（確認後に削除） -->
-    <div class="nav-page" data-page="sample-a">
-      <div class="nav-page-inner">
-        <h2>サンプル A：ティール</h2>
-        <h3>h3 テキストのサンプル</h3>
-        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
-      </div>
-    </div>
-    <div class="nav-page" data-page="sample-b">
-      <div class="nav-page-inner">
-        <h2>サンプル B：パープル</h2>
-        <h3>h3 テキストのサンプル</h3>
-        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
-      </div>
-    </div>
-    <div class="nav-page" data-page="sample-c">
-      <div class="nav-page-inner">
-        <h2>サンプル C：ローズ</h2>
-        <h3>h3 テキストのサンプル</h3>
-        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
-      </div>
-    </div>
-    <div class="nav-page" data-page="sample-d">
-      <div class="nav-page-inner">
-        <h2>サンプル D：ネイビー</h2>
-        <h3>h3 テキストのサンプル</h3>
-        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
-      </div>
-    </div>
-    <div class="nav-page" data-page="sample-e">
-      <div class="nav-page-inner">
-        <h2>サンプル E：オリーブ</h2>
-        <h3>h3 テキストのサンプル</h3>
-        <p>本文テキストのサンプルです。このページは配色確認用です。</p>
-        <p>・箇条書きサンプル<br />・箇条書きサンプル</p>
-      </div>
-    </div>
-
     <!-- ご相談フォーム（一斉手術） -->
-    <section id="issei-form">
+    <section id="issei-form" style="display: none;">
       <h2>一斉手術のご相談フォーム</h2>
       <p>（フォームはここに設置予定）</p>
     </section>
@@ -1222,23 +1158,10 @@
         <a id="nav-page-next" href="#"></a>
       </div>
     </div>
-    <div class="nav-page-sample-nav" id="nav-page-sample-nav">
-      <a href="#sample-a">A: ティール</a>
-      <a href="#sample-b">B: パープル</a>
-      <a href="#sample-c">C: ローズ</a>
-      <a href="#sample-d">D: ネイビー</a>
-      <a href="#sample-e">E: オリーブ</a>
-    </div>
-
     <script src="js/price-loader.js" defer></script>
     <script>
-      const btn = document.getElementById("pageTopBtn");
-      window.addEventListener("scroll", () => {
-        btn.classList.toggle("is-show", window.scrollY > 200);
-      });
-
       function updateStickyHeights() {
-        const headerH = document.querySelector("header").offsetHeight;
+        const headerH = document.querySelector(".header-wrap").offsetHeight;
         const navH = document.querySelector(".site-nav").offsetHeight;
         const isSP = window.matchMedia("(max-width: 600px)").matches;
         document.documentElement.style.setProperty("--header-height", headerH + "px");
@@ -1274,7 +1197,6 @@
         });
 
         const footer = document.getElementById("nav-page-footer");
-        const sampleNav = document.getElementById("nav-page-sample-nav");
         const prevLink = document.getElementById("nav-page-prev");
         const nextLink = document.getElementById("nav-page-next");
         const NAV_LINKS = {
@@ -1317,7 +1239,6 @@
             });
             document.body.classList.remove("nav-page-open");
             footer.classList.remove("active");
-            sampleNav.classList.remove("active");
             currentKey = null;
             return;
           }
@@ -1362,8 +1283,6 @@
             applyBtnColor(nextLink, links.next.href.slice(1));
             footer.classList.add("active");
           }
-          sampleNav.classList.add("active");
-
           currentKey = key;
         }
 

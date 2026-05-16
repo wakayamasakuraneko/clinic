@@ -110,8 +110,11 @@ h1::before { content: "🐾"; font-size: 1.4rem; }
 
 /* ========== 本文 ========== */
 p {
-  font-size: 1.15rem;
+  font-size: 1.5rem;
   /* margin-bottom: 1.4em; */
+}
+li {
+  font-size: 1.3rem;
 }
 /* p:last-of-type { margin-bottom: 0; } */
 
@@ -147,6 +150,7 @@ footer {
   }
   .page-inner { padding: 80px 3% 48px; }
   h1 { font-size: 1.55rem; }
-  p  { font-size: 1.08rem; }
+  p  { font-size: 1.2rem; }
+  li { font-size: 1.2rem; }
   .article-img { width: 100%; }
 }

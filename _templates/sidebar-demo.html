@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【デモ】サイドバーレイアウト確認用</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+      background-color: #f6f4a5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ── ページ全体のラッパー（最大幅） ── */
+    .page-outer {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── ヒーロー（main-content内） ── */
+    .hero-wrap {
+      background: #000;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .hero-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── メインエリア＋サイドバーのグリッド ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 16px;
+      align-items: start;
+      padding: 12px 2%;
+    }
+
+    /* ── メインコンテンツ ── */
+    .main-content {
+      min-width: 0;
+    }
+
+    section {
+      background: #ffffe9;
+      margin: 0 0 1em;
+      padding: 1.5em 5%;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      font-size: 18px;
+    }
+    section h2 { margin-bottom: .5em; font-size: 1.2em; }
+    section p  { margin-top: .6em; font-size: .9em; color: #555; }
+
+    /* ── サイドバー ── */
+    .sidebar {
+      position: sticky;
+      top: 12px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+    .sidebar-header {
+      background: #3a2010;
+      color: #fff;
+      padding: .6em 1em;
+      font-size: .95em;
+      font-weight: bold;
+    }
+    .sidebar-group {
+      padding: .4em 0;
+      border-bottom: 1px solid #f0ece0;
+    }
+    .sidebar-group:last-child { border-bottom: none; }
+    .sidebar-group-label {
+      font-size: .72em;
+      color: #888;
+      padding: .4em 1em .1em;
+      letter-spacing: .05em;
+    }
+    .sidebar a {
+      display: block;
+      font-size: .82em;
+      color: #3a2010;
+      text-decoration: none;
+      padding: .35em 1em .35em 1.2em;
+      line-height: 1.4;
+      transition: background .15s;
+    }
+    .sidebar a:hover {
+      background: #fef9e0;
+    }
+    .sidebar a::before {
+      content: "›";
+      margin-right: .3em;
+      color: #bba060;
+    }
+
+    /* ── モバイル: サイドバーを下に移動 ── */
+    @media (max-width: 640px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+      }
+    }
+
+    /* ── デモ注記 ── */
+    .demo-note {
+      background: #fffbe6;
+      border: 1px dashed #cca;
+      padding: .6em 1em;
+      font-size: .82em;
+      color: #665500;
+      margin: 8px 2%;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-outer">
+
+    <p class="demo-note">⚠ これはサイドバーのレイアウト確認用デモです。本番ページではありません。</p>
+
+    <!-- メイン＋サイドバー -->
+    <div class="layout">
+
+      <!-- メインコンテンツ（ダミー） -->
+      <main class="main-content">
+
+        <!-- ヒーロー：main-content の中に移動 -->
+        <div class="hero-wrap">
+          <img src="../images/hero.jpg" alt="ヒーロー画像">
+        </div>
+
+        <section id="introduction">
+          <h2>病院紹介</h2>
+          <p>※ 当院は猫の不妊手術専門病院です。一般の診療は行っておりません。</p>
+          <p>当日ご予約無しでの手術は割増料金が発生します。</p>
+        </section>
+
+        <section id="procedures-notes">
+          <h2>手術の流れと注意点</h2>
+          <p>（ここに既存のナビカード等が入る）</p>
+        </section>
+
+        <section id="price">
+          <h2>料金表</h2>
+          <p>（ここに料金テーブルが入る）</p>
+        </section>
+
+        <section id="TelFax">
+          <h2>TEL・FAX / 営業時間 / 休診日</h2>
+          <p>📞 073-407-1288</p>
+          <p>営業時間: 午前9時～午後5時　休診日: 金・土</p>
+        </section>
+
+        <section id="access">
+          <h2>アクセス</h2>
+          <p>〒640-8324　和歌山県和歌山市吹屋町４丁目９−１</p>
+        </section>
+      </main>
+
+      <!-- サイドバー -->
+      <aside class="sidebar">
+        <div class="sidebar-header">📄 記事一覧</div>
+
+        <div class="sidebar-group">
+          <div class="sidebar-group-label">外猫・捕獲器</div>
+          <a href="../articles/trap-setup/index.html">捕獲器の設置方法</a>
+          <a href="../articles/trap-cover/index.html">捕獲器でのご来院方法</a>
+          <a href="../articles/trap-temperature/index.html">捕獲した猫の温度管理</a>
+          <a href="../articles/trap-fail/index.html">捕まえたい日に捕まらない！</a>
+          <a href="../articles/trap-pedal/index.html">踏み板を踏まない猫</a>
+          <a href="../articles/collapsible-trap/index.html">組み立て式捕獲器の注意点</a>
+        </div>
+
+        <div class="sidebar-group">
+          <div class="sidebar-group-label">外猫・その他</div>
+          <a href="../articles/cancel-ok/index.html">キャンセルしても大丈夫です</a>
+          <a href="../articles/no-appointment/index.html">捕まえちゃった💦 どうしよう</a>
+          <a href="../articles/home-wait/index.html">自宅で待機させる場合の注意点</a>
+          <a href="../articles/carry-case/index.html">連れて来られる際の入れ物</a>
+          <a href="../articles/TNR/index.htm">TNRのこと、少しだけ知ってほしい</a>
+        </div>
+
+        <div class="sidebar-group">
+          <div class="sidebar-group-label">保護猫</div>
+          <a href="../articles/laundry-net/index.html">洗濯ネットについて</a>
+          <a href="../articles/taming/index.html">馴れない猫を馴れさせる</a>
+        </div>
+
+        <div class="sidebar-group">
+          <div class="sidebar-group-label">その他</div>
+          <a href="../articles/what-is-spay/index.html">「スペイ」の意味とは？</a>
+          <a href="../articles/vacuum-effect/index.html">ナワバリ現象</a>
+        </div>
+      </aside>
+
+    </div><!-- /.layout -->
+
+  </div><!-- /.page-outer -->
+
+</body>
+</html>

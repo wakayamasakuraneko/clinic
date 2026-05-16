@@ -1,29 +1,4 @@
 $(document).ready(function () {
-  var currentImageIndex = 0;
-  var images = $(".step-image");
-  var isAccordionOpen = false;
-  var isAllOpen = false;
-
-  function showCurrentImage() {
-    images.addClass("hidden");
-    if (isAccordionOpen && images.length > 0) {
-      images.eq(currentImageIndex).removeClass("hidden");
-    }
-  }
-
-  function nextImage() {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    showCurrentImage();
-  }
-
-  $(".accordion").eq(1).click(function () {
-    isAccordionOpen = !isAccordionOpen;
-    if (isAccordionOpen) {
-      nextImage();
-    } else {
-      images.addClass("hidden");
-    }
-  });
 
   $(".accordion, .no-style-button").click(function () {
     $(this).toggleClass("is-active");
@@ -32,20 +7,15 @@ $(document).ready(function () {
   });
 
   $('#toggle-all').click(function () {
-    if (isAllOpen) {
+    if ($('.panel').first().is(':visible')) {
       $('.panel').slideUp();
       $('.accordion, .no-style-button').removeClass('is-active');
-      $(this).text('広げる');
-      isAccordionOpen = false;
-      images.addClass("hidden");
+      $(this).text('全て広げるor閉じる');
     } else {
       $('.panel').slideDown();
       $('.accordion, .no-style-button').addClass('is-active');
-      $(this).text('折り畳む');
-      isAccordionOpen = true;
-      nextImage();
+      $(this).text('全て広げるor閉じる');
     }
-    isAllOpen = !isAllOpen;
     updateIcons();
   });
 
@@ -60,5 +30,4 @@ $(document).ready(function () {
   }
 
   updateIcons();
-  showCurrentImage();
 });

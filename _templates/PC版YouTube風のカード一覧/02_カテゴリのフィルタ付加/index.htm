@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>02_カテゴリフィルタ</title>
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="cards.css">
+  <link rel="stylesheet" href="filter.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#" class="brand" aria-label="トップへ">
+        <div class="logo">🐾</div>
+        <div class="title">和歌山スペイクリニック さくらねこ</div>
+      </a>
+      <div class="header-actions">
+        <a class="btn outline" href="#reserve">予約・問い合わせ</a>
+        <a class="btn secondary tel" href="tel:000-000-0000">☎ 000-000-0000</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- フィルタUI（単一選択：YouTube風タブ） -->
+    <nav class="filters" aria-label="カテゴリ">
+      <button class="fbtn is-active" data-filter="all" aria-pressed="true">すべて</button>
+      <button class="fbtn" data-filter="tnr">TNR</button>
+      <button class="fbtn" data-filter="clinic">クリニック</button>
+      <button class="fbtn" data-filter="tips">豆知識</button>
+      <button class="fbtn" data-filter="news">お知らせ</button>
+      <button class="fbtn" data-filter="adopt">譲渡</button>
+      <button class="fbtn" data-filter="event">イベント</button>
+    </nav>
+
+
+    <!-- カード一覧（前回の .grid を流用） -->
+    <div class="grid">
+      <!-- 01 -->
+      <a class="card" href="/articles/1" data-cats="tnr,tips">
+        <div class="thumb">
+          <img src="thumb1.jpg" alt="TNRの基本ガイド" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">TNRの基本ガイド：初めての人向けチェックリスト</h3>
+          <div class="chips"><span class="chip">TNR</span><span class="chip">豆知識</span></div>
+          <p class="desc">捕獲〜手術〜リターンまでの流れを簡潔に解説。</p>
+        </div>
+      </a>
+
+      <!-- 02 -->
+      <a class="card" href="/articles/2" data-cats="clinic">
+        <div class="thumb">
+          <img src="thumb2.jpg" alt="クリニック案内" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">クリニック案内：受付時間・アクセス・よくある質問</h3>
+          <div class="chips"><span class="chip">クリニック</span></div>
+          <p class="desc">予約方法や持ち物、注意事項をまとめました。</p>
+        </div>
+      </a>
+
+      <!-- 03 -->
+      <a class="card" href="/articles/3" data-cats="news,tnr">
+        <div class="thumb">
+          <img src="thumb3.jpg" alt="お知らせ：臨時手術日追加" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">【お知らせ】臨時のTNR手術日を追加しました</h3>
+          <div class="chips"><span class="chip">お知らせ</span><span class="chip">TNR</span></div>
+          <p class="desc">今月後半に臨時枠を追加。空き状況はこちら。</p>
+        </div>
+      </a>
+
+      <!-- 04 -->
+      <a class="card" href="/articles/4" data-cats="tips,clinic">
+        <div class="thumb">
+          <img src="thumb4.jpg" alt="術前の食事管理" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">手術前日の食事管理と当日の注意ポイント</h3>
+          <div class="chips"><span class="chip">豆知識</span><span class="chip">クリニック</span></div>
+          <p class="desc">絶食・給水・キャリー準備について。</p>
+        </div>
+      </a>
+
+      <!-- 05 -->
+      <a class="card" href="/articles/5" data-cats="adopt,tips">
+        <div class="thumb">
+          <img src="thumb5.jpg" alt="譲渡の流れ" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">譲渡の流れ：面談〜トライアル〜正式決定まで</h3>
+          <div class="chips"><span class="chip">譲渡</span><span class="chip">豆知識</span></div>
+          <p class="desc">初めてでも安心。必要書類とチェック項目。</p>
+        </div>
+      </a>
+
+      <!-- 06 -->
+      <a class="card" href="/articles/6" data-cats="event,tnr">
+        <div class="thumb">
+          <img src="thumb6.jpg" alt="地域説明会" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">地域説明会：外猫対策とTNRの進め方（開催案内）</h3>
+          <div class="chips"><span class="chip">イベント</span><span class="chip">TNR</span></div>
+          <p class="desc">会場・日時・参加方法。資料の事前配布あり。</p>
+        </div>
+      </a>
+
+      <!-- 07 -->
+      <a class="card" href="/articles/7" data-cats="tips,care">
+        <div class="thumb">
+          <img src="thumb7.jpg" alt="術後ケア" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">術後ケア完全ガイド：安静・投薬・観察ポイント</h3>
+          <div class="chips"><span class="chip">豆知識</span><span class="chip">ケア</span></div>
+          <p class="desc">翌日以降の過ごし方と気をつけるサイン。</p>
+        </div>
+      </a>
+
+      <!-- 08 -->
+      <a class="card" href="/articles/8" data-cats="clinic,news">
+        <div class="thumb">
+          <img src="thumb8.jpg" alt="料金改定" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">【お知らせ】料金表・予約枠の一部改定について</h3>
+          <div class="chips"><span class="chip">クリニック</span><span class="chip">お知らせ</span></div>
+          <p class="desc">改定の背景と開始時期をご案内します。</p>
+        </div>
+      </a>
+
+      <!-- 09 -->
+      <a class="card" href="/articles/9" data-cats="adopt,event">
+        <div class="thumb">
+          <img src="thumb9.jpg" alt="譲渡会" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">週末は譲渡会へ：参加猫の紹介と会場案内</h3>
+          <div class="chips"><span class="chip">譲渡</span><span class="chip">イベント</span></div>
+          <p class="desc">予約不要。初心者向け相談コーナーあり。</p>
+        </div>
+      </a>
+
+      <!-- 10 -->
+      <a class="card" href="/articles/10" data-cats="tnr,tips,clinic">
+        <div class="thumb">
+          <img src="thumb10.jpg" alt="捕獲器の使い方" loading="lazy">
+        </div>
+        <div class="meta">
+          <h3 class="title">捕獲器の安全な使い方：やってはいけないNG例</h3>
+          <div class="chips"><span class="chip">TNR</span><span class="chip">豆知識</span><span class="chip">クリニック</span>
+          </div>
+          <p class="desc">猫に優しい捕獲のための実践ポイント。</p>
+        </div>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="wrap site-footer">
+    <nav class="footer-links">
+      <a href="https://wakayamasakuraneko.github.io/blog/BlogHome/index.htm">ブログ</a>
+      <span class="dot">·</span>
+      <a href="https://wakayamasakuraneko.github.io/clinic/index.htm">HPへ</a>
+      <span class="dot">·</span>
+      <a href="https://www.facebook.com">Facebook</a>
+      <span class="dot">·</span>
+      <a href="https://www.instagram.com">Instagram</a>
+      <span class="dot">·</span>
+      <a href="https://twitter.com">Twitter</a>
+    </nav>
+    <small class="copyright">和歌山スペイクリニック さくらねこ</small>
+  </footer>
+
+  <script src="flip_vars.js"></script>
+  <!-- <script src="flip_explode.js"></script> -->
+</body>
+
+</html>

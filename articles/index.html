@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>記事一覧 | 和歌山スペイクリニック</title>
     <link rel="icon" href="../favicon/dummy.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
       *,
       *::before,
@@ -37,7 +38,8 @@
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
-        padding: 0 20px;
+        justify-content: space-between;
+        padding: 0 max(12px, calc(50% - 330px + 12px));
       }
       .brand {
         font-size: 1.05rem;
@@ -45,6 +47,29 @@
         color: #3a2010;
         text-decoration: none;
       }
+      .header-home-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        color: #666;
+        text-decoration: none;
+        font-size: 0.62rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.75);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.13);
+        border: 1px solid rgba(220,220,220,0.7);
+        flex-shrink: 0;
+        transition: color 0.2s, box-shadow 0.2s;
+      }
+      .header-home-btn:hover {
+        color: #4a7c2d;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      }
+      .header-home-btn .fa-home { font-size: 1.25rem; line-height: 1; }
 
       /* フィルタ */
       .filters {
@@ -255,6 +280,10 @@
   <body>
     <header class="site-header">
       <a class="brand" href="../index.html">和歌山スペイクリニック さくらねこ</a>
+      <a class="header-home-btn" href="../index.html">
+        <i class="fas fa-home"></i>
+        <span>ホーム</span>
+      </a>
     </header>
 
     <nav class="filters" aria-label="カテゴリ">
@@ -370,7 +399,7 @@
 
         <a class="card" href="./trap-pedal/index.html" data-cats="外猫">
           <div class="thumb">
-            <img src="./trap-pedal/images/thumb.png" alt="trapper" loading="lazy" />
+            <img src="./trap-pedal/images/thumb.jpg" alt="trapper" loading="lazy" />
           </div>
           <div class="meta">
             <p class="card-title">踏み板を踏まない猫</p>

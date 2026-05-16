@@ -1,0 +1,84 @@
+:root {
+  /* === ページ基本 === */
+  --bg-page: #f6f4a5;
+  --c-text: #333;
+  --c-white: #fff;
+  --c-black: #000;
+  --c-near-black: rgb(4, 4, 4);
+  --bg-hero: #000;
+
+  /* === ブランドカラー（茶系） === */
+  --c-brown: #5a4a1a;
+  --c-brown-mid: #886c34;
+  --c-brown-light: #a68d13;
+  --c-brown-shadow: #615712;
+
+  /* === ヘッダー === */
+  --bg-header: #eee183;
+  --c-articles-btn: #666;
+  --c-articles-btn-hover: #4a7c2d;
+
+  /* === お知らせ === */
+  --bg-notice: #fff9ca;
+  --bg-notice-btn: #f5f5e8;
+  --bg-notice-btn-hover: #ebebd8;
+  --c-mid-gray: #555;
+  --c-gray: gray;
+
+  /* === ボーダー === */
+  --bd-light: #e0e0d0;
+  --bd-gray: #ccc;
+  --bd-extra-light: #eee;
+
+  /* === ボタン（黄色系） === */
+  --bg-btn-yellow: #f1df50;
+  --bg-btn-yellow-hover: #ffe100;
+  --bg-details: #f7eb8a;
+
+  /* === セクション・ニュース === */
+  --bg-section: #ffffe9;
+  --bg-sns: #fdfdcd;
+  --c-footer-text: #ffe566;
+
+  /* === セクション h2 カラー === */
+  --c-h2-introduction: #99634b;
+  --c-h2-procedures: brown;
+  --c-h2-price: #4a6741;
+  --c-h2-telfax: #944929;
+  --c-h2-access: #2d6d4b;
+
+  /* === サイトナビ === */
+  --bg-nav-a: #333;
+  --bg-nav-a-hover: #bebebe;
+
+  /* === ナビページ共通 === */
+  --bd-nav-h3: #f6c200;
+  --c-red: #ff0000;
+  --c-tel-highlight: #e2f0d9;
+
+  /* === ナビページ：一斉（緑） === */
+  --c-issei: #7aab52;
+  --bg-issei: #b0dfcc;
+  --bd-issei-inner: #f0f4e8;
+
+  /* === ナビページ：外猫（オレンジ） === */
+  --c-soto-neko: #ef8200;
+  --bg-soto-neko: #fddcaa;
+  --bd-soto-neko-inner: #fef2dc;
+
+  /* === ナビページ：家猫（青） === */
+  --c-ie-neko: #4a80aa;
+  --bg-ie-neko: #bbdeff;
+  --bd-ie-neko-inner: #e8f0f8;
+
+  /* === 戻るボタン === */
+  --c-back-btn-hover: #444;
+
+  /* === SNS === */
+  --bg-x: #202124;
+  --bg-fb: #3b5998;
+}
+
+/* ユーティリティクラス */
+.red   { color: red; }
+.green { color: green; }

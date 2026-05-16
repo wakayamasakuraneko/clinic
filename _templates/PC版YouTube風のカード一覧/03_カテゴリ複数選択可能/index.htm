@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>03_カテゴリ選択可</title>
+  <link rel="stylesheet" href="style01.css">
+  <link rel="stylesheet" href="style02.css">
+  <link rel="stylesheet" href="style03.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#" class="brand" aria-label="トップへ">
+        <div class="logo">🐾</div>
+        <div class="title">和歌山スペイクリニック さくらねこ</div>
+      </a>
+      <div class="header-actions">
+        <a class="btn outline" href="#reserve">予約・問い合わせ</a>
+        <a class="btn secondary tel" href="tel:000-000-0000">☎ 000-000-0000</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <nav class="filters" aria-label="カテゴリ">
+      <div class="tags">
+        <button class="fbtn" data-filter="tnr">TNR</button>
+        <button class="fbtn" data-filter="clinic">クリニック</button>
+        <button class="fbtn" data-filter="tips">豆知識</button>
+        <button class="fbtn" data-filter="news">お知らせ</button>
+      </div>
+      <div class="ops">
+        <button id="modeBtn" class="mode">モード: OR</button>
+        <button id="clearBtn" class="clear">選択クリア</button>
+      </div>
+    </nav>
+
+    <div class="grid">
+      <!-- data-cats はカンマ区切り。キーはフィルタと一致させる -->
+      <a class="card" href="/articles/1" data-cats="tnr,tips">
+        <div class="thumb"><img src="thumb1.jpg" alt="" loading="lazy"></div>
+        <div class="meta">
+          <h3 class="title">タイトル1</h3>
+          <div class="chips"><span class="chip">TNR</span><span class="chip">豆知識</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="/articles/2" data-cats="clinic">
+        <div class="thumb"><img src="thumb2.jpg" alt="" loading="lazy"></div>
+        <div class="meta">
+          <h3 class="title">タイトル2</h3>
+          <div class="chips"><span class="chip">クリニック</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="/articles/3" data-cats="news,tnr">
+        <div class="thumb"><img src="thumb3.jpg" alt="" loading="lazy"></div>
+        <div class="meta">
+          <h3 class="title">タイトル3</h3>
+          <div class="chips"><span class="chip">お知らせ</span><span class="chip">TNR</span></div>
+        </div>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="wrap" style="padding:26px 0 80px; color:#6b7280">
+    <small>© 2025 Wakayama Spay Clinic Sakura Neko</small>
+  </footer>
+
+  <a class="btn fab" href="#reserve" aria-label="予約・問い合わせを開く">📞 予約</a>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

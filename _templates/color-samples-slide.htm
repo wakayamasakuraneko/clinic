@@ -253,9 +253,86 @@
         nav { height: 60px; }
         .page { padding-bottom: 80px; }
       }
+
+      /* ========== 表紙 ========== */
+      #cover {
+        position: fixed;
+        inset: 0;
+        background-color: #f6f4a5;
+        color: #333;
+        font-family: inherit;
+        padding: 2em 5%;
+        overflow-y: auto;
+        z-index: 300;
+        transition: opacity 0.3s;
+      }
+      #cover.hidden { opacity: 0; pointer-events: none; }
+      #cover h1 { font-size: 1.2em; color: #5a4a1a; margin-bottom: 0.5em; }
+      #cover p.note { font-size: 0.85em; color: #888; margin-bottom: 1.5em; }
+      .launcher { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5em; }
+      .launch-btn {
+        padding: 0.4em 1em;
+        border-radius: 20px;
+        border: 1.5px solid transparent;
+        color: #fff;
+        font-size: 0.9em;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: inherit;
+        transition: opacity 0.15s;
+      }
+      .launch-btn:hover { opacity: 0.8; }
     </style>
   </head>
   <body>
+
+    <!-- 表紙 -->
+    <div id="cover">
+      <h1>カラーサンプル（スライド）</h1>
+      <p class="note">ボタンをクリックするとそのカラーにジャンプします。← → キーまたはスワイプで前後に移動できます。</p>
+      <div class="launcher">
+        <button class="launch-btn" style="background:#7aab52;border-color:#7aab52;" onclick="enterSlides(0)">グリーン</button>
+        <button class="launch-btn" style="background:#d4824a;border-color:#d4824a;" onclick="enterSlides(1)">オレンジ</button>
+        <button class="launch-btn" style="background:#4a80aa;border-color:#4a80aa;" onclick="enterSlides(2)">ブルー</button>
+        <button class="launch-btn" style="background:#0e8c80;border-color:#0e8c80;" onclick="enterSlides(3)">ティール</button>
+        <button class="launch-btn" style="background:#7448b0;border-color:#7448b0;" onclick="enterSlides(4)">パープル</button>
+        <button class="launch-btn" style="background:#b83060;border-color:#b83060;" onclick="enterSlides(5)">ローズ</button>
+        <button class="launch-btn" style="background:#284898;border-color:#284898;" onclick="enterSlides(6)">ネイビー</button>
+        <button class="launch-btn" style="background:#6a7820;border-color:#6a7820;" onclick="enterSlides(7)">オリーブ</button>
+        <button class="launch-btn" style="background:#c04820;border-color:#c04820;" onclick="enterSlides(8)">サーモン</button>
+        <button class="launch-btn" style="background:#1a9060;border-color:#1a9060;" onclick="enterSlides(9)">ミント</button>
+        <button class="launch-btn" style="background:#c07040;border-color:#c07040;" onclick="enterSlides(10)">ピーチ</button>
+        <button class="launch-btn" style="background:#9a7010;border-color:#9a7010;" onclick="enterSlides(11)">アンバー</button>
+        <button class="launch-btn" style="background:#983828;border-color:#983828;" onclick="enterSlides(12)">テラコッタ</button>
+        <button class="launch-btn" style="background:#b88020;border-color:#b88020;" onclick="enterSlides(13)">イエローオレンジ</button>
+      </div>
+      <table style="border-collapse:collapse; font-size:0.8em; color:#555; margin-top:0.5em;">
+        <thead>
+          <tr>
+            <th style="padding:4px 12px;text-align:left;border-bottom:1px solid #ccc;">ページ</th>
+            <th style="padding:4px 12px;text-align:left;border-bottom:1px solid #ccc;">背景色</th>
+            <th style="padding:4px 12px;text-align:left;border-bottom:1px solid #ccc;">枠線色</th>
+            <th style="padding:4px 12px;text-align:left;border-bottom:1px solid #ccc;">h2背景色</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:3px 12px;">グリーン</td>    <td><span style="display:inline-block;width:14px;height:14px;background:#c8ddb0;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#c8ddb0</td><td><span style="display:inline-block;width:14px;height:14px;background:#f0f4e8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#f0f4e8</td><td><span style="display:inline-block;width:14px;height:14px;background:#7aab52;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#7aab52</td></tr>
+          <tr><td style="padding:3px 12px;">オレンジ</td>    <td><span style="display:inline-block;width:14px;height:14px;background:#f5ccaa;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#f5ccaa</td><td><span style="display:inline-block;width:14px;height:14px;background:#fef0d8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#fef0d8</td><td><span style="display:inline-block;width:14px;height:14px;background:#d4824a;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#d4824a</td></tr>
+          <tr><td style="padding:3px 12px;">ブルー</td>      <td><span style="display:inline-block;width:14px;height:14px;background:#aac4dd;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#aac4dd</td><td><span style="display:inline-block;width:14px;height:14px;background:#e8f0f8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#e8f0f8</td><td><span style="display:inline-block;width:14px;height:14px;background:#4a80aa;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#4a80aa</td></tr>
+          <tr style="border-top:1px dashed #ccc;"><td style="padding:3px 12px;">ティール</td>     <td><span style="display:inline-block;width:14px;height:14px;background:#a8dcd8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#a8dcd8</td><td><span style="display:inline-block;width:14px;height:14px;background:#d4f0ee;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#d4f0ee</td><td><span style="display:inline-block;width:14px;height:14px;background:#0e8c80;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#0e8c80</td></tr>
+          <tr><td style="padding:3px 12px;">パープル</td>    <td><span style="display:inline-block;width:14px;height:14px;background:#d4c0ee;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#d4c0ee</td><td><span style="display:inline-block;width:14px;height:14px;background:#eae4f8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#eae4f8</td><td><span style="display:inline-block;width:14px;height:14px;background:#7448b0;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#7448b0</td></tr>
+          <tr><td style="padding:3px 12px;">ローズ</td>      <td><span style="display:inline-block;width:14px;height:14px;background:#f0b8cc;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#f0b8cc</td><td><span style="display:inline-block;width:14px;height:14px;background:#f8dce8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#f8dce8</td><td><span style="display:inline-block;width:14px;height:14px;background:#b83060;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#b83060</td></tr>
+          <tr><td style="padding:3px 12px;">ネイビー</td>    <td><span style="display:inline-block;width:14px;height:14px;background:#a8b8d8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#a8b8d8</td><td><span style="display:inline-block;width:14px;height:14px;background:#d4dcee;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#d4dcee</td><td><span style="display:inline-block;width:14px;height:14px;background:#284898;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#284898</td></tr>
+          <tr><td style="padding:3px 12px;">オリーブ</td>    <td><span style="display:inline-block;width:14px;height:14px;background:#ccd4a0;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#ccd4a0</td><td><span style="display:inline-block;width:14px;height:14px;background:#e4eac8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#e4eac8</td><td><span style="display:inline-block;width:14px;height:14px;background:#6a7820;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#6a7820</td></tr>
+          <tr style="border-top:1px dashed #ccc;"><td style="padding:3px 12px;">サーモン</td>     <td><span style="display:inline-block;width:14px;height:14px;background:#f2b89a;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#f2b89a</td><td><span style="display:inline-block;width:14px;height:14px;background:#fadacc;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#fadacc</td><td><span style="display:inline-block;width:14px;height:14px;background:#c04820;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#c04820</td></tr>
+          <tr><td style="padding:3px 12px;">ミント</td>      <td><span style="display:inline-block;width:14px;height:14px;background:#b0dfcc;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#b0dfcc</td><td><span style="display:inline-block;width:14px;height:14px;background:#d6f2e8;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#d6f2e8</td><td><span style="display:inline-block;width:14px;height:14px;background:#1a9060;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#1a9060</td></tr>
+          <tr><td style="padding:3px 12px;">ピーチ</td>      <td><span style="display:inline-block;width:14px;height:14px;background:#fcd4b0;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#fcd4b0</td><td><span style="display:inline-block;width:14px;height:14px;background:#feeee0;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#feeee0</td><td><span style="display:inline-block;width:14px;height:14px;background:#c07040;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#c07040</td></tr>
+          <tr><td style="padding:3px 12px;">アンバー</td>    <td><span style="display:inline-block;width:14px;height:14px;background:#e8c870;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#e8c870</td><td><span style="display:inline-block;width:14px;height:14px;background:#f8eccc;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#f8eccc</td><td><span style="display:inline-block;width:14px;height:14px;background:#9a7010;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#9a7010</td></tr>
+          <tr><td style="padding:3px 12px;">テラコッタ</td>  <td><span style="display:inline-block;width:14px;height:14px;background:#e8a080;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#e8a080</td><td><span style="display:inline-block;width:14px;height:14px;background:#f8d4c4;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#f8d4c4</td><td><span style="display:inline-block;width:14px;height:14px;background:#983828;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#983828</td></tr>
+          <tr><td style="padding:3px 12px;">イエローオレンジ</td><td><span style="display:inline-block;width:14px;height:14px;background:#f8de90;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#f8de90</td><td><span style="display:inline-block;width:14px;height:14px;background:#fef4d0;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#fef4d0</td><td><span style="display:inline-block;width:14px;height:14px;background:#b88020;border:1px solid #aaa;vertical-align:middle;margin-right:4px;"></span>#b88020</td></tr>
+        </tbody>
+      </table>
+    </div>
 
     <!-- 0: グリーン -->
     <div class="page page-0 active" id="page-0">
@@ -510,9 +587,9 @@
     </div>
 
     <!-- 左上：最初へボタン -->
-    <button id="btn-to-top" onclick="goTo(0)">
-      <span class="icon">←</span>
-      <span>最初へ</span>
+    <button id="btn-to-top" onclick="showCover()">
+      <span class="icon">≡</span>
+      <span>一覧へ</span>
     </button>
 
     <!-- 下部ナビゲーション -->
@@ -526,11 +603,12 @@
       const TOTAL = 14;
       const PAGE_LABELS = ["緑", "橙", "青", "青緑", "紫", "薔薇", "紺", "黄緑", "珊瑚", "薄荷", "桃", "琥珀", "煉瓦", "山吹"];
 
-      const isReload = performance.getEntriesByType("navigation")[0]?.type === "reload";
-      const saved = parseInt(sessionStorage.getItem("page-color") || "0");
-      let current = (isReload && saved >= 0 && saved < TOTAL) ? saved : 0;
+      const coverEl  = document.getElementById("cover");
+      const navEl    = document.querySelector("nav");
+      const btnToTop = document.getElementById("btn-to-top");
+      const dotsEl   = document.getElementById("dots");
+      let current = 0;
 
-      const dotsEl = document.getElementById("dots");
       for (let i = 0; i < TOTAL; i++) {
         const item = document.createElement("div");
         item.className = "dot-item";
@@ -545,6 +623,23 @@
         dotsEl.appendChild(item);
       }
 
+      function showCover() {
+        coverEl.classList.remove("hidden");
+        navEl.style.display = "none";
+        btnToTop.classList.add("hidden");
+      }
+
+      function hideCover() {
+        coverEl.classList.add("hidden");
+        navEl.style.display = "";
+        btnToTop.classList.remove("hidden");
+      }
+
+      function enterSlides(index) {
+        hideCover();
+        if (index !== current) goTo(index, 1);
+      }
+
       function showPage(index) {
         for (let i = 0; i < TOTAL; i++) {
           document.getElementById("page-" + i).classList.remove("active", "slide-out-left", "slide-out-right");
@@ -554,7 +649,6 @@
         document.getElementById("page-" + current).classList.add("active");
         dotsEl.children[current].classList.add("active");
         sessionStorage.setItem("page-color", current);
-        updateNav();
       }
 
       function goTo(index, dir) {
@@ -585,7 +679,6 @@
             dotsEl.children[current].classList.add("active");
             document.getElementById("page-" + current).scrollTop = 0;
             sessionStorage.setItem("page-color", current);
-            updateNav();
           });
         });
       }
@@ -597,11 +690,8 @@
         goTo(next, dir);
       }
 
-      function updateNav() {
-        document.getElementById("btn-to-top").classList.toggle("hidden", current === 0);
-      }
-
       document.addEventListener("keydown", (e) => {
+        if (!coverEl.classList.contains("hidden")) return;
         if (e.key === "ArrowRight" || e.key === "ArrowDown") navigate(1);
         if (e.key === "ArrowLeft"  || e.key === "ArrowUp")   navigate(-1);
       });
@@ -612,16 +702,25 @@
         touchStartY = e.touches[0].clientY;
       }, { passive: true });
       document.addEventListener("touchend", (e) => {
+        if (!coverEl.classList.contains("hidden")) return;
         const dx = e.changedTouches[0].clientX - touchStartX;
         const dy = e.changedTouches[0].clientY - touchStartY;
         if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
       }, { passive: true });
 
       window.addEventListener("pageshow", (e) => {
-        if (e.persisted) { showPage(0); }
+        if (e.persisted) showCover();
       });
 
-      showPage(current);
+      const isReload = performance.getEntriesByType("navigation")[0]?.type === "reload";
+      const saved = parseInt(sessionStorage.getItem("page-color") || "-1");
+      if (isReload && saved >= 0 && saved < TOTAL) {
+        showPage(saved);
+        hideCover();
+      } else {
+        showPage(0);
+        showCover();
+      }
     </script>
   </body>
 </html>

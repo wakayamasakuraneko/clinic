@@ -481,12 +481,6 @@ details.introDetail1 p {
   color: #2d6d4b;
 }
 
-.device {
-  font-size: 18px;
-  color: red;
-  margin-left: 30px;
-}
-
 .wrapMaps {
   display: flex;
   justify-content: space-evenly;
@@ -535,12 +529,6 @@ details.introDetail1 p {
   }
 }
 
-@media screen and (max-width: 769px) {
-  .device {
-    font-size: 12px;
-    margin-left: 15px;
-  }
-}
 
 
 /* ============================================================
