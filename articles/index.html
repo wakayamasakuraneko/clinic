@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>記事一覧 | 和歌山スペイクリニック</title>
-    <link rel="icon" href="../favicon/dummy.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon/favi.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
       *,
@@ -81,7 +81,8 @@
         display: flex;
         gap: 8px;
         padding: 8px 16px;
-        flex-wrap: wrap;
+        overflow-x: auto;
+        justify-content: center;
       }
       .fbtn {
         border: 1px solid #d1c9a8;
@@ -290,7 +291,7 @@
       <button class="fbtn is-active" data-filter="all" aria-pressed="true">すべて</button>
       <button class="fbtn" data-filter="外猫" aria-pressed="false">外猫</button>
       <button class="fbtn" data-filter="保護猫" aria-pressed="false">保護猫</button>
-      <button class="fbtn" data-filter="その他" aria-pressed="false">豆知識・その他</button>
+      <button class="fbtn" data-filter="その他" aria-pressed="false">その他</button>
     </nav>
 
     <main>
@@ -471,7 +472,7 @@
       </div>
     </main>
 
-    <footer>和歌山スペイクリニック さくらねこ</footer>
+    <footer style="position:relative;">和歌山スペイクリニック さくらねこ<a href="../_templates/" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);display:inline-block;color:#ccc;background:#ccc;width:6px;height:6px;font-size:0;user-select:none;cursor:pointer;border-radius:50%;">·</a></footer>
 
     <script>
       let _filtering = false;
