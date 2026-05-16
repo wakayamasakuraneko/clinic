@@ -567,6 +567,14 @@
           }, 100);
         });
       });
+
+      window.addEventListener("pageshow", (e) => {
+        if (e.persisted) {
+          document.querySelectorAll(".card.is-clicking").forEach((el) => {
+            el.classList.remove("is-clicking");
+          });
+        }
+      });
     </script>
   </body>
 </html>
