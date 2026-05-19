@@ -72,10 +72,12 @@
       .header-home-btn .fa-home { font-size: 1.25rem; line-height: 1; }
 
       /* フィルタ */
-      .filters {
+      .filters-wrap {
         position: sticky;
         top: 52px;
         z-index: 90;
+      }
+      .filters {
         background: #fff;
         border-bottom: 1px solid #e8e0c8;
         display: flex;
@@ -83,6 +85,41 @@
         padding: 8px 16px;
         overflow-x: auto;
         justify-content: center;
+      }
+      .subfilters {
+        background: #fffbee;
+        border-bottom: 1px solid #e2d870;
+        display: flex;
+        gap: 8px;
+        padding: 0 16px;
+        justify-content: center;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.2s ease, padding 0.2s ease;
+      }
+      .subfilters.is-visible {
+        max-height: 48px;
+        padding: 6px 16px;
+      }
+      .sfbtn {
+        border: 1px solid #c8b840;
+        padding: 3px 12px;
+        border-radius: 999px;
+        background: #fff;
+        color: #5a4010;
+        cursor: pointer;
+        font-size: 0.82rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background 0.15s, color 0.15s;
+      }
+      .sfbtn.is-active {
+        background: #8a6010;
+        color: #fff;
+        border-color: #8a6010;
+      }
+      .card.sub-hidden {
+        display: none;
       }
       .fbtn {
         border: 1px solid #d1c9a8;
@@ -142,21 +179,6 @@
       }
       .card.hidden {
         display: none;
-      }
-
-      /* クリックエフェクト⑤ カードスケール＋フェード */
-      .card.is-clicking {
-        animation: cardClickScale 0.1s ease-out forwards;
-      }
-      @keyframes cardClickScale {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        100% {
-          transform: scale(1.08);
-          opacity: 0;
-        }
       }
 
       @keyframes scatterOut {
@@ -287,12 +309,21 @@
       </a>
     </header>
 
-    <nav class="filters" aria-label="カテゴリ">
-      <button class="fbtn is-active" data-filter="all" aria-pressed="true">すべて</button>
-      <button class="fbtn" data-filter="外猫" aria-pressed="false">外猫</button>
-      <button class="fbtn" data-filter="保護猫" aria-pressed="false">保護猫</button>
-      <button class="fbtn" data-filter="その他" aria-pressed="false">その他</button>
-    </nav>
+    <div class="filters-wrap">
+      <nav class="filters" aria-label="カテゴリ">
+        <button class="fbtn is-active" data-filter="all" aria-pressed="true">すべて</button>
+        <button class="fbtn" data-filter="外猫" aria-pressed="false">外猫</button>
+        <button class="fbtn" data-filter="保護猫" aria-pressed="false">保護猫</button>
+        <button class="fbtn" data-filter="その他" aria-pressed="false">その他</button>
+      </nav>
+      <div class="subfilters" id="subfilters">
+        <button class="sfbtn" data-subfilter="予約">予約・キャンセル</button>
+        <button class="sfbtn" data-subfilter="来院">来院方法</button>
+        <button class="sfbtn" data-subfilter="捕獲器">捕獲器</button>
+        <button class="sfbtn" data-subfilter="捕獲コツ">捕獲コツ</button>
+        <button class="sfbtn" data-subfilter="自宅待機">自宅待機</button>
+      </div>
+    </div>
 
     <main>
       <div class="grid">
@@ -306,7 +337,7 @@
           </div>
         </a>
 
-        <a class="card" href="./cancel-ok/index.html" data-cats="外猫">
+        <a class="card" href="./cancel-ok/index.html" data-cats="外猫" data-subcats="予約">
           <div class="thumb">
             <img src="./cancel-ok/images/thumb.jpg" alt="キャンセル" loading="lazy" />
           </div>
@@ -316,7 +347,7 @@
           </div>
         </a>
 
-        <a class="card" href="./carry-case/index.html" data-cats="保護猫,外猫">
+        <a class="card" href="./carry-case/index.html" data-cats="保護猫,外猫" data-subcats="来院">
           <div class="thumb">
             <img src="./carry-case/images/thumb.jpg" alt="carry_case" loading="lazy" />
           </div>
@@ -336,7 +367,7 @@
           </div>
         </a>
 
-        <a class="card" href="./trap-setup/index.html" data-cats="外猫">
+        <a class="card" href="./trap-setup/index.html" data-cats="外猫" data-subcats="捕獲器">
           <div class="thumb">
             <img src="./trap-setup/images/thumb.jpg" alt="Trap" loading="lazy" />
           </div>
@@ -346,7 +377,7 @@
           </div>
         </a>
 
-        <a class="card" href="./trap-cover/index.html" data-cats="外猫">
+        <a class="card" href="./trap-cover/index.html" data-cats="外猫" data-subcats="来院">
           <div class="thumb">
             <img src="./trap-cover/images/carrying_man.png" alt="捕獲器でのご来院方法" loading="lazy" />
           </div>
@@ -378,7 +409,7 @@
         </a>
         -->
 
-        <a class="card" href="./trap-temperature/index.html" data-cats="外猫">
+        <a class="card" href="./trap-temperature/index.html" data-cats="外猫" data-subcats="自宅待機">
           <div class="thumb">
             <img src="./trap-temperature/images/thumb.jpg" alt="Temperature" loading="lazy" />
           </div>
@@ -388,7 +419,7 @@
           </div>
         </a>
 
-        <a class="card" href="./trap-fail/index.html" data-cats="外猫">
+        <a class="card" href="./trap-fail/index.html" data-cats="外猫" data-subcats="捕獲コツ">
           <div class="thumb">
             <img src="./trap-fail/images/thumb.jpg" alt="tsukamaranai" loading="lazy" />
           </div>
@@ -398,7 +429,7 @@
           </div>
         </a>
 
-        <a class="card" href="./trap-pedal/index.html" data-cats="外猫">
+        <a class="card" href="./trap-pedal/index.html" data-cats="外猫" data-subcats="捕獲コツ">
           <div class="thumb">
             <img src="./trap-pedal/images/thumb.jpg" alt="trapper" loading="lazy" />
           </div>
@@ -408,7 +439,7 @@
           </div>
         </a>
 
-        <a class="card" href="./collapsible-trap/index.html" data-cats="外猫">
+        <a class="card" href="./collapsible-trap/index.html" data-cats="外猫" data-subcats="捕獲器">
           <div class="thumb">
             <img src="./collapsible-trap/images/thumb.jpg" alt="blog009pic" loading="lazy" />
           </div>
@@ -420,7 +451,7 @@
 
         <a class="card" href="./vacuum-effect/index.html" data-cats="その他">
           <div class="thumb">
-            <img src="./vacuum-effect/images/thumb.png" alt="VacuumEffect" loading="lazy" />
+            <img src="./vacuum-effect/images/thumb.jpg" alt="VacuumEffect" loading="lazy" />
           </div>
           <div class="meta">
             <p class="card-title">ナワバリ現象</p>
@@ -428,7 +459,7 @@
           </div>
         </a>
 
-        <a class="card" href="./home-wait/index.html" data-cats="外猫">
+        <a class="card" href="./home-wait/index.html" data-cats="外猫" data-subcats="自宅待機">
           <div class="thumb">
             <img src="./home-wait/images/thumb.png" alt="jitakutaiki" loading="lazy" />
           </div>
@@ -438,7 +469,7 @@
           </div>
         </a>
 
-        <a class="card" href="./no-appointment/index.html" data-cats="外猫">
+        <a class="card" href="./no-appointment/index.html" data-cats="外猫" data-subcats="予約">
           <div class="thumb">
             <img src="./no-appointment/images/thumb.jpg" alt="yoyakugai" loading="lazy" />
           </div>
@@ -543,6 +574,100 @@
         }, 175);
       }
 
+      // サブフィルター
+      const subfiltersEl = document.getElementById("subfilters");
+      let currentSubFilter = null;
+
+      function toggleSubfilters(show) {
+        subfiltersEl.classList.toggle("is-visible", show);
+        if (!show) {
+          currentSubFilter = null;
+          document.querySelectorAll(".sfbtn").forEach((b) => b.classList.remove("is-active"));
+          document.querySelectorAll(".card").forEach((c) => c.classList.remove("sub-hidden"));
+        }
+      }
+
+      function doSubFilter(key) {
+        if (_filtering) return;
+        const allCards = [...document.querySelectorAll(".card")];
+        const mainVisible = allCards.filter((c) => !c.classList.contains("hidden"));
+        const nextVisible = key === null
+          ? mainVisible
+          : mainVisible.filter((c) => {
+              const subcats = (c.dataset.subcats || "").split(",").map((s) => s.trim()).filter(Boolean);
+              return subcats.includes(key);
+            });
+        const currentVisible = mainVisible.filter((c) => !c.classList.contains("sub-hidden"));
+
+        _filtering = true;
+
+        currentVisible.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          card.style.setProperty("--dx", window.innerWidth / 2 - cx + (Math.random() - 0.5) * 20 + "px");
+          card.style.setProperty("--dy", window.innerHeight / 2 - cy + (Math.random() - 0.5) * 20 + "px");
+          card.style.setProperty("--rot", "0deg");
+          card.classList.remove("is-gathering");
+          card.classList.add("is-scattering");
+        });
+
+        setTimeout(() => {
+          allCards.forEach((c) => {
+            c.classList.remove("is-scattering", "is-gathering");
+            c.style.removeProperty("--dx");
+            c.style.removeProperty("--dy");
+            c.style.removeProperty("--rot");
+            c.style.animationDelay = "";
+            c.style.animationDuration = "";
+            c.classList.add("sub-hidden");
+          });
+
+          nextVisible.forEach((card) => card.classList.remove("sub-hidden"));
+          nextVisible[0]?.getBoundingClientRect();
+
+          nextVisible.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const cardCx = rect.left + rect.width / 2;
+            const cardCy = rect.top + rect.height / 2;
+            card.style.setProperty("--dx", window.innerWidth / 2 - cardCx + (Math.random() - 0.5) * 20 + "px");
+            card.style.setProperty("--dy", window.innerHeight / 2 - cardCy + (Math.random() - 0.5) * 20 + "px");
+            card.style.setProperty("--rot", "0deg");
+            card.style.animationDuration = "215ms";
+            card.style.animationDelay = "0ms";
+            card.classList.add("is-gathering");
+          });
+
+          setTimeout(() => {
+            nextVisible.forEach((card) => {
+              card.classList.remove("is-gathering");
+              card.style.removeProperty("--dx");
+              card.style.removeProperty("--dy");
+              card.style.removeProperty("--rot");
+              card.style.animationDelay = "";
+              card.style.animationDuration = "";
+            });
+            _filtering = false;
+          }, 275);
+        }, 175);
+      }
+
+      document.querySelectorAll(".sfbtn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const key = this.dataset.subfilter;
+          if (currentSubFilter === key) {
+            this.classList.remove("is-active");
+            currentSubFilter = null;
+            doSubFilter(null);
+            return;
+          }
+          document.querySelectorAll(".sfbtn").forEach((b) => b.classList.remove("is-active"));
+          this.classList.add("is-active");
+          currentSubFilter = key;
+          doSubFilter(key);
+        });
+      });
+
       document.querySelectorAll(".fbtn").forEach((btn) => {
         btn.addEventListener("click", function () {
           document.querySelectorAll(".fbtn").forEach((b) => {
@@ -552,29 +677,12 @@
           this.classList.add("is-active");
           this.setAttribute("aria-pressed", "true");
           const key = this.dataset.filter;
+          toggleSubfilters(key === "外猫");
+          document.querySelectorAll(".card").forEach((c) => c.classList.remove("sub-hidden"));
           doFilter(key === "all" ? null : key);
         });
       });
 
-      document.querySelectorAll(".card").forEach((card) => {
-        card.addEventListener("click", function (e) {
-          if (_filtering) return;
-          e.preventDefault();
-          const href = this.href;
-          this.classList.add("is-clicking");
-          setTimeout(() => {
-            window.location.href = href;
-          }, 100);
-        });
-      });
-
-      window.addEventListener("pageshow", (e) => {
-        if (e.persisted) {
-          document.querySelectorAll(".card.is-clicking").forEach((el) => {
-            el.classList.remove("is-clicking");
-          });
-        }
-      });
     </script>
   </body>
 </html>

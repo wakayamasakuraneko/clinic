@@ -336,7 +336,7 @@
       }
 
       /* ページ内ジャンプのオフセット（sticky nav分） */
-      section[id] {
+      section[id], #ticket-info, #news {
         scroll-margin-top: var(--scroll-offset, 40px);
       }
 
@@ -636,7 +636,7 @@
           aspect-ratio: 1;
         }
 
-        section[id] {
+        section[id], #ticket-info, #news {
           scroll-margin-top: var(--scroll-offset, 140px);
         }
         .sp-only {
@@ -821,6 +821,9 @@
         .nav-page {
           font-size: 18px;
           padding: 70px 3% 1em;
+        }
+        .nav-page-inner {
+          padding: 1.5em 1em;
         }
       }
     </style>
@@ -1013,6 +1016,10 @@
           <i class="twit_X">𝕏</i>
           <div class="X_bottom">Twitter</div>
         </a>
+        <a class="flowbtn" href="articles/index.html" style="background: var(--c-brown); margin-left: 1em;">
+          <img src="favicon/favi.svg" alt="" style="width: 1.4em;height: 1.4em;">
+          <div>記事一覧</div>
+        </a>
       </div>
       <p style="font-size:0.8rem;color:#bbb;margin-top:0.6em;">Xは更新少な目です…</p>
     </div>
@@ -1060,14 +1067,15 @@
             ><i class="far fa-hand-point-right"></i> 推奨キャリーケース</a
           >
         </div>
-        <hr class="nav-page-divider" />
-        <p>
-          捕獲器は剥き出しのままではなく、生地などで覆ってお越しください（猫が落ち着きます）。<br />組み立て式捕獲器をご使用の場合は、組み立てに不備がないか事前にご確認ください。
-        </p>
-        <div class="align_center">
+        <div class="align_center" style="margin-top: 0.6em;">
           <a href="articles/trap-cover/index.html" class="bloglink-btn"
             ><i class="far fa-hand-point-right"></i> 捕獲器でのご来院方法</a
           >
+        </div>
+        <p>捕獲器は剥き出しのままではなく、生地などで覆ってお越しください（猫が落ち着きます）。</p>
+        <hr class="nav-page-divider" />
+        <p>組み立て式捕獲器をご使用の場合は、組み立てに不備がないか事前にご確認ください。</p>
+        <div class="align_center">
           <a href="articles/collapsible-trap/index.html" class="bloglink-btn"
             ><i class="far fa-hand-point-right"></i> 組み立て式捕獲器の注意点</a
           >
