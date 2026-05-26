@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雨アニメ デモ</title>
+  <link rel="icon" href="../favicon/サンプルページ用のファビコン/color-sample-favi.svg" type="image/svg+xml">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      overflow: hidden;
+      height: 100dvh;
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      transition: background 1.5s ease;
+    }
+
+    /* ========== 雲 ========== */
+    .clouds {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cloud {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(28px);
+      animation: drift linear infinite;
+      transition: background 1.5s ease;
+    }
+
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to   { transform: translateX(120vw); }
+    }
+
+    /* ========== 雨粒 ========== */
+    .rain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .drop {
+      position: absolute;
+      top: -12%;
+      border-radius: 1px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(180, 215, 255, 0.15) 30%,
+        rgba(180, 215, 255, 0.75) 100%
+      );
+      animation: fall linear infinite;
+      transform-origin: top center;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(0) rotate(var(--angle)); opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 0.6; }
+      100% { transform: translateY(115dvh) rotate(var(--angle)); opacity: 0; }
+    }
+
+    /* ========== 水たまりの波紋 ========== */
+    .ripples {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .ripple {
+      position: absolute;
+      bottom: 8px;
+      border: 1px solid rgba(180, 215, 255, 0.35);
+      border-radius: 50%;
+      width: 0; height: 0;
+      animation: ripple ease-out infinite;
+    }
+
+    @keyframes ripple {
+      0%   { width: 0; height: 0; opacity: 0.8; transform: translate(-50%, 50%); }
+      100% { width: 40px; height: 14px; opacity: 0; transform: translate(-50%, 50%); }
+    }
+
+    /* ========== 地面 ========== */
+    .ground {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 50px;
+      background: linear-gradient(180deg, rgba(30,40,50,0) 0%, rgba(20,28,38,0.7) 100%);
+      z-index: 2;
+    }
+
+    /* ========== ボタン ========== */
+    .controls {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 20;
+    }
+
+    .ctrl-btn {
+      padding: 0.45em 1em;
+      border-radius: 20px;
+      border: 1.5px solid rgba(180, 215, 255, 0.4);
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(200, 225, 255, 0.85);
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+    .ctrl-btn.active {
+      background: rgba(180, 215, 255, 0.35);
+      border-color: rgba(180, 215, 255, 0.8);
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* アニメ停止中は全要素を pause */
+    body.paused .drop,
+    body.paused .ripple,
+    body.paused .cloud {
+      animation-play-state: paused;
+    }
+
+    /* ========== ラベル ========== */
+    .label {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(200, 220, 255, 0.5);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      z-index: 10;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="label">rain-demo</div>
+
+  <!-- 雲 -->
+  <div class="clouds" id="clouds"></div>
+
+  <!-- 雨 -->
+  <div class="rain" id="rain"></div>
+
+  <!-- 地面 -->
+  <div class="ground"></div>
+
+  <!-- 波紋 -->
+  <div class="ripples" id="ripples"></div>
+
+  <!-- ボタン -->
+  <div class="controls" id="controls"></div>
+
+  <script>
+    /* ===== 強度プリセット ===== */
+    const LEVELS = [
+      {
+        label: "霧雨",
+        drops: 55,
+        heightMin: 5,  heightMax: 10,
+        durMin: 1.0,   durMax: 1.6,
+        widthPx: 1,
+        opacityMin: 0.25, opacityMax: 0.45,
+        angleMin: 8,   angleMax: 14,
+        ripples: 5,
+        rippleDurMin: 1.8, rippleDurMax: 3.0,
+        bg: "linear-gradient(180deg, #3a4a58 0%, #4a5e6e 60%, #566878 100%)",
+        cloudOpacity: 0.14,
+      },
+      {
+        label: "小雨",
+        drops: 100,
+        heightMin: 10, heightMax: 18,
+        durMin: 0.75,  durMax: 1.25,
+        widthPx: 1.5,
+        opacityMin: 0.35, opacityMax: 0.6,
+        angleMin: 10,  angleMax: 16,
+        ripples: 12,
+        rippleDurMin: 1.4, rippleDurMax: 2.4,
+        bg: "linear-gradient(180deg, #30404e 0%, #3c5060 60%, #485e6e 100%)",
+        cloudOpacity: 0.18,
+      },
+      {
+        label: "雨",
+        drops: 160,
+        heightMin: 14, heightMax: 28,
+        durMin: 0.55,  durMax: 1.0,
+        widthPx: 1.5,
+        opacityMin: 0.45, opacityMax: 0.75,
+        angleMin: 10,  angleMax: 18,
+        ripples: 20,
+        rippleDurMin: 1.1, rippleDurMax: 2.0,
+        bg: "linear-gradient(180deg, #2c3a4a 0%, #3d5068 60%, #4a5f72 100%)",
+        cloudOpacity: 0.22,
+      },
+      {
+        label: "中雨",
+        drops: 230,
+        heightMin: 18, heightMax: 36,
+        durMin: 0.42,  durMax: 0.78,
+        widthPx: 2,
+        opacityMin: 0.55, opacityMax: 0.85,
+        angleMin: 12,  angleMax: 20,
+        ripples: 30,
+        rippleDurMin: 0.85, rippleDurMax: 1.6,
+        bg: "linear-gradient(180deg, #222f3c 0%, #2e4050 60%, #38505e 100%)",
+        cloudOpacity: 0.28,
+      },
+      {
+        label: "大雨",
+        drops: 320,
+        heightMin: 24, heightMax: 48,
+        durMin: 0.32,  durMax: 0.6,
+        widthPx: 2,
+        opacityMin: 0.65, opacityMax: 1.0,
+        angleMin: 14,  angleMax: 24,
+        ripples: 45,
+        rippleDurMin: 0.65, rippleDurMax: 1.2,
+        bg: "linear-gradient(180deg, #182430 0%, #223040 60%, #2c3c4c 100%)",
+        cloudOpacity: 0.34,
+      },
+    ];
+
+    let currentLevel = 2; // 初期値：「雨」
+
+    /* ===== 雲の生成（1回のみ） ===== */
+    const clouds = document.getElementById("clouds");
+    const CLOUD_DATA = [
+      { w: 420, h: 140, top:  4, dur: 80, delay: -10 },
+      { w: 300, h: 100, top: 10, dur: 60, delay: -30 },
+      { w: 550, h: 160, top:  1, dur: 95, delay: -55 },
+      { w: 250, h:  90, top: 18, dur: 70, delay: -20 },
+      { w: 380, h: 120, top:  8, dur: 85, delay: -45 },
+    ];
+    CLOUD_DATA.forEach(({ w, h, top, dur, delay }) => {
+      const c = document.createElement("div");
+      c.className = "cloud";
+      c.style.cssText = `
+        width: ${w}px; height: ${h}px;
+        top: ${top}%; left: -${w}px;
+        animation-duration: ${dur}s;
+        animation-delay: ${delay}s;
+      `;
+      clouds.appendChild(c);
+    });
+
+    /* ===== 雨粒と波紋を強度に応じて再生成 ===== */
+    function applyLevel(levelIndex) {
+      currentLevel = levelIndex;
+      const lv = LEVELS[levelIndex];
+
+      /* 背景 */
+      document.body.style.background = lv.bg;
+
+      /* 雲の濃さ */
+      document.querySelectorAll(".cloud").forEach(c => {
+        c.style.background = `rgba(180, 190, 200, ${lv.cloudOpacity})`;
+      });
+
+      /* 雨粒 */
+      const rain = document.getElementById("rain");
+      rain.innerHTML = "";
+      for (let i = 0; i < lv.drops; i++) {
+        const d = document.createElement("div");
+        d.className = "drop";
+        const left    = Math.random() * 110 - 5;
+        const height  = lv.heightMin + Math.random() * (lv.heightMax - lv.heightMin);
+        const dur     = lv.durMin + Math.random() * (lv.durMax - lv.durMin);
+        const delay   = -(Math.random() * dur);
+        const angle   = lv.angleMin + Math.random() * (lv.angleMax - lv.angleMin);
+        const opacity = lv.opacityMin + Math.random() * (lv.opacityMax - lv.opacityMin);
+        d.style.cssText = `
+          left: ${left}%;
+          height: ${height}px;
+          width: ${lv.widthPx}px;
+          animation-duration: ${dur}s;
+          animation-delay: ${delay}s;
+          --angle: ${angle}deg;
+          opacity: ${opacity};
+        `;
+        rain.appendChild(d);
+      }
+
+      /* 波紋 */
+      const ripples = document.getElementById("ripples");
+      ripples.innerHTML = "";
+      for (let i = 0; i < lv.ripples; i++) {
+        const r = document.createElement("div");
+        r.className = "ripple";
+        const left = Math.random() * 100;
+        const dur  = lv.rippleDurMin + Math.random() * (lv.rippleDurMax - lv.rippleDurMin);
+        const delay = -(Math.random() * dur);
+        r.style.cssText = `
+          left: ${left}%;
+          animation-duration: ${dur}s;
+          animation-delay: ${delay}s;
+        `;
+        ripples.appendChild(r);
+      }
+
+      /* ボタンの active 切り替え */
+      document.querySelectorAll(".ctrl-btn").forEach((btn, i) => {
+        btn.classList.toggle("active", i === levelIndex);
+      });
+    }
+
+    /* ===== ボタン生成 ===== */
+    const controls = document.getElementById("controls");
+    LEVELS.forEach((lv, i) => {
+      const btn = document.createElement("button");
+      btn.className = "ctrl-btn";
+      btn.textContent = lv.label;
+      btn.onclick = () => applyLevel(i);
+      controls.appendChild(btn);
+    });
+
+    /* ===== 一時停止 ===== */
+    const pauseBtn = document.createElement("button");
+    pauseBtn.className = "ctrl-btn";
+    pauseBtn.textContent = "⏸ 停止";
+    pauseBtn.onclick = () => {
+      const paused = document.body.classList.toggle("paused");
+      pauseBtn.textContent = paused ? "▶ 再生" : "⏸ 停止";
+    };
+    controls.appendChild(pauseBtn);
+
+    /* ===== 初期表示 ===== */
+    applyLevel(currentLevel);
+  </script>
+</body>
+</html>

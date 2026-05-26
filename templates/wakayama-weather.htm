@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>和歌山市 現在の時刻・天気</title>
+  <link rel="icon" href="../favicon/サンプルページ用のファビコン/color-sample-favi.svg" type="image/svg+xml">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "メイリオ", sans-serif;
+      background: #f6f4a5;
+      color: #5a4a1a;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2em 1em;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.75);
+      border: 2px solid rgba(220, 200, 120, 0.5);
+      border-radius: 20px;
+      padding: 2em 2.5em;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .city {
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 0.15em;
+      color: #886c34;
+      margin-bottom: 0.4em;
+    }
+
+    .clock {
+      font-size: 3.2rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      color: #3a2a00;
+    }
+
+    .date {
+      font-size: 0.9rem;
+      color: #886c34;
+      margin-top: 0.4em;
+      margin-bottom: 1.6em;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(180, 150, 80, 0.3);
+      margin-bottom: 1.6em;
+    }
+
+    .weather-icon {
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 0.3em;
+    }
+
+    .weather-desc {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #3a2a00;
+      margin-bottom: 1.2em;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      gap: 0.5em;
+      margin-bottom: 1.4em;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2em;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      color: #886c34;
+      letter-spacing: 0.08em;
+    }
+
+    .stat-value {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #3a2a00;
+    }
+
+    .stat-unit {
+      font-size: 0.7rem;
+      color: #886c34;
+    }
+
+    .updated {
+      font-size: 0.68rem;
+      color: #aaa;
+      margin-bottom: 1em;
+    }
+
+    .btn-refresh {
+      background: #5a4a1a;
+      color: #f6f4a5;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5em 1.6em;
+      font-size: 0.82rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-refresh:hover { background: #886c34; }
+
+    .error {
+      font-size: 0.8rem;
+      color: #c04820;
+      margin-top: 0.8em;
+    }
+
+    .loading {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin: 1em 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="city">和歌山市</div>
+    <div class="clock" id="clock">--:--:--</div>
+    <div class="date" id="date">----年--月--日（-）</div>
+    <hr class="divider">
+    <div id="weather-area">
+      <div class="loading">天気を取得中...</div>
+    </div>
+    <div class="updated" id="updated"></div>
+    <button class="btn-refresh" onclick="fetchWeather()">更新</button>
+    <div class="error" id="error"></div>
+  </div>
+
+  <script>
+    const WEEKDAYS = ["日", "月", "火", "水", "木", "金", "土"];
+
+    const WMO = {
+      0:  ["☀️", "快晴"],
+      1:  ["🌤️", "ほぼ晴れ"],
+      2:  ["⛅", "一部曇り"],
+      3:  ["☁️", "曇り"],
+      45: ["🌫️", "霧"],
+      48: ["🌫️", "霧氷"],
+      51: ["🌦️", "霧雨（弱）"],
+      53: ["🌦️", "霧雨"],
+      55: ["🌧️", "霧雨（強）"],
+      61: ["🌧️", "小雨"],
+      63: ["🌧️", "雨"],
+      65: ["🌧️", "大雨"],
+      71: ["🌨️", "小雪"],
+      73: ["❄️", "雪"],
+      75: ["❄️", "大雪"],
+      77: ["🌨️", "霰"],
+      80: ["🌦️", "にわか雨（弱）"],
+      81: ["🌦️", "にわか雨"],
+      82: ["⛈️", "にわか雨（強）"],
+      85: ["🌨️", "にわか雪"],
+      86: ["🌨️", "にわか雪（強）"],
+      95: ["⛈️", "雷雨"],
+      96: ["⛈️", "雷雨と雹"],
+      99: ["⛈️", "雷雨と大雹"],
+    };
+
+    function tickClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, "0");
+      const m = String(now.getMinutes()).padStart(2, "0");
+      const s = String(now.getSeconds()).padStart(2, "0");
+      document.getElementById("clock").textContent = `${h}:${m}:${s}`;
+
+      const y = now.getFullYear();
+      const mo = now.getMonth() + 1;
+      const d = now.getDate();
+      const w = WEEKDAYS[now.getDay()];
+      document.getElementById("date").textContent = `${y}年${mo}月${d}日（${w}）`;
+    }
+
+    async function fetchWeather() {
+      document.getElementById("error").textContent = "";
+      document.getElementById("weather-area").innerHTML = `<div class="loading">取得中...</div>`;
+
+      try {
+        const url = "https://api.open-meteo.com/v1/forecast"
+          + "?latitude=34.2304&longitude=135.1675"
+          + "&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m"
+          + "&timezone=Asia%2FTokyo";
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        const c = data.current;
+
+        const code = c.weather_code;
+        const [icon, desc] = WMO[code] ?? ["🌡️", `コード ${code}`];
+        const temp = c.temperature_2m.toFixed(1);
+        const hum  = c.relative_humidity_2m;
+        const wind = c.wind_speed_10m.toFixed(1);
+
+        document.getElementById("weather-area").innerHTML = `
+          <div class="weather-icon">${icon}</div>
+          <div class="weather-desc">${desc}</div>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-label">気温</span>
+              <span class="stat-value">${temp}</span>
+              <span class="stat-unit">°C</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">湿度</span>
+              <span class="stat-value">${hum}</span>
+              <span class="stat-unit">%</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">風速</span>
+              <span class="stat-value">${wind}</span>
+              <span class="stat-unit">km/h</span>
+            </div>
+          </div>
+        `;
+
+        const now = new Date();
+        document.getElementById("updated").textContent =
+          `最終取得: ${now.getHours()}:${String(now.getMinutes()).padStart(2,"0")}`;
+
+      } catch (e) {
+        document.getElementById("weather-area").innerHTML = `<div class="loading">---</div>`;
+        document.getElementById("error").textContent = "天気の取得に失敗しました。";
+      }
+    }
+
+    tickClock();
+    setInterval(tickClock, 1000);
+    fetchWeather();
+    setInterval(fetchWeather, 10 * 60 * 1000);
+  </script>
+</body>
+</html>

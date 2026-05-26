@@ -81,7 +81,7 @@
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.75);
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.13);
-        border: 1px solid rgba(220, 220, 220, 0.7);
+        border: 2px solid rgba(220, 220, 220, 0.7);
         margin: 4px 8px;
         transition:
           color 0.2s,
@@ -451,6 +451,32 @@
       .flowbtn:hover {
         transform: scale(1.2, 1.2);
       }
+      .flowbtn-articles {
+        position: relative;
+        overflow: hidden;
+      }
+      .flowbtn-articles::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('favicon/mascot.svg') no-repeat center / 105%;
+        opacity: 0.1;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .flowbtn-articles .nav-icon {
+        font-size: 1.35rem;
+        line-height: 1;
+      }
+      .flowbtn-articles span {
+        transition: opacity 0.25s;
+      }
+      .flowbtn-articles:hover::before {
+        opacity: 1;
+      }
+      .flowbtn-articles:hover span {
+        opacity: 0;
+      }
       .fl_X {
         background: var(--bg-x);
       }
@@ -483,6 +509,14 @@
         }
         .flowbtn div {
           display: none;
+        }
+        .flowbtn-articles {
+          border-radius: 10px;
+          transform: none;
+          width: 52px;
+          height: 52px;
+          font-size: 0.62rem;
+          gap: 2px;
         }
         .flowbtn:hover {
           transform: scale(1, 1);
@@ -852,8 +886,11 @@
         var now = new Date();
         var m1 = now.getMonth() + 1;
         var m2 = m1 === 12 ? 1 : m1 + 1;
+        var closureDate = new Date(2026, 5, 28); // 2026/6/28
         document.getElementById('notice-months-btn').textContent = m1 + '月・' + m2 + '月の臨時休診';
-        document.getElementById('notice-months-text').textContent = m1 + '月・' + m2 + '月の臨時休診の予定はありません。';
+        document.getElementById('notice-months-text').textContent = now < closureDate
+          ? '6月28日(日曜日)は臨時休診いたします。'
+          : m1 + '月・' + m2 + '月の臨時休診の予定はありません。';
 
         document.querySelectorAll('details').forEach(function (det) {
           det.querySelector(':scope > summary').addEventListener('click', function (e) {
@@ -1016,9 +1053,9 @@
           <i class="twit_X">𝕏</i>
           <div class="X_bottom">Twitter</div>
         </a>
-        <a class="flowbtn" href="articles/index.html" style="background: var(--c-brown); margin-left: 1em;">
-          <img src="favicon/favi.svg" alt="" style="width: 1.4em;height: 1.4em;">
-          <div>記事一覧</div>
+        <a class="flowbtn flowbtn-articles" href="articles/index.html" style="color: var(--c-articles-btn); background: rgba(255, 255, 255, 0.75); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.13); border: 2px solid rgba(220, 220, 220, 0.7); margin-left: 1em; font-size: 0.62rem; gap: 2px;">
+          <span class="nav-icon">≡</span>
+          <span>記事一覧</span>
         </a>
       </div>
       <p style="font-size:0.8rem;color:#bbb;margin-top:0.6em;">Xは更新少な目です…</p>

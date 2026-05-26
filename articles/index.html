@@ -92,13 +92,17 @@
         display: flex;
         gap: 8px;
         padding: 0 16px;
-        justify-content: center;
-        overflow: hidden;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
         max-height: 0;
         transition: max-height 0.2s ease, padding 0.2s ease;
       }
+      .subfilters::-webkit-scrollbar {
+        display: none;
+      }
       .subfilters.is-visible {
-        max-height: 48px;
+        max-height: 52px;
         padding: 6px 16px;
       }
       .sfbtn {
@@ -281,6 +285,11 @@
       }
 
       /* レスポンシブ */
+      @media (min-width: 769px) {
+        .subfilters {
+          justify-content: center;
+        }
+      }
       @media (max-width: 768px) {
         .grid {
           grid-template-columns: repeat(2, 1fr);
