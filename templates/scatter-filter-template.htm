@@ -255,7 +255,7 @@
         height: 80px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-evenly;
         padding: 0 20px;
         background: rgba(255,255,255,0.88);
         backdrop-filter: blur(8px);
@@ -300,7 +300,7 @@
 
       @media (max-width: 500px) {
         .dot-item:not(.active) .dot-label { display: none; }
-        .page-nav { height: 60px; }
+        .page-nav { height: 60px; justify-content: space-between; }
       }
     </style>
   </head>
@@ -318,17 +318,6 @@
     <header class="scatter-header">
       <div class="scatter-header-inner">
         <span class="variant-label" id="variant-label">バリアント 1 — ランダム散布</span>
-        <!-- 速度トグル：全ページ共通 -->
-        <div id="speed-toggle" class="speed-nav">
-          <button class="speed-btn"        data-speed="gear1"  onclick="setSpeed('gear1',  this)">1速</button>
-          <button class="speed-btn"        data-speed="gear2"  onclick="setSpeed('gear2',  this)">2速</button>
-          <button class="speed-btn active" data-speed="gear3"  onclick="setSpeed('gear3',  this)">3速</button>
-          <button class="speed-btn"        data-speed="gear4"  onclick="setSpeed('gear4',  this)">4速</button>
-          <button class="speed-btn"        data-speed="gear5"  onclick="setSpeed('gear5',  this)">5速</button>
-          <span class="speed-nav-sep"></span>
-          <button class="speed-btn" id="btn-no-rotation"    onclick="toggleRotation(this)">無回転</button>
-          <button class="speed-btn" id="btn-simultaneous" onclick="toggleSimultaneous(this)">同時収束</button>
-        </div>
         <nav class="filter-nav" id="filter-nav-0">
           <button class="filter-btn active" data-filter="all"  onclick="showAll(this)">すべて</button>
           <button class="filter-btn"        data-filter="A"    onclick="filterGenre('A', this)">ジャンルA</button>
@@ -359,6 +348,17 @@
           <button class="filter-btn"        data-filter="B"    onclick="filterGenre('B', this)">ジャンルB</button>
           <button class="filter-btn"        data-filter="C"    onclick="filterGenre('C', this)">ジャンルC</button>
         </nav>
+        <!-- 速度トグル：全ページ共通 -->
+        <div id="speed-toggle" class="speed-nav">
+          <button class="speed-btn"        data-speed="gear1"  onclick="setSpeed('gear1',  this)">1速</button>
+          <button class="speed-btn"        data-speed="gear2"  onclick="setSpeed('gear2',  this)">2速</button>
+          <button class="speed-btn active" data-speed="gear3"  onclick="setSpeed('gear3',  this)">3速</button>
+          <button class="speed-btn"        data-speed="gear4"  onclick="setSpeed('gear4',  this)">4速</button>
+          <button class="speed-btn"        data-speed="gear5"  onclick="setSpeed('gear5',  this)">5速</button>
+          <span class="speed-nav-sep"></span>
+          <button class="speed-btn" id="btn-no-rotation"    onclick="toggleRotation(this)">無回転</button>
+          <button class="speed-btn" id="btn-simultaneous" onclick="toggleSimultaneous(this)">同時収束</button>
+        </div>
       </div>
     </header>
 

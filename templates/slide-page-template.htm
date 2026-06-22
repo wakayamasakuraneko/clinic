@@ -137,7 +137,7 @@
         height: 80px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-evenly;
         padding: 0 20px;
         background: rgba(255,255,255,0.88);
         backdrop-filter: blur(8px);
@@ -200,7 +200,7 @@
 
       @media (max-width: 500px) {
         .dot-item:not(.active) .dot-label { display: none; }
-        nav { height: 60px; }
+        nav { height: 60px; justify-content: space-between; }
         .page { padding-bottom: 80px; }
       }
     </style>
