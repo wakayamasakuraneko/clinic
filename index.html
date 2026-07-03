@@ -1661,6 +1661,7 @@ function setMarkerSize(h, large) {
   cs[0].setAttribute('r', large ? 20 : 13);
   cs[1].setAttribute('r', large ? 11 : 7);
   cs[2].setAttribute('r', large ? 5.5 : 3.5);
+  if (large) h.el.parentNode.appendChild(h.el);
 }
 
 document.querySelectorAll('#modal-municipalities path').forEach(path => {
