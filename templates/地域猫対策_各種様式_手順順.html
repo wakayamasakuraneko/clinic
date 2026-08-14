@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地域猫対策 各種様式</title>
+<link rel="icon" type="image/svg+xml" href="../favicon/wakayama_favi.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;font-size:16px;line-height:1.6;background:#f0f4f8;color:#333}
+.tab-nav{display:flex;gap:4px;padding:14px 16px 0;background:#2c5f8a;flex-wrap:wrap}
+.tab-btn{padding:10px 16px;border:none;border-radius:6px 6px 0 0;background:rgba(255,255,255,.2);color:white;cursor:pointer;font-size:15px;font-family:inherit;transition:background .15s}
+.tab-btn.active{background:white;color:#2c5f8a;font-weight:bold}
+.tab-btn:hover:not(.active){background:rgba(255,255,255,.35)}
+.form-panel{display:none;background:white;padding:28px 32px;min-height:calc(100vh - 56px);max-width:800px;margin-left:auto;margin-right:auto}
+#t3{max-width:none}
+.form-panel.active{display:block}
+.print-bar{display:flex;justify-content:flex-end;margin-bottom:20px}
+.print-btn{padding:9px 20px;background:#e8946a;color:white;border:none;border-radius:6px;cursor:pointer;font-size:16px;font-family:inherit}
+.print-btn:hover{background:#d4784f}
+.form-title{font-size:24px;font-weight:bold;text-align:center;margin-bottom:6px;color:#1a3a5c}
+.form-note{font-size:13px;color:#888;margin-bottom:4px}
+.sec{font-size:17px;font-weight:bold;margin:22px 0 12px;color:#1a3a5c;padding:4px 8px;border-left:4px solid #e8946a}
+.subsec{margin:12px 0 8px;font-size:16px}
+.note{font-size:13px;color:#666}
+.indent{margin-left:1.5em}
+input[type=text],input[type=tel],textarea,select{font-family:inherit;font-size:16px;color:#333;outline:none}
+.li{border:none;border-bottom:1px solid #999;background:transparent;padding:2px 4px}
+.li:focus{border-bottom-color:#e8946a;background:#fff8f4}
+textarea{border:1px solid #ccc;border-radius:3px;background:#fafafa;padding:6px 8px;resize:vertical;width:100%;font-size:16px}
+textarea:focus{border-color:#e8946a;background:#fff8f4}
+select{border:1px solid #ccc;border-radius:3px;background:white;padding:2px 6px}
+select:focus{border-color:#e8946a}
+.chk-group{display:flex;flex-wrap:wrap;gap:10px 20px;margin:8px 0}
+.chk-item{display:flex;align-items:center;gap:8px;cursor:pointer;line-height:1.6}
+.chk-item input[type=checkbox],.chk-item input[type=radio]{width:18px;height:18px;accent-color:#e8946a;cursor:pointer;flex-shrink:0}
+.field-row{display:flex;align-items:baseline;gap:8px;margin:8px 0;flex-wrap:wrap}
+.ftbl{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
+.ftbl th,.ftbl td{border:1px solid #aaa;padding:6px 8px;vertical-align:middle}
+.ftbl th{background:#e8f0f8;text-align:center;font-weight:bold;white-space:nowrap;font-size:13px}
+.ftbl td input[type=text]{width:100%;background:transparent;border:none;font-size:14px;padding:1px 2px}
+.ftbl td input[type=text]:focus{background:#fff8f4}
+.tin{width:42px;text-align:center}
+.map-area{border:1px solid #bbb;min-height:180px;background:#fafafa;border-radius:4px;margin-top:6px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:14px}
+.app-tbl{width:100%;border-collapse:collapse;font-size:15px}
+.app-tbl th{background:#e8f0f8;border:1px solid #aaa;padding:10px 12px;vertical-align:top;font-weight:bold;width:200px;font-size:15px;line-height:1.6}
+.app-tbl td{border:1px solid #aaa;padding:8px 10px;vertical-align:top}
+.app-tbl td textarea{min-height:40px}
+.scroll-x{overflow-x:auto}
+.cat-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.cat-tbl th,.cat-tbl td{border:1px solid #aaa;padding:4px 5px;text-align:center;vertical-align:middle}
+.cat-tbl .ghd th{background:#2c5f8a;color:white;font-weight:bold;font-size:13px;padding:6px}
+.cat-tbl .chd th{background:#e8f0f8;font-size:11px;line-height:1.4}
+.cat-tbl td input[type=text]{width:100%;background:transparent;border:none;font-size:12px}
+.cat-tbl td select{width:100%;font-size:12px;border:none;background:transparent}
+.mem-tbl{width:100%;border-collapse:collapse;font-size:15px}
+.mem-tbl th{background:#e8f0f8;border:1px solid #aaa;padding:9px;text-align:center;font-weight:bold}
+.mem-tbl td{border:1px solid #aaa;height:52px;padding:4px 8px;vertical-align:middle}
+.mem-tbl td input[type=text]{width:100%;background:transparent;border:none}
+.rpt-tbl{width:100%;border-collapse:collapse;font-size:15px}
+.rpt-tbl th{background:#e8f0f8;border:1px solid #aaa;padding:8px;text-align:center;font-weight:bold;white-space:nowrap}
+.rpt-tbl td{border:1px solid #aaa;height:38px;padding:3px 5px;vertical-align:middle}
+.rpt-tbl td.rno{text-align:center;color:#999;width:36px;font-size:13px}
+.rpt-tbl td input[type=text]{width:100%;background:transparent;border:none}
+.rpt-tbl td select{width:100%;background:transparent;border:none;font-size:15px}
+.page-wrap{display:flex;flex-direction:column}
+.content-area{flex:1;min-width:0}
+@media(min-width:769px){
+  body{padding:0}
+  .page-wrap{flex-direction:row;align-items:flex-start}
+  .tab-nav{flex-direction:column;width:210px;min-width:210px;padding:16px 10px;gap:6px;position:sticky;top:0;height:100vh;overflow-y:auto;flex-wrap:nowrap;align-items:center;box-shadow:-9999px 0 0 9999px #2c5f8a}
+  .tab-btn{border-radius:6px;text-align:left;padding:12px 14px;font-size:15px;width:190px}
+  .form-panel{min-height:100vh}
+}
+@media print{
+  body{background:white;font-size:13px}
+  .tab-nav,.print-bar{display:none}
+  .form-panel{display:none;padding:0;min-height:auto}
+  .form-panel.active{display:block}
+  .scroll-x{overflow:visible}
+  .cat-tbl{min-width:auto;font-size:10px}
+  .cat-tbl .ghd th,.cat-tbl .chd th{font-size:10px}
+  input,textarea,select{background:transparent!important}
+  .map-area{min-height:100px}
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('toc',this)">目次</button>
+  <button class="tab-btn" onclick="showTab('t5',this)">① 説明報告書</button>
+  <button class="tab-btn" onclick="showTab('t4',this)">② 構成員名簿</button>
+  <button class="tab-btn" onclick="showTab('t3',this)">③ 対象猫リスト</button>
+  <button class="tab-btn" onclick="showTab('t1',this)">④ 実施計画表</button>
+  <button class="tab-btn" onclick="showTab('t2',this)">⑤ 計画認定申請書</button>
+</div>
+<div class="content-area">
+
+<!-- 目次 -->
+<div id="toc" class="form-panel active">
+<div class="form-title" style="margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:10px;"><img src="../favicon/wakayama_favi.svg" style="width:36px;height:36px;flex-shrink:0;">地域猫対策 各種様式について</div>
+
+<p style="line-height:1.8;margin-bottom:28px;color:#555;">
+  この書類は、地域猫対策を進めるための申請に必要な5種類の様式です。<br>
+  <strong>①近所への説明 → ②メンバー集め → ③対象猫の把握 → ④計画を立てる → ⑤県に申請</strong>　という順番で進めます。
+</p>
+
+<div style="display:flex;flex-direction:column;gap:16px;">
+
+  <div onclick="jumpTo('t5',0)" style="cursor:pointer;border:1px solid #d0dce8;border-radius:8px;padding:16px 20px;background:#f7fafd;transition:background .15s;" onmouseover="this.style.background='#e8f0f8'" onmouseout="this.style.background='#f7fafd'">
+    <div style="font-size:18px;font-weight:bold;color:#2c5f8a;margin-bottom:8px;">① 説明報告書</div>
+    <div style="line-height:1.7;color:#444;">活動を始める前に、近所の人たちに説明した記録です。<br>「○○さんに説明した→賛成だった」「△△さん→反対で、こんな意見があった」というように、誰にどんな反応をもらったかを書きます。</div>
+  </div>
+
+  <div onclick="jumpTo('t4',1)" style="cursor:pointer;border:1px solid #d0dce8;border-radius:8px;padding:16px 20px;background:#f7fafd;transition:background .15s;" onmouseover="this.style.background='#e8f0f8'" onmouseout="this.style.background='#f7fafd'">
+    <div style="font-size:18px;font-weight:bold;color:#2c5f8a;margin-bottom:8px;">② 構成員名簿</div>
+    <div style="line-height:1.7;color:#444;">活動に参加するメンバーの名簿です。<br>名前・住所・連絡先・どんな役割を担当するかを書きます。</div>
+  </div>
+
+  <div onclick="jumpTo('t3',2)" style="cursor:pointer;border:1px solid #d0dce8;border-radius:8px;padding:16px 20px;background:#f7fafd;transition:background .15s;" onmouseover="this.style.background='#e8f0f8'" onmouseout="this.style.background='#f7fafd'">
+    <div style="font-size:18px;font-weight:bold;color:#2c5f8a;margin-bottom:8px;">③ 対象猫リスト</div>
+    <div style="line-height:1.7;color:#444;">活動の対象になる猫を1匹ずつ記録する表です。<br>「茶色・雄・推定3歳・手術済み」のように、猫の見た目や手術の状況を書きます。</div>
+  </div>
+
+  <div onclick="jumpTo('t1',3)" style="cursor:pointer;border:1px solid #d0dce8;border-radius:8px;padding:16px 20px;background:#f7fafd;transition:background .15s;" onmouseover="this.style.background='#e8f0f8'" onmouseout="this.style.background='#f7fafd'">
+    <div style="font-size:18px;font-weight:bold;color:#2c5f8a;margin-bottom:8px;">④ 実施計画表</div>
+    <div style="line-height:1.7;color:#444;">地域猫対策をどうやって実施するかの具体的な計画です。<br>ご飯をあげる場所・時間・担当者、トイレの管理方法、猫を捕まえる方法、手術を受ける病院などを書きます。</div>
+  </div>
+
+  <div onclick="jumpTo('t2',4)" style="cursor:pointer;border:1px solid #d0dce8;border-radius:8px;padding:16px 20px;background:#f7fafd;transition:background .15s;" onmouseover="this.style.background='#e8f0f8'" onmouseout="this.style.background='#f7fafd'">
+    <div style="font-size:18px;font-weight:bold;color:#2c5f8a;margin-bottom:8px;">⑤ 計画認定申請書</div>
+    <div style="line-height:1.7;color:#444;">県知事に「うちの地域で地域猫活動をやりたいです」と申請する書類です。<br>申請者の名前・住所と、④などの書類を添付して提出します。</div>
+  </div>
+
+</div>
+</div><!-- /toc -->
+
+<!-- FORM 5: 説明報告書 -->
+<div id="t5" class="form-panel">
+<div class="print-bar"><button class="print-btn" onclick="window.print()">印刷</button></div>
+<div class="form-title">周辺住民への地域猫対策の説明の内容及び実施結果に係る報告書</div>
+
+<div class="sec" style="margin-top:16px;">1　説明の内容<span style="font-size:14px;font-weight:normal;">（該当する項目にチェック、その他の場合には、説明内容を記載）</span></div>
+<div style="display:flex;flex-direction:column;gap:10px;margin:10px 0 10px 1em;">
+  <label class="chk-item"><input type="checkbox"> 和歌山県が作成した地域猫対策への支援に関するチラシや地域猫対策ガイドブックを使用し、地域猫対策計画についての説明を実施</label>
+  <label class="chk-item"><input type="checkbox"> 別紙の地域猫に対するチラシを使用し、地域猫対策計画についての説明を実施</label>
+  <div>
+    <label class="chk-item"><input type="checkbox"> その他</label>
+    <div style="margin-top:6px;"><textarea rows="4"></textarea></div>
+  </div>
+</div>
+
+<div class="sec">2　説明の結果</div>
+
+<table class="rpt-tbl">
+  <thead>
+    <tr>
+      <th></th>
+      <th style="min-width:100px;">氏名</th>
+      <th style="min-width:140px;">住所</th>
+      <th style="min-width:100px;">説明日時</th>
+      <th style="min-width:80px;">賛成・反対</th>
+      <th style="min-width:160px;">意見内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="rno">1</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">2</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">3</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">4</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">5</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">6</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">7</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">8</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">9</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">10</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">11</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">12</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">13</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">14</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">15</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">16</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">17</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">18</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">19</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">20</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">21</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">22</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">23</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">24</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">25</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">26</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">27</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">28</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">29</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">30</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">31</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">32</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">33</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">34</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">35</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+    <tr><td class="rno">36</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>賛成</option><option>反対</option></select></td><td><input type="text"></td></tr>
+  </tbody>
+</table>
+
+</div><!-- /t5 -->
+
+<!-- FORM 4: 構成員名簿 -->
+<div id="t4" class="form-panel">
+<div class="print-bar"><button class="print-btn" onclick="window.print()">印刷</button></div>
+<div class="form-title" style="margin-bottom:20px;">地域猫対策構成員名簿</div>
+
+<table class="mem-tbl">
+  <thead>
+    <tr>
+      <th style="width:22%">氏名</th>
+      <th style="width:50%">住所　・　連絡先</th>
+      <th style="width:28%">担当</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+  </tbody>
+</table>
+
+</div><!-- /t4 -->
+
+<!-- FORM 3: 対象猫リスト -->
+<div id="t3" class="form-panel">
+<div class="print-bar"><button class="print-btn" onclick="window.print()">印刷</button></div>
+<div class="form-note">別記第５号様式（第３条、４条、５条関係）</div>
+
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:12px;">
+  <div style="font-size:18px;font-weight:bold;">地域猫対策対象猫リスト</div>
+  <div style="font-size:15px;">
+    令和&nbsp;<input type="text" class="li" style="width:30px;">&nbsp;年&nbsp;
+    <input type="text" class="li" style="width:30px;">&nbsp;月&nbsp;
+    <input type="text" class="li" style="width:30px;">&nbsp;日
+  </div>
+</div>
+
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;font-size:15px;">
+  <div>
+    氏名&nbsp;<input type="text" class="li" style="min-width:180px;">
+    &nbsp;<span class="note">（法人にあっては、その名称及び代表者の氏名）</span>
+  </div>
+  <div>認定番号&nbsp;保衛第&nbsp;<input type="text" class="li" style="width:60px;">&nbsp;号</div>
+</div>
+
+<div style="font-size:12px;margin-bottom:10px;">
+  報告種別：
+  <label class="chk-item" style="display:inline-flex;"><input type="radio" name="rtype">&nbsp;実施状況報告</label>
+  &nbsp;&nbsp;
+  <label class="chk-item" style="display:inline-flex;"><input type="radio" name="rtype">&nbsp;完了報告</label>
+</div>
+
+<div class="scroll-x">
+<table class="cat-tbl">
+  <thead>
+    <tr class="ghd">
+      <th colspan="8">対象猫リスト</th>
+      <th colspan="5">不妊去勢手術等実施状況報告・完了報告（いずれかに○）</th>
+    </tr>
+    <tr class="chd">
+      <th style="width:28px">No</th>
+      <th style="min-width:48px">種類</th>
+      <th style="min-width:52px">性別</th>
+      <th style="min-width:56px">毛色</th>
+      <th style="min-width:80px">特徴</th>
+      <th style="min-width:44px">推定<br>年齢</th>
+      <th style="min-width:60px">不妊去勢<br>手術の実施</th>
+      <th style="min-width:60px">飼い猫で<br>ないことの<br>確認</th>
+      <th style="min-width:100px">不妊去勢手術を受けた猫で<br>あることを示す措置の実施※¹</th>
+      <th style="min-width:60px">手術券<br>番号</th>
+      <th style="min-width:36px">手術名<br>※²</th>
+      <th style="min-width:80px">手術実施<br>病院名</th>
+      <th style="min-width:80px">手術年月日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="color:#999;text-align:center">1</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">2</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">3</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">4</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">5</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">6</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">7</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">8</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">9</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">10</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">11</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">12</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">13</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+    <tr><td style="color:#999;text-align:center">14</td><td><input type="text"></td><td><select><option value=""></option><option>雄</option><option>雌</option></select></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><select><option value=""></option><option>未</option><option>済</option></select></td><td><input type="text"></td><td><input type="text"></td><td><select><option value=""></option><option>①</option><option>②</option></select></td><td><input type="text"></td><td><input type="text"></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div style="margin-top:14px;font-size:14px;color:#555;display:flex;gap:24px;flex-wrap:wrap;">
+  <div>
+    添付書類：
+    <label class="chk-item" style="display:inline-flex;gap:4px;"><input type="checkbox">&nbsp;余剰１号手術券&nbsp;<input type="text" class="li" style="width:36px;">&nbsp;枚</label>
+    &nbsp;&nbsp;
+    <label class="chk-item" style="display:inline-flex;gap:4px;"><input type="checkbox">&nbsp;余剰３号手術券&nbsp;<input type="text" class="li" style="width:36px;">&nbsp;枚</label>
+  </div>
+</div>
+<div class="note" style="margin-top:8px;line-height:1.8;">
+  ※¹ 不妊去勢手術を受けた猫であることを示す措置の実施については、予定方法を含む。耳先V字カットは①をその他は②（具体的な措置）を記入。<br>
+  ※² ①不妊去勢手術（耳先V字カットを含む）は①を、耳介の一部切除手術（耳先V字カットのみ）は②を記入。
+</div>
+
+</div><!-- /t3 -->
+
+<!-- FORM 1: 実施計画表 -->
+<div id="t1" class="form-panel">
+<div class="print-bar"><button class="print-btn" onclick="window.print()">印刷</button></div>
+<div class="form-title">地域猫対策実施計画表</div>
+
+<div class="field-row" style="margin-bottom:20px;">
+  <span style="white-space:nowrap;">実施地区名</span>
+  <input type="text" class="li" style="flex:1;min-width:200px;">
+</div>
+
+<div class="sec">1　給餌の方法</div>
+
+<div class="subsec">① 給餌を行う場所名称あるいは所在地</div>
+<textarea rows="2"></textarea>
+
+<div class="subsec" style="margin-top:14px;">
+  ② 給餌の時間　（1日&nbsp;<input type="text" class="li" style="width:36px;text-align:center;">&nbsp;回）
+</div>
+<table class="ftbl">
+  <thead>
+    <tr>
+      <th rowspan="2">給餌回数</th>
+      <th colspan="2">開始時間</th>
+      <th colspan="2">終了時間</th>
+      <th rowspan="2">担当者氏名</th>
+    </tr>
+    <tr><th>時</th><th>分</th><th>時</th><th>分</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="text-align:center">1回目</td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text"></td></tr>
+    <tr><td style="text-align:center">2回目</td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text"></td></tr>
+    <tr><td style="text-align:center">3回目</td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text"></td></tr>
+  </tbody>
+</table>
+
+<div class="subsec">③ 餌の種類</div>
+<div class="chk-group indent">
+  <label class="chk-item"><input type="checkbox"> ドライフード</label>
+  <label class="chk-item"><input type="checkbox"> 缶詰</label>
+  <label class="chk-item"><input type="checkbox"> その他（<input type="text" class="li" style="width:100px;">）</label>
+</div>
+
+<div class="subsec">④ 餌を入れる容器の種類</div>
+<div class="chk-group indent">
+  <label class="chk-item"><input type="checkbox"> ステンレス</label>
+  <label class="chk-item"><input type="checkbox"> プラスチック</label>
+  <label class="chk-item"><input type="checkbox"> その他（<input type="text" class="li" style="width:100px;">）</label>
+</div>
+
+<div class="subsec">⑤ 給餌後の片付け方法</div>
+<div class="indent">
+  <div style="margin:5px 0"><label class="chk-item"><input type="checkbox"> 給餌が終了した後、速やかに給餌用具を回収し、周辺の清掃を行う。</label></div>
+  <div style="margin:5px 0">
+    <label class="chk-item"><input type="checkbox"> その他</label>
+    <div style="margin-top:4px"><textarea rows="3"></textarea></div>
+  </div>
+</div>
+
+<div class="sec">2　トイレの管理</div>
+
+<div class="subsec">① トイレの設置場所の名称あるいは所在地</div>
+<textarea rows="2"></textarea>
+
+<div class="subsec" style="margin-top:12px;">② トイレの種類</div>
+<div class="chk-group indent">
+  <label class="chk-item"><input type="checkbox"> 市販の猫用トイレ</label>
+  <label class="chk-item"><input type="checkbox"> 自作の猫用トイレ</label>
+  <label class="chk-item"><input type="checkbox"> その他</label>
+</div>
+
+<div class="subsec">③ トイレの清掃方法</div>
+<div class="indent">
+  <div style="margin:5px 0"><label class="chk-item"><input type="checkbox"> トイレおよび周辺の砂がふん尿等で汚れていた場合速やかに交換し、当該砂等を持ち帰る。</label></div>
+  <div style="margin:5px 0">
+    <label class="chk-item"><input type="checkbox"> その他</label>
+    <div style="margin-top:4px"><textarea rows="3"></textarea></div>
+  </div>
+</div>
+
+<div class="subsec">④ トイレを清掃する時間</div>
+<table class="ftbl">
+  <thead>
+    <tr>
+      <th rowspan="2">清掃回数</th>
+      <th colspan="2">開始時間</th>
+      <th colspan="2">終了時間</th>
+      <th rowspan="2">担当者氏名</th>
+    </tr>
+    <tr><th>時</th><th>分</th><th>時</th><th>分</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="text-align:center">1回目</td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text"></td></tr>
+    <tr><td style="text-align:center">2回目</td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text"></td></tr>
+    <tr><td style="text-align:center">3回目</td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text" class="tin"></td><td><input type="text"></td></tr>
+  </tbody>
+</table>
+
+<div class="sec">3　地域猫対策対象猫の捕獲方法および不妊去勢手術について</div>
+
+<div class="subsec">① 捕獲に使用する器具</div>
+<div class="chk-group indent">
+  <label class="chk-item"><input type="checkbox"> 捕獲おり</label>
+  <label class="chk-item"><input type="checkbox"> キャリーバッグ</label>
+  <label class="chk-item"><input type="checkbox"> 搬送ケージ</label>
+  <label class="chk-item"><input type="checkbox"> その他（<input type="text" class="li" style="width:100px;">）</label>
+</div>
+
+<div class="subsec">② おり等を置く場所の土地所有者</div>
+<div class="indent">
+  <div style="margin:4px 0"><label class="chk-item"><input type="checkbox"> 自己</label></div>
+  <div style="margin:4px 0">
+    <label class="chk-item"><input type="checkbox"> 自己以外（所有者氏名&nbsp;<input type="text" class="li" style="min-width:160px;">）</label>
+    <div style="margin:4px 0 4px 2em;">
+      ※許可の有無&nbsp;
+      <label class="chk-item" style="display:inline-flex"><input type="checkbox"> 有り</label>&nbsp;&nbsp;
+      <label class="chk-item" style="display:inline-flex"><input type="checkbox"> 無し</label>
+    </div>
+  </div>
+</div>
+
+<div class="subsec">③ おり等の設置時間</div>
+<div class="indent" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;">
+  <select><option>午前</option><option>午後</option></select>
+  <input type="text" class="li tin">&nbsp;時
+  <input type="text" class="li tin">&nbsp;分
+  &nbsp;～&nbsp;
+  <select><option>午前</option><option>午後</option></select>
+  <input type="text" class="li tin">&nbsp;時
+  <input type="text" class="li tin">&nbsp;分
+</div>
+
+<div class="subsec">④ 手術を受ける予定の病院</div>
+<div class="indent">（<input type="text" class="li" style="min-width:280px;">）</div>
+
+<div class="sec">4　不妊去勢手術を行う予定の猫が飼い主のいない猫であることの確認方法</div>
+<div class="indent">
+  <div style="margin:6px 0"><label class="chk-item"><input type="checkbox"> 地区内で猫の写真等が記載された回覧をまわす。<span class="note">（※回覧に使用したものの写しを添付してください）</span></label></div>
+  <div style="margin:6px 0"><label class="chk-item"><input type="checkbox"> 地区内でおりを設置する旨の周知をおこなった。またおりには触れないように注意喚起を実施した。</label></div>
+  <div style="margin:6px 0">
+    <label class="chk-item"><input type="checkbox"> その他</label>
+    <div style="margin-top:4px"><textarea rows="3"></textarea></div>
+  </div>
+</div>
+
+<div class="sec">5　手術を実施した後の識別方法</div>
+<div class="chk-group indent">
+  <label class="chk-item"><input type="checkbox"> 耳先V字カット</label>
+  <label class="chk-item"><input type="checkbox"> マイクロチップ</label>
+  <label class="chk-item"><input type="checkbox"> その他（<input type="text" class="li" style="width:140px;">）</label>
+</div>
+
+<div class="sec">6　給餌場所　トイレの設置場所　おり等の設置場所<span style="font-size:14px;font-weight:normal;">（地図、または周辺略図を記載。別添でも可）</span></div>
+<div class="map-area">地図・略図を記載（印刷後に手書きも可）</div>
+
+</div><!-- /t1 -->
+
+<!-- FORM 2: 計画認定申請書 -->
+<div id="t2" class="form-panel">
+<div class="print-bar"><button class="print-btn" onclick="window.print()">印刷</button></div>
+<div class="form-note">別記第４号様式（第６条関係）</div>
+<div class="form-title">地域猫対策計画認定申請書</div>
+
+<div style="text-align:right;margin-bottom:20px;">
+  令和&nbsp;<input type="text" class="li" style="width:32px;">&nbsp;年&nbsp;
+  <input type="text" class="li" style="width:32px;">&nbsp;月&nbsp;
+  <input type="text" class="li" style="width:32px;">&nbsp;日
+</div>
+
+<div style="font-size:18px;margin-bottom:20px;">和歌山県知事&nbsp;様</div>
+
+<div style="text-align:right;margin-bottom:24px;line-height:2;">
+  <div>申請者&nbsp;住所&nbsp;&nbsp;<input type="text" class="li" style="min-width:280px;"></div>
+  <div>氏名&nbsp;&nbsp;<input type="text" class="li" style="min-width:220px;"></div>
+  <div class="note" style="line-height:1.8;">
+    法人にあっては、その名称、主たる事務所の所在地及び代表者の氏名<br>
+    電話番号（<input type="tel" class="li" style="width:56px;">）<input type="text" class="li" style="width:36px;">&nbsp;－&nbsp;<input type="text" class="li" style="width:80px;">
+  </div>
+</div>
+
+<p style="margin-bottom:16px;line-height:1.8;">
+  和歌山県動物の愛護及び管理に関する条例第１５条第１項の規定により、地域猫対策計画の認定を受けたいので、申請します。
+</p>
+
+<p style="text-align:center;font-weight:bold;font-size:18px;margin-bottom:10px;">地域猫対策計画</p>
+
+<table class="app-tbl">
+  <tr>
+    <th>地域猫対策を行おうとする地域</th>
+    <td><textarea rows="2"></textarea></td>
+  </tr>
+  <tr>
+    <th>地域猫対策の対象とする猫の情報</th>
+    <td>詳細は、別紙対象猫リストのとおり</td>
+  </tr>
+  <tr>
+    <th>給餌等の実施方法</th>
+    <td rowspan="4" style="text-align:center;vertical-align:middle;font-size:14px;font-weight:bold;">別紙計画表のとおり</td>
+  </tr>
+  <tr><th>排せつのための施設等の設置場所及び管理方法</th></tr>
+  <tr><th>捕獲に係る周知及び捕獲の方法</th></tr>
+  <tr><th>不妊去勢手術を施す猫の所有者がいないことの確認方法</th></tr>
+  <tr>
+    <th>添付書類</th>
+    <td>
+      <div style="display:flex;flex-direction:column;gap:7px;">
+        <label class="chk-item"><input type="checkbox"> 構成員の氏名及び住所が記載された名簿</label>
+        <label class="chk-item"><input type="checkbox"> 地域猫対策の実施区域、給餌等に係る場所、排せつのための施設等の設置場所又は猫の捕獲場所を記載した図面</label>
+        <label class="chk-item"><input type="checkbox"> 給餌等に係る場所の周辺住民に対して行った地域猫対策計画の説明の内容及び実施結果に関する報告書</label>
+        <label class="chk-item"><input type="checkbox"> 地域猫対策計画についての周辺住民の同意書（写し）</label>
+        <label class="chk-item"><input type="checkbox"> その他（<input type="text" class="li" style="min-width:180px;">）</label>
+      </div>
+    </td>
+  </tr>
+</table>
+<div class="note" style="margin-top:8px;">備考&nbsp;添付した書類の□にレ印を記入してください。</div>
+
+</div><!-- /t2 -->
+
+</div><!-- /content-area -->
+</div><!-- /page-wrap -->
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function jumpTo(id, btnIndex) {
+  const btns = document.querySelectorAll('.tab-btn');
+  showTab(id, btns[btnIndex + 1]); // +1 for 目次 tab offset
+}
+</script>
+</body>
+</html>
