@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>地域猫対策 各種様式</title>
 <link rel="icon" type="image/svg+xml" href="../favicon/wakayama_favi.svg">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;font-size:16px;line-height:1.6;background:#f0f4f8;color:#333}
@@ -41,11 +43,17 @@ select:focus{border-color:#e8946a}
 .ftbl td input[type=text]{width:100%;background:transparent;border:none;font-size:14px;padding:1px 2px}
 .ftbl td input[type=text]:focus{background:#fff8f4}
 .tin{width:42px;text-align:center}
-.map-area{border:1px solid #bbb;min-height:180px;background:#fafafa;border-radius:4px;margin-top:6px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:14px}
+.map-area{border:1px solid #bbb;min-height:180px;background:#fafafa;border-radius:4px;margin-top:6px;overflow:hidden}
+.map-area .leaflet-map{width:100%;height:320px}
 .app-tbl{width:100%;border-collapse:collapse;font-size:15px}
 .app-tbl th{background:#e8f0f8;border:1px solid #aaa;padding:10px 12px;vertical-align:top;font-weight:bold;width:200px;font-size:15px;line-height:1.6}
 .app-tbl td{border:1px solid #aaa;padding:8px 10px;vertical-align:top}
 .app-tbl td textarea{min-height:40px}
+.app-tbl-subitem{padding:6px 0}
+.app-tbl-subitem+.app-tbl-subitem{border-top:1px dashed #b8c4d0;margin-top:4px}
+.app-tbl .mobile-only{display:none}
+.attach-list .chk-item{padding-bottom:8px;margin-bottom:8px;border-bottom:1px dashed #b8c4d0}
+.attach-list .chk-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
 .scroll-x{overflow-x:auto}
 .cat-tbl{width:100%;border-collapse:collapse;font-size:12px}
 .cat-tbl th,.cat-tbl td{border:1px solid #aaa;padding:4px 5px;text-align:center;vertical-align:middle}
@@ -71,6 +79,13 @@ select:focus{border-color:#e8946a}
   .tab-nav{flex-direction:column;width:210px;min-width:210px;padding:16px 10px;gap:6px;position:sticky;top:0;height:100vh;overflow-y:auto;flex-wrap:nowrap;align-items:center;box-shadow:-9999px 0 0 9999px #2c5f8a}
   .tab-btn{border-radius:6px;text-align:left;padding:12px 14px;font-size:15px;width:190px}
   .form-panel{min-height:100vh}
+}
+@media(max-width:768px){
+  .app-tbl,.app-tbl tbody,.app-tbl tr,.app-tbl th,.app-tbl td{display:block;width:100%}
+  .app-tbl th{border-bottom:none}
+  .app-tbl td{border-top:none;margin-bottom:6px}
+  .app-tbl .desktop-only{display:none}
+  .app-tbl .mobile-only{display:inline}
 }
 @media print{
   body{background:white;font-size:13px}
@@ -476,7 +491,10 @@ select:focus{border-color:#e8946a}
 </div>
 
 <div class="sec">6　給餌場所　トイレの設置場所　おり等の設置場所<span style="font-size:14px;font-weight:normal;">（地図、または周辺略図を記載。別添でも可）</span></div>
-<div class="map-area">地図・略図を記載（印刷後に手書きも可）</div>
+<div class="map-area">
+  <div id="map6" class="leaflet-map"></div>
+</div>
+<p class="note" style="margin-top:6px;">※ 地図だけでは場所が分かりにくい場合は、近くの目印になる建物・交差点名などを地図に書き込んでください。</p>
 
 </div><!-- /t1 -->
 
@@ -516,22 +534,19 @@ select:focus{border-color:#e8946a}
   </tr>
   <tr>
     <th>地域猫対策の対象とする猫の情報</th>
-    <td>詳細は、別紙対象猫リストのとおり</td>
+    <td style="text-align:center;vertical-align:middle;font-size:14px;">別紙「③ 対象猫リスト」のとおり</td>
   </tr>
   <tr>
-    <th>給餌等の実施方法</th>
-    <td rowspan="4" style="text-align:center;vertical-align:middle;font-size:14px;font-weight:bold;">別紙計画表のとおり</td>
+    <th><div class="app-tbl-subitem">給餌等の実施方法</div><div class="app-tbl-subitem">排せつのための施設等の設置場所及び管理方法</div><div class="app-tbl-subitem">捕獲に係る周知及び捕獲の方法</div><div class="app-tbl-subitem">不妊去勢手術を施す猫の所有者がいないことの確認方法</div></th>
+    <td style="text-align:center;vertical-align:middle;font-size:14px;"><span class="desktop-only">別紙「④ 実施計画表」のとおり</span><span class="mobile-only">以上4項目は別紙「④ 実施計画表」のとおり</span></td>
   </tr>
-  <tr><th>排せつのための施設等の設置場所及び管理方法</th></tr>
-  <tr><th>捕獲に係る周知及び捕獲の方法</th></tr>
-  <tr><th>不妊去勢手術を施す猫の所有者がいないことの確認方法</th></tr>
   <tr>
     <th>添付書類</th>
     <td>
-      <div style="display:flex;flex-direction:column;gap:7px;">
-        <label class="chk-item"><input type="checkbox"> 構成員の氏名及び住所が記載された名簿</label>
-        <label class="chk-item"><input type="checkbox"> 地域猫対策の実施区域、給餌等に係る場所、排せつのための施設等の設置場所又は猫の捕獲場所を記載した図面</label>
-        <label class="chk-item"><input type="checkbox"> 給餌等に係る場所の周辺住民に対して行った地域猫対策計画の説明の内容及び実施結果に関する報告書</label>
+      <div class="attach-list" style="display:flex;flex-direction:column;gap:7px;">
+        <label class="chk-item"><input type="checkbox"> ①　給餌等に係る場所の周辺住民に対して行った地域猫対策計画の説明の内容及び実施結果に関する報告書</label>
+        <label class="chk-item"><input type="checkbox"> ②　構成員の氏名及び住所が記載された名簿</label>
+        <label class="chk-item"><input type="checkbox"> ④　地域猫対策の実施区域、給餌等に係る場所、排せつのための施設等の設置場所又は猫の捕獲場所を記載した図面</label>
         <label class="chk-item"><input type="checkbox"> 地域猫対策計画についての周辺住民の同意書（写し）</label>
         <label class="chk-item"><input type="checkbox"> その他（<input type="text" class="li" style="min-width:180px;">）</label>
       </div>
@@ -552,11 +567,20 @@ function showTab(id, btn) {
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
   window.scrollTo(0, 0);
+  if (id === 't1' && typeof map6 !== 'undefined') {
+    setTimeout(function() { map6.invalidateSize(); }, 0);
+  }
 }
 function jumpTo(id, btnIndex) {
   const btns = document.querySelectorAll('.tab-btn');
   showTab(id, btns[btnIndex + 1]); // +1 for 目次 tab offset
 }
+
+var map6 = L.map('map6').setView([34.0, 135.4], 9);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  crossOrigin: true
+}).addTo(map6);
 </script>
 </body>
 </html>
