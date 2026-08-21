@@ -590,11 +590,45 @@
         margin-top: 1em;
       }
 
-      .wrapMaps img {
+      .map-img-wrap {
+        position: relative;
         width: 42%;
-        height: 42%;
+      }
+
+      .map-img-wrap img {
+        display: block;
+        width: 100%;
+        height: 100%;
         border: 2px solid var(--c-black);
         box-sizing: border-box;
+        cursor: pointer;
+      }
+
+      .map-zoom-hint {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 12px;
+        padding: 3px 10px;
+        border-radius: 12px;
+        pointer-events: none;
+      }
+
+      /* ========== 地図画像モーダル ========== */
+      #modal-map-img .modal-box {
+        max-width: min(95vw, 900px);
+        width: auto;
+        max-height: 90vh;
+        padding: 0.8em;
+        background: var(--bg-page);
+      }
+      #modal-map-img .modal-box img {
+        display: block;
+        max-width: 100%;
+        max-height: calc(90vh - 2em);
+        border-radius: 8px;
       }
 
       .wrapMaps iframe {
@@ -603,9 +637,8 @@
       }
 
       @media screen and (max-width: 1100px) {
-        .wrapMaps img {
+        .map-img-wrap {
           width: 48%;
-          height: 48%;
         }
 
         .wrapMaps iframe {
@@ -655,15 +688,24 @@
         }
 
         .wrapMaps {
-          flex-direction: column-reverse;
+          flex-direction: column;
           align-items: center;
           gap: 16px;
         }
 
-        .wrapMaps img,
+        .map-img-wrap,
         .wrapMaps iframe {
           width: 100%;
           height: auto;
+        }
+
+        .map-img-wrap img {
+          height: auto;
+          cursor: default;
+        }
+
+        .map-zoom-hint {
+          display: none;
         }
 
         .wrapMaps iframe {
@@ -1182,7 +1224,10 @@
       <p>和歌山県和歌山市<span>吹屋町４丁目９−１</span></p>
       <p>※ 木広町の交差点からは<span>道幅が狭く、</span><span>入りにくいので</span><span>ご注意下さい</span></p>
       <div class="wrapMaps">
-        <img src="images/map.webp" alt="map-img" />
+        <div class="map-img-wrap">
+          <img src="images/map.webp" alt="map-img" onclick="if(window.innerWidth>600){document.getElementById('modal-map-img').classList.add('active');document.body.style.overflow='hidden'}" />
+          <span class="map-zoom-hint">🔍 クリックで拡大</span>
+        </div>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3298.8720491193626!2d135.1865673!3d34.2262853!3m2!1i1024!2i768!4f10!3m3!1m2!1s0x6000b32d2406f717%3A0xb1b26acc7dfa9379!2z5ZKM5q2M5bGx44K544Oa44Kk44Kv44Oq44OL44OD44KvIOOBleOBj-OCieOCreOBkw!5e0!3m2!1sja!2sjp!4v1681827027923!5m2!1sja!2sjp"
           width="800"
@@ -1345,6 +1390,14 @@
           </ul>
           <p>※ 各料金は料金表よりご確認ください。</p>
         </details> -->
+      </div>
+    </div>
+
+    <!-- モーダル：地図画像拡大 -->
+    <div class="modal-overlay" id="modal-map-img" onclick="if(event.target===this){this.classList.remove('active');document.body.style.overflow=''}">
+      <div class="modal-box">
+        <button class="modal-close" onclick="document.getElementById('modal-map-img').classList.remove('active');document.body.style.overflow=''" aria-label="閉じる">✕</button>
+        <img src="images/map.webp" alt="map-img" />
       </div>
     </div>
 
