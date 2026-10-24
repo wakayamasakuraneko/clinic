@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>料金表v2テスト</title>
+    <!-- 作り直した料金表（v2）の試作ページ。
+         表は price/data/price-table.json と price-data.json から js/price-table.js が組み立てる。
+         旧料金表のファイル（price-loader.js・price-main.htm・price-bundle.css など）は使っていない。 -->
+    <link rel="icon" href="favicon/favi.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/colors.css" />
+    <link rel="stylesheet" href="css/price-table.css" />
+    <style>
+      /* 基本設定（index.htmlから最低限だけ抜粋） */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+        background-color: var(--bg-page);
+        color: var(--c-text);
+        line-height: 1.6;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      section {
+        background-color: var(--bg-section);
+        margin: 1em 2%;
+        padding: 2em 5%;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+        font-size: 22px;
+        line-height: normal;
+      }
+      #price h2 {
+        color: var(--c-h2-price);
+        margin: 0 0 1em;
+      }
+      @media screen and (max-width: 600px) {
+        section {
+          margin: 1em 0;
+          padding: 2em 4%;
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section id="price">
+      <h2>料金表（v2テスト）</h2>
+
+      <!-- ここに料金表一式（料金表開閉・表・合計欄）が組み立てられる -->
+      <div id="price-table"></div>
+    </section>
+
+    <script src="js/price-table.js" defer></script>
+  </body>
+</html>

@@ -7,7 +7,7 @@
     <!-- <link rel="icon" href="favicon/dummy.svg" type="image/svg+xml" /> -->
     <link rel="icon" href="favicon/favi.svg" type="image/svg+xml" />
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/priceCSS/price-bundle.css" />
+    <link rel="stylesheet" href="css/price-table.css" />
     <link rel="stylesheet" href="css/colors.css" />
     <style>
 
@@ -1156,25 +1156,15 @@
     </section>
 
     <section id="price">
-      <div class="price-sticky-wrap">
-        <h2>料金表</h2>
+      <h2>料金表</h2>
 
-        <div class="price-caption">
-          ※ 手術料金には、ノミ駆虫薬、<span>化膿止めの抗生剤</span> <span>及び、術後の </span><span>皮下補液 も</span
-          ><span>含まれております。(一部例外)</span>
-        </div>
-
-        <ul class="button-wrapper">
-          <li><button id="toggle-button">税切替</button></li>
-          <li><button id="show-all-button">広げる</button></li>
-        </ul>
-
-        <div id="price-main"></div>
-        <div id="price-discount"></div>
-
-        <div class="gap2"></div>
+      <div class="price-caption">
+        ※ 手術料金には、ノミ駆虫薬、<span>化膿止めの抗生剤</span> <span>及び、術後の </span><span>皮下補液 も</span
+        ><span>含まれております。(一部例外)</span>
       </div>
-      <!-- /.price-sticky-wrap -->
+
+      <!-- 料金表一式（料金表開閉・表・合計欄）は js/price-table.js がここに組み立てる -->
+      <div id="price-table"></div>
 
       <div class="price-caption">
         ★ 耳カット<span>(耳先のＶ字カット)は</span><span>不妊去勢手術を受けた証。</span
@@ -1486,7 +1476,8 @@
         <a id="nav-page-next" href="#"></a>
       </div>
     </div>
-    <script src="js/price-loader.js" defer></script>
+    <!-- 料金表（price/data/price-table.json と price-data.json から #price-table に組み立てる） -->
+    <script src="js/price-table.js" defer></script>
     <script>
       function updateStickyHeights() {
         const headerH = document.querySelector(".header-wrap").offsetHeight;

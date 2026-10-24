@@ -1,0 +1,874 @@
+/* css/price-table.css
+   料金表（v2）の見た目。js/price-table.js が組み立てる .pt 以下だけに効く。
+   旧料金表の price-bundle.css は不要（読み込まなくてよい）。
+
+   作りの方針
+   - 行の高さは余白(padding)で作る。折り返しても行間が崩れないので、行間調整のJSは不要
+   - 開閉は「高さ 0 ⇄ 中身の高さ」を grid の 0fr ⇄ 1fr で動かす
+   - 税抜/税込は両方を書いておき、.pt[data-tax] で出し分ける */
+
+.pt {
+  /* 色はここで一括管理 */
+  --pt-head-bg: #eee183;
+  --pt-head-hover: #f3e88f;
+  --pt-row-bg: #fefde0;
+  --pt-note-bg: #fffbea;
+  --pt-line: #cfc48a;
+  --pt-line-strong: #8f8440;
+  --pt-hover: #f6f2c4; /* 説明付きの行のホバー・開いている時（元の行の色 #fefde0 より少し濃く） */
+  --pt-sel-bg: #789a6a; /* 個数を入れた行の背景（明暗を入れ替えた配色） */
+  --pt-sel-fg: #fff;
+  --pt-sel-ex: #e3ecff; /* 個数を入れた行の税抜（明るい青） */
+  --pt-sel-in: #ffe0e0; /* 個数を入れた行の税込（明るい赤） */
+  --pt-ex: #1f4fd8;
+  --pt-in: #d42a2a;
+  --pt-feature-bg: #fff4a8;
+  --pt-feature-open: #b0e58c; /* 駆虫薬と表：開いている時（旧料金表と同じ） */
+  --pt-feature-hover: #b0e58c; /* 駆虫薬と表：ホバー（開いている時と同じ緑） */
+  --pt-btn-bg: #4a6741;
+  --pt-btn-hover: #5f8254;
+  --pt-btn-fg: #fff;
+  --pt-showall-bg: #5b7f95;
+  --pt-showall-hover: #6f93a9;
+  --pt-reset-bg: #c98a7c;
+  --pt-reset-hover: #d69d90;
+  --pt-total-head-bg: #e6f0df;
+  --pt-qty-w: 4.4em;
+  --pt-label-w: 38%;
+
+  font-size: 21px;
+  line-height: 1.4;
+  overflow-x: clip; /* 跳んでくるノミで横スクロールが出ないように（sticky には影響しない） */
+}
+@media screen and (max-width: 769px) {
+  .pt {
+    font-size: 17px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .pt {
+    font-size: 16px;
+    --pt-qty-w: 3.9em;
+  }
+}
+.pt *,
+.pt *::before,
+.pt *::after {
+  box-sizing: border-box;
+}
+.pt span {
+  display: inline-block; /* 区切り単位でだけ折り返す */
+}
+.pt p {
+  margin: 0;
+}
+
+/* ---------- 税抜/税込の出し分け ---------- */
+.pt .pt-ex,
+.pt .pt-ex-c {
+  color: var(--pt-ex);
+}
+.pt .pt-in,
+.pt .pt-in-c {
+  color: var(--pt-in);
+}
+.pt .pt-sep {
+  margin: 0 0.15em;
+  color: #999;
+}
+.pt[data-tax="excl"] .pt-in,
+.pt[data-tax="excl"] .pt-sep,
+.pt[data-tax="excl"] .pt-only-in,
+.pt[data-tax="incl"] .pt-ex,
+.pt[data-tax="incl"] .pt-sep,
+.pt[data-tax="incl"] .pt-only-ex {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  /* 狭い画面で「抜/込」の時は2段に */
+  .pt[data-tax="both"] .pt-price .pt-amount {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .pt[data-tax="both"] .pt-price .pt-sep {
+    display: none;
+  }
+}
+
+/* ---------- ボタン共通 ---------- */
+.pt .pt-btn {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 0.3em 0.9em 0.2em;
+  color: var(--pt-btn-fg);
+  background: var(--pt-btn-bg);
+  border: none;
+  border-radius: 17px;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.pt .pt-btn:hover {
+  background: var(--pt-btn-hover);
+}
+.pt .pt-btn:focus-visible,
+.pt .pt-head:focus-visible,
+.pt .pt-label:focus-visible {
+  outline: 3px solid #f0a020;
+  outline-offset: 2px;
+}
+
+/* ---------- 料金表開閉（上に張り付く） ---------- */
+.pt-tools {
+  position: sticky;
+  top: calc(var(--pt-sticky-top, 0px) + 0.5em); /* 本番ページでは上部ナビの下（JSで設定） */
+  z-index: 6;
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto 0.4em;
+  pointer-events: none; /* ボタン以外は下の表を押せるように */
+}
+.pt-tools .pt-btn {
+  pointer-events: auto;
+}
+.pt .pt-btn-showall {
+  background: var(--pt-showall-bg);
+}
+.pt .pt-btn-showall:hover {
+  background: var(--pt-showall-hover);
+}
+
+/* ---------- 表全体・見出し ---------- */
+.pt-table {
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* 見出し同士の間隔 */
+}
+@media screen and (max-width: 769px) {
+  .pt-table,
+  .pt-tools {
+    width: 100%;
+  }
+}
+.pt-sec {
+  background: var(--pt-row-bg);
+  border: 1px solid var(--pt-line-strong);
+  border-radius: 8px;
+}
+.pt-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.4em;
+  padding: 0.4em 0.5em;
+  font: inherit;
+  font-weight: bold;
+  color: #333;
+  background: var(--pt-head-bg);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, border-radius 0.2s;
+}
+.pt-head:hover {
+  background: var(--pt-head-hover);
+}
+.pt-sec.is-open > .pt-head {
+  border-radius: 7px 7px 0 0;
+  border-bottom: 1px solid var(--pt-line-strong);
+}
+
+/* ◇＋ → □− に回転するマーク */
+.pt-mark {
+  position: absolute;
+  left: 18%;
+  top: calc(50% - 0.475em);
+  width: 0.95em;
+  height: 0.95em;
+  border: 1px solid #194602;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+.pt-mark::before,
+.pt-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 75%;
+  height: 2px;
+  border-radius: 2px;
+  background: #222;
+  transform: rotate(-45deg);
+  transition: transform 0.3s, opacity 0.2s;
+}
+.pt-mark::after {
+  transform: rotate(45deg);
+}
+.pt-sec.is-open .pt-mark {
+  transform: rotate(360deg);
+}
+.pt-sec.is-open .pt-mark::before,
+.pt-sec.is-open .pt-mark::after {
+  transform: rotate(0deg);
+}
+.pt-sec.is-open .pt-mark::after {
+  opacity: 0;
+}
+
+/* 税抜/税込バッジ（表示のみ） */
+.pt-badge {
+  position: absolute;
+  right: 16%;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.05em 0.45em;
+  font-size: 0.72em;
+  font-weight: normal;
+  white-space: nowrap;
+  color: var(--pt-ex);
+  background: #f7eda6;
+  border: 2px solid #b2a75b;
+  border-radius: 20px;
+}
+.pt[data-tax="incl"] .pt-badge {
+  color: var(--pt-in);
+}
+.pt[data-tax="both"] .pt-badge {
+  color: #333;
+}
+@media screen and (max-width: 500px) {
+  .pt-mark {
+    left: 7%;
+  }
+  .pt-badge {
+    right: 4%;
+  }
+}
+
+/* 開閉アニメ（見出し・説明・合計欄で共通の仕組み） */
+.pt-body,
+.pt-note,
+.pt-total-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease-out;
+}
+.pt-sec.is-open > .pt-body,
+.pt-row.is-open > .pt-note,
+.pt-total.is-open .pt-total-body {
+  grid-template-rows: 1fr;
+}
+.pt-body-inner,
+.pt-note-inner,
+.pt-total-inner {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden; /* 閉じている間はTabキーで中に入らない */
+  transition: visibility 0.25s;
+}
+.pt-sec.is-open > .pt-body > .pt-body-inner,
+.pt-row.is-open > .pt-note > .pt-note-inner,
+.pt-total.is-open .pt-total-inner {
+  visibility: visible;
+}
+/* 開ききった後は、はみ出しを許す（跳んでくるノミが切れないように） */
+.pt-sec.is-settled > .pt-body > .pt-body-inner {
+  overflow: visible;
+}
+
+/* ---------- 行 ---------- */
+.pt-row + .pt-row {
+  border-top: 1px solid var(--pt-line);
+}
+.pt-main {
+  display: grid;
+  grid-template-columns: var(--pt-label-w) 1fr;
+}
+.pt-label {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  padding: 0.45em 0.6em;
+  text-align: center;
+  border-right: 1px solid var(--pt-line);
+}
+.pt-lines {
+  display: flex;
+  flex-direction: column;
+}
+.pt-line {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr var(--pt-qty-w);
+}
+.pt-line + .pt-line {
+  border-top: 1px dashed var(--pt-line);
+}
+.pt-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  column-gap: 0.35em;
+  padding: 0.45em 0.3em;
+  text-align: center;
+}
+.pt-subname {
+  font-size: 0.78em;
+  color: #555;
+  align-self: center;
+}
+.pt-prefix {
+  color: #444;
+}
+.pt-suffix {
+  font-size: 0.75em;
+  color: #777;
+  align-self: center;
+}
+
+/* 選んだ行（個数を入れた行）は、明暗を入れ替えた配色にする。
+   真っ黒に反転すると強すぎるので、中くらいの濃さの緑の背景に明るい文字（色は先頭の --pt-sel-… で調整） */
+.pt-line.is-selected,
+.pt-row.is-selected > .pt-main > .pt-label {
+  background: var(--pt-sel-bg);
+  color: var(--pt-sel-fg);
+}
+.pt-line.is-selected .pt-ex {
+  color: var(--pt-sel-ex);
+}
+.pt-line.is-selected .pt-in {
+  color: var(--pt-sel-in);
+}
+.pt-line.is-selected .pt-subname,
+.pt-line.is-selected .pt-prefix,
+.pt-line.is-selected .pt-suffix,
+.pt-line.is-selected .pt-sep {
+  color: var(--pt-sel-fg);
+}
+.pt-row.is-selected.has-note:not(.pt-feature) > .pt-main > .pt-label::before {
+  border-color: var(--pt-sel-fg); /* 説明付きの行の矢印も明るく */
+}
+.pt-line.is-selected .pt-qty input {
+  font-weight: bold;
+}
+
+/* 説明つきの行：押せることが分かるように小さな矢印 */
+.pt-row.has-note > .pt-main {
+  cursor: pointer;
+  user-select: none; /* 連打で文字が選択されて翻訳などが出ないように */
+  -webkit-user-select: none;
+  transition: background 0.2s;
+}
+.pt-row.has-note:not(.pt-feature) > .pt-main > .pt-label {
+  padding-left: 1.5em; /* 左の矢印と文字が重ならないように */
+}
+.pt-row.has-note > .pt-main:hover {
+  background: var(--pt-hover);
+}
+.pt-row.has-note:not(.pt-feature) > .pt-main > .pt-label::before {
+  content: "";
+  position: absolute;
+  left: 0.55em;
+  top: 50%;
+  width: 0.42em;
+  height: 0.42em;
+  margin-top: -0.3em;
+  border-right: 2px solid #8a7d2a;
+  border-bottom: 2px solid #8a7d2a;
+  transform: rotate(45deg);
+  transition: transform 0.25s, margin-top 0.25s;
+}
+.pt-row.has-note.is-open:not(.pt-feature) > .pt-main > .pt-label::before {
+  transform: rotate(-135deg);
+  margin-top: -0.1em;
+}
+.pt-row.is-open > .pt-main {
+  background: var(--pt-hover);
+}
+
+/* 説明 */
+.pt-note-pad {
+  padding: 0.5em 1em 0.7em;
+  font-size: 0.82em;
+  line-height: 1.6;
+  text-align: center;
+  background: var(--pt-note-bg);
+  border-top: 1px dashed var(--pt-line);
+}
+.pt-note-pad p + p {
+  margin-top: 0.35em;
+}
+.pt-chip-link {
+  display: block;
+  width: 60%;
+  max-width: 280px;
+  margin: 0.4em auto;
+  transition: transform 0.3s;
+}
+.pt-chip-link:hover {
+  transform: scale(1.05);
+}
+.pt-chip-link img {
+  display: block;
+  width: 100%;
+  border: 7px double #8bae91;
+  border-radius: 10px;
+}
+
+/* ---------- 個数欄 ---------- */
+.pt-qty {
+  display: flex;
+  border-left: 1px solid var(--pt-line);
+}
+.pt-qty input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  text-align: center;
+  color: inherit;
+  background: transparent;
+  border: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.pt-qty input::-webkit-inner-spin-button,
+.pt-qty input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.pt-qty input:focus {
+  outline: 2px solid #f0a020;
+  outline-offset: -2px;
+}
+.pt .pt-spin {
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #bbb;
+}
+.pt-spin button {
+  flex: 1;
+  padding: 0;
+  font-size: 0.6em;
+  line-height: 1;
+  color: #444;
+  background: #f3f3f3;
+  border: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.pt-spin button:first-child {
+  border-bottom: 1px solid #bbb;
+}
+.pt-spin button:hover {
+  background: #e3e3e3;
+}
+.pt-spin button:active {
+  background: #ccc;
+}
+
+/* ---------- 駆虫薬と表（ノミ） ---------- */
+.pt-feature > .pt-main {
+  grid-template-columns: 1fr;
+}
+.pt-feature .pt-label {
+  border-right: none;
+  min-height: 2.6em;
+  background: var(--pt-feature-bg);
+  transition: background 0.3s;
+}
+.pt-feature > .pt-main:hover .pt-label {
+  background: var(--pt-feature-hover);
+}
+.pt-feature.is-open .pt-label,
+.pt-feature.is-open > .pt-main:hover .pt-label {
+  background: var(--pt-feature-open);
+}
+.pt-nomi-box {
+  position: absolute;
+  left: 22%;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  pointer-events: none;
+}
+@media screen and (max-width: 400px) {
+  .pt-nomi-box {
+    left: 10%;
+  }
+}
+.pt-nomi-box img {
+  position: absolute;
+  display: block;
+}
+.pt-nomi {
+  width: 35px;
+  left: 4px;
+  top: calc(50% - 16px);
+  transition: transform 0.3s, left 0.3s;
+}
+.pt-nomi-ring {
+  width: 30px;
+  height: 16px;
+  left: -5px;
+  top: calc(50% - 28px);
+  opacity: 0;
+  transform: scale(0.1);
+  transition: opacity 0.2s, transform 0.2s;
+}
+/* 開いた時：ノミが回転して倒れ、頭上に輪っか */
+.pt-feature.is-open .pt-nomi {
+  left: -6px;
+  transform: rotate(-540deg);
+}
+.pt-feature.is-open .pt-nomi-ring {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1s, transform 1s;
+}
+/* 閉じる時：逆再生させず、死んだノミ（複製）は下へ落ちて消え、新しいノミが跳んでくる */
+.pt-nomi-box.is-respawn img {
+  transition: none !important;
+}
+.pt-nomi-box.is-respawn .pt-nomi:not(.pt-ghost) {
+  z-index: 5;
+  animation: pt-nomi-jump 0.7s linear 0.2s both;
+}
+.pt-ghost {
+  z-index: 5;
+}
+.pt-ghost.pt-nomi {
+  left: -6px;
+  animation: pt-nomi-fall 0.45s ease-in both;
+}
+.pt-ghost.pt-nomi-ring {
+  opacity: 1;
+  transform: none;
+  animation: pt-fade 0.35s ease-out both;
+}
+@keyframes pt-nomi-jump {
+  /* scaleX(-1)：跳んでくる間は進行方向（左）に頭を向ける */
+  0% {
+    transform: translate(260px, -60px) rotate(25deg) scaleX(-1);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(195px, -125px) rotate(15deg) scaleX(-1);
+  }
+  40% {
+    transform: translate(130px, -150px) rotate(0deg) scaleX(-1);
+  }
+  60% {
+    transform: translate(65px, -112px) rotate(-10deg) scaleX(-1);
+  }
+  80% {
+    transform: translate(0, 0) rotate(0deg) scaleX(-1);
+  }
+  90% {
+    transform: translate(0, -8px) rotate(0deg) scaleX(-1);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scaleX(-1);
+    opacity: 1;
+  }
+}
+@keyframes pt-nomi-fall {
+  0% {
+    transform: translateY(0) rotate(-540deg);
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(70px) rotate(-540deg);
+    opacity: 0;
+  }
+}
+@keyframes pt-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+/* 駆虫薬の比較表 */
+.pt-aw-wrap {
+  text-align: left;
+}
+.pt-aw {
+  margin: 0.2em auto 0.7em;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 0.95em;
+  line-height: 1.2;
+}
+.pt-aw th,
+.pt-aw td {
+  border: 1px solid #c9c9c9;
+  text-align: center;
+}
+.pt-aw thead th {
+  background: #f6efb5;
+  font-weight: normal;
+}
+.pt-aw-col {
+  writing-mode: vertical-rl;
+  padding: 0.35em 0.15em;
+  letter-spacing: 0.05em;
+}
+.pt-aw-name {
+  padding: 0.2em 0.5em;
+  text-align: left !important;
+  white-space: nowrap;
+  font-weight: normal;
+  background: #fbf8de;
+}
+.pt-aw td {
+  min-width: 1.7em;
+  padding: 0.2em 0;
+}
+.pt-aw .aw-yes {
+  color: #2d7d2d;
+  font-weight: bold;
+}
+.pt-aw .aw-no {
+  color: #aaa;
+}
+.pt-aw .aw-maybe {
+  color: #c07a00;
+}
+.pt-aw-note {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+@media screen and (max-width: 600px) {
+  .pt-aw {
+    font-size: 0.85em;
+  }
+  .pt-aw td {
+    min-width: 1.4em;
+  }
+}
+
+/* ---------- 割引料金 ---------- */
+.pt-discount {
+  padding: 0.5em 0.6em 0.8em;
+}
+.pt-discount-intro {
+  font-size: 0.85em;
+  text-align: center;
+  margin-bottom: 0.5em !important;
+}
+.pt-dc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  text-align: center;
+  border: 1px solid var(--pt-line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+.pt-dc-grid > div {
+  padding: 0.3em 0.2em;
+  border-top: 1px solid var(--pt-line);
+}
+.pt-dc-grid > .pt-dc-h {
+  border-top: none;
+  font-size: 0.8em;
+  font-weight: bold;
+  background: #f6efb5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+.pt-dc-n {
+  background: #fbf8de;
+}
+.pt-dc-wide {
+  grid-column: span 2;
+}
+
+/* ---------- 合計欄（下に張り付く） ---------- */
+.pt-total {
+  position: sticky;
+  bottom: 0;
+  z-index: 6;
+  width: 80%;
+  max-width: 700px;
+  margin: 1em auto 0;
+  font-size: 18px;
+  background: #fff;
+  border: 2px solid var(--pt-btn-bg);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 769px) {
+  .pt-total {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+.pt-total-btns {
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  display: flex;
+  gap: 0.5em;
+}
+.pt-total.is-open .pt-btn-sub {
+  background: var(--pt-btn-hover);
+  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.45);
+}
+.pt-total-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 2.9em 1em 0.5em;
+  background: var(--pt-total-head-bg);
+  border-radius: 8px 8px 0 0;
+}
+.pt-total-title {
+  font-weight: bold;
+  color: var(--pt-btn-bg);
+}
+.pt-total-sums {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  column-gap: 0.8em;
+  font-weight: bold;
+}
+.pt-total-inner {
+  max-height: 40vh;
+  overflow-y: auto;
+}
+.pt-total-pad {
+  padding: 0 1em 0.6em;
+  border-top: 1px solid #ccc;
+}
+.pt-total-list {
+  list-style: none;
+  margin: 0.4em 0;
+  padding: 0;
+  font-size: 0.85em;
+}
+.pt-total-list li {
+  display: flex;
+  flex-wrap: wrap; /* 狭い画面では「名前」の下に「ボタン・金額」が回り込む */
+  align-items: center;
+  column-gap: 0.6em;
+  row-gap: 0.15em;
+  padding: 0.25em 0;
+  border-bottom: 1px dotted #ccc;
+}
+.pt-tl-name {
+  flex: 1 1 9em;
+}
+.pt .pt-tl-ctrl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+}
+.pt-tl-count {
+  min-width: 1.6em;
+  text-align: center;
+  font-weight: bold;
+}
+.pt-tl-btn {
+  width: 1.7em;
+  height: 1.7em;
+  padding: 0;
+  font: inherit;
+  font-weight: bold;
+  line-height: 1;
+  color: #444;
+  background: #f3f3f3;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  cursor: pointer;
+  touch-action: manipulation; /* 連打でズームしないように */
+}
+.pt-tl-btn:hover {
+  background: #e3e3e3;
+}
+.pt-tl-btn:active {
+  background: #ccc;
+}
+.pt-tl-btn.pt-tl-del {
+  flex-shrink: 0;
+  color: #fff;
+  background: var(--pt-reset-bg);
+  border-color: var(--pt-reset-bg);
+}
+.pt-tl-btn.pt-tl-del:hover {
+  background: var(--pt-reset-hover);
+}
+.pt-tl-amount {
+  margin-left: auto;
+  white-space: nowrap;
+  text-align: right;
+}
+.pt-total-list .pt-total-empty {
+  justify-content: center;
+  color: #888;
+  border: none;
+}
+.pt-total-note {
+  margin-top: 0.3em !important;
+  font-size: 0.75em;
+  color: #666;
+}
+.pt .pt-btn-reset {
+  background: var(--pt-reset-bg);
+}
+.pt .pt-btn-reset:hover {
+  background: var(--pt-reset-hover);
+}
+
+/* 「動きを減らす」設定（Windowsのアニメーション効果オフなど）でも演出は止めない。
+   止める場合は @media (prefers-reduced-motion: reduce) で transition / animation を none にする */
+
+/* ---------- 料金表の上下の注意書き（旧 price-bundle.css から移動） ----------
+   「※ 手術料金には～含まれております」「★ 耳カットは～」の黄色い枠 */
+.price-caption {
+  font-size: 22px;
+  border: 3px solid #eee183;
+  border-radius: 8px;
+  width: 70%;
+  margin: 1em auto;
+  padding: 0.3em 1em;
+}
+.price-caption p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  line-height: 2em;
+}
+@media screen and (max-width: 769px) {
+  .price-caption {
+    font-size: 0.8em;
+    width: 100%;
+  }
+}
