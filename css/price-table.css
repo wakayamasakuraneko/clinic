@@ -851,6 +851,13 @@
   white-space: nowrap;
   text-align: right;
 }
+/* スマホで「抜/込」表示の時は、金額が長くなって回り込んだりしなかったりするので、
+   金額（と×）を常に次の段に送って揃える */
+@media screen and (max-width: 600px) {
+  .pt[data-tax="both"] .pt-tl-amount {
+    flex: 1 0 calc(100% - 2.5em); /* ×ボタンの分を残して1段使う */
+  }
+}
 .pt-total-list .pt-total-empty {
   justify-content: center;
   color: #888;
