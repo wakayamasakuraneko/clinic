@@ -335,6 +335,23 @@
         border-bottom: none;
       }
 
+      /* お知らせの各項目（畳める形） */
+      .news-item {
+        margin-top: 0.6em;
+        padding-top: 0.6em;
+        border-top: 1px dashed var(--bd-extra-light);
+      }
+      .news-item > summary {
+        font-weight: bold;
+        color: var(--c-brown-mid);
+        cursor: pointer;
+        user-select: none;
+      }
+      .news-item > p {
+        font-size: 0.9em;
+        margin: 0.5em 0 0 1em;
+      }
+
       /* ページ内ジャンプのオフセット（sticky nav分） */
       section[id], #ticket-info, #news {
         scroll-margin-top: var(--scroll-offset, 40px);
@@ -1191,6 +1208,11 @@
     <div class="news" id="news">
       <h2>📢 お知らせ</h2>
       <p id="notice-months-text"></p>
+
+      <!-- お知らせは1件ずつ畳んでおく（新しいものを上に追加） -->
+      <details class="news-item">
+        <summary>料金表で費用目安を計算できるようにしました（2026年10月）</summary>
+        <p>料金表の各項目に個数を入れると、合計金額の目安が表示されるようになりました。</p>      </details>
     </div>
 
     <details class="news" id="ticket-info">

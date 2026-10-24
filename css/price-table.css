@@ -819,9 +819,29 @@
 }
 .pt-tl-btn.pt-tl-del {
   flex-shrink: 0;
-  color: #fff;
+  border-radius: 50%; /* 削除ボタンだけ丸く */
+  width: 1.35em; /* −／＋（1.7em）より小さく */
+  height: 1.35em;
+  font-size: 0.85em;
+  position: relative;
+  color: transparent; /* 文字の「×」はフォントで上下がずれるので隠し、下の線2本で描く */
   background: var(--pt-reset-bg);
   border-color: var(--pt-reset-bg);
+}
+.pt-tl-btn.pt-tl-del::before,
+.pt-tl-btn.pt-tl-del::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 55%;
+  height: 2px;
+  border-radius: 1px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+.pt-tl-btn.pt-tl-del::after {
+  transform: rotate(-45deg);
 }
 .pt-tl-btn.pt-tl-del:hover {
   background: var(--pt-reset-hover);
