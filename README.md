@@ -24,7 +24,3 @@
 |---|---|
 | 臨時休診のお知らせ | `index.html` のヘッダー部分のスクリプト（`closureEnd` と表示文言） |
 | 料金の変更・項目の追加 | `price/data/price-data.json` と `price/data/price-table.json`（詳しくは [price/README.md](price/README.md)） |
-
-## メモ
-
-- 以前のコミットに戻す方法：[git-restore-howto.md](git-restore-howto.md)
